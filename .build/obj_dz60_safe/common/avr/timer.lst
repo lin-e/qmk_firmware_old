@@ -666,19 +666,19 @@
  449               		.file 3 "/usr/lib/avr/include/stdint.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 timer.c
-     /tmp/ccK4OWat.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccK4OWat.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccK4OWat.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccK4OWat.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccK4OWat.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccK4OWat.s:13     .text.timer_init:0000000000000000 timer_init
-     /tmp/ccK4OWat.s:41     .text.timer_clear:0000000000000000 timer_clear
+     /tmp/ccRZrT9P.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccRZrT9P.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccRZrT9P.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccRZrT9P.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccRZrT9P.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccRZrT9P.s:13     .text.timer_init:0000000000000000 timer_init
+     /tmp/ccRZrT9P.s:41     .text.timer_clear:0000000000000000 timer_clear
                             *COM*:0000000000000004 timer_count
-     /tmp/ccK4OWat.s:86     .text.timer_read:0000000000000000 timer_read
-     /tmp/ccK4OWat.s:131    .text.timer_read32:0000000000000000 timer_read32
-     /tmp/ccK4OWat.s:176    .text.timer_elapsed:0000000000000000 timer_elapsed
-     /tmp/ccK4OWat.s:278    .text.timer_elapsed32:0000000000000000 timer_elapsed32
-     /tmp/ccK4OWat.s:384    .text.__vector_21:0000000000000000 __vector_21
+     /tmp/ccRZrT9P.s:86     .text.timer_read:0000000000000000 timer_read
+     /tmp/ccRZrT9P.s:131    .text.timer_read32:0000000000000000 timer_read32
+     /tmp/ccRZrT9P.s:176    .text.timer_elapsed:0000000000000000 timer_elapsed
+     /tmp/ccRZrT9P.s:278    .text.timer_elapsed32:0000000000000000 timer_elapsed32
+     /tmp/ccRZrT9P.s:384    .text.__vector_21:0000000000000000 __vector_21
 
 UNDEFINED SYMBOLS
 __do_clear_bss

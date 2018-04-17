@@ -1,12 +1,14 @@
-.build/obj_dz60_safe/common/keyboard.o: tmk_core/common/keyboard.c \
+.build/obj_dz60_safe/common/magic.o: tmk_core/common/magic.c \
  keyboards/dz60/config.h quantum/config_common.h \
  quantum/audio/song_list.h quantum/audio/musical_notes.h \
- tmk_core/common/keyboard.h tmk_core/common/matrix.h quantum/keymap.h \
- tmk_core/common/action.h tmk_core/common/keycode.h \
- tmk_core/common/action_code.h tmk_core/common/action_macro.h \
- tmk_core/common/progmem.h tmk_core/common/keycode.h \
- tmk_core/common/action_macro.h tmk_core/common/report.h \
- tmk_core/protocol/usb_descriptor.h lib/lufa/LUFA/Drivers/USB/USB.h \
+ tmk_core/common/matrix.h tmk_core/common/bootloader.h \
+ tmk_core/common/debug.h tmk_core/common/print.h tmk_core/common/util.h \
+ quantum/keymap.h tmk_core/common/action.h tmk_core/common/keyboard.h \
+ tmk_core/common/keycode.h tmk_core/common/action_code.h \
+ tmk_core/common/action_macro.h tmk_core/common/progmem.h \
+ tmk_core/common/keycode.h tmk_core/common/action_macro.h \
+ tmk_core/common/report.h tmk_core/protocol/usb_descriptor.h \
+ lib/lufa/LUFA/Drivers/USB/USB.h \
  lib/lufa/LUFA/Drivers/USB/../../Common/Common.h \
  lib/lufa/LUFA/Drivers/USB/../../Common/Architectures.h \
  lib/lufa/LUFA/Drivers/USB/../../Common/BoardTypes.h \
@@ -97,17 +99,11 @@
  lib/lufa/LUFA/Drivers/USB/Class/Device/../Common/CDCClassCommon.h \
  lib/lufa/LUFA/Drivers/USB/Class/StillImageClass.h tmk_core/common/host.h \
  tmk_core/common/report.h tmk_core/common/host_driver.h \
- tmk_core/common/debug.h tmk_core/common/print.h tmk_core/common/util.h \
- quantum/keycode_config.h tmk_core/common/eeconfig.h \
- tmk_core/common/action_code.h quantum/quantum_keycodes.h \
- tmk_core/common/host.h tmk_core/common/led.h tmk_core/common/timer.h \
- tmk_core/common/avr/timer_avr.h tmk_core/common/debug.h \
- tmk_core/common/command.h tmk_core/common/sendchar.h \
- tmk_core/common/eeconfig.h tmk_core/common/backlight.h \
+ tmk_core/common/debug.h quantum/keycode_config.h \
+ tmk_core/common/eeconfig.h tmk_core/common/action_code.h \
+ quantum/quantum_keycodes.h tmk_core/common/host.h \
  tmk_core/common/action_layer.h tmk_core/common/action.h \
- tmk_core/common/magic.h tmk_core/common/mousekey.h quantum/rgblight.h \
- drivers/avr/ws2812.h quantum/rgblight_types.h quantum/rgblight_types.h \
- quantum/rgblight_list.h
+ tmk_core/common/eeconfig.h tmk_core/common/magic.h
 
 keyboards/dz60/config.h:
 
@@ -117,13 +113,21 @@ quantum/audio/song_list.h:
 
 quantum/audio/musical_notes.h:
 
-tmk_core/common/keyboard.h:
-
 tmk_core/common/matrix.h:
+
+tmk_core/common/bootloader.h:
+
+tmk_core/common/debug.h:
+
+tmk_core/common/print.h:
+
+tmk_core/common/util.h:
 
 quantum/keymap.h:
 
 tmk_core/common/action.h:
+
+tmk_core/common/keyboard.h:
 
 tmk_core/common/keycode.h:
 
@@ -329,10 +333,6 @@ tmk_core/common/host_driver.h:
 
 tmk_core/common/debug.h:
 
-tmk_core/common/print.h:
-
-tmk_core/common/util.h:
-
 quantum/keycode_config.h:
 
 tmk_core/common/eeconfig.h:
@@ -343,36 +343,10 @@ quantum/quantum_keycodes.h:
 
 tmk_core/common/host.h:
 
-tmk_core/common/led.h:
-
-tmk_core/common/timer.h:
-
-tmk_core/common/avr/timer_avr.h:
-
-tmk_core/common/debug.h:
-
-tmk_core/common/command.h:
-
-tmk_core/common/sendchar.h:
-
-tmk_core/common/eeconfig.h:
-
-tmk_core/common/backlight.h:
-
 tmk_core/common/action_layer.h:
 
 tmk_core/common/action.h:
 
+tmk_core/common/eeconfig.h:
+
 tmk_core/common/magic.h:
-
-tmk_core/common/mousekey.h:
-
-quantum/rgblight.h:
-
-drivers/avr/ws2812.h:
-
-quantum/rgblight_types.h:
-
-quantum/rgblight_types.h:
-
-quantum/rgblight_list.h:

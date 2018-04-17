@@ -710,19 +710,19 @@
  621               		.file 2 "/usr/lib/avr/include/stdint.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 util.c
-     /tmp/ccQ8yH0d.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccQ8yH0d.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccQ8yH0d.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccQ8yH0d.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccQ8yH0d.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccQ8yH0d.s:13     .text.bitpop:0000000000000000 bitpop
-     /tmp/ccQ8yH0d.s:50     .text.bitpop16:0000000000000000 bitpop16
-     /tmp/ccQ8yH0d.s:88     .text.bitpop32:0000000000000000 bitpop32
-     /tmp/ccQ8yH0d.s:156    .text.biton:0000000000000000 biton
-     /tmp/ccQ8yH0d.s:210    .text.biton16:0000000000000000 biton16
-     /tmp/ccQ8yH0d.s:289    .text.biton32:0000000000000000 biton32
-     /tmp/ccQ8yH0d.s:431    .text.bitrev:0000000000000000 bitrev
-     /tmp/ccQ8yH0d.s:477    .text.bitrev16:0000000000000000 bitrev16
-     /tmp/ccQ8yH0d.s:535    .text.bitrev32:0000000000000000 bitrev32
+     /tmp/ccbrsgaG.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccbrsgaG.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccbrsgaG.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccbrsgaG.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccbrsgaG.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccbrsgaG.s:13     .text.bitpop:0000000000000000 bitpop
+     /tmp/ccbrsgaG.s:50     .text.bitpop16:0000000000000000 bitpop16
+     /tmp/ccbrsgaG.s:88     .text.bitpop32:0000000000000000 bitpop32
+     /tmp/ccbrsgaG.s:156    .text.biton:0000000000000000 biton
+     /tmp/ccbrsgaG.s:210    .text.biton16:0000000000000000 biton16
+     /tmp/ccbrsgaG.s:289    .text.biton32:0000000000000000 biton32
+     /tmp/ccbrsgaG.s:431    .text.bitrev:0000000000000000 bitrev
+     /tmp/ccbrsgaG.s:477    .text.bitrev16:0000000000000000 bitrev16
+     /tmp/ccbrsgaG.s:535    .text.bitrev32:0000000000000000 bitrev32
 
 NO UNDEFINED SYMBOLS

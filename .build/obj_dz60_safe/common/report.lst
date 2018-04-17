@@ -638,20 +638,20 @@
  408               		.file 7 "./tmk_core/common/util.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 report.c
-     /tmp/ccIyHmFh.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccIyHmFh.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccIyHmFh.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccIyHmFh.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccIyHmFh.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccIyHmFh.s:13     .text.has_anykey:0000000000000000 has_anykey
-     /tmp/ccIyHmFh.s:55     .text.get_first_key:0000000000000000 get_first_key
-     /tmp/ccIyHmFh.s:133    .text.add_key_byte:0000000000000000 add_key_byte
-     /tmp/ccIyHmFh.s:190    .text.del_key_byte:0000000000000000 del_key_byte
-     /tmp/ccIyHmFh.s:229    .text.add_key_bit:0000000000000000 add_key_bit
-     /tmp/ccIyHmFh.s:271    .text.del_key_bit:0000000000000000 del_key_bit
-     /tmp/ccIyHmFh.s:314    .text.add_key_to_report:0000000000000000 add_key_to_report
-     /tmp/ccIyHmFh.s:343    .text.del_key_from_report:0000000000000000 del_key_from_report
-     /tmp/ccIyHmFh.s:372    .text.clear_keys_from_report:0000000000000000 clear_keys_from_report
+     /tmp/ccWUtzbN.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccWUtzbN.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccWUtzbN.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccWUtzbN.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccWUtzbN.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccWUtzbN.s:13     .text.has_anykey:0000000000000000 has_anykey
+     /tmp/ccWUtzbN.s:55     .text.get_first_key:0000000000000000 get_first_key
+     /tmp/ccWUtzbN.s:133    .text.add_key_byte:0000000000000000 add_key_byte
+     /tmp/ccWUtzbN.s:190    .text.del_key_byte:0000000000000000 del_key_byte
+     /tmp/ccWUtzbN.s:229    .text.add_key_bit:0000000000000000 add_key_bit
+     /tmp/ccWUtzbN.s:271    .text.del_key_bit:0000000000000000 del_key_bit
+     /tmp/ccWUtzbN.s:314    .text.add_key_to_report:0000000000000000 add_key_to_report
+     /tmp/ccWUtzbN.s:343    .text.del_key_from_report:0000000000000000 del_key_from_report
+     /tmp/ccWUtzbN.s:372    .text.clear_keys_from_report:0000000000000000 clear_keys_from_report
 
 UNDEFINED SYMBOLS
 keyboard_protocol

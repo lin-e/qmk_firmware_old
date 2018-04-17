@@ -1650,25 +1650,25 @@
  653               		.file 7 "./lib/lufa/LUFA/Drivers/USB/Core/USBTask.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 usb_descriptor.c
-     /tmp/ccvQmPAS.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccvQmPAS.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccvQmPAS.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccvQmPAS.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccvQmPAS.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccvQmPAS.s:13     .text.get_usb_descriptor:0000000000000000 get_usb_descriptor
-     /tmp/ccvQmPAS.s:258    .progmem.data.ConfigurationDescriptor:0000000000000000 ConfigurationDescriptor
-     /tmp/ccvQmPAS.s:359    .progmem.data.DeviceDescriptor:0000000000000000 DeviceDescriptor
-     /tmp/ccvQmPAS.s:250    .progmem.data.LanguageString:0000000000000000 LanguageString
-     /tmp/ccvQmPAS.s:213    .progmem.data.SerialNumberString:0000000000000000 SerialNumberString
-     /tmp/ccvQmPAS.s:236    .progmem.data.ManufacturerString:0000000000000000 ManufacturerString
-     /tmp/ccvQmPAS.s:223    .progmem.data.ProductString:0000000000000000 ProductString
-     /tmp/ccvQmPAS.s:204    .rodata.CSWTCH.1:0000000000000000 CSWTCH.1
-     /tmp/ccvQmPAS.s:196    .rodata.CSWTCH.2:0000000000000000 CSWTCH.2
-     /tmp/ccvQmPAS.s:188    .rodata.CSWTCH.3:0000000000000000 CSWTCH.3
-     /tmp/ccvQmPAS.s:581    .progmem.data.KeyboardReport:0000000000000000 KeyboardReport
-     /tmp/ccvQmPAS.s:499    .progmem.data.MouseReport:0000000000000000 MouseReport
-     /tmp/ccvQmPAS.s:440    .progmem.data.ExtrakeyReport:0000000000000000 ExtrakeyReport
-     /tmp/ccvQmPAS.s:378    .progmem.data.NKROReport:0000000000000000 NKROReport
+     /tmp/ccasTSEg.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccasTSEg.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccasTSEg.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccasTSEg.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccasTSEg.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccasTSEg.s:13     .text.get_usb_descriptor:0000000000000000 get_usb_descriptor
+     /tmp/ccasTSEg.s:258    .progmem.data.ConfigurationDescriptor:0000000000000000 ConfigurationDescriptor
+     /tmp/ccasTSEg.s:359    .progmem.data.DeviceDescriptor:0000000000000000 DeviceDescriptor
+     /tmp/ccasTSEg.s:250    .progmem.data.LanguageString:0000000000000000 LanguageString
+     /tmp/ccasTSEg.s:213    .progmem.data.SerialNumberString:0000000000000000 SerialNumberString
+     /tmp/ccasTSEg.s:236    .progmem.data.ManufacturerString:0000000000000000 ManufacturerString
+     /tmp/ccasTSEg.s:223    .progmem.data.ProductString:0000000000000000 ProductString
+     /tmp/ccasTSEg.s:204    .rodata.CSWTCH.1:0000000000000000 CSWTCH.1
+     /tmp/ccasTSEg.s:196    .rodata.CSWTCH.2:0000000000000000 CSWTCH.2
+     /tmp/ccasTSEg.s:188    .rodata.CSWTCH.3:0000000000000000 CSWTCH.3
+     /tmp/ccasTSEg.s:581    .progmem.data.KeyboardReport:0000000000000000 KeyboardReport
+     /tmp/ccasTSEg.s:499    .progmem.data.MouseReport:0000000000000000 MouseReport
+     /tmp/ccasTSEg.s:440    .progmem.data.ExtrakeyReport:0000000000000000 ExtrakeyReport
+     /tmp/ccasTSEg.s:378    .progmem.data.NKROReport:0000000000000000 NKROReport
 
 UNDEFINED SYMBOLS
 __do_copy_data

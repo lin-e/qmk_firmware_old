@@ -20,5 +20,3 @@ NKRO_ENABLE = yes
 BACKLIGHT_ENABLE = yes
 AUDIO_ENABLE = no
 RGBLIGHT_ENABLE = yes
-
-KBUILD_CFLAGS += $(call cc-option,-Wno-error=div-by-zero,)

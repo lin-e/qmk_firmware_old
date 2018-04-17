@@ -793,16 +793,16 @@
  207               		.file 4 "./quantum/rgblight_types.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 ws2812.c
-     /tmp/ccw1yGTB.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccw1yGTB.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccw1yGTB.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccw1yGTB.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccw1yGTB.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccw1yGTB.s:13     .text.ws2812_sendarray_mask:0000000000000000 ws2812_sendarray_mask
-     /tmp/ccw1yGTB.s:59     .text.ws2812_sendarray_mask:0000000000000020 loop39
-     /tmp/ccw1yGTB.s:90     .text.ws2812_setleds_pin:0000000000000000 ws2812_setleds_pin
-     /tmp/ccw1yGTB.s:131    .text.ws2812_setleds:0000000000000000 ws2812_setleds
-     /tmp/ccw1yGTB.s:150    .text.ws2812_setleds_rgbw:0000000000000000 ws2812_setleds_rgbw
-     /tmp/ccw1yGTB.s:188    .text.ws2812_sendarray:0000000000000000 ws2812_sendarray
+     /tmp/ccNpQ55U.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccNpQ55U.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccNpQ55U.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccNpQ55U.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccNpQ55U.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccNpQ55U.s:13     .text.ws2812_sendarray_mask:0000000000000000 ws2812_sendarray_mask
+     /tmp/ccNpQ55U.s:59     .text.ws2812_sendarray_mask:0000000000000020 loop39
+     /tmp/ccNpQ55U.s:90     .text.ws2812_setleds_pin:0000000000000000 ws2812_setleds_pin
+     /tmp/ccNpQ55U.s:131    .text.ws2812_setleds:0000000000000000 ws2812_setleds
+     /tmp/ccNpQ55U.s:150    .text.ws2812_setleds_rgbw:0000000000000000 ws2812_setleds_rgbw
+     /tmp/ccNpQ55U.s:188    .text.ws2812_sendarray:0000000000000000 ws2812_sendarray
 
 NO UNDEFINED SYMBOLS

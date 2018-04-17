@@ -3757,31 +3757,31 @@
  1204               		.file 26 "./tmk_core/protocol/usb_descriptor.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 lufa.c
-     /tmp/ccDcHHDL.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccDcHHDL.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccDcHHDL.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccDcHHDL.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccDcHHDL.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccDcHHDL.s:12     .text.keyboard_leds:0000000000000000 keyboard_leds
-     /tmp/ccDcHHDL.s:1168   .bss.keyboard_led_stats:0000000000000000 keyboard_led_stats
-     /tmp/ccDcHHDL.s:29     .text.send_consumer:0000000000000000 send_consumer
-     /tmp/ccDcHHDL.s:163    .text.send_system:0000000000000000 send_system
-     /tmp/ccDcHHDL.s:284    .text.send_mouse:0000000000000000 send_mouse
-     /tmp/ccDcHHDL.s:391    .text.send_keyboard:0000000000000000 send_keyboard
-     /tmp/ccDcHHDL.s:1174   .data.keyboard_protocol:0000000000000000 keyboard_protocol
-     /tmp/ccDcHHDL.s:1163   .bss.keyboard_report_sent:0000000000000000 keyboard_report_sent
-     /tmp/ccDcHHDL.s:574    .text.EVENT_USB_Device_Connect:0000000000000000 EVENT_USB_Device_Connect
-     /tmp/ccDcHHDL.s:612    .text.EVENT_USB_Device_Disconnect:0000000000000000 EVENT_USB_Device_Disconnect
-     /tmp/ccDcHHDL.s:629    .text.EVENT_USB_Device_Reset:0000000000000000 EVENT_USB_Device_Reset
-     /tmp/ccDcHHDL.s:644    .text.EVENT_USB_Device_Suspend:0000000000000000 EVENT_USB_Device_Suspend
-     /tmp/ccDcHHDL.s:659    .text.EVENT_USB_Device_WakeUp:0000000000000000 EVENT_USB_Device_WakeUp
-     /tmp/ccDcHHDL.s:676    .text.EVENT_USB_Device_ConfigurationChanged:0000000000000000 EVENT_USB_Device_ConfigurationChanged
-     /tmp/ccDcHHDL.s:728    .text.EVENT_USB_Device_ControlRequest:0000000000000000 EVENT_USB_Device_ControlRequest
-     /tmp/ccDcHHDL.s:1180   .bss.keyboard_idle:0000000000000000 keyboard_idle
-     /tmp/ccDcHHDL.s:999    .text.sendchar:0000000000000000 sendchar
-     /tmp/ccDcHHDL.s:1018   .text.startup.main:0000000000000000 main
-     /tmp/ccDcHHDL.s:1154   .data.lufa_driver:0000000000000000 lufa_driver
-     /tmp/ccDcHHDL.s:1135   .text.CALLBACK_USB_GetDescriptor:0000000000000000 CALLBACK_USB_GetDescriptor
+     /tmp/ccNOQEe6.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccNOQEe6.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccNOQEe6.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccNOQEe6.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccNOQEe6.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccNOQEe6.s:12     .text.keyboard_leds:0000000000000000 keyboard_leds
+     /tmp/ccNOQEe6.s:1168   .bss.keyboard_led_stats:0000000000000000 keyboard_led_stats
+     /tmp/ccNOQEe6.s:29     .text.send_consumer:0000000000000000 send_consumer
+     /tmp/ccNOQEe6.s:163    .text.send_system:0000000000000000 send_system
+     /tmp/ccNOQEe6.s:284    .text.send_mouse:0000000000000000 send_mouse
+     /tmp/ccNOQEe6.s:391    .text.send_keyboard:0000000000000000 send_keyboard
+     /tmp/ccNOQEe6.s:1174   .data.keyboard_protocol:0000000000000000 keyboard_protocol
+     /tmp/ccNOQEe6.s:1163   .bss.keyboard_report_sent:0000000000000000 keyboard_report_sent
+     /tmp/ccNOQEe6.s:574    .text.EVENT_USB_Device_Connect:0000000000000000 EVENT_USB_Device_Connect
+     /tmp/ccNOQEe6.s:612    .text.EVENT_USB_Device_Disconnect:0000000000000000 EVENT_USB_Device_Disconnect
+     /tmp/ccNOQEe6.s:629    .text.EVENT_USB_Device_Reset:0000000000000000 EVENT_USB_Device_Reset
+     /tmp/ccNOQEe6.s:644    .text.EVENT_USB_Device_Suspend:0000000000000000 EVENT_USB_Device_Suspend
+     /tmp/ccNOQEe6.s:659    .text.EVENT_USB_Device_WakeUp:0000000000000000 EVENT_USB_Device_WakeUp
+     /tmp/ccNOQEe6.s:676    .text.EVENT_USB_Device_ConfigurationChanged:0000000000000000 EVENT_USB_Device_ConfigurationChanged
+     /tmp/ccNOQEe6.s:728    .text.EVENT_USB_Device_ControlRequest:0000000000000000 EVENT_USB_Device_ControlRequest
+     /tmp/ccNOQEe6.s:1180   .bss.keyboard_idle:0000000000000000 keyboard_idle
+     /tmp/ccNOQEe6.s:999    .text.sendchar:0000000000000000 sendchar
+     /tmp/ccNOQEe6.s:1018   .text.startup.main:0000000000000000 main
+     /tmp/ccNOQEe6.s:1154   .data.lufa_driver:0000000000000000 lufa_driver
+     /tmp/ccNOQEe6.s:1135   .text.CALLBACK_USB_GetDescriptor:0000000000000000 CALLBACK_USB_GetDescriptor
 
 UNDEFINED SYMBOLS
 where_to_send

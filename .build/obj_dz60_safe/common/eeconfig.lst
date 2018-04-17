@@ -384,23 +384,23 @@
  307               		.file 3 "/usr/lib/avr/include/avr/eeprom.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 eeconfig.c
-     /tmp/cc4LPclf.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/cc4LPclf.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/cc4LPclf.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/cc4LPclf.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/cc4LPclf.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/cc4LPclf.s:13     .text.eeconfig_init:0000000000000000 eeconfig_init
-     /tmp/cc4LPclf.s:73     .text.eeconfig_enable:0000000000000000 eeconfig_enable
-     /tmp/cc4LPclf.s:94     .text.eeconfig_disable:0000000000000000 eeconfig_disable
-     /tmp/cc4LPclf.s:115    .text.eeconfig_is_enabled:0000000000000000 eeconfig_is_enabled
-     /tmp/cc4LPclf.s:143    .text.eeconfig_read_debug:0000000000000000 eeconfig_read_debug
-     /tmp/cc4LPclf.s:162    .text.eeconfig_update_debug:0000000000000000 eeconfig_update_debug
-     /tmp/cc4LPclf.s:184    .text.eeconfig_read_default_layer:0000000000000000 eeconfig_read_default_layer
-     /tmp/cc4LPclf.s:203    .text.eeconfig_update_default_layer:0000000000000000 eeconfig_update_default_layer
-     /tmp/cc4LPclf.s:225    .text.eeconfig_read_keymap:0000000000000000 eeconfig_read_keymap
-     /tmp/cc4LPclf.s:244    .text.eeconfig_update_keymap:0000000000000000 eeconfig_update_keymap
-     /tmp/cc4LPclf.s:266    .text.eeconfig_read_backlight:0000000000000000 eeconfig_read_backlight
-     /tmp/cc4LPclf.s:285    .text.eeconfig_update_backlight:0000000000000000 eeconfig_update_backlight
+     /tmp/ccIxZ2hM.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccIxZ2hM.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccIxZ2hM.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccIxZ2hM.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccIxZ2hM.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccIxZ2hM.s:13     .text.eeconfig_init:0000000000000000 eeconfig_init
+     /tmp/ccIxZ2hM.s:73     .text.eeconfig_enable:0000000000000000 eeconfig_enable
+     /tmp/ccIxZ2hM.s:94     .text.eeconfig_disable:0000000000000000 eeconfig_disable
+     /tmp/ccIxZ2hM.s:115    .text.eeconfig_is_enabled:0000000000000000 eeconfig_is_enabled
+     /tmp/ccIxZ2hM.s:143    .text.eeconfig_read_debug:0000000000000000 eeconfig_read_debug
+     /tmp/ccIxZ2hM.s:162    .text.eeconfig_update_debug:0000000000000000 eeconfig_update_debug
+     /tmp/ccIxZ2hM.s:184    .text.eeconfig_read_default_layer:0000000000000000 eeconfig_read_default_layer
+     /tmp/ccIxZ2hM.s:203    .text.eeconfig_update_default_layer:0000000000000000 eeconfig_update_default_layer
+     /tmp/ccIxZ2hM.s:225    .text.eeconfig_read_keymap:0000000000000000 eeconfig_read_keymap
+     /tmp/ccIxZ2hM.s:244    .text.eeconfig_update_keymap:0000000000000000 eeconfig_update_keymap
+     /tmp/ccIxZ2hM.s:266    .text.eeconfig_read_backlight:0000000000000000 eeconfig_read_backlight
+     /tmp/ccIxZ2hM.s:285    .text.eeconfig_update_backlight:0000000000000000 eeconfig_update_backlight
 
 UNDEFINED SYMBOLS
 eeprom_update_word

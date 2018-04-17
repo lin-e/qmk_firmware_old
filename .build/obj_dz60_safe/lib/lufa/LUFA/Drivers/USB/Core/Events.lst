@@ -77,19 +77,19 @@
   43               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 Events.c
-     /tmp/ccSC42AK.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccSC42AK.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccSC42AK.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccSC42AK.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccSC42AK.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccSC42AK.s:13     .text.USB_Event_Stub:0000000000000000 USB_Event_Stub
-     /tmp/ccSC42AK.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_Connect
-     /tmp/ccSC42AK.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_Disconnect
-     /tmp/ccSC42AK.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_ControlRequest
-     /tmp/ccSC42AK.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_ConfigurationChanged
-     /tmp/ccSC42AK.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_Suspend
-     /tmp/ccSC42AK.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_WakeUp
-     /tmp/ccSC42AK.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_Reset
-     /tmp/ccSC42AK.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_StartOfFrame
+     /tmp/ccrDtRU2.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccrDtRU2.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccrDtRU2.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccrDtRU2.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccrDtRU2.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccrDtRU2.s:13     .text.USB_Event_Stub:0000000000000000 USB_Event_Stub
+     /tmp/ccrDtRU2.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_Connect
+     /tmp/ccrDtRU2.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_Disconnect
+     /tmp/ccrDtRU2.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_ControlRequest
+     /tmp/ccrDtRU2.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_ConfigurationChanged
+     /tmp/ccrDtRU2.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_Suspend
+     /tmp/ccrDtRU2.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_WakeUp
+     /tmp/ccrDtRU2.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_Reset
+     /tmp/ccrDtRU2.s:13     .text.USB_Event_Stub:0000000000000000 EVENT_USB_Device_StartOfFrame
 
 NO UNDEFINED SYMBOLS

@@ -1130,17 +1130,17 @@
  850               		.file 13 "quantum/keycode_config.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 keymap_common.c
-     /tmp/ccnHZlQ8.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccnHZlQ8.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccnHZlQ8.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccnHZlQ8.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccnHZlQ8.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccnHZlQ8.s:13     .text.action_get_macro:0000000000000000 action_get_macro
-     /tmp/ccnHZlQ8.s:34     .text.action_function:0000000000000000 action_function
-     /tmp/ccnHZlQ8.s:50     .text.keymap_key_to_keycode:0000000000000000 keymap_key_to_keycode
-     /tmp/ccnHZlQ8.s:94     .text.keymap_function_id_to_action:0000000000000000 keymap_function_id_to_action
-     /tmp/ccnHZlQ8.s:836    .progmem.data.fn_actions:0000000000000000 fn_actions
-     /tmp/ccnHZlQ8.s:128    .text.action_for_key:0000000000000000 action_for_key
+     /tmp/cc4aFHSz.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cc4aFHSz.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cc4aFHSz.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cc4aFHSz.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cc4aFHSz.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cc4aFHSz.s:13     .text.action_get_macro:0000000000000000 action_get_macro
+     /tmp/cc4aFHSz.s:34     .text.action_function:0000000000000000 action_function
+     /tmp/cc4aFHSz.s:50     .text.keymap_key_to_keycode:0000000000000000 keymap_key_to_keycode
+     /tmp/cc4aFHSz.s:94     .text.keymap_function_id_to_action:0000000000000000 keymap_function_id_to_action
+     /tmp/cc4aFHSz.s:836    .progmem.data.fn_actions:0000000000000000 fn_actions
+     /tmp/cc4aFHSz.s:128    .text.action_for_key:0000000000000000 action_for_key
 
 UNDEFINED SYMBOLS
 keymaps
