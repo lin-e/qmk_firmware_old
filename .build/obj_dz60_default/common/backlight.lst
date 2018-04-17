@@ -429,19 +429,19 @@
  317               		.file 4 "./tmk_core/common/eeconfig.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 backlight.c
-     /tmp/cctmtKre.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/cctmtKre.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/cctmtKre.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/cctmtKre.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/cctmtKre.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/cctmtKre.s:13     .text.backlight_init:0000000000000000 backlight_init
+     /tmp/ccimLDgv.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccimLDgv.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccimLDgv.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccimLDgv.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccimLDgv.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccimLDgv.s:13     .text.backlight_init:0000000000000000 backlight_init
                             *COM*:0000000000000001 backlight_config
-     /tmp/cctmtKre.s:67     .text.backlight_increase:0000000000000000 backlight_increase
-     /tmp/cctmtKre.s:111    .text.backlight_decrease:0000000000000000 backlight_decrease
-     /tmp/cctmtKre.s:155    .text.backlight_toggle:0000000000000000 backlight_toggle
-     /tmp/cctmtKre.s:201    .text.backlight_step:0000000000000000 backlight_step
-     /tmp/cctmtKre.s:253    .text.backlight_level:0000000000000000 backlight_level
-     /tmp/cctmtKre.s:296    .text.get_backlight_level:0000000000000000 get_backlight_level
+     /tmp/ccimLDgv.s:67     .text.backlight_increase:0000000000000000 backlight_increase
+     /tmp/ccimLDgv.s:111    .text.backlight_decrease:0000000000000000 backlight_decrease
+     /tmp/ccimLDgv.s:155    .text.backlight_toggle:0000000000000000 backlight_toggle
+     /tmp/ccimLDgv.s:201    .text.backlight_step:0000000000000000 backlight_step
+     /tmp/ccimLDgv.s:253    .text.backlight_level:0000000000000000 backlight_level
+     /tmp/ccimLDgv.s:296    .text.get_backlight_level:0000000000000000 get_backlight_level
 
 UNDEFINED SYMBOLS
 eeconfig_is_enabled

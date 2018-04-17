@@ -111,7 +111,7 @@
  tmk_core/common/action_util.h tmk_core/common/print.h \
  quantum/send_string_keycodes.h quantum/process_keycode/process_leader.h \
  quantum/process_keycode/process_tap_dance.h \
- quantum/process_keycode/process_terminal_nop.h
+ quantum/process_keycode/process_terminal_nop.h keyboards/dz60/secret.h
 
 keyboards/dz60/config.h:
 
@@ -388,3 +388,5 @@ quantum/process_keycode/process_leader.h:
 quantum/process_keycode/process_tap_dance.h:
 
 quantum/process_keycode/process_terminal_nop.h:
+
+keyboards/dz60/secret.h:

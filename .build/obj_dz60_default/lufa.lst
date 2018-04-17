@@ -3757,31 +3757,31 @@
  1204               		.file 26 "./tmk_core/protocol/usb_descriptor.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 lufa.c
-     /tmp/ccBk530h.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccBk530h.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccBk530h.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccBk530h.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccBk530h.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccBk530h.s:12     .text.keyboard_leds:0000000000000000 keyboard_leds
-     /tmp/ccBk530h.s:1168   .bss.keyboard_led_stats:0000000000000000 keyboard_led_stats
-     /tmp/ccBk530h.s:29     .text.send_consumer:0000000000000000 send_consumer
-     /tmp/ccBk530h.s:163    .text.send_system:0000000000000000 send_system
-     /tmp/ccBk530h.s:284    .text.send_mouse:0000000000000000 send_mouse
-     /tmp/ccBk530h.s:391    .text.send_keyboard:0000000000000000 send_keyboard
-     /tmp/ccBk530h.s:1174   .data.keyboard_protocol:0000000000000000 keyboard_protocol
-     /tmp/ccBk530h.s:1163   .bss.keyboard_report_sent:0000000000000000 keyboard_report_sent
-     /tmp/ccBk530h.s:574    .text.EVENT_USB_Device_Connect:0000000000000000 EVENT_USB_Device_Connect
-     /tmp/ccBk530h.s:612    .text.EVENT_USB_Device_Disconnect:0000000000000000 EVENT_USB_Device_Disconnect
-     /tmp/ccBk530h.s:629    .text.EVENT_USB_Device_Reset:0000000000000000 EVENT_USB_Device_Reset
-     /tmp/ccBk530h.s:644    .text.EVENT_USB_Device_Suspend:0000000000000000 EVENT_USB_Device_Suspend
-     /tmp/ccBk530h.s:659    .text.EVENT_USB_Device_WakeUp:0000000000000000 EVENT_USB_Device_WakeUp
-     /tmp/ccBk530h.s:676    .text.EVENT_USB_Device_ConfigurationChanged:0000000000000000 EVENT_USB_Device_ConfigurationChanged
-     /tmp/ccBk530h.s:728    .text.EVENT_USB_Device_ControlRequest:0000000000000000 EVENT_USB_Device_ControlRequest
-     /tmp/ccBk530h.s:1180   .bss.keyboard_idle:0000000000000000 keyboard_idle
-     /tmp/ccBk530h.s:999    .text.sendchar:0000000000000000 sendchar
-     /tmp/ccBk530h.s:1018   .text.startup.main:0000000000000000 main
-     /tmp/ccBk530h.s:1154   .data.lufa_driver:0000000000000000 lufa_driver
-     /tmp/ccBk530h.s:1135   .text.CALLBACK_USB_GetDescriptor:0000000000000000 CALLBACK_USB_GetDescriptor
+     /tmp/cc8K3eIx.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cc8K3eIx.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cc8K3eIx.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cc8K3eIx.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cc8K3eIx.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cc8K3eIx.s:12     .text.keyboard_leds:0000000000000000 keyboard_leds
+     /tmp/cc8K3eIx.s:1168   .bss.keyboard_led_stats:0000000000000000 keyboard_led_stats
+     /tmp/cc8K3eIx.s:29     .text.send_consumer:0000000000000000 send_consumer
+     /tmp/cc8K3eIx.s:163    .text.send_system:0000000000000000 send_system
+     /tmp/cc8K3eIx.s:284    .text.send_mouse:0000000000000000 send_mouse
+     /tmp/cc8K3eIx.s:391    .text.send_keyboard:0000000000000000 send_keyboard
+     /tmp/cc8K3eIx.s:1174   .data.keyboard_protocol:0000000000000000 keyboard_protocol
+     /tmp/cc8K3eIx.s:1163   .bss.keyboard_report_sent:0000000000000000 keyboard_report_sent
+     /tmp/cc8K3eIx.s:574    .text.EVENT_USB_Device_Connect:0000000000000000 EVENT_USB_Device_Connect
+     /tmp/cc8K3eIx.s:612    .text.EVENT_USB_Device_Disconnect:0000000000000000 EVENT_USB_Device_Disconnect
+     /tmp/cc8K3eIx.s:629    .text.EVENT_USB_Device_Reset:0000000000000000 EVENT_USB_Device_Reset
+     /tmp/cc8K3eIx.s:644    .text.EVENT_USB_Device_Suspend:0000000000000000 EVENT_USB_Device_Suspend
+     /tmp/cc8K3eIx.s:659    .text.EVENT_USB_Device_WakeUp:0000000000000000 EVENT_USB_Device_WakeUp
+     /tmp/cc8K3eIx.s:676    .text.EVENT_USB_Device_ConfigurationChanged:0000000000000000 EVENT_USB_Device_ConfigurationChanged
+     /tmp/cc8K3eIx.s:728    .text.EVENT_USB_Device_ControlRequest:0000000000000000 EVENT_USB_Device_ControlRequest
+     /tmp/cc8K3eIx.s:1180   .bss.keyboard_idle:0000000000000000 keyboard_idle
+     /tmp/cc8K3eIx.s:999    .text.sendchar:0000000000000000 sendchar
+     /tmp/cc8K3eIx.s:1018   .text.startup.main:0000000000000000 main
+     /tmp/cc8K3eIx.s:1154   .data.lufa_driver:0000000000000000 lufa_driver
+     /tmp/cc8K3eIx.s:1135   .text.CALLBACK_USB_GetDescriptor:0000000000000000 CALLBACK_USB_GetDescriptor
 
 UNDEFINED SYMBOLS
 where_to_send

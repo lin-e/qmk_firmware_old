@@ -229,11 +229,11 @@
  160:./tmk_core/common/keyboard.c **** #endif
  161:./tmk_core/common/keyboard.c **** #ifdef BOOTMAGIC_ENABLE
  162:./tmk_core/common/keyboard.c ****     bootmagic();
-  77               		.loc 1 162 0
-  78 0008 0E94 0000 		call bootmagic
-  79               	.LVL3:
  163:./tmk_core/common/keyboard.c **** #else
  164:./tmk_core/common/keyboard.c ****     magic();
+  77               		.loc 1 164 0
+  78 0008 0E94 0000 		call magic
+  79               	.LVL3:
  165:./tmk_core/common/keyboard.c **** #endif
  166:./tmk_core/common/keyboard.c **** #ifdef BACKLIGHT_ENABLE
  167:./tmk_core/common/keyboard.c ****     backlight_init();
@@ -448,9 +448,9 @@
  200 005a 00C0      		rjmp .L7
  201               	.LVL12:
  202               	.L6:
- 203 005c 90E0      		ldi r25,lo8(matrix_prev.5308)
+ 203 005c 90E0      		ldi r25,lo8(matrix_prev.5306)
  204 005e C92E      		mov r12,r25
- 205 0060 90E0      		ldi r25,hi8(matrix_prev.5308)
+ 205 0060 90E0      		ldi r25,hi8(matrix_prev.5306)
  206 0062 D92E      		mov r13,r25
  212:./tmk_core/common/keyboard.c ****     if (is_keyboard_master()) {
  207               		.loc 1 212 0
@@ -574,8 +574,8 @@
  310 00e8 111F      		rol r17
  311               	.LVL25:
  312 00ea F801      		movw r30,r16
- 313 00ec E050      		subi r30,lo8(-(matrix_prev.5308))
- 314 00ee F040      		sbci r31,hi8(-(matrix_prev.5308))
+ 313 00ec E050      		subi r30,lo8(-(matrix_prev.5306))
+ 314 00ee F040      		sbci r31,hi8(-(matrix_prev.5306))
  315 00f0 8081      		ld r24,Z
  316 00f2 9181      		ldd r25,Z+1
  317 00f4 E826      		eor r14,r24
@@ -642,7 +642,7 @@
  294:./tmk_core/common/keyboard.c ****     // update LED
  295:./tmk_core/common/keyboard.c ****     if (led_status != host_keyboard_leds()) {
  340               		.loc 1 295 0
- 341 010e 1091 0000 		lds r17,led_status.5309
+ 341 010e 1091 0000 		lds r17,led_status.5307
  342 0112 0E94 0000 		call host_keyboard_leds
  343               	.LVL30:
  344 0116 1817      		cp r17,r24
@@ -651,7 +651,7 @@
  346               		.loc 1 296 0
  347 011a 0E94 0000 		call host_keyboard_leds
  348               	.LVL31:
- 349 011e 8093 0000 		sts led_status.5309,r24
+ 349 011e 8093 0000 		sts led_status.5307,r24
  350               	.LVL32:
  351               	/* epilogue start */
  297:./tmk_core/common/keyboard.c ****         keyboard_set_leds(led_status);
@@ -740,11 +740,11 @@
  423               	.LVL35:
  424               		.cfi_endproc
  425               	.LFE108:
- 427               		.section	.bss.led_status.5309,"aw",@nobits
- 430               	led_status.5309:
+ 427               		.section	.bss.led_status.5307,"aw",@nobits
+ 430               	led_status.5307:
  431 0000 00        		.zero	1
- 432               		.section	.bss.matrix_prev.5308,"aw",@nobits
- 435               	matrix_prev.5308:
+ 432               		.section	.bss.matrix_prev.5306,"aw",@nobits
+ 435               	matrix_prev.5306:
  436 0000 0000 0000 		.zero	10
  436      0000 0000 
  436      0000 
@@ -756,7 +756,7 @@
  442               		.file 5 "./tmk_core/common/debug.h"
  443               		.file 6 "./lib/lufa/LUFA/Drivers/USB/Core/USBTask.h"
  444               		.file 7 "./tmk_core/common/timer.h"
- 445               		.file 8 "./tmk_core/common/bootmagic.h"
+ 445               		.file 8 "./tmk_core/common/magic.h"
  446               		.file 9 "./tmk_core/common/backlight.h"
  447               		.file 10 "./quantum/rgblight.h"
  448               		.file 11 "./tmk_core/common/action.h"
@@ -765,24 +765,24 @@
  451               		.file 14 "./tmk_core/common/host.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 keyboard.c
-     /tmp/ccqn85Ic.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccqn85Ic.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccqn85Ic.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccqn85Ic.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccqn85Ic.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccqn85Ic.s:13     .text.matrix_setup:0000000000000000 matrix_setup
-     /tmp/ccqn85Ic.s:29     .text.keyboard_setup:0000000000000000 keyboard_setup
-     /tmp/ccqn85Ic.s:46     .text.is_keyboard_master:0000000000000000 is_keyboard_master
-     /tmp/ccqn85Ic.s:63     .text.keyboard_init:0000000000000000 keyboard_init
-     /tmp/ccqn85Ic.s:92     .text.keyboard_task:0000000000000000 keyboard_task
-     /tmp/ccqn85Ic.s:435    .bss.matrix_prev.5308:0000000000000000 matrix_prev.5308
-     /tmp/ccqn85Ic.s:430    .bss.led_status.5309:0000000000000000 led_status.5309
-     /tmp/ccqn85Ic.s:412    .text.keyboard_set_leds:0000000000000000 keyboard_set_leds
+     /tmp/cc18Ecjy.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cc18Ecjy.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cc18Ecjy.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cc18Ecjy.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cc18Ecjy.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cc18Ecjy.s:13     .text.matrix_setup:0000000000000000 matrix_setup
+     /tmp/cc18Ecjy.s:29     .text.keyboard_setup:0000000000000000 keyboard_setup
+     /tmp/cc18Ecjy.s:46     .text.is_keyboard_master:0000000000000000 is_keyboard_master
+     /tmp/cc18Ecjy.s:63     .text.keyboard_init:0000000000000000 keyboard_init
+     /tmp/cc18Ecjy.s:92     .text.keyboard_task:0000000000000000 keyboard_task
+     /tmp/cc18Ecjy.s:435    .bss.matrix_prev.5306:0000000000000000 matrix_prev.5306
+     /tmp/cc18Ecjy.s:430    .bss.led_status.5307:0000000000000000 led_status.5307
+     /tmp/cc18Ecjy.s:412    .text.keyboard_set_leds:0000000000000000 keyboard_set_leds
 
 UNDEFINED SYMBOLS
 timer_init
 matrix_init
-bootmagic
+magic
 backlight_init
 rgblight_init
 matrix_scan

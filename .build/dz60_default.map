@@ -90,7 +90,7 @@ Common symbol       size              file
 
 rgblight_config     0x4               .build/obj_dz60_default/quantum/rgblight.o
 USB_IsInitialized   0x1               .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
-keymap_config       0x2               .build/obj_dz60_default/common/bootmagic.o
+keymap_config       0x2               .build/obj_dz60_default/common/magic.o
 backlight_config    0x1               .build/obj_dz60_default/common/backlight.o
 inmem_config        0x4               .build/obj_dz60_default/quantum/rgblight.o
 USB_DeviceState     0x1               .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
@@ -365,6 +365,10 @@ Discarded input sections
                 0x0000000000000000        0xc .build/obj_dz60_default/common/eeconfig.o
  .text.eeconfig_disable
                 0x0000000000000000        0xc .build/obj_dz60_default/common/eeconfig.o
+ .text.eeconfig_update_debug
+                0x0000000000000000        0xa .build/obj_dz60_default/common/eeconfig.o
+ .text.eeconfig_update_default_layer
+                0x0000000000000000        0xa .build/obj_dz60_default/common/eeconfig.o
  .text          0x0000000000000000        0x0 .build/obj_dz60_default/common/report.o
  .data          0x0000000000000000        0x0 .build/obj_dz60_default/common/report.o
  .bss           0x0000000000000000        0x0 .build/obj_dz60_default/common/report.o
@@ -391,9 +395,9 @@ Discarded input sections
  .data          0x0000000000000000        0x0 .build/obj_dz60_default/common/avr/xprintf.o
  .bss           0x0000000000000000        0x2 .build/obj_dz60_default/common/avr/xprintf.o
  .stab          0x0000000000000000      0x8b8 .build/obj_dz60_default/common/avr/xprintf.o
- .text          0x0000000000000000        0x0 .build/obj_dz60_default/common/bootmagic.o
- .data          0x0000000000000000        0x0 .build/obj_dz60_default/common/bootmagic.o
- .bss           0x0000000000000000        0x0 .build/obj_dz60_default/common/bootmagic.o
+ .text          0x0000000000000000        0x0 .build/obj_dz60_default/common/magic.o
+ .data          0x0000000000000000        0x0 .build/obj_dz60_default/common/magic.o
+ .bss           0x0000000000000000        0x0 .build/obj_dz60_default/common/magic.o
  .text          0x0000000000000000        0x0 .build/obj_dz60_default/common/mousekey.o
  .data          0x0000000000000000        0x0 .build/obj_dz60_default/common/mousekey.o
  .bss           0x0000000000000000        0x0 .build/obj_dz60_default/common/mousekey.o
@@ -849,7 +853,7 @@ LOAD .build/obj_dz60_default/common/avr/suspend.o
 LOAD .build/obj_dz60_default/common/avr/timer.o
 LOAD .build/obj_dz60_default/common/avr/bootloader.o
 LOAD .build/obj_dz60_default/common/avr/xprintf.o
-LOAD .build/obj_dz60_default/common/bootmagic.o
+LOAD .build/obj_dz60_default/common/magic.o
 LOAD .build/obj_dz60_default/common/mousekey.o
 LOAD .build/obj_dz60_default/common/backlight.o
 LOAD .build/obj_dz60_default/lufa.o
@@ -967,7 +971,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x0000000000000000     0x6002
+.text           0x0000000000000000     0x5d36
  *(.vectors)
  .vectors       0x0000000000000000       0xac /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/crtatmega32u4.o
                 0x0000000000000000                __vectors
@@ -1575,367 +1579,355 @@ END GROUP
  .text.eeconfig_read_debug
                 0x0000000000003dd6        0x8 .build/obj_dz60_default/common/eeconfig.o
                 0x0000000000003dd6                eeconfig_read_debug
- .text.eeconfig_update_debug
-                0x0000000000003dde        0xa .build/obj_dz60_default/common/eeconfig.o
-                0x0000000000003dde                eeconfig_update_debug
  .text.eeconfig_read_default_layer
-                0x0000000000003de8        0x8 .build/obj_dz60_default/common/eeconfig.o
-                0x0000000000003de8                eeconfig_read_default_layer
- .text.eeconfig_update_default_layer
-                0x0000000000003df0        0xa .build/obj_dz60_default/common/eeconfig.o
-                0x0000000000003df0                eeconfig_update_default_layer
+                0x0000000000003dde        0x8 .build/obj_dz60_default/common/eeconfig.o
+                0x0000000000003dde                eeconfig_read_default_layer
  .text.eeconfig_read_keymap
-                0x0000000000003dfa        0x8 .build/obj_dz60_default/common/eeconfig.o
-                0x0000000000003dfa                eeconfig_read_keymap
+                0x0000000000003de6        0x8 .build/obj_dz60_default/common/eeconfig.o
+                0x0000000000003de6                eeconfig_read_keymap
  .text.eeconfig_update_keymap
-                0x0000000000003e02        0xa .build/obj_dz60_default/common/eeconfig.o
-                0x0000000000003e02                eeconfig_update_keymap
+                0x0000000000003dee        0xa .build/obj_dz60_default/common/eeconfig.o
+                0x0000000000003dee                eeconfig_update_keymap
  .text.eeconfig_read_backlight
-                0x0000000000003e0c        0x8 .build/obj_dz60_default/common/eeconfig.o
-                0x0000000000003e0c                eeconfig_read_backlight
+                0x0000000000003df8        0x8 .build/obj_dz60_default/common/eeconfig.o
+                0x0000000000003df8                eeconfig_read_backlight
  .text.eeconfig_update_backlight
-                0x0000000000003e14        0xa .build/obj_dz60_default/common/eeconfig.o
-                0x0000000000003e14                eeconfig_update_backlight
+                0x0000000000003e00        0xa .build/obj_dz60_default/common/eeconfig.o
+                0x0000000000003e00                eeconfig_update_backlight
  .text.has_anykey
-                0x0000000000003e1e       0x1a .build/obj_dz60_default/common/report.o
-                0x0000000000003e1e                has_anykey
+                0x0000000000003e0a       0x1a .build/obj_dz60_default/common/report.o
+                0x0000000000003e0a                has_anykey
  .text.add_key_byte
-                0x0000000000003e38       0x34 .build/obj_dz60_default/common/report.o
-                0x0000000000003e38                add_key_byte
+                0x0000000000003e24       0x34 .build/obj_dz60_default/common/report.o
+                0x0000000000003e24                add_key_byte
  .text.del_key_byte
-                0x0000000000003e6c       0x18 .build/obj_dz60_default/common/report.o
-                0x0000000000003e6c                del_key_byte
+                0x0000000000003e58       0x18 .build/obj_dz60_default/common/report.o
+                0x0000000000003e58                del_key_byte
  .text.add_key_bit
-                0x0000000000003e84       0x28 .build/obj_dz60_default/common/report.o
-                0x0000000000003e84                add_key_bit
+                0x0000000000003e70       0x28 .build/obj_dz60_default/common/report.o
+                0x0000000000003e70                add_key_bit
  .text.del_key_bit
-                0x0000000000003eac       0x2a .build/obj_dz60_default/common/report.o
-                0x0000000000003eac                del_key_bit
+                0x0000000000003e98       0x2a .build/obj_dz60_default/common/report.o
+                0x0000000000003e98                del_key_bit
  .text.add_key_to_report
-                0x0000000000003ed6       0x16 .build/obj_dz60_default/common/report.o
-                0x0000000000003ed6                add_key_to_report
+                0x0000000000003ec2       0x16 .build/obj_dz60_default/common/report.o
+                0x0000000000003ec2                add_key_to_report
  .text.del_key_from_report
-                0x0000000000003eec       0x16 .build/obj_dz60_default/common/report.o
-                0x0000000000003eec                del_key_from_report
+                0x0000000000003ed8       0x16 .build/obj_dz60_default/common/report.o
+                0x0000000000003ed8                del_key_from_report
  .text.clear_keys_from_report
-                0x0000000000003f02       0x10 .build/obj_dz60_default/common/report.o
-                0x0000000000003f02                clear_keys_from_report
+                0x0000000000003eee       0x10 .build/obj_dz60_default/common/report.o
+                0x0000000000003eee                clear_keys_from_report
  .text.suspend_power_down
-                0x0000000000003f12       0x5e .build/obj_dz60_default/common/avr/suspend.o
-                0x0000000000003f12                suspend_power_down
+                0x0000000000003efe       0x5e .build/obj_dz60_default/common/avr/suspend.o
+                0x0000000000003efe                suspend_power_down
  .text.matrix_power_up
-                0x0000000000003f70        0x2 .build/obj_dz60_default/common/avr/suspend.o
-                0x0000000000003f70                matrix_power_up
+                0x0000000000003f5c        0x2 .build/obj_dz60_default/common/avr/suspend.o
+                0x0000000000003f5c                matrix_power_up
  .text.matrix_power_down
-                0x0000000000003f72        0x2 .build/obj_dz60_default/common/avr/suspend.o
-                0x0000000000003f72                matrix_power_down
+                0x0000000000003f5e        0x2 .build/obj_dz60_default/common/avr/suspend.o
+                0x0000000000003f5e                matrix_power_down
  .text.suspend_wakeup_condition
-                0x0000000000003f74       0x2a .build/obj_dz60_default/common/avr/suspend.o
-                0x0000000000003f74                suspend_wakeup_condition
+                0x0000000000003f60       0x2a .build/obj_dz60_default/common/avr/suspend.o
+                0x0000000000003f60                suspend_wakeup_condition
  .text.suspend_wakeup_init
-                0x0000000000003f9e       0x10 .build/obj_dz60_default/common/avr/suspend.o
-                0x0000000000003f9e                suspend_wakeup_init
+                0x0000000000003f8a       0x10 .build/obj_dz60_default/common/avr/suspend.o
+                0x0000000000003f8a                suspend_wakeup_init
  .text.__vector_12
-                0x0000000000003fae       0x52 .build/obj_dz60_default/common/avr/suspend.o
-                0x0000000000003fae                __vector_12
+                0x0000000000003f9a       0x52 .build/obj_dz60_default/common/avr/suspend.o
+                0x0000000000003f9a                __vector_12
  .text.timer_init
-                0x0000000000004000       0x12 .build/obj_dz60_default/common/avr/timer.o
-                0x0000000000004000                timer_init
+                0x0000000000003fec       0x12 .build/obj_dz60_default/common/avr/timer.o
+                0x0000000000003fec                timer_init
  .text.timer_read
-                0x0000000000004012       0x18 .build/obj_dz60_default/common/avr/timer.o
-                0x0000000000004012                timer_read
+                0x0000000000003ffe       0x18 .build/obj_dz60_default/common/avr/timer.o
+                0x0000000000003ffe                timer_read
  .text.timer_elapsed
-                0x000000000000402a       0x54 .build/obj_dz60_default/common/avr/timer.o
-                0x000000000000402a                timer_elapsed
+                0x0000000000004016       0x54 .build/obj_dz60_default/common/avr/timer.o
+                0x0000000000004016                timer_elapsed
  .text.__vector_21
-                0x000000000000407e       0x4c .build/obj_dz60_default/common/avr/timer.o
-                0x000000000000407e                __vector_21
+                0x000000000000406a       0x4c .build/obj_dz60_default/common/avr/timer.o
+                0x000000000000406a                __vector_21
  .text.bootloader_jump
-                0x00000000000040ca       0x48 .build/obj_dz60_default/common/avr/bootloader.o
-                0x00000000000040ca                bootloader_jump
- .text.scan_keycode
-                0x0000000000004112       0x7c .build/obj_dz60_default/common/bootmagic.o
- .text.bootmagic_scan_keycode
-                0x000000000000418e       0x1c .build/obj_dz60_default/common/bootmagic.o
-                0x000000000000418e                bootmagic_scan_keycode
- .text.bootmagic
-                0x00000000000041aa      0x252 .build/obj_dz60_default/common/bootmagic.o
-                0x00000000000041aa                bootmagic
+                0x00000000000040b6       0x48 .build/obj_dz60_default/common/avr/bootloader.o
+                0x00000000000040b6                bootloader_jump
+ .text.magic    0x00000000000040fe       0x32 .build/obj_dz60_default/common/magic.o
+                0x00000000000040fe                magic
  .text.move_unit
-                0x00000000000043fc       0x92 .build/obj_dz60_default/common/mousekey.o
+                0x0000000000004130       0x92 .build/obj_dz60_default/common/mousekey.o
  .text.wheel_unit
-                0x000000000000448e       0x72 .build/obj_dz60_default/common/mousekey.o
+                0x00000000000041c2       0x72 .build/obj_dz60_default/common/mousekey.o
  .text.mousekey_on
-                0x0000000000004500       0xd0 .build/obj_dz60_default/common/mousekey.o
-                0x0000000000004500                mousekey_on
+                0x0000000000004234       0xd0 .build/obj_dz60_default/common/mousekey.o
+                0x0000000000004234                mousekey_on
  .text.mousekey_off
-                0x00000000000045d0      0x10a .build/obj_dz60_default/common/mousekey.o
-                0x00000000000045d0                mousekey_off
+                0x0000000000004304      0x10a .build/obj_dz60_default/common/mousekey.o
+                0x0000000000004304                mousekey_off
  .text.mousekey_send
-                0x00000000000046da       0x16 .build/obj_dz60_default/common/mousekey.o
-                0x00000000000046da                mousekey_send
+                0x000000000000440e       0x16 .build/obj_dz60_default/common/mousekey.o
+                0x000000000000440e                mousekey_send
  .text.mousekey_task
-                0x00000000000046f0      0x11c .build/obj_dz60_default/common/mousekey.o
-                0x00000000000046f0                mousekey_task
+                0x0000000000004424      0x11c .build/obj_dz60_default/common/mousekey.o
+                0x0000000000004424                mousekey_task
  .text.mousekey_clear
-                0x000000000000480c       0x18 .build/obj_dz60_default/common/mousekey.o
-                0x000000000000480c                mousekey_clear
+                0x0000000000004540       0x18 .build/obj_dz60_default/common/mousekey.o
+                0x0000000000004540                mousekey_clear
  .text.backlight_init
-                0x0000000000004824       0x3a .build/obj_dz60_default/common/backlight.o
-                0x0000000000004824                backlight_init
+                0x0000000000004558       0x3a .build/obj_dz60_default/common/backlight.o
+                0x0000000000004558                backlight_init
  .text.backlight_increase
-                0x000000000000485e       0x3a .build/obj_dz60_default/common/backlight.o
-                0x000000000000485e                backlight_increase
+                0x0000000000004592       0x3a .build/obj_dz60_default/common/backlight.o
+                0x0000000000004592                backlight_increase
  .text.backlight_decrease
-                0x0000000000004898       0x38 .build/obj_dz60_default/common/backlight.o
-                0x0000000000004898                backlight_decrease
+                0x00000000000045cc       0x38 .build/obj_dz60_default/common/backlight.o
+                0x00000000000045cc                backlight_decrease
  .text.backlight_toggle
-                0x00000000000048d0       0x34 .build/obj_dz60_default/common/backlight.o
-                0x00000000000048d0                backlight_toggle
+                0x0000000000004604       0x34 .build/obj_dz60_default/common/backlight.o
+                0x0000000000004604                backlight_toggle
  .text.backlight_step
-                0x0000000000004904       0x46 .build/obj_dz60_default/common/backlight.o
-                0x0000000000004904                backlight_step
+                0x0000000000004638       0x46 .build/obj_dz60_default/common/backlight.o
+                0x0000000000004638                backlight_step
  .text.backlight_level
-                0x000000000000494a       0x36 .build/obj_dz60_default/common/backlight.o
-                0x000000000000494a                backlight_level
+                0x000000000000467e       0x36 .build/obj_dz60_default/common/backlight.o
+                0x000000000000467e                backlight_level
  .text.keyboard_leds
-                0x0000000000004980        0x6 .build/obj_dz60_default/lufa.o
+                0x00000000000046b4        0x6 .build/obj_dz60_default/lufa.o
  .text.send_consumer
-                0x0000000000004986       0x74 .build/obj_dz60_default/lufa.o
+                0x00000000000046ba       0x74 .build/obj_dz60_default/lufa.o
  .text.send_system
-                0x00000000000049fa       0x6c .build/obj_dz60_default/lufa.o
+                0x000000000000472e       0x6c .build/obj_dz60_default/lufa.o
  .text.send_mouse
-                0x0000000000004a66       0x56 .build/obj_dz60_default/lufa.o
+                0x000000000000479a       0x56 .build/obj_dz60_default/lufa.o
  .text.send_keyboard
-                0x0000000000004abc       0xa8 .build/obj_dz60_default/lufa.o
+                0x00000000000047f0       0xa8 .build/obj_dz60_default/lufa.o
  .text.EVENT_USB_Device_Connect
-                0x0000000000004b64       0x1c .build/obj_dz60_default/lufa.o
-                0x0000000000004b64                EVENT_USB_Device_Connect
+                0x0000000000004898       0x1c .build/obj_dz60_default/lufa.o
+                0x0000000000004898                EVENT_USB_Device_Connect
  .text.EVENT_USB_Device_Disconnect
-                0x0000000000004b80        0x6 .build/obj_dz60_default/lufa.o
-                0x0000000000004b80                EVENT_USB_Device_Disconnect
+                0x00000000000048b4        0x6 .build/obj_dz60_default/lufa.o
+                0x00000000000048b4                EVENT_USB_Device_Disconnect
  .text.EVENT_USB_Device_Reset
-                0x0000000000004b86        0x2 .build/obj_dz60_default/lufa.o
-                0x0000000000004b86                EVENT_USB_Device_Reset
+                0x00000000000048ba        0x2 .build/obj_dz60_default/lufa.o
+                0x00000000000048ba                EVENT_USB_Device_Reset
  .text.EVENT_USB_Device_Suspend
-                0x0000000000004b88        0x2 .build/obj_dz60_default/lufa.o
-                0x0000000000004b88                EVENT_USB_Device_Suspend
+                0x00000000000048bc        0x2 .build/obj_dz60_default/lufa.o
+                0x00000000000048bc                EVENT_USB_Device_Suspend
  .text.EVENT_USB_Device_WakeUp
-                0x0000000000004b8a        0x4 .build/obj_dz60_default/lufa.o
-                0x0000000000004b8a                EVENT_USB_Device_WakeUp
+                0x00000000000048be        0x4 .build/obj_dz60_default/lufa.o
+                0x00000000000048be                EVENT_USB_Device_WakeUp
  .text.EVENT_USB_Device_ConfigurationChanged
-                0x0000000000004b8e       0x28 .build/obj_dz60_default/lufa.o
-                0x0000000000004b8e                EVENT_USB_Device_ConfigurationChanged
+                0x00000000000048c2       0x28 .build/obj_dz60_default/lufa.o
+                0x00000000000048c2                EVENT_USB_Device_ConfigurationChanged
  .text.EVENT_USB_Device_ControlRequest
-                0x0000000000004bb6      0x164 .build/obj_dz60_default/lufa.o
-                0x0000000000004bb6                EVENT_USB_Device_ControlRequest
+                0x00000000000048ea      0x164 .build/obj_dz60_default/lufa.o
+                0x00000000000048ea                EVENT_USB_Device_ControlRequest
  .text.startup.main
-                0x0000000000004d1a       0x7a .build/obj_dz60_default/lufa.o
-                0x0000000000004d1a                main
+                0x0000000000004a4e       0x7a .build/obj_dz60_default/lufa.o
+                0x0000000000004a4e                main
  .text.CALLBACK_USB_GetDescriptor
-                0x0000000000004d94        0x4 .build/obj_dz60_default/lufa.o
-                0x0000000000004d94                CALLBACK_USB_GetDescriptor
+                0x0000000000004ac8        0x4 .build/obj_dz60_default/lufa.o
+                0x0000000000004ac8                CALLBACK_USB_GetDescriptor
  .text.get_usb_descriptor
-                0x0000000000004d98       0xbc .build/obj_dz60_default/usb_descriptor.o
-                0x0000000000004d98                get_usb_descriptor
+                0x0000000000004acc       0xbc .build/obj_dz60_default/usb_descriptor.o
+                0x0000000000004acc                get_usb_descriptor
  .text.set_output_user
-                0x0000000000004e54        0x2 .build/obj_dz60_default/outputselect.o
-                0x0000000000004e54                set_output_user
+                0x0000000000004b88        0x2 .build/obj_dz60_default/outputselect.o
+                0x0000000000004b88                set_output_user
  .text.set_output
-                0x0000000000004e56       0x10 .build/obj_dz60_default/outputselect.o
-                0x0000000000004e56                set_output
+                0x0000000000004b8a       0x10 .build/obj_dz60_default/outputselect.o
+                0x0000000000004b8a                set_output
  .text.auto_detect_output
-                0x0000000000004e66       0x10 .build/obj_dz60_default/outputselect.o
-                0x0000000000004e66                auto_detect_output
+                0x0000000000004b9a       0x10 .build/obj_dz60_default/outputselect.o
+                0x0000000000004b9a                auto_detect_output
  .text.where_to_send
-                0x0000000000004e76        0xe .build/obj_dz60_default/outputselect.o
-                0x0000000000004e76                where_to_send
+                0x0000000000004baa        0xe .build/obj_dz60_default/outputselect.o
+                0x0000000000004baa                where_to_send
  .text.USB_Device_SendRemoteWakeup
-                0x0000000000004e84       0x2c .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
-                0x0000000000004e84                USB_Device_SendRemoteWakeup
+                0x0000000000004bb8       0x2c .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
+                0x0000000000004bb8                USB_Device_SendRemoteWakeup
  .text.Endpoint_Write_Stream_LE
-                0x0000000000004eb0       0x96 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
-                0x0000000000004eb0                Endpoint_Write_Stream_LE
+                0x0000000000004be4       0x96 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
+                0x0000000000004be4                Endpoint_Write_Stream_LE
  .text.Endpoint_Write_Control_Stream_LE
-                0x0000000000004f46       0xc6 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
-                0x0000000000004f46                Endpoint_Write_Control_Stream_LE
+                0x0000000000004c7a       0xc6 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
+                0x0000000000004c7a                Endpoint_Write_Control_Stream_LE
  .text.Endpoint_Write_Control_PStream_LE
-                0x000000000000500c       0xc2 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
-                0x000000000000500c                Endpoint_Write_Control_PStream_LE
+                0x0000000000004d40       0xc2 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
+                0x0000000000004d40                Endpoint_Write_Control_PStream_LE
  .text.Endpoint_ConfigureEndpoint_Prv
-                0x00000000000050ce       0x6a .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
-                0x00000000000050ce                Endpoint_ConfigureEndpoint_Prv
+                0x0000000000004e02       0x6a .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+                0x0000000000004e02                Endpoint_ConfigureEndpoint_Prv
  .text.Endpoint_ClearStatusStage
-                0x0000000000005138       0x3e .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
-                0x0000000000005138                Endpoint_ClearStatusStage
+                0x0000000000004e6c       0x3e .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+                0x0000000000004e6c                Endpoint_ClearStatusStage
  .text.Endpoint_WaitUntilReady
-                0x0000000000005176       0x64 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
-                0x0000000000005176                Endpoint_WaitUntilReady
+                0x0000000000004eaa       0x64 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+                0x0000000000004eaa                Endpoint_WaitUntilReady
  .text.USB_Disable
-                0x00000000000051da       0x34 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
-                0x00000000000051da                USB_Disable
+                0x0000000000004f0e       0x34 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+                0x0000000000004f0e                USB_Disable
  .text.USB_ResetInterface
-                0x000000000000520e       0x86 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
-                0x000000000000520e                USB_ResetInterface
+                0x0000000000004f42       0x86 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+                0x0000000000004f42                USB_ResetInterface
  .text.USB_Init
-                0x0000000000005294       0x22 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
-                0x0000000000005294                USB_Init
+                0x0000000000004fc8       0x22 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+                0x0000000000004fc8                USB_Init
  .text.USB_INT_DisableAllInterrupts
-                0x00000000000052b6       0x10 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
-                0x00000000000052b6                USB_INT_DisableAllInterrupts
+                0x0000000000004fea       0x10 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+                0x0000000000004fea                USB_INT_DisableAllInterrupts
  .text.USB_INT_ClearAllInterrupts
-                0x00000000000052c6        0xa .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
-                0x00000000000052c6                USB_INT_ClearAllInterrupts
+                0x0000000000004ffa        0xa .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+                0x0000000000004ffa                USB_INT_ClearAllInterrupts
  .text.__vector_10
-                0x00000000000052d0      0x1a4 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
-                0x00000000000052d0                __vector_10
+                0x0000000000005004      0x1a4 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+                0x0000000000005004                __vector_10
  .text.__vector_11
-                0x0000000000005474       0x88 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
-                0x0000000000005474                __vector_11
+                0x00000000000051a8       0x88 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+                0x00000000000051a8                __vector_11
  .text.USB_Device_ProcessControlRequest
-                0x00000000000054fc      0x2b4 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
-                0x00000000000054fc                USB_Device_ProcessControlRequest
+                0x0000000000005230      0x2b4 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
+                0x0000000000005230                USB_Device_ProcessControlRequest
  .text.USB_Event_Stub
-                0x00000000000057b0        0x2 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/Events.o
-                0x00000000000057b0                USB_Event_Stub
-                0x00000000000057b0                EVENT_USB_Device_StartOfFrame
+                0x00000000000054e4        0x2 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/Events.o
+                0x00000000000054e4                USB_Event_Stub
+                0x00000000000054e4                EVENT_USB_Device_StartOfFrame
  .text.USB_USBTask
-                0x00000000000057b2       0x36 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
-                0x00000000000057b2                USB_USBTask
+                0x00000000000054e6       0x36 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
+                0x00000000000054e6                USB_USBTask
  .text.avr-libc.fplib
-                0x00000000000057e8        0xe /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(addsf3.o)
-                0x00000000000057e8                __subsf3
-                0x00000000000057ea                __addsf3
+                0x000000000000551c        0xe /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(addsf3.o)
+                0x000000000000551c                __subsf3
+                0x000000000000551e                __addsf3
  .text.avr-libc.fplib
-                0x00000000000057f6       0xcc /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(addsf3x.o)
-                0x0000000000005818                __addsf3x
+                0x000000000000552a       0xcc /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(addsf3x.o)
+                0x000000000000554c                __addsf3x
  .text.avr-libc.fplib
-                0x00000000000058c2        0x8 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(divsf3.o)
-                0x00000000000058c2                __divsf3
+                0x00000000000055f6        0x8 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(divsf3.o)
+                0x00000000000055f6                __divsf3
  .text.avr-libc.fplib
-                0x00000000000058ca       0xdc /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(divsf3x.o)
-                0x00000000000058ea                __divsf3x
-                0x00000000000058f0                __divsf3_pse
+                0x00000000000055fe       0xdc /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(divsf3x.o)
+                0x000000000000561e                __divsf3x
+                0x0000000000005624                __divsf3_pse
  .text.avr-libc.fplib
-                0x00000000000059a6       0x74 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(exp.o)
-                0x00000000000059b6                exp
+                0x00000000000056da       0x74 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(exp.o)
+                0x00000000000056ea                exp
  .text.avr-libc.fplib
-                0x0000000000005a1a       0x5e /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(fixunssfsi.o)
-                0x0000000000005a1a                __fixunssfsi
+                0x000000000000574e       0x5e /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(fixunssfsi.o)
+                0x000000000000574e                __fixunssfsi
  .text.avr-libc.fplib
-                0x0000000000005a78       0x7a /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(floatsisf.o)
-                0x0000000000005a78                __floatunsisf
-                0x0000000000005a7c                __floatsisf
+                0x00000000000057ac       0x7a /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(floatsisf.o)
+                0x00000000000057ac                __floatunsisf
+                0x00000000000057b0                __floatsisf
  .text.avr-libc.fplib
-                0x0000000000005af2        0xc /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(fp_inf.o)
-                0x0000000000005af2                __fp_inf
+                0x0000000000005826        0xc /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(fp_inf.o)
+                0x0000000000005826                __fp_inf
  .text.avr-libc.fplib
-                0x0000000000005afe        0x6 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(fp_nan.o)
-                0x0000000000005afe                __fp_nan
+                0x0000000000005832        0x6 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(fp_nan.o)
+                0x0000000000005832                __fp_nan
  .text.avr-libc.fplib
-                0x0000000000005b04       0x4e /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(fp_powser.o)
-                0x0000000000005b04                __fp_powser
+                0x0000000000005838       0x4e /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(fp_powser.o)
+                0x0000000000005838                __fp_powser
  .text.avr-libc.fplib
-                0x0000000000005b52        0xe /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(fp_pscA.o)
-                0x0000000000005b52                __fp_pscA
+                0x0000000000005886        0xe /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(fp_pscA.o)
+                0x0000000000005886                __fp_pscA
  .text.avr-libc.fplib
-                0x0000000000005b60        0xe /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(fp_pscB.o)
-                0x0000000000005b60                __fp_pscB
+                0x0000000000005894        0xe /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(fp_pscB.o)
+                0x0000000000005894                __fp_pscB
  .text.avr-libc.fplib
-                0x0000000000005b6e       0x22 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(fp_round.o)
-                0x0000000000005b6e                __fp_round
+                0x00000000000058a2       0x22 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(fp_round.o)
+                0x00000000000058a2                __fp_round
  .text.avr-libc.fplib
-                0x0000000000005b90       0x44 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(fp_split3.o)
-                0x0000000000005b90                __fp_split3
-                0x0000000000005ba0                __fp_splitA
+                0x00000000000058c4       0x44 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(fp_split3.o)
+                0x00000000000058c4                __fp_split3
+                0x00000000000058d4                __fp_splitA
  .text.avr-libc.fplib
-                0x0000000000005bd4        0xe /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(fp_zero.o)
-                0x0000000000005bd4                __fp_zero
-                0x0000000000005bd6                __fp_szero
+                0x0000000000005908        0xe /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(fp_zero.o)
+                0x0000000000005908                __fp_zero
+                0x000000000000590a                __fp_szero
  .text.avr-libc.fplib
-                0x0000000000005be2       0x10 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(inverse.o)
-                0x0000000000005be2                inverse
+                0x0000000000005916       0x10 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(inverse.o)
+                0x0000000000005916                inverse
  .text.avr-libc.fplib
-                0x0000000000005bf2       0x74 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(ldexp.o)
-                0x0000000000005bfa                ldexp
+                0x0000000000005926       0x74 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(ldexp.o)
+                0x000000000000592e                ldexp
  .text.avr-libc.fplib
-                0x0000000000005c66       0x68 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(modf.o)
-                0x0000000000005c66                modff
-                0x0000000000005c66                modf
+                0x000000000000599a       0x68 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(modf.o)
+                0x000000000000599a                modff
+                0x000000000000599a                modf
  .text.avr-libc.fplib
-                0x0000000000005cce        0x8 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(mulsf3.o)
-                0x0000000000005cce                __mulsf3
+                0x0000000000005a02        0x8 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(mulsf3.o)
+                0x0000000000005a02                __mulsf3
  .text.avr-libc.fplib
-                0x0000000000005cd6       0xd2 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(mulsf3x.o)
-                0x0000000000005cf4                __mulsf3x
-                0x0000000000005cfa                __mulsf3_pse
+                0x0000000000005a0a       0xd2 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(mulsf3x.o)
+                0x0000000000005a28                __mulsf3x
+                0x0000000000005a2e                __mulsf3_pse
  .text.avr-libc.fplib
-                0x0000000000005da8       0x10 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(sin.o)
-                0x0000000000005da8                sin
+                0x0000000000005adc       0x10 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(sin.o)
+                0x0000000000005adc                sin
  .text.avr-libc.fplib
-                0x0000000000005db8       0x1c /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(fp_mpack.o)
-                0x0000000000005db8                __fp_mpack
-                0x0000000000005dbc                __fp_mpack_finite
+                0x0000000000005aec       0x1c /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(fp_mpack.o)
+                0x0000000000005aec                __fp_mpack
+                0x0000000000005af0                __fp_mpack_finite
  .text.avr-libc.fplib
-                0x0000000000005dd4       0x56 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(fp_rempio2.o)
-                0x0000000000005dd8                __fp_rempio2
+                0x0000000000005b08       0x56 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(fp_rempio2.o)
+                0x0000000000005b0c                __fp_rempio2
  .text.avr-libc.fplib
-                0x0000000000005e2a       0x28 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(fp_sinus.o)
-                0x0000000000005e2a                __fp_sinus
+                0x0000000000005b5e       0x28 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(fp_sinus.o)
+                0x0000000000005b5e                __fp_sinus
  .text.avr-libc.fplib
-                0x0000000000005e52       0x28 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(fp_powsodd.o)
-                0x0000000000005e52                __fp_powsodd
+                0x0000000000005b86       0x28 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libm.a(fp_powsodd.o)
+                0x0000000000005b86                __fp_powsodd
  .text.libgcc.mul
-                0x0000000000005e7a       0x20 /usr/lib/gcc/avr/4.9.2/avr5/libgcc.a(_mulsi3.o)
-                0x0000000000005e7a                __mulsi3
+                0x0000000000005bae       0x20 /usr/lib/gcc/avr/4.9.2/avr5/libgcc.a(_mulsi3.o)
+                0x0000000000005bae                __mulsi3
  .text.libgcc.div
-                0x0000000000005e9a       0x28 /usr/lib/gcc/avr/4.9.2/avr5/libgcc.a(_udivmodhi4.o)
-                0x0000000000005e9a                __udivmodhi4
+                0x0000000000005bce       0x28 /usr/lib/gcc/avr/4.9.2/avr5/libgcc.a(_udivmodhi4.o)
+                0x0000000000005bce                __udivmodhi4
  .text.libgcc.div
-                0x0000000000005ec2       0x28 /usr/lib/gcc/avr/4.9.2/avr5/libgcc.a(_divmodhi4.o)
-                0x0000000000005ec2                __divmodhi4
-                0x0000000000005ec2                _div
+                0x0000000000005bf6       0x28 /usr/lib/gcc/avr/4.9.2/avr5/libgcc.a(_divmodhi4.o)
+                0x0000000000005bf6                __divmodhi4
+                0x0000000000005bf6                _div
  .text.libgcc.div
-                0x0000000000005eea       0x44 /usr/lib/gcc/avr/4.9.2/avr5/libgcc.a(_udivmodsi4.o)
-                0x0000000000005eea                __udivmodsi4
- .text.libgcc   0x0000000000005f2e        0xc /usr/lib/gcc/avr/4.9.2/avr5/libgcc.a(_tablejump2.o)
-                0x0000000000005f2e                __tablejump2__
+                0x0000000000005c1e       0x44 /usr/lib/gcc/avr/4.9.2/avr5/libgcc.a(_udivmodsi4.o)
+                0x0000000000005c1e                __udivmodsi4
+ .text.libgcc   0x0000000000005c62        0xc /usr/lib/gcc/avr/4.9.2/avr5/libgcc.a(_tablejump2.o)
+                0x0000000000005c62                __tablejump2__
  .text.libgcc.mul
-                0x0000000000005f3a       0x1e /usr/lib/gcc/avr/4.9.2/avr5/libgcc.a(_umulhisi3.o)
-                0x0000000000005f3a                __umulhisi3
+                0x0000000000005c6e       0x1e /usr/lib/gcc/avr/4.9.2/avr5/libgcc.a(_umulhisi3.o)
+                0x0000000000005c6e                __umulhisi3
  .text.libgcc.mul
-                0x0000000000005f58       0x16 /usr/lib/gcc/avr/4.9.2/avr5/libgcc.a(_muluhisi3.o)
-                0x0000000000005f58                __muluhisi3
+                0x0000000000005c8c       0x16 /usr/lib/gcc/avr/4.9.2/avr5/libgcc.a(_muluhisi3.o)
+                0x0000000000005c8c                __muluhisi3
  .text.avr-libc
-                0x0000000000005f6e       0x10 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libatmega32u4.a(eerd_byte.o)
-                0x0000000000005f6e                eeprom_read_byte
+                0x0000000000005ca2       0x10 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libatmega32u4.a(eerd_byte.o)
+                0x0000000000005ca2                eeprom_read_byte
  .text.avr-libc
-                0x0000000000005f7e        0xc /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libatmega32u4.a(eerd_dword.o)
-                0x0000000000005f7e                eeprom_read_dword
-                0x0000000000005f7e                eeprom_read_float
+                0x0000000000005cb2        0xc /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libatmega32u4.a(eerd_dword.o)
+                0x0000000000005cb2                eeprom_read_dword
+                0x0000000000005cb2                eeprom_read_float
  .text.avr-libc
-                0x0000000000005f8a        0xc /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libatmega32u4.a(eerd_word.o)
-                0x0000000000005f8a                eeprom_read_word
+                0x0000000000005cbe        0xc /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libatmega32u4.a(eerd_word.o)
+                0x0000000000005cbe                eeprom_read_word
  .text.avr-libc
-                0x0000000000005f96       0x24 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libatmega32u4.a(eeupd_byte.o)
-                0x0000000000005f96                eeprom_update_byte
-                0x0000000000005f98                eeprom_update_r18
+                0x0000000000005cca       0x24 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libatmega32u4.a(eeupd_byte.o)
+                0x0000000000005cca                eeprom_update_byte
+                0x0000000000005ccc                eeprom_update_r18
  .text.avr-libc
-                0x0000000000005fba       0x18 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libatmega32u4.a(eeupd_dword.o)
-                0x0000000000005fba                eeprom_update_dword
-                0x0000000000005fba                eeprom_update_float
+                0x0000000000005cee       0x18 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libatmega32u4.a(eeupd_dword.o)
+                0x0000000000005cee                eeprom_update_dword
+                0x0000000000005cee                eeprom_update_float
  .text.avr-libc
-                0x0000000000005fd2        0xc /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libatmega32u4.a(eeupd_word.o)
-                0x0000000000005fd2                eeprom_update_word
+                0x0000000000005d06        0xc /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libatmega32u4.a(eeupd_word.o)
+                0x0000000000005d06                eeprom_update_word
  .text.avr-libc
-                0x0000000000005fde       0x20 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libatmega32u4.a(eerd_block.o)
-                0x0000000000005fde                eeprom_read_block
-                0x0000000000005fe2                eeprom_read_blraw
-                0x0000000000005ffe                . = ALIGN (0x2)
+                0x0000000000005d12       0x20 /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/libatmega32u4.a(eerd_block.o)
+                0x0000000000005d12                eeprom_read_block
+                0x0000000000005d16                eeprom_read_blraw
+                0x0000000000005d32                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000000000005ffe        0x0 /usr/lib/gcc/avr/4.9.2/avr5/libgcc.a(_exit.o)
-                0x0000000000005ffe                exit
-                0x0000000000005ffe                _exit
+ .fini9         0x0000000000005d32        0x0 /usr/lib/gcc/avr/4.9.2/avr5/libgcc.a(_exit.o)
+                0x0000000000005d32                exit
+                0x0000000000005d32                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -1954,11 +1946,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000000000005ffe        0x4 /usr/lib/gcc/avr/4.9.2/avr5/libgcc.a(_exit.o)
+ .fini0         0x0000000000005d32        0x4 /usr/lib/gcc/avr/4.9.2/avr5/libgcc.a(_exit.o)
  *(.fini0)
-                0x0000000000006002                _etext = .
+                0x0000000000005d36                _etext = .
 
-.data           0x0000000000800100       0x42 load address 0x0000000000006002
+.data           0x0000000000800100       0x42 load address 0x0000000000005d36
                 0x0000000000800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -2082,9 +2074,9 @@ END GROUP
  .bss.last_system_report
                 0x000000000080048a        0x2 .build/obj_dz60_default/common/host.o
  .bss.driver    0x000000000080048c        0x2 .build/obj_dz60_default/common/host.o
- .bss.led_status.5309
+ .bss.led_status.5307
                 0x000000000080048e        0x1 .build/obj_dz60_default/common/keyboard.o
- .bss.matrix_prev.5308
+ .bss.matrix_prev.5306
                 0x000000000080048f        0xa .build/obj_dz60_default/common/keyboard.o
  .bss.disable_action_cache
                 0x0000000000800499        0x1 .build/obj_dz60_default/common/action.o
@@ -2150,7 +2142,7 @@ END GROUP
                 0x0000000000800597                tp_buttons
  COMMON         0x0000000000800599        0x4 .build/obj_dz60_default/common/avr/timer.o
                 0x0000000000800599                timer_count
- COMMON         0x000000000080059d        0x2 .build/obj_dz60_default/common/bootmagic.o
+ COMMON         0x000000000080059d        0x2 .build/obj_dz60_default/common/magic.o
                 0x000000000080059d                keymap_config
  COMMON         0x000000000080059f        0x1 .build/obj_dz60_default/common/backlight.o
                 0x000000000080059f                backlight_config
@@ -2163,8 +2155,8 @@ END GROUP
                 0x00000000008005a4                USB_DeviceState
                 0x00000000008005a5                USB_ControlRequest
                 0x00000000008005ad                PROVIDE (__bss_end, .)
-                0x0000000000006002                __data_load_start = LOADADDR (.data)
-                0x0000000000006044                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000000000005d36                __data_load_start = LOADADDR (.data)
+                0x0000000000005d78                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00000000008005ad        0x4
                 0x00000000008005ad                PROVIDE (__noinit_start, .)
@@ -2239,7 +2231,7 @@ END GROUP
  .comment       0x0000000000000011       0x12 .build/obj_dz60_default/common/avr/suspend.o
  .comment       0x0000000000000011       0x12 .build/obj_dz60_default/common/avr/timer.o
  .comment       0x0000000000000011       0x12 .build/obj_dz60_default/common/avr/bootloader.o
- .comment       0x0000000000000011       0x12 .build/obj_dz60_default/common/bootmagic.o
+ .comment       0x0000000000000011       0x12 .build/obj_dz60_default/common/magic.o
  .comment       0x0000000000000011       0x12 .build/obj_dz60_default/common/mousekey.o
  .comment       0x0000000000000011       0x12 .build/obj_dz60_default/common/backlight.o
  .comment       0x0000000000000011       0x12 .build/obj_dz60_default/lufa.o
@@ -2274,7 +2266,7 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x0000000000000000      0xde8
+.debug_aranges  0x0000000000000000      0xdd8
  *(.debug_aranges)
  .debug_aranges
                 0x0000000000000000       0x38 .build/obj_dz60_default/keyboards/dz60/dz60.o
@@ -2323,38 +2315,38 @@ END GROUP
  .debug_aranges
                 0x0000000000000a18       0x28 .build/obj_dz60_default/common/avr/bootloader.o
  .debug_aranges
-                0x0000000000000a40       0x30 .build/obj_dz60_default/common/bootmagic.o
+                0x0000000000000a40       0x20 .build/obj_dz60_default/common/magic.o
  .debug_aranges
-                0x0000000000000a70       0x50 .build/obj_dz60_default/common/mousekey.o
+                0x0000000000000a60       0x50 .build/obj_dz60_default/common/mousekey.o
  .debug_aranges
-                0x0000000000000ac0       0x50 .build/obj_dz60_default/common/backlight.o
+                0x0000000000000ab0       0x50 .build/obj_dz60_default/common/backlight.o
  .debug_aranges
-                0x0000000000000b10       0x90 .build/obj_dz60_default/lufa.o
+                0x0000000000000b00       0x90 .build/obj_dz60_default/lufa.o
  .debug_aranges
-                0x0000000000000ba0       0x20 .build/obj_dz60_default/usb_descriptor.o
+                0x0000000000000b90       0x20 .build/obj_dz60_default/usb_descriptor.o
  .debug_aranges
-                0x0000000000000bc0       0x38 .build/obj_dz60_default/outputselect.o
+                0x0000000000000bb0       0x38 .build/obj_dz60_default/outputselect.o
  .debug_aranges
-                0x0000000000000bf8       0x20 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
+                0x0000000000000be8       0x20 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
  .debug_aranges
-                0x0000000000000c18       0xc8 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
+                0x0000000000000c08       0xc8 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
  .debug_aranges
-                0x0000000000000ce0       0x40 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+                0x0000000000000cd0       0x40 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
  .debug_aranges
-                0x0000000000000d20       0x30 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+                0x0000000000000d10       0x30 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
  .debug_aranges
-                0x0000000000000d50       0x38 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+                0x0000000000000d40       0x38 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
  .debug_aranges
-                0x0000000000000d88       0x20 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
+                0x0000000000000d78       0x20 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
  .debug_aranges
-                0x0000000000000da8       0x20 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/Events.o
+                0x0000000000000d98       0x20 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/Events.o
  .debug_aranges
-                0x0000000000000dc8       0x20 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
+                0x0000000000000db8       0x20 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000    0x15b00
+.debug_info     0x0000000000000000    0x1523f
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000      0x227 .build/obj_dz60_default/keyboards/dz60/dz60.o
  .debug_info    0x0000000000000227     0x17c0 .build/obj_dz60_default/keyboards/dz60/keymaps/default/keymap.o
@@ -2379,22 +2371,22 @@ END GROUP
  .debug_info    0x000000000000e99b      0x332 .build/obj_dz60_default/common/avr/suspend.o
  .debug_info    0x000000000000eccd      0x39a .build/obj_dz60_default/common/avr/timer.o
  .debug_info    0x000000000000f067      0x1ec .build/obj_dz60_default/common/avr/bootloader.o
- .debug_info    0x000000000000f253      0xb74 .build/obj_dz60_default/common/bootmagic.o
- .debug_info    0x000000000000fdc7      0x695 .build/obj_dz60_default/common/mousekey.o
- .debug_info    0x000000000001045c      0x26e .build/obj_dz60_default/common/backlight.o
- .debug_info    0x00000000000106ca     0x11f5 .build/obj_dz60_default/lufa.o
- .debug_info    0x00000000000118bf      0x7f0 .build/obj_dz60_default/usb_descriptor.o
- .debug_info    0x00000000000120af      0x1a7 .build/obj_dz60_default/outputselect.o
- .debug_info    0x0000000000012256       0xd2 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
- .debug_info    0x0000000000012328     0x17d6 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
- .debug_info    0x0000000000013afe      0x614 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
- .debug_info    0x0000000000014112      0x4cb .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
- .debug_info    0x00000000000145dd      0x7c8 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
- .debug_info    0x0000000000014da5      0xa78 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
- .debug_info    0x000000000001581d       0x78 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/Events.o
- .debug_info    0x0000000000015895      0x26b .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
+ .debug_info    0x000000000000f253      0x2b3 .build/obj_dz60_default/common/magic.o
+ .debug_info    0x000000000000f506      0x695 .build/obj_dz60_default/common/mousekey.o
+ .debug_info    0x000000000000fb9b      0x26e .build/obj_dz60_default/common/backlight.o
+ .debug_info    0x000000000000fe09     0x11f5 .build/obj_dz60_default/lufa.o
+ .debug_info    0x0000000000010ffe      0x7f0 .build/obj_dz60_default/usb_descriptor.o
+ .debug_info    0x00000000000117ee      0x1a7 .build/obj_dz60_default/outputselect.o
+ .debug_info    0x0000000000011995       0xd2 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
+ .debug_info    0x0000000000011a67     0x17d6 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
+ .debug_info    0x000000000001323d      0x614 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+ .debug_info    0x0000000000013851      0x4cb .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+ .debug_info    0x0000000000013d1c      0x7c8 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+ .debug_info    0x00000000000144e4      0xa78 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
+ .debug_info    0x0000000000014f5c       0x78 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/Events.o
+ .debug_info    0x0000000000014fd4      0x26b .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
 
-.debug_abbrev   0x0000000000000000     0x49c3
+.debug_abbrev   0x0000000000000000     0x487d
  *(.debug_abbrev)
  .debug_abbrev  0x0000000000000000      0x153 .build/obj_dz60_default/keyboards/dz60/dz60.o
  .debug_abbrev  0x0000000000000153      0x2c1 .build/obj_dz60_default/keyboards/dz60/keymaps/default/keymap.o
@@ -2419,22 +2411,22 @@ END GROUP
  .debug_abbrev  0x0000000000002b9b      0x20f .build/obj_dz60_default/common/avr/suspend.o
  .debug_abbrev  0x0000000000002daa      0x184 .build/obj_dz60_default/common/avr/timer.o
  .debug_abbrev  0x0000000000002f2e      0x14f .build/obj_dz60_default/common/avr/bootloader.o
- .debug_abbrev  0x000000000000307d      0x269 .build/obj_dz60_default/common/bootmagic.o
- .debug_abbrev  0x00000000000032e6      0x225 .build/obj_dz60_default/common/mousekey.o
- .debug_abbrev  0x000000000000350b      0x138 .build/obj_dz60_default/common/backlight.o
- .debug_abbrev  0x0000000000003643      0x3f9 .build/obj_dz60_default/lufa.o
- .debug_abbrev  0x0000000000003a3c      0x180 .build/obj_dz60_default/usb_descriptor.o
- .debug_abbrev  0x0000000000003bbc      0x127 .build/obj_dz60_default/outputselect.o
- .debug_abbrev  0x0000000000003ce3       0x80 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
- .debug_abbrev  0x0000000000003d63      0x204 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
- .debug_abbrev  0x0000000000003f67      0x213 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
- .debug_abbrev  0x000000000000417a      0x196 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
- .debug_abbrev  0x0000000000004310      0x23e .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
- .debug_abbrev  0x000000000000454e      0x2c9 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
- .debug_abbrev  0x0000000000004817       0x44 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/Events.o
- .debug_abbrev  0x000000000000485b      0x168 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
+ .debug_abbrev  0x000000000000307d      0x123 .build/obj_dz60_default/common/magic.o
+ .debug_abbrev  0x00000000000031a0      0x225 .build/obj_dz60_default/common/mousekey.o
+ .debug_abbrev  0x00000000000033c5      0x138 .build/obj_dz60_default/common/backlight.o
+ .debug_abbrev  0x00000000000034fd      0x3f9 .build/obj_dz60_default/lufa.o
+ .debug_abbrev  0x00000000000038f6      0x180 .build/obj_dz60_default/usb_descriptor.o
+ .debug_abbrev  0x0000000000003a76      0x127 .build/obj_dz60_default/outputselect.o
+ .debug_abbrev  0x0000000000003b9d       0x80 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
+ .debug_abbrev  0x0000000000003c1d      0x204 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
+ .debug_abbrev  0x0000000000003e21      0x213 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+ .debug_abbrev  0x0000000000004034      0x196 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+ .debug_abbrev  0x00000000000041ca      0x23e .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+ .debug_abbrev  0x0000000000004408      0x2c9 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
+ .debug_abbrev  0x00000000000046d1       0x44 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/Events.o
+ .debug_abbrev  0x0000000000004715      0x168 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
 
-.debug_line     0x0000000000000000     0x5b9b
+.debug_line     0x0000000000000000     0x5a75
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x0000000000000000      0x106 .build/obj_dz60_default/keyboards/dz60/dz60.o
  .debug_line    0x0000000000000106      0x2a6 .build/obj_dz60_default/keyboards/dz60/keymaps/default/keymap.o
@@ -2447,34 +2439,34 @@ END GROUP
  .debug_line    0x0000000000001734      0x105 .build/obj_dz60_default/ws2812.o
  .debug_line    0x0000000000001839       0x53 .build/obj_dz60_default/quantum/led_tables.o
  .debug_line    0x000000000000188c      0x14b .build/obj_dz60_default/common/host.o
- .debug_line    0x00000000000019d7      0x1c8 .build/obj_dz60_default/common/keyboard.o
- .debug_line    0x0000000000001b9f      0x516 .build/obj_dz60_default/common/action.o
- .debug_line    0x00000000000020b5      0x28d .build/obj_dz60_default/common/action_tapping.o
- .debug_line    0x0000000000002342      0x148 .build/obj_dz60_default/common/action_macro.o
- .debug_line    0x000000000000248a      0x2a4 .build/obj_dz60_default/common/action_layer.o
- .debug_line    0x000000000000272e      0x358 .build/obj_dz60_default/common/action_util.o
- .debug_line    0x0000000000002a86       0x63 .build/obj_dz60_default/common/debug.o
- .debug_line    0x0000000000002ae9      0x14e .build/obj_dz60_default/common/eeconfig.o
- .debug_line    0x0000000000002c37      0x1b6 .build/obj_dz60_default/common/report.o
- .debug_line    0x0000000000002ded      0x1d8 .build/obj_dz60_default/common/avr/suspend.o
- .debug_line    0x0000000000002fc5      0x184 .build/obj_dz60_default/common/avr/timer.o
- .debug_line    0x0000000000003149      0x129 .build/obj_dz60_default/common/avr/bootloader.o
- .debug_line    0x0000000000003272      0x206 .build/obj_dz60_default/common/bootmagic.o
- .debug_line    0x0000000000003478      0x310 .build/obj_dz60_default/common/mousekey.o
- .debug_line    0x0000000000003788      0x120 .build/obj_dz60_default/common/backlight.o
- .debug_line    0x00000000000038a8      0x62a .build/obj_dz60_default/lufa.o
- .debug_line    0x0000000000003ed2      0x193 .build/obj_dz60_default/usb_descriptor.o
- .debug_line    0x0000000000004065      0x129 .build/obj_dz60_default/outputselect.o
- .debug_line    0x000000000000418e       0xee .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
- .debug_line    0x000000000000427c      0xaee .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
- .debug_line    0x0000000000004d6a      0x33d .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
- .debug_line    0x00000000000050a7      0x261 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
- .debug_line    0x0000000000005308      0x3ff .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
- .debug_line    0x0000000000005707      0x304 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
- .debug_line    0x0000000000005a0b       0x54 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/Events.o
- .debug_line    0x0000000000005a5f      0x13c .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
+ .debug_line    0x00000000000019d7      0x1c4 .build/obj_dz60_default/common/keyboard.o
+ .debug_line    0x0000000000001b9b      0x516 .build/obj_dz60_default/common/action.o
+ .debug_line    0x00000000000020b1      0x28d .build/obj_dz60_default/common/action_tapping.o
+ .debug_line    0x000000000000233e      0x148 .build/obj_dz60_default/common/action_macro.o
+ .debug_line    0x0000000000002486      0x2a4 .build/obj_dz60_default/common/action_layer.o
+ .debug_line    0x000000000000272a      0x358 .build/obj_dz60_default/common/action_util.o
+ .debug_line    0x0000000000002a82       0x63 .build/obj_dz60_default/common/debug.o
+ .debug_line    0x0000000000002ae5      0x14e .build/obj_dz60_default/common/eeconfig.o
+ .debug_line    0x0000000000002c33      0x1b6 .build/obj_dz60_default/common/report.o
+ .debug_line    0x0000000000002de9      0x1d8 .build/obj_dz60_default/common/avr/suspend.o
+ .debug_line    0x0000000000002fc1      0x184 .build/obj_dz60_default/common/avr/timer.o
+ .debug_line    0x0000000000003145      0x129 .build/obj_dz60_default/common/avr/bootloader.o
+ .debug_line    0x000000000000326e       0xe4 .build/obj_dz60_default/common/magic.o
+ .debug_line    0x0000000000003352      0x310 .build/obj_dz60_default/common/mousekey.o
+ .debug_line    0x0000000000003662      0x120 .build/obj_dz60_default/common/backlight.o
+ .debug_line    0x0000000000003782      0x62a .build/obj_dz60_default/lufa.o
+ .debug_line    0x0000000000003dac      0x193 .build/obj_dz60_default/usb_descriptor.o
+ .debug_line    0x0000000000003f3f      0x129 .build/obj_dz60_default/outputselect.o
+ .debug_line    0x0000000000004068       0xee .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
+ .debug_line    0x0000000000004156      0xaee .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
+ .debug_line    0x0000000000004c44      0x33d .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+ .debug_line    0x0000000000004f81      0x261 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+ .debug_line    0x00000000000051e2      0x3ff .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+ .debug_line    0x00000000000055e1      0x304 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
+ .debug_line    0x00000000000058e5       0x54 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/Events.o
+ .debug_line    0x0000000000005939      0x13c .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
 
-.debug_frame    0x0000000000000000     0x2308
+.debug_frame    0x0000000000000000     0x22a0
  *(.debug_frame)
  .debug_frame   0x0000000000000000       0x54 .build/obj_dz60_default/keyboards/dz60/dz60.o
  .debug_frame   0x0000000000000054      0x170 .build/obj_dz60_default/keyboards/dz60/keymaps/default/keymap.o
@@ -2497,22 +2489,22 @@ END GROUP
  .debug_frame   0x00000000000016f4       0xb0 .build/obj_dz60_default/common/avr/suspend.o
  .debug_frame   0x00000000000017a4       0xf0 .build/obj_dz60_default/common/avr/timer.o
  .debug_frame   0x0000000000001894       0x34 .build/obj_dz60_default/common/avr/bootloader.o
- .debug_frame   0x00000000000018c8       0x8c .build/obj_dz60_default/common/bootmagic.o
- .debug_frame   0x0000000000001954       0x98 .build/obj_dz60_default/common/mousekey.o
- .debug_frame   0x00000000000019ec       0x84 .build/obj_dz60_default/common/backlight.o
- .debug_frame   0x0000000000001a70      0x150 .build/obj_dz60_default/lufa.o
- .debug_frame   0x0000000000001bc0       0x24 .build/obj_dz60_default/usb_descriptor.o
- .debug_frame   0x0000000000001be4       0x5c .build/obj_dz60_default/outputselect.o
- .debug_frame   0x0000000000001c40       0x24 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
- .debug_frame   0x0000000000001c64      0x42c .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
- .debug_frame   0x0000000000002090       0x88 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
- .debug_frame   0x0000000000002118       0x5c .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
- .debug_frame   0x0000000000002174      0x108 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
- .debug_frame   0x000000000000227c       0x3c .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
- .debug_frame   0x00000000000022b8       0x24 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/Events.o
- .debug_frame   0x00000000000022dc       0x2c .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
+ .debug_frame   0x00000000000018c8       0x24 .build/obj_dz60_default/common/magic.o
+ .debug_frame   0x00000000000018ec       0x98 .build/obj_dz60_default/common/mousekey.o
+ .debug_frame   0x0000000000001984       0x84 .build/obj_dz60_default/common/backlight.o
+ .debug_frame   0x0000000000001a08      0x150 .build/obj_dz60_default/lufa.o
+ .debug_frame   0x0000000000001b58       0x24 .build/obj_dz60_default/usb_descriptor.o
+ .debug_frame   0x0000000000001b7c       0x5c .build/obj_dz60_default/outputselect.o
+ .debug_frame   0x0000000000001bd8       0x24 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
+ .debug_frame   0x0000000000001bfc      0x42c .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
+ .debug_frame   0x0000000000002028       0x88 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+ .debug_frame   0x00000000000020b0       0x5c .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+ .debug_frame   0x000000000000210c      0x108 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+ .debug_frame   0x0000000000002214       0x3c .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
+ .debug_frame   0x0000000000002250       0x24 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/Events.o
+ .debug_frame   0x0000000000002274       0x2c .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
 
-.debug_str      0x0000000000000000     0x54c9
+.debug_str      0x0000000000000000     0x54aa
  *(.debug_str)
  .debug_str     0x0000000000000000      0x1fe .build/obj_dz60_default/keyboards/dz60/dz60.o
                                         0x25a (size before relaxing)
@@ -2536,60 +2528,60 @@ END GROUP
                                         0x1b2 (size before relaxing)
  .debug_str     0x0000000000002aba      0x115 .build/obj_dz60_default/common/host.o
                                         0x36f (size before relaxing)
- .debug_str     0x0000000000002bcf       0xde .build/obj_dz60_default/common/keyboard.o
-                                        0x374 (size before relaxing)
- .debug_str     0x0000000000002cad      0x39e .build/obj_dz60_default/common/action.o
+ .debug_str     0x0000000000002bcf       0xda .build/obj_dz60_default/common/keyboard.o
+                                        0x370 (size before relaxing)
+ .debug_str     0x0000000000002ca9      0x39e .build/obj_dz60_default/common/action.o
                                        0x1459 (size before relaxing)
- .debug_str     0x000000000000304b       0xe8 .build/obj_dz60_default/common/action_tapping.o
+ .debug_str     0x0000000000003047       0xe8 .build/obj_dz60_default/common/action_tapping.o
                                         0xb1e (size before relaxing)
- .debug_str     0x0000000000003133       0x76 .build/obj_dz60_default/common/action_macro.o
+ .debug_str     0x000000000000312f       0x76 .build/obj_dz60_default/common/action_macro.o
                                         0x8c9 (size before relaxing)
- .debug_str     0x00000000000031a9       0xe1 .build/obj_dz60_default/common/action_layer.o
+ .debug_str     0x00000000000031a5       0xe1 .build/obj_dz60_default/common/action_layer.o
                                         0x544 (size before relaxing)
- .debug_str     0x000000000000328a      0x133 .build/obj_dz60_default/common/action_util.o
+ .debug_str     0x0000000000003286      0x133 .build/obj_dz60_default/common/action_util.o
                                         0x556 (size before relaxing)
- .debug_str     0x00000000000033bd       0x1a .build/obj_dz60_default/common/debug.o
+ .debug_str     0x00000000000033b9       0x1a .build/obj_dz60_default/common/debug.o
                                         0x1d4 (size before relaxing)
- .debug_str     0x00000000000033d7       0xfe .build/obj_dz60_default/common/eeconfig.o
+ .debug_str     0x00000000000033d3       0xfe .build/obj_dz60_default/common/eeconfig.o
                                         0x308 (size before relaxing)
- .debug_str     0x00000000000034d5       0x79 .build/obj_dz60_default/common/report.o
+ .debug_str     0x00000000000034d1       0x79 .build/obj_dz60_default/common/report.o
                                         0x340 (size before relaxing)
- .debug_str     0x000000000000354e      0x169 .build/obj_dz60_default/common/avr/suspend.o
+ .debug_str     0x000000000000354a      0x169 .build/obj_dz60_default/common/avr/suspend.o
                                         0x390 (size before relaxing)
- .debug_str     0x00000000000036b7       0x8b .build/obj_dz60_default/common/avr/timer.o
+ .debug_str     0x00000000000036b3       0x8b .build/obj_dz60_default/common/avr/timer.o
                                         0x23f (size before relaxing)
- .debug_str     0x0000000000003742       0x5d .build/obj_dz60_default/common/avr/bootloader.o
+ .debug_str     0x000000000000373e       0x5d .build/obj_dz60_default/common/avr/bootloader.o
                                         0x272 (size before relaxing)
- .debug_str     0x000000000000379f       0x35 .build/obj_dz60_default/common/bootmagic.o
-                                        0xa0f (size before relaxing)
- .debug_str     0x00000000000037d4       0xc7 .build/obj_dz60_default/common/mousekey.o
+ .debug_str     0x000000000000379b       0x1a .build/obj_dz60_default/common/magic.o
+                                        0x32b (size before relaxing)
+ .debug_str     0x00000000000037b5       0xc7 .build/obj_dz60_default/common/mousekey.o
                                         0x68c (size before relaxing)
- .debug_str     0x000000000000389b       0x56 .build/obj_dz60_default/common/backlight.o
+ .debug_str     0x000000000000387c       0x56 .build/obj_dz60_default/common/backlight.o
                                         0x2a2 (size before relaxing)
- .debug_str     0x00000000000038f1      0x530 .build/obj_dz60_default/lufa.o
+ .debug_str     0x00000000000038d2      0x530 .build/obj_dz60_default/lufa.o
                                         0xa42 (size before relaxing)
- .debug_str     0x0000000000003e21      0x751 .build/obj_dz60_default/usb_descriptor.o
+ .debug_str     0x0000000000003e02      0x751 .build/obj_dz60_default/usb_descriptor.o
                                         0x97c (size before relaxing)
- .debug_str     0x0000000000004572       0x5a .build/obj_dz60_default/outputselect.o
+ .debug_str     0x0000000000004553       0x5a .build/obj_dz60_default/outputselect.o
                                         0x2fa (size before relaxing)
- .debug_str     0x00000000000045cc       0x5e .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
+ .debug_str     0x00000000000045ad       0x5e .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
                                         0x1fb (size before relaxing)
- .debug_str     0x000000000000462a      0x4bc .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
+ .debug_str     0x000000000000460b      0x4bc .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
                                         0x85d (size before relaxing)
- .debug_str     0x0000000000004ae6      0x254 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+ .debug_str     0x0000000000004ac7      0x254 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
                                         0x61d (size before relaxing)
- .debug_str     0x0000000000004d3a      0x1c0 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+ .debug_str     0x0000000000004d1b      0x1c0 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
                                         0x55c (size before relaxing)
- .debug_str     0x0000000000004efa      0x146 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+ .debug_str     0x0000000000004edb      0x146 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
                                         0x5db (size before relaxing)
- .debug_str     0x0000000000005040      0x40d .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
+ .debug_str     0x0000000000005021      0x40d .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
                                         0x9cf (size before relaxing)
- .debug_str     0x000000000000544d       0x37 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/Events.o
+ .debug_str     0x000000000000542e       0x37 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/Events.o
                                         0x1a1 (size before relaxing)
- .debug_str     0x0000000000005484       0x45 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
+ .debug_str     0x0000000000005465       0x45 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
                                         0x382 (size before relaxing)
 
-.debug_loc      0x0000000000000000     0x9b20
+.debug_loc      0x0000000000000000     0x98c1
  *(.debug_loc)
  .debug_loc     0x0000000000000000       0x21 .build/obj_dz60_default/keyboards/dz60/dz60.o
  .debug_loc     0x0000000000000021      0x707 .build/obj_dz60_default/keyboards/dz60/keymaps/default/keymap.o
@@ -2611,18 +2603,18 @@ END GROUP
  .debug_loc     0x0000000000005a9f      0x3be .build/obj_dz60_default/common/report.o
  .debug_loc     0x0000000000005e5d       0xc5 .build/obj_dz60_default/common/avr/suspend.o
  .debug_loc     0x0000000000005f22      0x2aa .build/obj_dz60_default/common/avr/timer.o
- .debug_loc     0x00000000000061cc      0x289 .build/obj_dz60_default/common/bootmagic.o
- .debug_loc     0x0000000000006455      0x41b .build/obj_dz60_default/common/mousekey.o
- .debug_loc     0x0000000000006870       0x13 .build/obj_dz60_default/common/backlight.o
- .debug_loc     0x0000000000006883      0x67a .build/obj_dz60_default/lufa.o
- .debug_loc     0x0000000000006efd      0x25a .build/obj_dz60_default/usb_descriptor.o
- .debug_loc     0x0000000000007157       0x4f .build/obj_dz60_default/outputselect.o
- .debug_loc     0x00000000000071a6     0x1ea0 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
- .debug_loc     0x0000000000009046      0x3df .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
- .debug_loc     0x0000000000009425       0x49 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
- .debug_loc     0x000000000000946e      0x363 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
- .debug_loc     0x00000000000097d1      0x306 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
- .debug_loc     0x0000000000009ad7       0x49 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
+ .debug_loc     0x00000000000061cc       0x2a .build/obj_dz60_default/common/magic.o
+ .debug_loc     0x00000000000061f6      0x41b .build/obj_dz60_default/common/mousekey.o
+ .debug_loc     0x0000000000006611       0x13 .build/obj_dz60_default/common/backlight.o
+ .debug_loc     0x0000000000006624      0x67a .build/obj_dz60_default/lufa.o
+ .debug_loc     0x0000000000006c9e      0x25a .build/obj_dz60_default/usb_descriptor.o
+ .debug_loc     0x0000000000006ef8       0x4f .build/obj_dz60_default/outputselect.o
+ .debug_loc     0x0000000000006f47     0x1ea0 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
+ .debug_loc     0x0000000000008de7      0x3df .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+ .debug_loc     0x00000000000091c6       0x49 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+ .debug_loc     0x000000000000920f      0x363 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+ .debug_loc     0x0000000000009572      0x306 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
+ .debug_loc     0x0000000000009878       0x49 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -2642,7 +2634,7 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x0000000000000000      0xe48
+.debug_ranges   0x0000000000000000      0xe20
  *(.debug_ranges)
  .debug_ranges  0x0000000000000000       0x28 .build/obj_dz60_default/keyboards/dz60/dz60.o
  .debug_ranges  0x0000000000000028       0x60 .build/obj_dz60_default/keyboards/dz60/keymaps/default/keymap.o
@@ -2665,20 +2657,20 @@ END GROUP
  .debug_ranges  0x00000000000008e8       0x58 .build/obj_dz60_default/common/avr/suspend.o
  .debug_ranges  0x0000000000000940       0x40 .build/obj_dz60_default/common/avr/timer.o
  .debug_ranges  0x0000000000000980       0x18 .build/obj_dz60_default/common/avr/bootloader.o
- .debug_ranges  0x0000000000000998       0x38 .build/obj_dz60_default/common/bootmagic.o
- .debug_ranges  0x00000000000009d0       0x40 .build/obj_dz60_default/common/mousekey.o
- .debug_ranges  0x0000000000000a10       0x40 .build/obj_dz60_default/common/backlight.o
- .debug_ranges  0x0000000000000a50       0x80 .build/obj_dz60_default/lufa.o
- .debug_ranges  0x0000000000000ad0       0x28 .build/obj_dz60_default/usb_descriptor.o
- .debug_ranges  0x0000000000000af8       0x28 .build/obj_dz60_default/outputselect.o
- .debug_ranges  0x0000000000000b20       0x10 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
- .debug_ranges  0x0000000000000b30      0x1f8 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
- .debug_ranges  0x0000000000000d28       0x78 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
- .debug_ranges  0x0000000000000da0       0x20 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
- .debug_ranges  0x0000000000000dc0       0x40 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
- .debug_ranges  0x0000000000000e00       0x28 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
- .debug_ranges  0x0000000000000e28       0x10 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/Events.o
- .debug_ranges  0x0000000000000e38       0x10 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
+ .debug_ranges  0x0000000000000998       0x10 .build/obj_dz60_default/common/magic.o
+ .debug_ranges  0x00000000000009a8       0x40 .build/obj_dz60_default/common/mousekey.o
+ .debug_ranges  0x00000000000009e8       0x40 .build/obj_dz60_default/common/backlight.o
+ .debug_ranges  0x0000000000000a28       0x80 .build/obj_dz60_default/lufa.o
+ .debug_ranges  0x0000000000000aa8       0x28 .build/obj_dz60_default/usb_descriptor.o
+ .debug_ranges  0x0000000000000ad0       0x28 .build/obj_dz60_default/outputselect.o
+ .debug_ranges  0x0000000000000af8       0x10 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
+ .debug_ranges  0x0000000000000b08      0x1f8 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
+ .debug_ranges  0x0000000000000d00       0x78 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+ .debug_ranges  0x0000000000000d78       0x20 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+ .debug_ranges  0x0000000000000d98       0x40 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+ .debug_ranges  0x0000000000000dd8       0x28 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
+ .debug_ranges  0x0000000000000e00       0x10 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/Events.o
+ .debug_ranges  0x0000000000000e10       0x10 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
 
 .debug_macro
  *(.debug_macro)
@@ -2840,7 +2832,7 @@ __do_clear_bss                                    /usr/lib/gcc/avr/4.9.2/avr5/li
                                                   .build/obj_dz60_default/lufa.o
                                                   .build/obj_dz60_default/common/backlight.o
                                                   .build/obj_dz60_default/common/mousekey.o
-                                                  .build/obj_dz60_default/common/bootmagic.o
+                                                  .build/obj_dz60_default/common/magic.o
                                                   .build/obj_dz60_default/common/avr/timer.o
                                                   .build/obj_dz60_default/common/avr/suspend.o
                                                   .build/obj_dz60_default/common/debug.o
@@ -3069,12 +3061,8 @@ bitrev                                            .build/obj_dz60_default/common
 bitrev16                                          .build/obj_dz60_default/common/util.o
 bitrev32                                          .build/obj_dz60_default/common/util.o
 bootloader_jump                                   .build/obj_dz60_default/common/avr/bootloader.o
-                                                  .build/obj_dz60_default/common/bootmagic.o
                                                   .build/obj_dz60_default/quantum/quantum.o
 bootloader_jump_after_watchdog_reset              .build/obj_dz60_default/common/avr/bootloader.o
-bootmagic                                         .build/obj_dz60_default/common/bootmagic.o
-                                                  .build/obj_dz60_default/common/keyboard.o
-bootmagic_scan_keycode                            .build/obj_dz60_default/common/bootmagic.o
 clear_keyboard                                    .build/obj_dz60_default/common/action.o
                                                   .build/obj_dz60_default/lufa.o
                                                   .build/obj_dz60_default/common/avr/suspend.o
@@ -3100,7 +3088,7 @@ clear_weak_mods                                   .build/obj_dz60_default/common
                                                   .build/obj_dz60_default/common/action.o
 debug_action                                      .build/obj_dz60_default/common/action.o
 debug_config                                      .build/obj_dz60_default/common/debug.o
-                                                  .build/obj_dz60_default/common/bootmagic.o
+                                                  .build/obj_dz60_default/common/magic.o
                                                   .build/obj_dz60_default/common/keyboard.o
                                                   .build/obj_dz60_default/quantum/rgblight.o
                                                   .build/obj_dz60_default/quantum/quantum.o
@@ -3115,7 +3103,7 @@ default_layer_debug                               .build/obj_dz60_default/common
 default_layer_or                                  .build/obj_dz60_default/common/action_layer.o
                                                   .build/obj_dz60_default/common/action.o
 default_layer_set                                 .build/obj_dz60_default/common/action_layer.o
-                                                  .build/obj_dz60_default/common/bootmagic.o
+                                                  .build/obj_dz60_default/common/magic.o
                                                   .build/obj_dz60_default/quantum/quantum.o
 default_layer_state                               .build/obj_dz60_default/common/action_layer.o
 default_layer_state_set_kb                        .build/obj_dz60_default/common/action_layer.o
@@ -3149,33 +3137,30 @@ eeconfig_disable                                  .build/obj_dz60_default/common
 eeconfig_enable                                   .build/obj_dz60_default/common/eeconfig.o
 eeconfig_init                                     .build/obj_dz60_default/common/eeconfig.o
                                                   .build/obj_dz60_default/common/backlight.o
-                                                  .build/obj_dz60_default/common/bootmagic.o
+                                                  .build/obj_dz60_default/common/magic.o
                                                   .build/obj_dz60_default/quantum/rgblight.o
                                                   .build/obj_dz60_default/quantum/quantum.o
 eeconfig_is_enabled                               .build/obj_dz60_default/common/eeconfig.o
                                                   .build/obj_dz60_default/common/backlight.o
-                                                  .build/obj_dz60_default/common/bootmagic.o
+                                                  .build/obj_dz60_default/common/magic.o
                                                   .build/obj_dz60_default/quantum/rgblight.o
                                                   .build/obj_dz60_default/quantum/quantum.o
 eeconfig_read_backlight                           .build/obj_dz60_default/common/eeconfig.o
                                                   .build/obj_dz60_default/common/backlight.o
 eeconfig_read_debug                               .build/obj_dz60_default/common/eeconfig.o
-                                                  .build/obj_dz60_default/common/bootmagic.o
+                                                  .build/obj_dz60_default/common/magic.o
 eeconfig_read_default_layer                       .build/obj_dz60_default/common/eeconfig.o
-                                                  .build/obj_dz60_default/common/bootmagic.o
+                                                  .build/obj_dz60_default/common/magic.o
 eeconfig_read_keymap                              .build/obj_dz60_default/common/eeconfig.o
-                                                  .build/obj_dz60_default/common/bootmagic.o
+                                                  .build/obj_dz60_default/common/magic.o
                                                   .build/obj_dz60_default/quantum/quantum.o
 eeconfig_read_rgblight                            .build/obj_dz60_default/quantum/rgblight.o
 eeconfig_update_backlight                         .build/obj_dz60_default/common/eeconfig.o
                                                   .build/obj_dz60_default/common/backlight.o
 eeconfig_update_debug                             .build/obj_dz60_default/common/eeconfig.o
-                                                  .build/obj_dz60_default/common/bootmagic.o
 eeconfig_update_default_layer                     .build/obj_dz60_default/common/eeconfig.o
-                                                  .build/obj_dz60_default/common/bootmagic.o
                                                   .build/obj_dz60_default/quantum/quantum.o
 eeconfig_update_keymap                            .build/obj_dz60_default/common/eeconfig.o
-                                                  .build/obj_dz60_default/common/bootmagic.o
                                                   .build/obj_dz60_default/quantum/quantum.o
 eeconfig_update_rgblight                          .build/obj_dz60_default/quantum/rgblight.o
 eeconfig_update_rgblight_default                  .build/obj_dz60_default/quantum/rgblight.o
@@ -3269,14 +3254,13 @@ keyboard_task                                     .build/obj_dz60_default/common
                                                   .build/obj_dz60_default/lufa.o
 keycode_config                                    .build/obj_dz60_default/quantum/keycode_config.o
                                                   .build/obj_dz60_default/quantum/keymap_common.o
-keymap_config                                     .build/obj_dz60_default/common/bootmagic.o
+keymap_config                                     .build/obj_dz60_default/common/magic.o
                                                   .build/obj_dz60_default/lufa.o
                                                   .build/obj_dz60_default/common/report.o
                                                   .build/obj_dz60_default/quantum/keycode_config.o
                                                   .build/obj_dz60_default/quantum/quantum.o
 keymap_function_id_to_action                      .build/obj_dz60_default/quantum/keymap_common.o
 keymap_key_to_keycode                             .build/obj_dz60_default/quantum/keymap_common.o
-                                                  .build/obj_dz60_default/common/bootmagic.o
                                                   .build/obj_dz60_default/quantum/quantum.o
 keymaps                                           .build/obj_dz60_default/keyboards/dz60/keymaps/default/keymap.o
                                                   .build/obj_dz60_default/quantum/keymap_common.o
@@ -3334,11 +3318,12 @@ led_set_kb                                        .build/obj_dz60_default/keyboa
 led_set_user                                      .build/obj_dz60_default/keyboards/dz60/keymaps/default/keymap.o
                                                   .build/obj_dz60_default/keyboards/dz60/dz60.o
 lufa_driver                                       .build/obj_dz60_default/lufa.o
+magic                                             .build/obj_dz60_default/common/magic.o
+                                                  .build/obj_dz60_default/common/keyboard.o
 main                                              .build/obj_dz60_default/lufa.o
                                                   /usr/lib/gcc/avr/4.9.2/../../../avr/lib/avr5/crtatmega32u4.o
 matrix_cols                                       .build/obj_dz60_default/quantum/matrix.o
 matrix_get_row                                    .build/obj_dz60_default/quantum/matrix.o
-                                                  .build/obj_dz60_default/common/bootmagic.o
                                                   .build/obj_dz60_default/common/avr/suspend.o
                                                   .build/obj_dz60_default/common/keyboard.o
 matrix_init                                       .build/obj_dz60_default/quantum/matrix.o
@@ -3357,7 +3342,6 @@ matrix_print                                      .build/obj_dz60_default/quantu
                                                   .build/obj_dz60_default/common/keyboard.o
 matrix_rows                                       .build/obj_dz60_default/quantum/matrix.o
 matrix_scan                                       .build/obj_dz60_default/quantum/matrix.o
-                                                  .build/obj_dz60_default/common/bootmagic.o
                                                   .build/obj_dz60_default/common/avr/suspend.o
                                                   .build/obj_dz60_default/common/keyboard.o
 matrix_scan_kb                                    .build/obj_dz60_default/keyboards/dz60/dz60.o

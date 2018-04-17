@@ -1124,28 +1124,28 @@
  931               		.file 8 "./tmk_core/common/keycode.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 mousekey.c
-     /tmp/ccHhUuob.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccHhUuob.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccHhUuob.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccHhUuob.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccHhUuob.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccHhUuob.s:12     .text.move_unit:0000000000000000 move_unit
-     /tmp/ccHhUuob.s:911    .bss.mousekey_accel:0000000000000000 mousekey_accel
-     /tmp/ccHhUuob.s:894    .data.mk_max_speed:0000000000000000 mk_max_speed
-     /tmp/ccHhUuob.s:916    .bss.mousekey_repeat:0000000000000000 mousekey_repeat
-     /tmp/ccHhUuob.s:888    .data.mk_time_to_max:0000000000000000 mk_time_to_max
-     /tmp/ccHhUuob.s:124    .text.wheel_unit:0000000000000000 wheel_unit
-     /tmp/ccHhUuob.s:882    .data.mk_wheel_max_speed:0000000000000000 mk_wheel_max_speed
-     /tmp/ccHhUuob.s:876    .data.mk_wheel_time_to_max:0000000000000000 mk_wheel_time_to_max
-     /tmp/ccHhUuob.s:220    .text.mousekey_on:0000000000000000 mousekey_on
-     /tmp/ccHhUuob.s:921    .bss.mouse_report:0000000000000000 mouse_report
-     /tmp/ccHhUuob.s:402    .text.mousekey_off:0000000000000000 mousekey_off
-     /tmp/ccHhUuob.s:615    .text.mousekey_send:0000000000000000 mousekey_send
-     /tmp/ccHhUuob.s:870    .bss.last_timer:0000000000000000 last_timer
-     /tmp/ccHhUuob.s:640    .text.mousekey_task:0000000000000000 mousekey_task
-     /tmp/ccHhUuob.s:900    .data.mk_interval:0000000000000000 mk_interval
-     /tmp/ccHhUuob.s:906    .data.mk_delay:0000000000000000 mk_delay
-     /tmp/ccHhUuob.s:842    .text.mousekey_clear:0000000000000000 mousekey_clear
+     /tmp/ccqffRjn.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccqffRjn.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccqffRjn.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccqffRjn.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccqffRjn.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccqffRjn.s:12     .text.move_unit:0000000000000000 move_unit
+     /tmp/ccqffRjn.s:911    .bss.mousekey_accel:0000000000000000 mousekey_accel
+     /tmp/ccqffRjn.s:894    .data.mk_max_speed:0000000000000000 mk_max_speed
+     /tmp/ccqffRjn.s:916    .bss.mousekey_repeat:0000000000000000 mousekey_repeat
+     /tmp/ccqffRjn.s:888    .data.mk_time_to_max:0000000000000000 mk_time_to_max
+     /tmp/ccqffRjn.s:124    .text.wheel_unit:0000000000000000 wheel_unit
+     /tmp/ccqffRjn.s:882    .data.mk_wheel_max_speed:0000000000000000 mk_wheel_max_speed
+     /tmp/ccqffRjn.s:876    .data.mk_wheel_time_to_max:0000000000000000 mk_wheel_time_to_max
+     /tmp/ccqffRjn.s:220    .text.mousekey_on:0000000000000000 mousekey_on
+     /tmp/ccqffRjn.s:921    .bss.mouse_report:0000000000000000 mouse_report
+     /tmp/ccqffRjn.s:402    .text.mousekey_off:0000000000000000 mousekey_off
+     /tmp/ccqffRjn.s:615    .text.mousekey_send:0000000000000000 mousekey_send
+     /tmp/ccqffRjn.s:870    .bss.last_timer:0000000000000000 last_timer
+     /tmp/ccqffRjn.s:640    .text.mousekey_task:0000000000000000 mousekey_task
+     /tmp/ccqffRjn.s:900    .data.mk_interval:0000000000000000 mk_interval
+     /tmp/ccqffRjn.s:906    .data.mk_delay:0000000000000000 mk_delay
+     /tmp/ccqffRjn.s:842    .text.mousekey_clear:0000000000000000 mousekey_clear
 
 UNDEFINED SYMBOLS
 __divmodhi4
