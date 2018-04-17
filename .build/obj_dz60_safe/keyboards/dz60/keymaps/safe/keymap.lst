@@ -1,0 +1,431 @@
+   1               		.file	"keymap.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.text
+   8               	.Ltext0:
+   9               		.cfi_sections	.debug_frame
+  10               		.section	.text.action_get_macro,"ax",@progbits
+  11               	.global	action_get_macro
+  13               	action_get_macro:
+  14               	.LFB110:
+  15               		.file 1 "keyboards/dz60/keymaps/safe/keymap.c"
+   1:keyboards/dz60/keymaps/safe/keymap.c **** #include "dz60.h"
+   2:keyboards/dz60/keymaps/safe/keymap.c **** 
+   3:keyboards/dz60/keymaps/safe/keymap.c **** // layers
+   4:keyboards/dz60/keymaps/safe/keymap.c **** #define _BL 0 // base layer
+   5:keyboards/dz60/keymaps/safe/keymap.c **** #define _FL 1 // function layer
+   6:keyboards/dz60/keymaps/safe/keymap.c **** #define _LL 2 // lighting layer
+   7:keyboards/dz60/keymaps/safe/keymap.c **** 
+   8:keyboards/dz60/keymaps/safe/keymap.c **** // macros
+   9:keyboards/dz60/keymaps/safe/keymap.c **** #define M_FX 0 // firefox master
+  10:keyboards/dz60/keymaps/safe/keymap.c **** 
+  11:keyboards/dz60/keymaps/safe/keymap.c **** // readability
+  12:keyboards/dz60/keymaps/safe/keymap.c **** #define _______ KC_TRNS
+  13:keyboards/dz60/keymaps/safe/keymap.c **** #define ___X___ KC_NO
+  14:keyboards/dz60/keymaps/safe/keymap.c **** #define FN_CAPS LT(_FL, KC_CAPS)
+  15:keyboards/dz60/keymaps/safe/keymap.c **** #define RGB_SWL RGB_M_SW
+  16:keyboards/dz60/keymaps/safe/keymap.c **** #define RGB_SNK RGB_M_SN
+  17:keyboards/dz60/keymaps/safe/keymap.c **** #define RGB_PLN RGB_M_P
+  18:keyboards/dz60/keymaps/safe/keymap.c **** #define RGB_BTH RGB_M_B
+  19:keyboards/dz60/keymaps/safe/keymap.c **** #define RGB_RNB RGB_M_R
+  20:keyboards/dz60/keymaps/safe/keymap.c **** 
+  21:keyboards/dz60/keymaps/safe/keymap.c **** const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+  22:keyboards/dz60/keymaps/safe/keymap.c ****     [_BL] = KEYMAP(
+  23:keyboards/dz60/keymaps/safe/keymap.c ****         KC_ESC  , KC_1    , KC_2    , KC_3    , KC_4    , KC_5    , KC_6    , KC_7    , KC_8    , K
+  24:keyboards/dz60/keymaps/safe/keymap.c ****         KC_TAB  , KC_Q    , KC_W    , KC_E    , KC_R    , KC_T    , KC_Y    , KC_U    , KC_I    , K
+  25:keyboards/dz60/keymaps/safe/keymap.c ****         FN_CAPS , KC_A    , KC_S    , KC_D    , KC_F    , KC_G    , KC_H    , KC_J    , KC_K    , K
+  26:keyboards/dz60/keymaps/safe/keymap.c ****         KC_LSFT , KC_NUBS , KC_Z    , KC_X    , KC_C    , KC_V    , KC_B    , KC_N    , KC_M    , K
+  27:keyboards/dz60/keymaps/safe/keymap.c ****         KC_LCTL , KC_LGUI , KC_LALT , KC_SPC  , MO(_FL) , KC_SPC  , KC_RALT , KC_RGUI , MO(_LL) , K
+  28:keyboards/dz60/keymaps/safe/keymap.c ****     ),
+  29:keyboards/dz60/keymaps/safe/keymap.c ****     [_FL] = KEYMAP(
+  30:keyboards/dz60/keymaps/safe/keymap.c ****         KC_GRV  , KC_F1   , KC_F2   , KC_F3   , KC_F4   , KC_F5   , KC_F6   , KC_F7   , KC_F8   , K
+  31:keyboards/dz60/keymaps/safe/keymap.c ****         _______ , RESET   , KC_UP   , _______ , KC_BTN1 , KC_MS_U , KC_BTN2 , _______ , KC_UP   , _
+  32:keyboards/dz60/keymaps/safe/keymap.c ****         _______ , KC_LEFT , KC_DOWN , KC_RGHT , KC_MS_L , KC_MS_D , KC_MS_R , KC_LEFT , KC_DOWN , K
+  33:keyboards/dz60/keymaps/safe/keymap.c ****         _______ , M(M_FX) , _______ , _______ , _______ , _______ , KC_VOLD , KC_VOLU , KC_MUTE , K
+  34:keyboards/dz60/keymaps/safe/keymap.c ****         _______ , _______ , _______ , KC_PGDN , _______ , KC_PGUP , _______ , _______ , _______ , _
+  35:keyboards/dz60/keymaps/safe/keymap.c ****     ),
+  36:keyboards/dz60/keymaps/safe/keymap.c ****     [_LL] = KEYMAP(
+  37:keyboards/dz60/keymaps/safe/keymap.c ****         RGB_TOG , RGB_PLN , RGB_BTH , RGB_RNB , RGB_SWL , RGB_SNK , _______ , _______ , _______ , _
+  38:keyboards/dz60/keymaps/safe/keymap.c ****         RGB_MOD , RGB_HUI , RGB_SAI , RGB_VAI , _______ , _______ , _______ , _______ , _______ , _
+  39:keyboards/dz60/keymaps/safe/keymap.c ****         _______ , RGB_HUD , RGB_SAD , RGB_VAD , _______ , _______ , _______ , _______ , _______ , _
+  40:keyboards/dz60/keymaps/safe/keymap.c ****         _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _
+  41:keyboards/dz60/keymaps/safe/keymap.c ****         _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _
+  42:keyboards/dz60/keymaps/safe/keymap.c ****     )
+  43:keyboards/dz60/keymaps/safe/keymap.c **** };
+  44:keyboards/dz60/keymaps/safe/keymap.c **** 
+  45:keyboards/dz60/keymaps/safe/keymap.c **** const macro_t *action_get_macro(keyrecord_t *record , uint8_t id , uint8_t opt) {
+  16               		.loc 1 45 0
+  17               		.cfi_startproc
+  18               	.LVL0:
+  19               	/* prologue: function */
+  20               	/* frame size = 0 */
+  21               	/* stack size = 0 */
+  22               	.L__stack_usage = 0
+  46:keyboards/dz60/keymaps/safe/keymap.c ****     keyevent_t event = record->event;
+  47:keyboards/dz60/keymaps/safe/keymap.c ****     if (event.pressed) {
+  23               		.loc 1 47 0
+  24 0000 FC01      		movw r30,r24
+  25 0002 8281      		ldd r24,Z+2
+  26               	.LVL1:
+  27 0004 8823      		tst r24
+  28 0006 01F0      		breq .L2
+  48:keyboards/dz60/keymaps/safe/keymap.c ****         switch (id) {
+  29               		.loc 1 48 0
+  30 0008 6111      		cpse r22,__zero_reg__
+  31 000a 00C0      		rjmp .L2
+  49:keyboards/dz60/keymaps/safe/keymap.c ****             case M_FX:
+  50:keyboards/dz60/keymaps/safe/keymap.c ****                 SEND_STRING("m26rkRTsjFJ7vjCN");
+  32               		.loc 1 50 0
+  33 000c 80E0      		ldi r24,lo8(__c.5583)
+  34 000e 90E0      		ldi r25,hi8(__c.5583)
+  35               	.LVL2:
+  36 0010 0E94 0000 		call send_string_P
+  37               	.LVL3:
+  38               	.L2:
+  51:keyboards/dz60/keymaps/safe/keymap.c ****                 return false;
+  52:keyboards/dz60/keymaps/safe/keymap.c ****         }
+  53:keyboards/dz60/keymaps/safe/keymap.c ****     }
+  54:keyboards/dz60/keymaps/safe/keymap.c ****     return MACRO_NONE;
+  55:keyboards/dz60/keymaps/safe/keymap.c **** }
+  39               		.loc 1 55 0
+  40 0014 80E0      		ldi r24,0
+  41 0016 90E0      		ldi r25,0
+  42 0018 0895      		ret
+  43               		.cfi_endproc
+  44               	.LFE110:
+  46               		.section	.text.matrix_init_user,"ax",@progbits
+  47               	.global	matrix_init_user
+  49               	matrix_init_user:
+  50               	.LFB111:
+  56:keyboards/dz60/keymaps/safe/keymap.c **** 
+  57:keyboards/dz60/keymaps/safe/keymap.c **** void matrix_init_user(void) {
+  51               		.loc 1 57 0
+  52               		.cfi_startproc
+  53               	/* prologue: function */
+  54               	/* frame size = 0 */
+  55               	/* stack size = 0 */
+  56               	.L__stack_usage = 0
+  57 0000 0895      		ret
+  58               		.cfi_endproc
+  59               	.LFE111:
+  61               		.section	.text.matrix_scan_user,"ax",@progbits
+  62               	.global	matrix_scan_user
+  64               	matrix_scan_user:
+  65               	.LFB112:
+  58:keyboards/dz60/keymaps/safe/keymap.c **** }
+  59:keyboards/dz60/keymaps/safe/keymap.c **** 
+  60:keyboards/dz60/keymaps/safe/keymap.c **** void matrix_scan_user(void) {
+  66               		.loc 1 60 0
+  67               		.cfi_startproc
+  68               	/* prologue: function */
+  69               	/* frame size = 0 */
+  70               	/* stack size = 0 */
+  71               	.L__stack_usage = 0
+  72 0000 0895      		ret
+  73               		.cfi_endproc
+  74               	.LFE112:
+  76               		.section	.text.process_record_user,"ax",@progbits
+  77               	.global	process_record_user
+  79               	process_record_user:
+  80               	.LFB113:
+  61:keyboards/dz60/keymaps/safe/keymap.c **** }
+  62:keyboards/dz60/keymaps/safe/keymap.c **** 
+  63:keyboards/dz60/keymaps/safe/keymap.c **** bool process_record_user(uint16_t keycode , keyrecord_t *record) {
+  81               		.loc 1 63 0
+  82               		.cfi_startproc
+  83               	.LVL4:
+  84               	/* prologue: function */
+  85               	/* frame size = 0 */
+  86               	/* stack size = 0 */
+  87               	.L__stack_usage = 0
+  64:keyboards/dz60/keymaps/safe/keymap.c ****     return true;
+  65:keyboards/dz60/keymaps/safe/keymap.c **** }
+  88               		.loc 1 65 0
+  89 0000 81E0      		ldi r24,lo8(1)
+  90               	.LVL5:
+  91 0002 0895      		ret
+  92               		.cfi_endproc
+  93               	.LFE113:
+  95               		.section	.text.led_set_user,"ax",@progbits
+  96               	.global	led_set_user
+  98               	led_set_user:
+  99               	.LFB114:
+  66:keyboards/dz60/keymaps/safe/keymap.c **** 
+  67:keyboards/dz60/keymaps/safe/keymap.c **** void led_set_user(uint8_t usb_led) {
+ 100               		.loc 1 67 0
+ 101               		.cfi_startproc
+ 102               	.LVL6:
+ 103               	/* prologue: function */
+ 104               	/* frame size = 0 */
+ 105               	/* stack size = 0 */
+ 106               	.L__stack_usage = 0
+ 107 0000 0895      		ret
+ 108               		.cfi_endproc
+ 109               	.LFE114:
+ 111               		.section	.progmem.data.__c.5583,"a",@progbits
+ 114               	__c.5583:
+ 115 0000 6D32 3672 		.string	"m26rkRTsjFJ7vjCN"
+ 115      6B52 5473 
+ 115      6A46 4A37 
+ 115      766A 434E 
+ 115      00
+ 116               	.global	keymaps
+ 117               		.section	.progmem.data.keymaps,"a",@progbits
+ 120               	keymaps:
+ 121 0000 2900      		.word	41
+ 122 0002 1E00      		.word	30
+ 123 0004 1F00      		.word	31
+ 124 0006 2000      		.word	32
+ 125 0008 2100      		.word	33
+ 126 000a 2200      		.word	34
+ 127 000c 2300      		.word	35
+ 128 000e 2400      		.word	36
+ 129 0010 2500      		.word	37
+ 130 0012 2600      		.word	38
+ 131 0014 2700      		.word	39
+ 132 0016 2D00      		.word	45
+ 133 0018 2E00      		.word	46
+ 134 001a 0000      		.word	0
+ 135 001c 2A00      		.word	42
+ 136 001e 2B00      		.word	43
+ 137 0020 0000      		.word	0
+ 138 0022 1400      		.word	20
+ 139 0024 1A00      		.word	26
+ 140 0026 0800      		.word	8
+ 141 0028 1500      		.word	21
+ 142 002a 1700      		.word	23
+ 143 002c 1C00      		.word	28
+ 144 002e 1800      		.word	24
+ 145 0030 0C00      		.word	12
+ 146 0032 1200      		.word	18
+ 147 0034 1300      		.word	19
+ 148 0036 2F00      		.word	47
+ 149 0038 3000      		.word	48
+ 150 003a 3200      		.word	50
+ 151 003c 3941      		.word	16697
+ 152 003e 0000      		.word	0
+ 153 0040 0400      		.word	4
+ 154 0042 1600      		.word	22
+ 155 0044 0700      		.word	7
+ 156 0046 0900      		.word	9
+ 157 0048 0A00      		.word	10
+ 158 004a 0B00      		.word	11
+ 159 004c 0D00      		.word	13
+ 160 004e 0E00      		.word	14
+ 161 0050 0F00      		.word	15
+ 162 0052 3300      		.word	51
+ 163 0054 3400      		.word	52
+ 164 0056 2800      		.word	40
+ 165 0058 0000      		.word	0
+ 166 005a E100      		.word	225
+ 167 005c 6400      		.word	100
+ 168 005e 1D00      		.word	29
+ 169 0060 1B00      		.word	27
+ 170 0062 0600      		.word	6
+ 171 0064 1900      		.word	25
+ 172 0066 0500      		.word	5
+ 173 0068 1100      		.word	17
+ 174 006a 1000      		.word	16
+ 175 006c 3600      		.word	54
+ 176 006e 3700      		.word	55
+ 177 0070 3800      		.word	56
+ 178 0072 0000      		.word	0
+ 179 0074 E500      		.word	229
+ 180 0076 0000      		.word	0
+ 181 0078 E000      		.word	224
+ 182 007a E300      		.word	227
+ 183 007c 0000      		.word	0
+ 184 007e E200      		.word	226
+ 185 0080 2C00      		.word	44
+ 186 0082 0000      		.word	0
+ 187 0084 0151      		.word	20737
+ 188 0086 0000      		.word	0
+ 189 0088 2C00      		.word	44
+ 190 008a 0000      		.word	0
+ 191 008c E600      		.word	230
+ 192 008e E700      		.word	231
+ 193 0090 0000      		.word	0
+ 194 0092 0251      		.word	20738
+ 195 0094 E400      		.word	228
+ 196 0096 3500      		.word	53
+ 197 0098 3A00      		.word	58
+ 198 009a 3B00      		.word	59
+ 199 009c 3C00      		.word	60
+ 200 009e 3D00      		.word	61
+ 201 00a0 3E00      		.word	62
+ 202 00a2 3F00      		.word	63
+ 203 00a4 4000      		.word	64
+ 204 00a6 4100      		.word	65
+ 205 00a8 4200      		.word	66
+ 206 00aa 4300      		.word	67
+ 207 00ac 4400      		.word	68
+ 208 00ae 4500      		.word	69
+ 209 00b0 0000      		.word	0
+ 210 00b2 4C00      		.word	76
+ 211 00b4 0100      		.word	1
+ 212 00b6 0000      		.word	0
+ 213 00b8 005C      		.word	23552
+ 214 00ba 5200      		.word	82
+ 215 00bc 0100      		.word	1
+ 216 00be F400      		.word	244
+ 217 00c0 F000      		.word	240
+ 218 00c2 F500      		.word	245
+ 219 00c4 0100      		.word	1
+ 220 00c6 5200      		.word	82
+ 221 00c8 0100      		.word	1
+ 222 00ca 4600      		.word	70
+ 223 00cc 0100      		.word	1
+ 224 00ce 0100      		.word	1
+ 225 00d0 0100      		.word	1
+ 226 00d2 0100      		.word	1
+ 227 00d4 0000      		.word	0
+ 228 00d6 5000      		.word	80
+ 229 00d8 5100      		.word	81
+ 230 00da 4F00      		.word	79
+ 231 00dc F200      		.word	242
+ 232 00de F100      		.word	241
+ 233 00e0 F300      		.word	243
+ 234 00e2 5000      		.word	80
+ 235 00e4 5100      		.word	81
+ 236 00e6 4F00      		.word	79
+ 237 00e8 0100      		.word	1
+ 238 00ea 0100      		.word	1
+ 239 00ec 0100      		.word	1
+ 240 00ee 0000      		.word	0
+ 241 00f0 0100      		.word	1
+ 242 00f2 0030      		.word	12288
+ 243 00f4 0100      		.word	1
+ 244 00f6 0100      		.word	1
+ 245 00f8 0100      		.word	1
+ 246 00fa 0100      		.word	1
+ 247 00fc AA00      		.word	170
+ 248 00fe A900      		.word	169
+ 249 0100 A800      		.word	168
+ 250 0102 AC00      		.word	172
+ 251 0104 AB00      		.word	171
+ 252 0106 AE00      		.word	174
+ 253 0108 0000      		.word	0
+ 254 010a 0100      		.word	1
+ 255 010c 0000      		.word	0
+ 256 010e 0100      		.word	1
+ 257 0110 0100      		.word	1
+ 258 0112 0000      		.word	0
+ 259 0114 0100      		.word	1
+ 260 0116 4E00      		.word	78
+ 261 0118 0000      		.word	0
+ 262 011a 0100      		.word	1
+ 263 011c 0000      		.word	0
+ 264 011e 4B00      		.word	75
+ 265 0120 0000      		.word	0
+ 266 0122 0100      		.word	1
+ 267 0124 0100      		.word	1
+ 268 0126 0000      		.word	0
+ 269 0128 0100      		.word	1
+ 270 012a 0100      		.word	1
+ 271 012c BA5C      		.word	23738
+ 272 012e C35C      		.word	23747
+ 273 0130 C45C      		.word	23748
+ 274 0132 C55C      		.word	23749
+ 275 0134 C65C      		.word	23750
+ 276 0136 C75C      		.word	23751
+ 277 0138 0100      		.word	1
+ 278 013a 0100      		.word	1
+ 279 013c 0100      		.word	1
+ 280 013e 0100      		.word	1
+ 281 0140 0100      		.word	1
+ 282 0142 0100      		.word	1
+ 283 0144 0100      		.word	1
+ 284 0146 0000      		.word	0
+ 285 0148 0100      		.word	1
+ 286 014a BB5C      		.word	23739
+ 287 014c 0000      		.word	0
+ 288 014e BD5C      		.word	23741
+ 289 0150 BF5C      		.word	23743
+ 290 0152 C15C      		.word	23745
+ 291 0154 0100      		.word	1
+ 292 0156 0100      		.word	1
+ 293 0158 0100      		.word	1
+ 294 015a 0100      		.word	1
+ 295 015c 0100      		.word	1
+ 296 015e 0100      		.word	1
+ 297 0160 0100      		.word	1
+ 298 0162 0100      		.word	1
+ 299 0164 0100      		.word	1
+ 300 0166 0100      		.word	1
+ 301 0168 0100      		.word	1
+ 302 016a 0000      		.word	0
+ 303 016c BE5C      		.word	23742
+ 304 016e C05C      		.word	23744
+ 305 0170 C25C      		.word	23746
+ 306 0172 0100      		.word	1
+ 307 0174 0100      		.word	1
+ 308 0176 0100      		.word	1
+ 309 0178 0100      		.word	1
+ 310 017a 0100      		.word	1
+ 311 017c 0100      		.word	1
+ 312 017e 0100      		.word	1
+ 313 0180 0100      		.word	1
+ 314 0182 0100      		.word	1
+ 315 0184 0000      		.word	0
+ 316 0186 0100      		.word	1
+ 317 0188 0100      		.word	1
+ 318 018a 0100      		.word	1
+ 319 018c 0100      		.word	1
+ 320 018e 0100      		.word	1
+ 321 0190 0100      		.word	1
+ 322 0192 0100      		.word	1
+ 323 0194 0100      		.word	1
+ 324 0196 0100      		.word	1
+ 325 0198 0100      		.word	1
+ 326 019a 0100      		.word	1
+ 327 019c 0100      		.word	1
+ 328 019e 0000      		.word	0
+ 329 01a0 0100      		.word	1
+ 330 01a2 0000      		.word	0
+ 331 01a4 0100      		.word	1
+ 332 01a6 0100      		.word	1
+ 333 01a8 0000      		.word	0
+ 334 01aa 0100      		.word	1
+ 335 01ac 0100      		.word	1
+ 336 01ae 0000      		.word	0
+ 337 01b0 0100      		.word	1
+ 338 01b2 0000      		.word	0
+ 339 01b4 0100      		.word	1
+ 340 01b6 0000      		.word	0
+ 341 01b8 0100      		.word	1
+ 342 01ba 0100      		.word	1
+ 343 01bc 0000      		.word	0
+ 344 01be 0100      		.word	1
+ 345 01c0 0100      		.word	1
+ 346               		.text
+ 347               	.Letext0:
+ 348               		.file 2 "/usr/lib/avr/include/stdint.h"
+ 349               		.file 3 "./tmk_core/common/keyboard.h"
+ 350               		.file 4 "./tmk_core/common/keycode.h"
+ 351               		.file 5 "./tmk_core/common/action_macro.h"
+ 352               		.file 6 "./tmk_core/common/action.h"
+ 353               		.file 7 "./tmk_core/common/report.h"
+ 354               		.file 8 "./quantum/quantum_keycodes.h"
+ 355               		.file 9 "./lib/lufa/LUFA/Drivers/USB/Core/USBTask.h"
+ 356               		.file 10 "./tmk_core/common/action_util.h"
+ 357               		.file 11 "./quantum/quantum.h"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 keymap.c
+     /tmp/cce0oh61.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cce0oh61.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cce0oh61.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cce0oh61.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cce0oh61.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cce0oh61.s:13     .text.action_get_macro:0000000000000000 action_get_macro
+     /tmp/cce0oh61.s:114    .progmem.data.__c.5583:0000000000000000 __c.5583
+     /tmp/cce0oh61.s:49     .text.matrix_init_user:0000000000000000 matrix_init_user
+     /tmp/cce0oh61.s:64     .text.matrix_scan_user:0000000000000000 matrix_scan_user
+     /tmp/cce0oh61.s:79     .text.process_record_user:0000000000000000 process_record_user
+     /tmp/cce0oh61.s:98     .text.led_set_user:0000000000000000 led_set_user
+     /tmp/cce0oh61.s:120    .progmem.data.keymaps:0000000000000000 keymaps
+
+UNDEFINED SYMBOLS
+send_string_P

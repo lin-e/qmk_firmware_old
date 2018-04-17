@@ -1,0 +1,452 @@
+   1               		.file	"backlight.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.text
+   8               	.Ltext0:
+   9               		.cfi_sections	.debug_frame
+  10               		.section	.text.backlight_init,"ax",@progbits
+  11               	.global	backlight_init
+  13               	backlight_init:
+  14               	.LFB0:
+  15               		.file 1 "./tmk_core/common/backlight.c"
+   1:./tmk_core/common/backlight.c **** /*
+   2:./tmk_core/common/backlight.c **** Copyright 2013 Mathias Andersson <wraul@dbox.se>
+   3:./tmk_core/common/backlight.c **** 
+   4:./tmk_core/common/backlight.c **** This program is free software: you can redistribute it and/or modify
+   5:./tmk_core/common/backlight.c **** it under the terms of the GNU General Public License as published by
+   6:./tmk_core/common/backlight.c **** the Free Software Foundation, either version 2 of the License, or
+   7:./tmk_core/common/backlight.c **** (at your option) any later version.
+   8:./tmk_core/common/backlight.c **** 
+   9:./tmk_core/common/backlight.c **** This program is distributed in the hope that it will be useful,
+  10:./tmk_core/common/backlight.c **** but WITHOUT ANY WARRANTY; without even the implied warranty of
+  11:./tmk_core/common/backlight.c **** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  12:./tmk_core/common/backlight.c **** GNU General Public License for more details.
+  13:./tmk_core/common/backlight.c **** 
+  14:./tmk_core/common/backlight.c **** You should have received a copy of the GNU General Public License
+  15:./tmk_core/common/backlight.c **** along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  16:./tmk_core/common/backlight.c **** */
+  17:./tmk_core/common/backlight.c **** 
+  18:./tmk_core/common/backlight.c **** #include "backlight.h"
+  19:./tmk_core/common/backlight.c **** #include "eeconfig.h"
+  20:./tmk_core/common/backlight.c **** #include "debug.h"
+  21:./tmk_core/common/backlight.c **** 
+  22:./tmk_core/common/backlight.c **** backlight_config_t backlight_config;
+  23:./tmk_core/common/backlight.c **** 
+  24:./tmk_core/common/backlight.c **** /** \brief Backlight initialization
+  25:./tmk_core/common/backlight.c ****  *
+  26:./tmk_core/common/backlight.c ****  * FIXME: needs doc
+  27:./tmk_core/common/backlight.c ****  */
+  28:./tmk_core/common/backlight.c **** void backlight_init(void)
+  29:./tmk_core/common/backlight.c **** {
+  16               		.loc 1 29 0
+  17               		.cfi_startproc
+  18               	/* prologue: function */
+  19               	/* frame size = 0 */
+  20               	/* stack size = 0 */
+  21               	.L__stack_usage = 0
+  30:./tmk_core/common/backlight.c ****     /* check signature */
+  31:./tmk_core/common/backlight.c ****     if (!eeconfig_is_enabled()) {
+  22               		.loc 1 31 0
+  23 0000 0E94 0000 		call eeconfig_is_enabled
+  24               	.LVL0:
+  25 0004 8111      		cpse r24,__zero_reg__
+  26 0006 00C0      		rjmp .L2
+  32:./tmk_core/common/backlight.c ****         eeconfig_init();
+  27               		.loc 1 32 0
+  28 0008 0E94 0000 		call eeconfig_init
+  29               	.LVL1:
+  30               	.L2:
+  33:./tmk_core/common/backlight.c ****     }
+  34:./tmk_core/common/backlight.c ****     backlight_config.raw = eeconfig_read_backlight();
+  31               		.loc 1 34 0
+  32 000c 0E94 0000 		call eeconfig_read_backlight
+  33               	.LVL2:
+  34 0010 8093 0000 		sts backlight_config,r24
+  35:./tmk_core/common/backlight.c ****     if (backlight_config.level > BACKLIGHT_LEVELS) {
+  35               		.loc 1 35 0
+  36 0014 282F      		mov r18,r24
+  37 0016 2695      		lsr r18
+  38 0018 30E0      		ldi r19,0
+  39 001a 2630      		cpi r18,6
+  40 001c 3105      		cpc r19,__zero_reg__
+  41 001e 04F0      		brlt .L3
+  36:./tmk_core/common/backlight.c ****        backlight_config.level = BACKLIGHT_LEVELS;
+  42               		.loc 1 36 0
+  43 0020 8170      		andi r24,lo8(1)
+  44 0022 8A60      		ori r24,lo8(10)
+  45 0024 8093 0000 		sts backlight_config,r24
+  46               	.L3:
+  37:./tmk_core/common/backlight.c ****     }
+  38:./tmk_core/common/backlight.c ****     backlight_set(backlight_config.enable ? backlight_config.level : 0);
+  47               		.loc 1 38 0
+  48 0028 8091 0000 		lds r24,backlight_config
+  49 002c 80FF      		sbrs r24,0
+  50 002e 00C0      		rjmp .L5
+  51               		.loc 1 38 0 is_stmt 0 discriminator 1
+  52 0030 8695      		lsr r24
+  53 0032 00C0      		rjmp .L4
+  54               	.L5:
+  55               		.loc 1 38 0
+  56 0034 80E0      		ldi r24,0
+  57               	.L4:
+  58               		.loc 1 38 0 discriminator 4
+  59 0036 0C94 0000 		jmp backlight_set
+  60               	.LVL3:
+  61               		.cfi_endproc
+  62               	.LFE0:
+  64               		.section	.text.backlight_increase,"ax",@progbits
+  65               	.global	backlight_increase
+  67               	backlight_increase:
+  68               	.LFB1:
+  39:./tmk_core/common/backlight.c **** }
+  40:./tmk_core/common/backlight.c **** 
+  41:./tmk_core/common/backlight.c **** /** \brief Backlight increase
+  42:./tmk_core/common/backlight.c ****  *
+  43:./tmk_core/common/backlight.c ****  * FIXME: needs doc
+  44:./tmk_core/common/backlight.c ****  */
+  45:./tmk_core/common/backlight.c **** void backlight_increase(void)
+  46:./tmk_core/common/backlight.c **** {
+  69               		.loc 1 46 0 is_stmt 1
+  70               		.cfi_startproc
+  71               	/* prologue: function */
+  72               	/* frame size = 0 */
+  73               	/* stack size = 0 */
+  74               	.L__stack_usage = 0
+  47:./tmk_core/common/backlight.c ****     if(backlight_config.level < BACKLIGHT_LEVELS)
+  75               		.loc 1 47 0
+  76 0000 2091 0000 		lds r18,backlight_config
+  77 0004 822F      		mov r24,r18
+  78 0006 8695      		lsr r24
+  79 0008 482F      		mov r20,r24
+  80 000a 50E0      		ldi r21,0
+  81 000c 4530      		cpi r20,5
+  82 000e 5105      		cpc r21,__zero_reg__
+  83 0010 04F4      		brge .L8
+  48:./tmk_core/common/backlight.c ****     {
+  49:./tmk_core/common/backlight.c ****         backlight_config.level++;
+  84               		.loc 1 49 0
+  85 0012 8F5F      		subi r24,lo8(-(1))
+  86 0014 982F      		mov r25,r24
+  87 0016 990F      		lsl r25
+  88 0018 822F      		mov r24,r18
+  89 001a 8170      		andi r24,lo8(1)
+  90 001c 892B      		or r24,r25
+  91 001e 8093 0000 		sts backlight_config,r24
+  92               	.L8:
+  50:./tmk_core/common/backlight.c ****     }
+  51:./tmk_core/common/backlight.c ****     backlight_config.enable = 1;
+  93               		.loc 1 51 0
+  94 0022 8091 0000 		lds r24,backlight_config
+  95 0026 8160      		ori r24,lo8(1<<0)
+  96 0028 8093 0000 		sts backlight_config,r24
+  52:./tmk_core/common/backlight.c ****     eeconfig_update_backlight(backlight_config.raw);
+  97               		.loc 1 52 0
+  98 002c 0E94 0000 		call eeconfig_update_backlight
+  99               	.LVL4:
+  53:./tmk_core/common/backlight.c ****     dprintf("backlight increase: %u\n", backlight_config.level);
+  54:./tmk_core/common/backlight.c ****     backlight_set(backlight_config.level);
+ 100               		.loc 1 54 0
+ 101 0030 8091 0000 		lds r24,backlight_config
+ 102 0034 8695      		lsr r24
+ 103 0036 0C94 0000 		jmp backlight_set
+ 104               	.LVL5:
+ 105               		.cfi_endproc
+ 106               	.LFE1:
+ 108               		.section	.text.backlight_decrease,"ax",@progbits
+ 109               	.global	backlight_decrease
+ 111               	backlight_decrease:
+ 112               	.LFB2:
+  55:./tmk_core/common/backlight.c **** }
+  56:./tmk_core/common/backlight.c **** 
+  57:./tmk_core/common/backlight.c **** /** \brief Backlight decrease
+  58:./tmk_core/common/backlight.c ****  *
+  59:./tmk_core/common/backlight.c ****  * FIXME: needs doc
+  60:./tmk_core/common/backlight.c ****  */
+  61:./tmk_core/common/backlight.c **** void backlight_decrease(void)
+  62:./tmk_core/common/backlight.c **** {
+ 113               		.loc 1 62 0
+ 114               		.cfi_startproc
+ 115               	/* prologue: function */
+ 116               	/* frame size = 0 */
+ 117               	/* stack size = 0 */
+ 118               	.L__stack_usage = 0
+  63:./tmk_core/common/backlight.c ****     if(backlight_config.level > 0)
+ 119               		.loc 1 63 0
+ 120 0000 8091 0000 		lds r24,backlight_config
+ 121 0004 982F      		mov r25,r24
+ 122 0006 9695      		lsr r25
+ 123 0008 01F0      		breq .L10
+  64:./tmk_core/common/backlight.c ****     {
+  65:./tmk_core/common/backlight.c ****         backlight_config.level--;
+ 124               		.loc 1 65 0
+ 125 000a 9158      		subi r25,lo8(-(127))
+ 126 000c 990F      		lsl r25
+ 127 000e 8170      		andi r24,lo8(1)
+ 128 0010 892B      		or r24,r25
+ 129 0012 8093 0000 		sts backlight_config,r24
+  66:./tmk_core/common/backlight.c ****         backlight_config.enable = !!backlight_config.level;
+ 130               		.loc 1 66 0
+ 131 0016 8E7F      		andi r24,lo8(-2)
+ 132 0018 91E0      		ldi r25,lo8(1)
+ 133 001a 01F4      		brne .L11
+ 134 001c 90E0      		ldi r25,0
+ 135               	.L11:
+ 136 001e 8091 0000 		lds r24,backlight_config
+ 137 0022 90FB      		bst r25,0
+ 138 0024 80F9      		bld r24,0
+ 139 0026 8093 0000 		sts backlight_config,r24
+  67:./tmk_core/common/backlight.c ****         eeconfig_update_backlight(backlight_config.raw);
+ 140               		.loc 1 67 0
+ 141 002a 0E94 0000 		call eeconfig_update_backlight
+ 142               	.LVL6:
+ 143               	.L10:
+  68:./tmk_core/common/backlight.c ****     }
+  69:./tmk_core/common/backlight.c ****     dprintf("backlight decrease: %u\n", backlight_config.level);
+  70:./tmk_core/common/backlight.c ****     backlight_set(backlight_config.level);
+ 144               		.loc 1 70 0
+ 145 002e 8091 0000 		lds r24,backlight_config
+ 146 0032 8695      		lsr r24
+ 147 0034 0C94 0000 		jmp backlight_set
+ 148               	.LVL7:
+ 149               		.cfi_endproc
+ 150               	.LFE2:
+ 152               		.section	.text.backlight_toggle,"ax",@progbits
+ 153               	.global	backlight_toggle
+ 155               	backlight_toggle:
+ 156               	.LFB3:
+  71:./tmk_core/common/backlight.c **** }
+  72:./tmk_core/common/backlight.c **** 
+  73:./tmk_core/common/backlight.c **** /** \brief Backlight toggle
+  74:./tmk_core/common/backlight.c ****  *
+  75:./tmk_core/common/backlight.c ****  * FIXME: needs doc
+  76:./tmk_core/common/backlight.c ****  */
+  77:./tmk_core/common/backlight.c **** void backlight_toggle(void)
+  78:./tmk_core/common/backlight.c **** {
+ 157               		.loc 1 78 0
+ 158               		.cfi_startproc
+ 159               	/* prologue: function */
+ 160               	/* frame size = 0 */
+ 161               	/* stack size = 0 */
+ 162               	.L__stack_usage = 0
+  79:./tmk_core/common/backlight.c ****     backlight_config.enable ^= 1;
+ 163               		.loc 1 79 0
+ 164 0000 8091 0000 		lds r24,backlight_config
+ 165 0004 982F      		mov r25,r24
+ 166 0006 9095      		com r25
+ 167 0008 90FB      		bst r25,0
+ 168 000a 80F9      		bld r24,0
+ 169 000c 8093 0000 		sts backlight_config,r24
+  80:./tmk_core/common/backlight.c ****     if (backlight_config.raw == 1) // enabled but level = 0
+ 170               		.loc 1 80 0
+ 171 0010 8130      		cpi r24,lo8(1)
+ 172 0012 01F4      		brne .L16
+  81:./tmk_core/common/backlight.c ****         backlight_config.level = 1;
+ 173               		.loc 1 81 0
+ 174 0014 83E0      		ldi r24,lo8(3)
+ 175 0016 8093 0000 		sts backlight_config,r24
+ 176               	.L16:
+  82:./tmk_core/common/backlight.c ****     eeconfig_update_backlight(backlight_config.raw);
+ 177               		.loc 1 82 0
+ 178 001a 8091 0000 		lds r24,backlight_config
+ 179 001e 0E94 0000 		call eeconfig_update_backlight
+ 180               	.LVL8:
+  83:./tmk_core/common/backlight.c ****     dprintf("backlight toggle: %u\n", backlight_config.enable);
+  84:./tmk_core/common/backlight.c ****     backlight_set(backlight_config.enable ? backlight_config.level : 0);
+ 181               		.loc 1 84 0
+ 182 0022 8091 0000 		lds r24,backlight_config
+ 183 0026 80FF      		sbrs r24,0
+ 184 0028 00C0      		rjmp .L18
+ 185               		.loc 1 84 0 is_stmt 0 discriminator 1
+ 186 002a 8695      		lsr r24
+ 187 002c 00C0      		rjmp .L17
+ 188               	.L18:
+ 189               		.loc 1 84 0
+ 190 002e 80E0      		ldi r24,0
+ 191               	.L17:
+ 192               		.loc 1 84 0 discriminator 4
+ 193 0030 0C94 0000 		jmp backlight_set
+ 194               	.LVL9:
+ 195               		.cfi_endproc
+ 196               	.LFE3:
+ 198               		.section	.text.backlight_step,"ax",@progbits
+ 199               	.global	backlight_step
+ 201               	backlight_step:
+ 202               	.LFB4:
+  85:./tmk_core/common/backlight.c **** }
+  86:./tmk_core/common/backlight.c **** 
+  87:./tmk_core/common/backlight.c **** /** \brief Backlight step through levels
+  88:./tmk_core/common/backlight.c ****  *
+  89:./tmk_core/common/backlight.c ****  * FIXME: needs doc
+  90:./tmk_core/common/backlight.c ****  */
+  91:./tmk_core/common/backlight.c **** void backlight_step(void)
+  92:./tmk_core/common/backlight.c **** {
+ 203               		.loc 1 92 0 is_stmt 1
+ 204               		.cfi_startproc
+ 205               	/* prologue: function */
+ 206               	/* frame size = 0 */
+ 207               	/* stack size = 0 */
+ 208               	.L__stack_usage = 0
+  93:./tmk_core/common/backlight.c ****     backlight_config.level++;
+ 209               		.loc 1 93 0
+ 210 0000 9091 0000 		lds r25,backlight_config
+ 211 0004 892F      		mov r24,r25
+ 212 0006 8695      		lsr r24
+ 213 0008 8F5F      		subi r24,lo8(-(1))
+ 214 000a 8F77      		andi r24,lo8(127)
+ 215 000c 9170      		andi r25,lo8(1)
+  94:./tmk_core/common/backlight.c ****     if(backlight_config.level > BACKLIGHT_LEVELS)
+ 216               		.loc 1 94 0
+ 217 000e 8630      		cpi r24,lo8(6)
+ 218 0010 00F4      		brsh .L20
+  93:./tmk_core/common/backlight.c ****     backlight_config.level++;
+ 219               		.loc 1 93 0
+ 220 0012 880F      		lsl r24
+ 221 0014 892B      		or r24,r25
+ 222 0016 8093 0000 		sts backlight_config,r24
+ 223 001a 00C0      		rjmp .L21
+ 224               	.L20:
+  95:./tmk_core/common/backlight.c ****     {
+  96:./tmk_core/common/backlight.c ****         backlight_config.level = 0;
+ 225               		.loc 1 96 0
+ 226 001c 9093 0000 		sts backlight_config,r25
+ 227               	.L21:
+  97:./tmk_core/common/backlight.c ****     }
+  98:./tmk_core/common/backlight.c ****     backlight_config.enable = !!backlight_config.level;
+ 228               		.loc 1 98 0
+ 229 0020 8091 0000 		lds r24,backlight_config
+ 230 0024 8E7F      		andi r24,lo8(-2)
+ 231 0026 91E0      		ldi r25,lo8(1)
+ 232 0028 01F4      		brne .L22
+ 233 002a 90E0      		ldi r25,0
+ 234               	.L22:
+ 235 002c 8091 0000 		lds r24,backlight_config
+ 236 0030 90FB      		bst r25,0
+ 237 0032 80F9      		bld r24,0
+ 238 0034 8093 0000 		sts backlight_config,r24
+  99:./tmk_core/common/backlight.c ****     eeconfig_update_backlight(backlight_config.raw);
+ 239               		.loc 1 99 0
+ 240 0038 0E94 0000 		call eeconfig_update_backlight
+ 241               	.LVL10:
+ 100:./tmk_core/common/backlight.c ****     dprintf("backlight step: %u\n", backlight_config.level);
+ 101:./tmk_core/common/backlight.c ****     backlight_set(backlight_config.level);
+ 242               		.loc 1 101 0
+ 243 003c 8091 0000 		lds r24,backlight_config
+ 244 0040 8695      		lsr r24
+ 245 0042 0C94 0000 		jmp backlight_set
+ 246               	.LVL11:
+ 247               		.cfi_endproc
+ 248               	.LFE4:
+ 250               		.section	.text.backlight_level,"ax",@progbits
+ 251               	.global	backlight_level
+ 253               	backlight_level:
+ 254               	.LFB5:
+ 102:./tmk_core/common/backlight.c **** }
+ 103:./tmk_core/common/backlight.c **** 
+ 104:./tmk_core/common/backlight.c **** /** \brief Backlight set level
+ 105:./tmk_core/common/backlight.c ****  *
+ 106:./tmk_core/common/backlight.c ****  * FIXME: needs doc
+ 107:./tmk_core/common/backlight.c ****  */
+ 108:./tmk_core/common/backlight.c **** void backlight_level(uint8_t level)
+ 109:./tmk_core/common/backlight.c **** {
+ 255               		.loc 1 109 0
+ 256               		.cfi_startproc
+ 257               	.LVL12:
+ 258               	/* prologue: function */
+ 259               	/* frame size = 0 */
+ 260               	/* stack size = 0 */
+ 261               	.L__stack_usage = 0
+ 262 0000 8630      		cpi r24,lo8(6)
+ 263 0002 00F0      		brlo .L24
+ 264 0004 85E0      		ldi r24,lo8(5)
+ 265               	.L24:
+ 110:./tmk_core/common/backlight.c ****     if (level > BACKLIGHT_LEVELS)
+ 111:./tmk_core/common/backlight.c ****         level = BACKLIGHT_LEVELS;
+ 112:./tmk_core/common/backlight.c ****     backlight_config.level = level;
+ 266               		.loc 1 112 0
+ 267 0006 880F      		lsl r24
+ 268 0008 9091 0000 		lds r25,backlight_config
+ 269 000c 9170      		andi r25,lo8(1)
+ 270 000e 892B      		or r24,r25
+ 271 0010 8093 0000 		sts backlight_config,r24
+ 113:./tmk_core/common/backlight.c ****     backlight_config.enable = !!backlight_config.level;
+ 272               		.loc 1 113 0
+ 273 0014 8E7F      		andi r24,lo8(-2)
+ 274 0016 91E0      		ldi r25,lo8(1)
+ 275 0018 01F4      		brne .L25
+ 276 001a 90E0      		ldi r25,0
+ 277               	.L25:
+ 278 001c 8091 0000 		lds r24,backlight_config
+ 279 0020 90FB      		bst r25,0
+ 280 0022 80F9      		bld r24,0
+ 281 0024 8093 0000 		sts backlight_config,r24
+ 114:./tmk_core/common/backlight.c ****     eeconfig_update_backlight(backlight_config.raw);
+ 282               		.loc 1 114 0
+ 283 0028 0E94 0000 		call eeconfig_update_backlight
+ 284               	.LVL13:
+ 115:./tmk_core/common/backlight.c ****     backlight_set(backlight_config.level);
+ 285               		.loc 1 115 0
+ 286 002c 8091 0000 		lds r24,backlight_config
+ 287 0030 8695      		lsr r24
+ 288 0032 0C94 0000 		jmp backlight_set
+ 289               	.LVL14:
+ 290               		.cfi_endproc
+ 291               	.LFE5:
+ 293               		.section	.text.get_backlight_level,"ax",@progbits
+ 294               	.global	get_backlight_level
+ 296               	get_backlight_level:
+ 297               	.LFB6:
+ 116:./tmk_core/common/backlight.c **** }
+ 117:./tmk_core/common/backlight.c **** 
+ 118:./tmk_core/common/backlight.c **** /** \brief Get backlight level
+ 119:./tmk_core/common/backlight.c ****  *
+ 120:./tmk_core/common/backlight.c ****  * FIXME: needs doc
+ 121:./tmk_core/common/backlight.c ****  */
+ 122:./tmk_core/common/backlight.c **** uint8_t get_backlight_level(void)
+ 123:./tmk_core/common/backlight.c **** {
+ 298               		.loc 1 123 0
+ 299               		.cfi_startproc
+ 300               	/* prologue: function */
+ 301               	/* frame size = 0 */
+ 302               	/* stack size = 0 */
+ 303               	.L__stack_usage = 0
+ 124:./tmk_core/common/backlight.c ****     return backlight_config.level;
+ 304               		.loc 1 124 0
+ 305 0000 8091 0000 		lds r24,backlight_config
+ 125:./tmk_core/common/backlight.c **** }
+ 306               		.loc 1 125 0
+ 307 0004 8695      		lsr r24
+ 308 0006 0895      		ret
+ 309               		.cfi_endproc
+ 310               	.LFE6:
+ 312               		.comm	backlight_config,1,1
+ 313               		.text
+ 314               	.Letext0:
+ 315               		.file 2 "./tmk_core/common/backlight.h"
+ 316               		.file 3 "/usr/lib/avr/include/stdint.h"
+ 317               		.file 4 "./tmk_core/common/eeconfig.h"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 backlight.c
+     /tmp/cctmtKre.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cctmtKre.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cctmtKre.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cctmtKre.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cctmtKre.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cctmtKre.s:13     .text.backlight_init:0000000000000000 backlight_init
+                            *COM*:0000000000000001 backlight_config
+     /tmp/cctmtKre.s:67     .text.backlight_increase:0000000000000000 backlight_increase
+     /tmp/cctmtKre.s:111    .text.backlight_decrease:0000000000000000 backlight_decrease
+     /tmp/cctmtKre.s:155    .text.backlight_toggle:0000000000000000 backlight_toggle
+     /tmp/cctmtKre.s:201    .text.backlight_step:0000000000000000 backlight_step
+     /tmp/cctmtKre.s:253    .text.backlight_level:0000000000000000 backlight_level
+     /tmp/cctmtKre.s:296    .text.get_backlight_level:0000000000000000 get_backlight_level
+
+UNDEFINED SYMBOLS
+eeconfig_is_enabled
+eeconfig_init
+eeconfig_read_backlight
+backlight_set
+eeconfig_update_backlight
+__do_clear_bss

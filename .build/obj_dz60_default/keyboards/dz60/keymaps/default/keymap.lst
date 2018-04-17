@@ -1,0 +1,1635 @@
+   1               		.file	"keymap.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.text
+   8               	.Ltext0:
+   9               		.cfi_sections	.debug_frame
+  10               		.section	.text.dynamic_macro_led_blink,"ax",@progbits
+  11               	.global	dynamic_macro_led_blink
+  13               	dynamic_macro_led_blink:
+  14               	.LFB110:
+  15               		.file 1 "./quantum/dynamic_macro.h"
+   1:./quantum/dynamic_macro.h **** /* Copyright 2016 Jack Humbert
+   2:./quantum/dynamic_macro.h ****  *
+   3:./quantum/dynamic_macro.h ****  * This program is free software: you can redistribute it and/or modify
+   4:./quantum/dynamic_macro.h ****  * it under the terms of the GNU General Public License as published by
+   5:./quantum/dynamic_macro.h ****  * the Free Software Foundation, either version 2 of the License, or
+   6:./quantum/dynamic_macro.h ****  * (at your option) any later version.
+   7:./quantum/dynamic_macro.h ****  *
+   8:./quantum/dynamic_macro.h ****  * This program is distributed in the hope that it will be useful,
+   9:./quantum/dynamic_macro.h ****  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  10:./quantum/dynamic_macro.h ****  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  11:./quantum/dynamic_macro.h ****  * GNU General Public License for more details.
+  12:./quantum/dynamic_macro.h ****  *
+  13:./quantum/dynamic_macro.h ****  * You should have received a copy of the GNU General Public License
+  14:./quantum/dynamic_macro.h ****  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  15:./quantum/dynamic_macro.h ****  */
+  16:./quantum/dynamic_macro.h **** 
+  17:./quantum/dynamic_macro.h **** /* Author: Wojciech Siewierski < wojciech dot siewierski at onet dot pl > */
+  18:./quantum/dynamic_macro.h **** #ifndef DYNAMIC_MACROS_H
+  19:./quantum/dynamic_macro.h **** #define DYNAMIC_MACROS_H
+  20:./quantum/dynamic_macro.h **** 
+  21:./quantum/dynamic_macro.h **** #include "action_layer.h"
+  22:./quantum/dynamic_macro.h **** 
+  23:./quantum/dynamic_macro.h **** #ifndef DYNAMIC_MACRO_SIZE
+  24:./quantum/dynamic_macro.h **** /* May be overridden with a custom value. Be aware that the effective
+  25:./quantum/dynamic_macro.h ****  * macro length is half of this value: each keypress is recorded twice
+  26:./quantum/dynamic_macro.h ****  * because of the down-event and up-event. This is not a bug, it's the
+  27:./quantum/dynamic_macro.h ****  * intended behavior.
+  28:./quantum/dynamic_macro.h ****  *
+  29:./quantum/dynamic_macro.h ****  * Usually it should be fine to set the macro size to at least 256 but
+  30:./quantum/dynamic_macro.h ****  * there have been reports of it being too much in some users' cases,
+  31:./quantum/dynamic_macro.h ****  * so 128 is considered a safe default.
+  32:./quantum/dynamic_macro.h ****  */
+  33:./quantum/dynamic_macro.h **** #define DYNAMIC_MACRO_SIZE 128
+  34:./quantum/dynamic_macro.h **** #endif
+  35:./quantum/dynamic_macro.h **** 
+  36:./quantum/dynamic_macro.h **** /* DYNAMIC_MACRO_RANGE must be set as the last element of user's
+  37:./quantum/dynamic_macro.h ****  * "planck_keycodes" enum prior to including this header. This allows
+  38:./quantum/dynamic_macro.h ****  * us to 'extend' it.
+  39:./quantum/dynamic_macro.h ****  */
+  40:./quantum/dynamic_macro.h **** enum dynamic_macro_keycodes {
+  41:./quantum/dynamic_macro.h ****     DYN_REC_START1 = DYNAMIC_MACRO_RANGE,
+  42:./quantum/dynamic_macro.h ****     DYN_REC_START2,
+  43:./quantum/dynamic_macro.h ****     DYN_REC_STOP,
+  44:./quantum/dynamic_macro.h ****     DYN_MACRO_PLAY1,
+  45:./quantum/dynamic_macro.h ****     DYN_MACRO_PLAY2,
+  46:./quantum/dynamic_macro.h **** };
+  47:./quantum/dynamic_macro.h **** 
+  48:./quantum/dynamic_macro.h **** /* Blink the LEDs to notify the user about some event. */
+  49:./quantum/dynamic_macro.h **** void dynamic_macro_led_blink(void)
+  50:./quantum/dynamic_macro.h **** {
+  16               		.loc 1 50 0
+  17               		.cfi_startproc
+  18               	/* prologue: function */
+  19               	/* frame size = 0 */
+  20               	/* stack size = 0 */
+  21               	.L__stack_usage = 0
+  51:./quantum/dynamic_macro.h **** #ifdef BACKLIGHT_ENABLE
+  52:./quantum/dynamic_macro.h ****     backlight_toggle();
+  22               		.loc 1 52 0
+  23 0000 0E94 0000 		call backlight_toggle
+  24               	.LVL0:
+  25               	.LBB4:
+  26               	.LBB5:
+  27               		.file 2 "/usr/lib/avr/include/util/delay.h"
+   1:/usr/lib/avr/include/util/delay.h **** /* Copyright (c) 2002, Marek Michalkiewicz
+   2:/usr/lib/avr/include/util/delay.h ****    Copyright (c) 2004,2005,2007 Joerg Wunsch
+   3:/usr/lib/avr/include/util/delay.h ****    Copyright (c) 2007  Florin-Viorel Petrov
+   4:/usr/lib/avr/include/util/delay.h ****    All rights reserved.
+   5:/usr/lib/avr/include/util/delay.h **** 
+   6:/usr/lib/avr/include/util/delay.h ****    Redistribution and use in source and binary forms, with or without
+   7:/usr/lib/avr/include/util/delay.h ****    modification, are permitted provided that the following conditions are met:
+   8:/usr/lib/avr/include/util/delay.h **** 
+   9:/usr/lib/avr/include/util/delay.h ****    * Redistributions of source code must retain the above copyright
+  10:/usr/lib/avr/include/util/delay.h ****      notice, this list of conditions and the following disclaimer.
+  11:/usr/lib/avr/include/util/delay.h **** 
+  12:/usr/lib/avr/include/util/delay.h ****    * Redistributions in binary form must reproduce the above copyright
+  13:/usr/lib/avr/include/util/delay.h ****      notice, this list of conditions and the following disclaimer in
+  14:/usr/lib/avr/include/util/delay.h ****      the documentation and/or other materials provided with the
+  15:/usr/lib/avr/include/util/delay.h ****      distribution.
+  16:/usr/lib/avr/include/util/delay.h **** 
+  17:/usr/lib/avr/include/util/delay.h ****    * Neither the name of the copyright holders nor the names of
+  18:/usr/lib/avr/include/util/delay.h ****      contributors may be used to endorse or promote products derived
+  19:/usr/lib/avr/include/util/delay.h ****      from this software without specific prior written permission.
+  20:/usr/lib/avr/include/util/delay.h **** 
+  21:/usr/lib/avr/include/util/delay.h ****   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  22:/usr/lib/avr/include/util/delay.h ****   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  23:/usr/lib/avr/include/util/delay.h ****   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  24:/usr/lib/avr/include/util/delay.h ****   ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+  25:/usr/lib/avr/include/util/delay.h ****   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  26:/usr/lib/avr/include/util/delay.h ****   CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  27:/usr/lib/avr/include/util/delay.h ****   SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  28:/usr/lib/avr/include/util/delay.h ****   INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  29:/usr/lib/avr/include/util/delay.h ****   CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  30:/usr/lib/avr/include/util/delay.h ****   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  31:/usr/lib/avr/include/util/delay.h ****   POSSIBILITY OF SUCH DAMAGE. */
+  32:/usr/lib/avr/include/util/delay.h **** 
+  33:/usr/lib/avr/include/util/delay.h **** /* $Id$ */
+  34:/usr/lib/avr/include/util/delay.h **** 
+  35:/usr/lib/avr/include/util/delay.h **** #ifndef _UTIL_DELAY_H_
+  36:/usr/lib/avr/include/util/delay.h **** #define _UTIL_DELAY_H_ 1
+  37:/usr/lib/avr/include/util/delay.h **** 
+  38:/usr/lib/avr/include/util/delay.h **** #ifndef __HAS_DELAY_CYCLES
+  39:/usr/lib/avr/include/util/delay.h **** #define __HAS_DELAY_CYCLES 1
+  40:/usr/lib/avr/include/util/delay.h **** #endif
+  41:/usr/lib/avr/include/util/delay.h **** 
+  42:/usr/lib/avr/include/util/delay.h **** #include <inttypes.h>
+  43:/usr/lib/avr/include/util/delay.h **** #include <util/delay_basic.h>
+  44:/usr/lib/avr/include/util/delay.h **** #include <math.h>
+  45:/usr/lib/avr/include/util/delay.h **** 
+  46:/usr/lib/avr/include/util/delay.h **** /** \file */
+  47:/usr/lib/avr/include/util/delay.h **** /** \defgroup util_delay <util/delay.h>: Convenience functions for busy-wait delay loops
+  48:/usr/lib/avr/include/util/delay.h ****     \code
+  49:/usr/lib/avr/include/util/delay.h ****     #define F_CPU 1000000UL  // 1 MHz
+  50:/usr/lib/avr/include/util/delay.h ****     //#define F_CPU 14.7456E6
+  51:/usr/lib/avr/include/util/delay.h ****     #include <util/delay.h>
+  52:/usr/lib/avr/include/util/delay.h ****     \endcode
+  53:/usr/lib/avr/include/util/delay.h **** 
+  54:/usr/lib/avr/include/util/delay.h ****     \note As an alternative method, it is possible to pass the
+  55:/usr/lib/avr/include/util/delay.h ****     F_CPU macro down to the compiler from the Makefile.
+  56:/usr/lib/avr/include/util/delay.h ****     Obviously, in that case, no \c \#define statement should be
+  57:/usr/lib/avr/include/util/delay.h ****     used.
+  58:/usr/lib/avr/include/util/delay.h **** 
+  59:/usr/lib/avr/include/util/delay.h ****     The functions in this header file are wrappers around the basic
+  60:/usr/lib/avr/include/util/delay.h ****     busy-wait functions from <util/delay_basic.h>.  They are meant as
+  61:/usr/lib/avr/include/util/delay.h ****     convenience functions where actual time values can be specified
+  62:/usr/lib/avr/include/util/delay.h ****     rather than a number of cycles to wait for.  The idea behind is
+  63:/usr/lib/avr/include/util/delay.h ****     that compile-time constant expressions will be eliminated by
+  64:/usr/lib/avr/include/util/delay.h ****     compiler optimization so floating-point expressions can be used
+  65:/usr/lib/avr/include/util/delay.h ****     to calculate the number of delay cycles needed based on the CPU
+  66:/usr/lib/avr/include/util/delay.h ****     frequency passed by the macro F_CPU.
+  67:/usr/lib/avr/include/util/delay.h **** 
+  68:/usr/lib/avr/include/util/delay.h ****     \note In order for these functions to work as intended, compiler
+  69:/usr/lib/avr/include/util/delay.h ****     optimizations <em>must</em> be enabled, and the delay time
+  70:/usr/lib/avr/include/util/delay.h ****     <em>must</em> be an expression that is a known constant at
+  71:/usr/lib/avr/include/util/delay.h ****     compile-time.  If these requirements are not met, the resulting
+  72:/usr/lib/avr/include/util/delay.h ****     delay will be much longer (and basically unpredictable), and
+  73:/usr/lib/avr/include/util/delay.h ****     applications that otherwise do not use floating-point calculations
+  74:/usr/lib/avr/include/util/delay.h ****     will experience severe code bloat by the floating-point library
+  75:/usr/lib/avr/include/util/delay.h ****     routines linked into the application.
+  76:/usr/lib/avr/include/util/delay.h **** 
+  77:/usr/lib/avr/include/util/delay.h ****     The functions available allow the specification of microsecond, and
+  78:/usr/lib/avr/include/util/delay.h ****     millisecond delays directly, using the application-supplied macro
+  79:/usr/lib/avr/include/util/delay.h ****     F_CPU as the CPU clock frequency (in Hertz).
+  80:/usr/lib/avr/include/util/delay.h **** 
+  81:/usr/lib/avr/include/util/delay.h **** */
+  82:/usr/lib/avr/include/util/delay.h **** 
+  83:/usr/lib/avr/include/util/delay.h **** #if !defined(__DOXYGEN__)
+  84:/usr/lib/avr/include/util/delay.h **** static inline void _delay_us(double __us) __attribute__((always_inline));
+  85:/usr/lib/avr/include/util/delay.h **** static inline void _delay_ms(double __ms) __attribute__((always_inline));
+  86:/usr/lib/avr/include/util/delay.h **** #endif
+  87:/usr/lib/avr/include/util/delay.h **** 
+  88:/usr/lib/avr/include/util/delay.h **** #ifndef F_CPU
+  89:/usr/lib/avr/include/util/delay.h **** /* prevent compiler error by supplying a default */
+  90:/usr/lib/avr/include/util/delay.h **** # warning "F_CPU not defined for <util/delay.h>"
+  91:/usr/lib/avr/include/util/delay.h **** # define F_CPU 1000000UL
+  92:/usr/lib/avr/include/util/delay.h **** #endif
+  93:/usr/lib/avr/include/util/delay.h **** 
+  94:/usr/lib/avr/include/util/delay.h **** #ifndef __OPTIMIZE__
+  95:/usr/lib/avr/include/util/delay.h **** # warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+  96:/usr/lib/avr/include/util/delay.h **** #endif
+  97:/usr/lib/avr/include/util/delay.h **** 
+  98:/usr/lib/avr/include/util/delay.h **** #if __HAS_DELAY_CYCLES && defined(__OPTIMIZE__) && \
+  99:/usr/lib/avr/include/util/delay.h ****   !defined(__DELAY_BACKWARD_COMPATIBLE__) &&	   \
+ 100:/usr/lib/avr/include/util/delay.h ****   __STDC_HOSTED__
+ 101:/usr/lib/avr/include/util/delay.h **** #  include <math.h>
+ 102:/usr/lib/avr/include/util/delay.h **** #endif
+ 103:/usr/lib/avr/include/util/delay.h **** 
+ 104:/usr/lib/avr/include/util/delay.h **** /**
+ 105:/usr/lib/avr/include/util/delay.h ****    \ingroup util_delay
+ 106:/usr/lib/avr/include/util/delay.h **** 
+ 107:/usr/lib/avr/include/util/delay.h ****    Perform a delay of \c __ms milliseconds, using _delay_loop_2().
+ 108:/usr/lib/avr/include/util/delay.h **** 
+ 109:/usr/lib/avr/include/util/delay.h ****    The macro F_CPU is supposed to be defined to a
+ 110:/usr/lib/avr/include/util/delay.h ****    constant defining the CPU clock frequency (in Hertz).
+ 111:/usr/lib/avr/include/util/delay.h **** 
+ 112:/usr/lib/avr/include/util/delay.h ****    The maximal possible delay is 262.14 ms / F_CPU in MHz.
+ 113:/usr/lib/avr/include/util/delay.h **** 
+ 114:/usr/lib/avr/include/util/delay.h ****    When the user request delay which exceed the maximum possible one,
+ 115:/usr/lib/avr/include/util/delay.h ****    _delay_ms() provides a decreased resolution functionality. In this
+ 116:/usr/lib/avr/include/util/delay.h ****    mode _delay_ms() will work with a resolution of 1/10 ms, providing
+ 117:/usr/lib/avr/include/util/delay.h ****    delays up to 6.5535 seconds (independent from CPU frequency).  The
+ 118:/usr/lib/avr/include/util/delay.h ****    user will not be informed about decreased resolution.
+ 119:/usr/lib/avr/include/util/delay.h **** 
+ 120:/usr/lib/avr/include/util/delay.h ****    If the avr-gcc toolchain has __builtin_avr_delay_cycles(unsigned long)
+ 121:/usr/lib/avr/include/util/delay.h ****    support, maximal possible delay is 4294967.295 ms/ F_CPU in MHz. For
+ 122:/usr/lib/avr/include/util/delay.h ****    values greater than the maximal possible delay, overflows results in
+ 123:/usr/lib/avr/include/util/delay.h ****    no delay i.e., 0ms.
+ 124:/usr/lib/avr/include/util/delay.h **** 
+ 125:/usr/lib/avr/include/util/delay.h ****    Conversion of __us into clock cycles may not always result in integer.
+ 126:/usr/lib/avr/include/util/delay.h ****    By default, the clock cycles rounded up to next integer. This ensures that
+ 127:/usr/lib/avr/include/util/delay.h ****    the user gets atleast __us microseconds of delay.
+ 128:/usr/lib/avr/include/util/delay.h **** 
+ 129:/usr/lib/avr/include/util/delay.h ****    Alternatively, user can define __DELAY_ROUND_DOWN__ and __DELAY_ROUND_CLOSEST__
+ 130:/usr/lib/avr/include/util/delay.h ****    to round down and round to closest integer.
+ 131:/usr/lib/avr/include/util/delay.h **** 
+ 132:/usr/lib/avr/include/util/delay.h ****    Note: The new implementation of _delay_ms(double __ms) with 
+ 133:/usr/lib/avr/include/util/delay.h ****     __builtin_avr_delay_cycles(unsigned long) support is not backward compatible. 
+ 134:/usr/lib/avr/include/util/delay.h ****    User can define __DELAY_BACKWARD_COMPATIBLE__ to get a backward compatible delay.
+ 135:/usr/lib/avr/include/util/delay.h ****    Also, the backward compatible
+ 136:/usr/lib/avr/include/util/delay.h ****    algorithm will be chosen if the code is compiled in a <em>freestanding
+ 137:/usr/lib/avr/include/util/delay.h ****    environment</em> (GCC option \c -ffreestanding), as the math functions
+ 138:/usr/lib/avr/include/util/delay.h ****    required for rounding are not available to the compiler then.
+ 139:/usr/lib/avr/include/util/delay.h **** 
+ 140:/usr/lib/avr/include/util/delay.h ****  */
+ 141:/usr/lib/avr/include/util/delay.h **** void
+ 142:/usr/lib/avr/include/util/delay.h **** _delay_ms(double __ms)
+ 143:/usr/lib/avr/include/util/delay.h **** {
+ 144:/usr/lib/avr/include/util/delay.h **** 	double __tmp ; 
+ 145:/usr/lib/avr/include/util/delay.h **** #if __HAS_DELAY_CYCLES && defined(__OPTIMIZE__) && \
+ 146:/usr/lib/avr/include/util/delay.h ****   !defined(__DELAY_BACKWARD_COMPATIBLE__) &&	   \
+ 147:/usr/lib/avr/include/util/delay.h ****   __STDC_HOSTED__
+ 148:/usr/lib/avr/include/util/delay.h **** 	uint32_t __ticks_dc;
+ 149:/usr/lib/avr/include/util/delay.h **** 	extern void __builtin_avr_delay_cycles(unsigned long);
+ 150:/usr/lib/avr/include/util/delay.h **** 	__tmp = ((F_CPU) / 1e3) * __ms;
+ 151:/usr/lib/avr/include/util/delay.h **** 
+ 152:/usr/lib/avr/include/util/delay.h **** 	#if defined(__DELAY_ROUND_DOWN__)
+ 153:/usr/lib/avr/include/util/delay.h **** 		__ticks_dc = (uint32_t)fabs(__tmp);
+ 154:/usr/lib/avr/include/util/delay.h **** 
+ 155:/usr/lib/avr/include/util/delay.h **** 	#elif defined(__DELAY_ROUND_CLOSEST__)
+ 156:/usr/lib/avr/include/util/delay.h **** 		__ticks_dc = (uint32_t)(fabs(__tmp)+0.5);
+ 157:/usr/lib/avr/include/util/delay.h **** 
+ 158:/usr/lib/avr/include/util/delay.h **** 	#else
+ 159:/usr/lib/avr/include/util/delay.h **** 		//round up by default
+ 160:/usr/lib/avr/include/util/delay.h **** 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+ 161:/usr/lib/avr/include/util/delay.h **** 	#endif
+ 162:/usr/lib/avr/include/util/delay.h **** 
+ 163:/usr/lib/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
+  28               		.loc 2 163 0
+  29 0004 2FEF      		ldi r18,lo8(319999)
+  30 0006 81EE      		ldi r24,hi8(319999)
+  31 0008 94E0      		ldi r25,hlo8(319999)
+  32 000a 2150      	1:	subi r18,1
+  33 000c 8040      		sbci r24,0
+  34 000e 9040      		sbci r25,0
+  35 0010 01F4      		brne 1b
+  36 0012 00C0      		rjmp .
+  37 0014 0000      		nop
+  38               	.LBE5:
+  39               	.LBE4:
+  53:./quantum/dynamic_macro.h ****     wait_ms(100);
+  54:./quantum/dynamic_macro.h ****     backlight_toggle();
+  40               		.loc 1 54 0
+  41 0016 0C94 0000 		jmp backlight_toggle
+  42               	.LVL1:
+  43               		.cfi_endproc
+  44               	.LFE110:
+  46               		.section	.text.dynamic_macro_record_start,"ax",@progbits
+  47               	.global	dynamic_macro_record_start
+  49               	dynamic_macro_record_start:
+  50               	.LFB111:
+  55:./quantum/dynamic_macro.h **** #endif
+  56:./quantum/dynamic_macro.h **** }
+  57:./quantum/dynamic_macro.h **** 
+  58:./quantum/dynamic_macro.h **** /* Convenience macros used for retrieving the debug info. All of them
+  59:./quantum/dynamic_macro.h ****  * need a `direction` variable accessible at the call site.
+  60:./quantum/dynamic_macro.h ****  */
+  61:./quantum/dynamic_macro.h **** #define DYNAMIC_MACRO_CURRENT_SLOT() (direction > 0 ? 1 : 2)
+  62:./quantum/dynamic_macro.h **** #define DYNAMIC_MACRO_CURRENT_LENGTH(BEGIN, POINTER) \
+  63:./quantum/dynamic_macro.h ****     ((int)(direction * ((POINTER) - (BEGIN))))
+  64:./quantum/dynamic_macro.h **** #define DYNAMIC_MACRO_CURRENT_CAPACITY(BEGIN, END2) \
+  65:./quantum/dynamic_macro.h ****     ((int)(direction * ((END2) - (BEGIN)) + 1))
+  66:./quantum/dynamic_macro.h **** 
+  67:./quantum/dynamic_macro.h **** /**
+  68:./quantum/dynamic_macro.h ****  * Start recording of the dynamic macro.
+  69:./quantum/dynamic_macro.h ****  *
+  70:./quantum/dynamic_macro.h ****  * @param[out] macro_pointer The new macro buffer iterator.
+  71:./quantum/dynamic_macro.h ****  * @param[in]  macro_buffer  The macro buffer used to initialize macro_pointer.
+  72:./quantum/dynamic_macro.h ****  */
+  73:./quantum/dynamic_macro.h **** void dynamic_macro_record_start(
+  74:./quantum/dynamic_macro.h ****     keyrecord_t **macro_pointer, keyrecord_t *macro_buffer)
+  75:./quantum/dynamic_macro.h **** {
+  51               		.loc 1 75 0
+  52               		.cfi_startproc
+  53               	.LVL2:
+  54 0000 0F93      		push r16
+  55               	.LCFI0:
+  56               		.cfi_def_cfa_offset 3
+  57               		.cfi_offset 16, -2
+  58 0002 1F93      		push r17
+  59               	.LCFI1:
+  60               		.cfi_def_cfa_offset 4
+  61               		.cfi_offset 17, -3
+  62 0004 CF93      		push r28
+  63               	.LCFI2:
+  64               		.cfi_def_cfa_offset 5
+  65               		.cfi_offset 28, -4
+  66 0006 DF93      		push r29
+  67               	.LCFI3:
+  68               		.cfi_def_cfa_offset 6
+  69               		.cfi_offset 29, -5
+  70               	/* prologue: function */
+  71               	/* frame size = 0 */
+  72               	/* stack size = 4 */
+  73               	.L__stack_usage = 4
+  74 0008 EC01      		movw r28,r24
+  75 000a 8B01      		movw r16,r22
+  76:./quantum/dynamic_macro.h ****     dprintln("dynamic macro recording: started");
+  77:./quantum/dynamic_macro.h **** 
+  78:./quantum/dynamic_macro.h ****     dynamic_macro_led_blink();
+  76               		.loc 1 78 0
+  77 000c 0E94 0000 		call dynamic_macro_led_blink
+  78               	.LVL3:
+  79:./quantum/dynamic_macro.h **** 
+  80:./quantum/dynamic_macro.h ****     clear_keyboard();
+  79               		.loc 1 80 0
+  80 0010 0E94 0000 		call clear_keyboard
+  81               	.LVL4:
+  81:./quantum/dynamic_macro.h ****     layer_clear();
+  82               		.loc 1 81 0
+  83 0014 0E94 0000 		call layer_clear
+  84               	.LVL5:
+  82:./quantum/dynamic_macro.h ****     *macro_pointer = macro_buffer;
+  85               		.loc 1 82 0
+  86 0018 1983      		std Y+1,r17
+  87 001a 0883      		st Y,r16
+  88               	/* epilogue start */
+  83:./quantum/dynamic_macro.h **** }
+  89               		.loc 1 83 0
+  90 001c DF91      		pop r29
+  91 001e CF91      		pop r28
+  92               	.LVL6:
+  93 0020 1F91      		pop r17
+  94 0022 0F91      		pop r16
+  95               	.LVL7:
+  96 0024 0895      		ret
+  97               		.cfi_endproc
+  98               	.LFE111:
+ 100               		.section	.text.dynamic_macro_play,"ax",@progbits
+ 101               	.global	dynamic_macro_play
+ 103               	dynamic_macro_play:
+ 104               	.LFB112:
+  84:./quantum/dynamic_macro.h **** 
+  85:./quantum/dynamic_macro.h **** /**
+  86:./quantum/dynamic_macro.h ****  * Play the dynamic macro.
+  87:./quantum/dynamic_macro.h ****  *
+  88:./quantum/dynamic_macro.h ****  * @param macro_buffer[in] The beginning of the macro buffer being played.
+  89:./quantum/dynamic_macro.h ****  * @param macro_end[in]    The element after the last macro buffer element.
+  90:./quantum/dynamic_macro.h ****  * @param direction[in]    Either +1 or -1, which way to iterate the buffer.
+  91:./quantum/dynamic_macro.h ****  */
+  92:./quantum/dynamic_macro.h **** void dynamic_macro_play(
+  93:./quantum/dynamic_macro.h ****     keyrecord_t *macro_buffer, keyrecord_t *macro_end, int8_t direction)
+  94:./quantum/dynamic_macro.h **** {
+ 105               		.loc 1 94 0
+ 106               		.cfi_startproc
+ 107               	.LVL8:
+ 108 0000 AF92      		push r10
+ 109               	.LCFI4:
+ 110               		.cfi_def_cfa_offset 3
+ 111               		.cfi_offset 10, -2
+ 112 0002 BF92      		push r11
+ 113               	.LCFI5:
+ 114               		.cfi_def_cfa_offset 4
+ 115               		.cfi_offset 11, -3
+ 116 0004 CF92      		push r12
+ 117               	.LCFI6:
+ 118               		.cfi_def_cfa_offset 5
+ 119               		.cfi_offset 12, -4
+ 120 0006 DF92      		push r13
+ 121               	.LCFI7:
+ 122               		.cfi_def_cfa_offset 6
+ 123               		.cfi_offset 13, -5
+ 124 0008 EF92      		push r14
+ 125               	.LCFI8:
+ 126               		.cfi_def_cfa_offset 7
+ 127               		.cfi_offset 14, -6
+ 128 000a FF92      		push r15
+ 129               	.LCFI9:
+ 130               		.cfi_def_cfa_offset 8
+ 131               		.cfi_offset 15, -7
+ 132 000c 0F93      		push r16
+ 133               	.LCFI10:
+ 134               		.cfi_def_cfa_offset 9
+ 135               		.cfi_offset 16, -8
+ 136 000e 1F93      		push r17
+ 137               	.LCFI11:
+ 138               		.cfi_def_cfa_offset 10
+ 139               		.cfi_offset 17, -9
+ 140 0010 CF93      		push r28
+ 141               	.LCFI12:
+ 142               		.cfi_def_cfa_offset 11
+ 143               		.cfi_offset 28, -10
+ 144 0012 DF93      		push r29
+ 145               	.LCFI13:
+ 146               		.cfi_def_cfa_offset 12
+ 147               		.cfi_offset 29, -11
+ 148               	/* prologue: function */
+ 149               	/* frame size = 0 */
+ 150               	/* stack size = 10 */
+ 151               	.L__stack_usage = 10
+ 152 0014 EC01      		movw r28,r24
+ 153 0016 5B01      		movw r10,r22
+ 154 0018 042F      		mov r16,r20
+  95:./quantum/dynamic_macro.h ****     dprintf("dynamic macro: slot %d playback\n", DYNAMIC_MACRO_CURRENT_SLOT());
+  96:./quantum/dynamic_macro.h **** 
+  97:./quantum/dynamic_macro.h ****     uint32_t saved_layer_state = layer_state;
+ 155               		.loc 1 97 0
+ 156 001a C090 0000 		lds r12,layer_state
+ 157 001e D090 0000 		lds r13,layer_state+1
+ 158 0022 E090 0000 		lds r14,layer_state+2
+ 159 0026 F090 0000 		lds r15,layer_state+3
+ 160               	.LVL9:
+  98:./quantum/dynamic_macro.h **** 
+  99:./quantum/dynamic_macro.h ****     clear_keyboard();
+ 161               		.loc 1 99 0
+ 162 002a 0E94 0000 		call clear_keyboard
+ 163               	.LVL10:
+ 100:./quantum/dynamic_macro.h ****     layer_clear();
+ 164               		.loc 1 100 0
+ 165 002e 0E94 0000 		call layer_clear
+ 166               	.LVL11:
+ 101:./quantum/dynamic_macro.h **** 
+ 102:./quantum/dynamic_macro.h ****     while (macro_buffer != macro_end) {
+ 103:./quantum/dynamic_macro.h ****         process_record(macro_buffer);
+ 104:./quantum/dynamic_macro.h ****         macro_buffer += direction;
+ 167               		.loc 1 104 0
+ 168 0032 86E0      		ldi r24,lo8(6)
+ 169 0034 0802      		muls r16,r24
+ 170 0036 8001      		movw r16,r0
+ 171 0038 1124      		clr __zero_reg__
+ 172               	.LVL12:
+ 173               	.L4:
+ 102:./quantum/dynamic_macro.h ****         process_record(macro_buffer);
+ 174               		.loc 1 102 0
+ 175 003a CA15      		cp r28,r10
+ 176 003c DB05      		cpc r29,r11
+ 177 003e 01F0      		breq .L7
+ 103:./quantum/dynamic_macro.h ****         macro_buffer += direction;
+ 178               		.loc 1 103 0
+ 179 0040 CE01      		movw r24,r28
+ 180 0042 0E94 0000 		call process_record
+ 181               	.LVL13:
+ 182               		.loc 1 104 0
+ 183 0046 C00F      		add r28,r16
+ 184 0048 D11F      		adc r29,r17
+ 185               	.LVL14:
+ 186 004a 00C0      		rjmp .L4
+ 187               	.L7:
+ 105:./quantum/dynamic_macro.h ****     }
+ 106:./quantum/dynamic_macro.h **** 
+ 107:./quantum/dynamic_macro.h ****     clear_keyboard();
+ 188               		.loc 1 107 0
+ 189 004c 0E94 0000 		call clear_keyboard
+ 190               	.LVL15:
+ 108:./quantum/dynamic_macro.h **** 
+ 109:./quantum/dynamic_macro.h ****     layer_state = saved_layer_state;
+ 191               		.loc 1 109 0
+ 192 0050 C092 0000 		sts layer_state,r12
+ 193 0054 D092 0000 		sts layer_state+1,r13
+ 194 0058 E092 0000 		sts layer_state+2,r14
+ 195 005c F092 0000 		sts layer_state+3,r15
+ 196               	/* epilogue start */
+ 110:./quantum/dynamic_macro.h **** }
+ 197               		.loc 1 110 0
+ 198 0060 DF91      		pop r29
+ 199 0062 CF91      		pop r28
+ 200               	.LVL16:
+ 201 0064 1F91      		pop r17
+ 202 0066 0F91      		pop r16
+ 203 0068 FF90      		pop r15
+ 204 006a EF90      		pop r14
+ 205 006c DF90      		pop r13
+ 206 006e CF90      		pop r12
+ 207               	.LVL17:
+ 208 0070 BF90      		pop r11
+ 209 0072 AF90      		pop r10
+ 210               	.LVL18:
+ 211 0074 0895      		ret
+ 212               		.cfi_endproc
+ 213               	.LFE112:
+ 215               		.section	.text.dynamic_macro_record_key,"ax",@progbits
+ 216               	.global	dynamic_macro_record_key
+ 218               	dynamic_macro_record_key:
+ 219               	.LFB113:
+ 111:./quantum/dynamic_macro.h **** 
+ 112:./quantum/dynamic_macro.h **** /**
+ 113:./quantum/dynamic_macro.h ****  * Record a single key in a dynamic macro.
+ 114:./quantum/dynamic_macro.h ****  *
+ 115:./quantum/dynamic_macro.h ****  * @param macro_buffer[in] The start of the used macro buffer.
+ 116:./quantum/dynamic_macro.h ****  * @param macro_pointer[in,out] The current buffer position.
+ 117:./quantum/dynamic_macro.h ****  * @param macro2_end[in] The end of the other macro.
+ 118:./quantum/dynamic_macro.h ****  * @param direction[in]  Either +1 or -1, which way to iterate the buffer.
+ 119:./quantum/dynamic_macro.h ****  * @param record[in]     The current keypress.
+ 120:./quantum/dynamic_macro.h ****  */
+ 121:./quantum/dynamic_macro.h **** void dynamic_macro_record_key(
+ 122:./quantum/dynamic_macro.h ****     keyrecord_t *macro_buffer,
+ 123:./quantum/dynamic_macro.h ****     keyrecord_t **macro_pointer,
+ 124:./quantum/dynamic_macro.h ****     keyrecord_t *macro2_end,
+ 125:./quantum/dynamic_macro.h ****     int8_t direction,
+ 126:./quantum/dynamic_macro.h ****     keyrecord_t *record)
+ 127:./quantum/dynamic_macro.h **** {
+ 220               		.loc 1 127 0
+ 221               		.cfi_startproc
+ 222               	.LVL19:
+ 223 0000 0F93      		push r16
+ 224               	.LCFI14:
+ 225               		.cfi_def_cfa_offset 3
+ 226               		.cfi_offset 16, -2
+ 227 0002 1F93      		push r17
+ 228               	.LCFI15:
+ 229               		.cfi_def_cfa_offset 4
+ 230               		.cfi_offset 17, -3
+ 231 0004 CF93      		push r28
+ 232               	.LCFI16:
+ 233               		.cfi_def_cfa_offset 5
+ 234               		.cfi_offset 28, -4
+ 235 0006 DF93      		push r29
+ 236               	.LCFI17:
+ 237               		.cfi_def_cfa_offset 6
+ 238               		.cfi_offset 29, -5
+ 239               	/* prologue: function */
+ 240               	/* frame size = 0 */
+ 241               	/* stack size = 4 */
+ 242               	.L__stack_usage = 4
+ 243 0008 EB01      		movw r28,r22
+ 244 000a F801      		movw r30,r16
+ 128:./quantum/dynamic_macro.h ****     /* If we've just started recording, ignore all the key releases. */
+ 129:./quantum/dynamic_macro.h ****     if (!record->event.pressed && *macro_pointer == macro_buffer) {
+ 245               		.loc 1 129 0
+ 246 000c 3281      		ldd r19,Z+2
+ 247 000e A881      		ld r26,Y
+ 248 0010 B981      		ldd r27,Y+1
+ 249 0012 3111      		cpse r19,__zero_reg__
+ 250 0014 00C0      		rjmp .L9
+ 251               		.loc 1 129 0 is_stmt 0 discriminator 1
+ 252 0016 A817      		cp r26,r24
+ 253 0018 B907      		cpc r27,r25
+ 254 001a 01F0      		breq .L8
+ 255               	.L9:
+ 130:./quantum/dynamic_macro.h ****         dprintln("dynamic macro: ignoring a leading key-up event");
+ 131:./quantum/dynamic_macro.h ****         return;
+ 132:./quantum/dynamic_macro.h ****     }
+ 133:./quantum/dynamic_macro.h **** 
+ 134:./quantum/dynamic_macro.h ****     /* The other end of the other macro is the last buffer element it
+ 135:./quantum/dynamic_macro.h ****      * is safe to use before overwriting the other macro.
+ 136:./quantum/dynamic_macro.h ****      */
+ 137:./quantum/dynamic_macro.h ****     if (*macro_pointer - direction != macro2_end) {
+ 256               		.loc 1 137 0 is_stmt 1
+ 257 001c 86E0      		ldi r24,lo8(6)
+ 258               	.LVL20:
+ 259 001e 2802      		muls r18,r24
+ 260 0020 9001      		movw r18,r0
+ 261 0022 1124      		clr __zero_reg__
+ 262               	.LVL21:
+ 263 0024 CD01      		movw r24,r26
+ 264 0026 821B      		sub r24,r18
+ 265 0028 930B      		sbc r25,r19
+ 266 002a 4817      		cp r20,r24
+ 267 002c 5907      		cpc r21,r25
+ 268 002e 01F0      		breq .L11
+ 138:./quantum/dynamic_macro.h ****         **macro_pointer = *record;
+ 269               		.loc 1 138 0
+ 270 0030 86E0      		ldi r24,lo8(6)
+ 271               		0:
+ 272 0032 0190      		ld r0,Z+
+ 273 0034 0D92      		st X+,r0
+ 274 0036 8A95      		dec r24
+ 275 0038 01F4      		brne 0b
+ 139:./quantum/dynamic_macro.h ****         *macro_pointer += direction;
+ 276               		.loc 1 139 0
+ 277 003a 8881      		ld r24,Y
+ 278 003c 9981      		ldd r25,Y+1
+ 279 003e 280F      		add r18,r24
+ 280 0040 391F      		adc r19,r25
+ 281 0042 3983      		std Y+1,r19
+ 282 0044 2883      		st Y,r18
+ 283 0046 00C0      		rjmp .L8
+ 284               	.L11:
+ 285               	/* epilogue start */
+ 140:./quantum/dynamic_macro.h ****     } else {
+ 141:./quantum/dynamic_macro.h ****         dynamic_macro_led_blink();
+ 142:./quantum/dynamic_macro.h ****     }
+ 143:./quantum/dynamic_macro.h **** 
+ 144:./quantum/dynamic_macro.h ****     dprintf(
+ 145:./quantum/dynamic_macro.h ****         "dynamic macro: slot %d length: %d/%d\n",
+ 146:./quantum/dynamic_macro.h ****         DYNAMIC_MACRO_CURRENT_SLOT(),
+ 147:./quantum/dynamic_macro.h ****         DYNAMIC_MACRO_CURRENT_LENGTH(macro_buffer, *macro_pointer),
+ 148:./quantum/dynamic_macro.h ****         DYNAMIC_MACRO_CURRENT_CAPACITY(macro_buffer, macro2_end));
+ 149:./quantum/dynamic_macro.h **** }
+ 286               		.loc 1 149 0
+ 287 0048 DF91      		pop r29
+ 288 004a CF91      		pop r28
+ 289 004c 1F91      		pop r17
+ 290 004e 0F91      		pop r16
+ 291               	.LVL22:
+ 141:./quantum/dynamic_macro.h ****     }
+ 292               		.loc 1 141 0
+ 293 0050 0C94 0000 		jmp dynamic_macro_led_blink
+ 294               	.LVL23:
+ 295               	.L8:
+ 296               	/* epilogue start */
+ 297               		.loc 1 149 0
+ 298 0054 DF91      		pop r29
+ 299 0056 CF91      		pop r28
+ 300 0058 1F91      		pop r17
+ 301 005a 0F91      		pop r16
+ 302               	.LVL24:
+ 303 005c 0895      		ret
+ 304               		.cfi_endproc
+ 305               	.LFE113:
+ 307               		.section	.text.dynamic_macro_record_end,"ax",@progbits
+ 308               	.global	dynamic_macro_record_end
+ 310               	dynamic_macro_record_end:
+ 311               	.LFB114:
+ 150:./quantum/dynamic_macro.h **** 
+ 151:./quantum/dynamic_macro.h **** /**
+ 152:./quantum/dynamic_macro.h ****  * End recording of the dynamic macro. Essentially just update the
+ 153:./quantum/dynamic_macro.h ****  * pointer to the end of the macro.
+ 154:./quantum/dynamic_macro.h ****  */
+ 155:./quantum/dynamic_macro.h **** void dynamic_macro_record_end(
+ 156:./quantum/dynamic_macro.h ****     keyrecord_t *macro_buffer,
+ 157:./quantum/dynamic_macro.h ****     keyrecord_t *macro_pointer,
+ 158:./quantum/dynamic_macro.h ****     int8_t direction,
+ 159:./quantum/dynamic_macro.h ****     keyrecord_t **macro_end)
+ 160:./quantum/dynamic_macro.h **** {
+ 312               		.loc 1 160 0
+ 313               		.cfi_startproc
+ 314               	.LVL25:
+ 315 0000 EF92      		push r14
+ 316               	.LCFI18:
+ 317               		.cfi_def_cfa_offset 3
+ 318               		.cfi_offset 14, -2
+ 319 0002 FF92      		push r15
+ 320               	.LCFI19:
+ 321               		.cfi_def_cfa_offset 4
+ 322               		.cfi_offset 15, -3
+ 323 0004 0F93      		push r16
+ 324               	.LCFI20:
+ 325               		.cfi_def_cfa_offset 5
+ 326               		.cfi_offset 16, -4
+ 327 0006 1F93      		push r17
+ 328               	.LCFI21:
+ 329               		.cfi_def_cfa_offset 6
+ 330               		.cfi_offset 17, -5
+ 331 0008 CF93      		push r28
+ 332               	.LCFI22:
+ 333               		.cfi_def_cfa_offset 7
+ 334               		.cfi_offset 28, -6
+ 335 000a DF93      		push r29
+ 336               	.LCFI23:
+ 337               		.cfi_def_cfa_offset 8
+ 338               		.cfi_offset 29, -7
+ 339 000c 00D0      		rcall .
+ 340 000e 1F92      		push __zero_reg__
+ 341               	.LCFI24:
+ 342               		.cfi_def_cfa_offset 11
+ 343 0010 CDB7      		in r28,__SP_L__
+ 344 0012 DEB7      		in r29,__SP_H__
+ 345               	.LCFI25:
+ 346               		.cfi_def_cfa_register 28
+ 347               	/* prologue: function */
+ 348               	/* frame size = 3 */
+ 349               	/* stack size = 9 */
+ 350               	.L__stack_usage = 9
+ 351 0014 8C01      		movw r16,r24
+ 352 0016 7901      		movw r14,r18
+ 161:./quantum/dynamic_macro.h ****     dynamic_macro_led_blink();
+ 353               		.loc 1 161 0
+ 354 0018 4983      		std Y+1,r20
+ 355 001a 6A83      		std Y+2,r22
+ 356 001c 7B83      		std Y+3,r23
+ 357 001e 0E94 0000 		call dynamic_macro_led_blink
+ 358               	.LVL26:
+ 162:./quantum/dynamic_macro.h **** 
+ 163:./quantum/dynamic_macro.h ****     /* Do not save the keys being held when stopping the recording,
+ 164:./quantum/dynamic_macro.h ****      * i.e. the keys used to access the layer DYN_REC_STOP is on.
+ 165:./quantum/dynamic_macro.h ****      */
+ 166:./quantum/dynamic_macro.h ****     while (macro_pointer != macro_buffer &&
+ 167:./quantum/dynamic_macro.h ****            (macro_pointer - direction)->event.pressed) {
+ 359               		.loc 1 167 0
+ 360 0022 4981      		ldd r20,Y+1
+ 361 0024 86E0      		ldi r24,lo8(6)
+ 362 0026 4802      		muls r20,r24
+ 363 0028 A001      		movw r20,r0
+ 364 002a 1124      		clr __zero_reg__
+ 365 002c 6A81      		ldd r22,Y+2
+ 366 002e E62F      		mov r30,r22
+ 367 0030 7B81      		ldd r23,Y+3
+ 368 0032 F72F      		mov r31,r23
+ 369               	.LVL27:
+ 370               	.L14:
+ 371 0034 2E2F      		mov r18,r30
+ 372 0036 9F2F      		mov r25,r31
+ 373               	.LVL28:
+ 166:./quantum/dynamic_macro.h ****            (macro_pointer - direction)->event.pressed) {
+ 374               		.loc 1 166 0
+ 375 0038 E017      		cp r30,r16
+ 376 003a F107      		cpc r31,r17
+ 377 003c 01F0      		breq .L13
+ 378 003e E41B      		sub r30,r20
+ 379 0040 F50B      		sbc r31,r21
+ 380               	.LVL29:
+ 166:./quantum/dynamic_macro.h ****            (macro_pointer - direction)->event.pressed) {
+ 381               		.loc 1 166 0 is_stmt 0 discriminator 1
+ 382 0042 3281      		ldd r19,Z+2
+ 383 0044 3111      		cpse r19,__zero_reg__
+ 384 0046 00C0      		rjmp .L14
+ 385               	.L13:
+ 168:./quantum/dynamic_macro.h ****         dprintln("dynamic macro: trimming a trailing key-down event");
+ 169:./quantum/dynamic_macro.h ****         macro_pointer -= direction;
+ 170:./quantum/dynamic_macro.h ****     }
+ 171:./quantum/dynamic_macro.h **** 
+ 172:./quantum/dynamic_macro.h ****     dprintf(
+ 173:./quantum/dynamic_macro.h ****         "dynamic macro: slot %d saved, length: %d\n",
+ 174:./quantum/dynamic_macro.h ****         DYNAMIC_MACRO_CURRENT_SLOT(),
+ 175:./quantum/dynamic_macro.h ****         DYNAMIC_MACRO_CURRENT_LENGTH(macro_buffer, macro_pointer));
+ 176:./quantum/dynamic_macro.h **** 
+ 177:./quantum/dynamic_macro.h ****     *macro_end = macro_pointer;
+ 386               		.loc 1 177 0 is_stmt 1
+ 387 0048 F701      		movw r30,r14
+ 388 004a 2083      		st Z,r18
+ 389 004c 9183      		std Z+1,r25
+ 390               	/* epilogue start */
+ 178:./quantum/dynamic_macro.h **** }
+ 391               		.loc 1 178 0
+ 392 004e 0F90      		pop __tmp_reg__
+ 393 0050 0F90      		pop __tmp_reg__
+ 394 0052 0F90      		pop __tmp_reg__
+ 395 0054 DF91      		pop r29
+ 396 0056 CF91      		pop r28
+ 397 0058 1F91      		pop r17
+ 398 005a 0F91      		pop r16
+ 399               	.LVL30:
+ 400 005c FF90      		pop r15
+ 401 005e EF90      		pop r14
+ 402               	.LVL31:
+ 403 0060 0895      		ret
+ 404               		.cfi_endproc
+ 405               	.LFE114:
+ 407               		.section	.text.process_record_dynamic_macro,"ax",@progbits
+ 408               	.global	process_record_dynamic_macro
+ 410               	process_record_dynamic_macro:
+ 411               	.LFB115:
+ 179:./quantum/dynamic_macro.h **** 
+ 180:./quantum/dynamic_macro.h **** /* Handle the key events related to the dynamic macros. Should be
+ 181:./quantum/dynamic_macro.h ****  * called from process_record_user() like this:
+ 182:./quantum/dynamic_macro.h ****  *
+ 183:./quantum/dynamic_macro.h ****  *   bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+ 184:./quantum/dynamic_macro.h ****  *       if (!process_record_dynamic_macro(keycode, record)) {
+ 185:./quantum/dynamic_macro.h ****  *           return false;
+ 186:./quantum/dynamic_macro.h ****  *       }
+ 187:./quantum/dynamic_macro.h ****  *       <...THE REST OF THE FUNCTION...>
+ 188:./quantum/dynamic_macro.h ****  *   }
+ 189:./quantum/dynamic_macro.h ****  */
+ 190:./quantum/dynamic_macro.h **** bool process_record_dynamic_macro(uint16_t keycode, keyrecord_t *record)
+ 191:./quantum/dynamic_macro.h **** {
+ 412               		.loc 1 191 0
+ 413               		.cfi_startproc
+ 414               	.LVL32:
+ 415 0000 0F93      		push r16
+ 416               	.LCFI26:
+ 417               		.cfi_def_cfa_offset 3
+ 418               		.cfi_offset 16, -2
+ 419 0002 1F93      		push r17
+ 420               	.LCFI27:
+ 421               		.cfi_def_cfa_offset 4
+ 422               		.cfi_offset 17, -3
+ 423 0004 CF93      		push r28
+ 424               	.LCFI28:
+ 425               		.cfi_def_cfa_offset 5
+ 426               		.cfi_offset 28, -4
+ 427               	/* prologue: function */
+ 428               	/* frame size = 0 */
+ 429               	/* stack size = 3 */
+ 430               	.L__stack_usage = 3
+ 431 0006 8B01      		movw r16,r22
+ 192:./quantum/dynamic_macro.h ****     /* Both macros use the same buffer but read/write on different
+ 193:./quantum/dynamic_macro.h ****      * ends of it.
+ 194:./quantum/dynamic_macro.h ****      *
+ 195:./quantum/dynamic_macro.h ****      * Macro1 is written left-to-right starting from the beginning of
+ 196:./quantum/dynamic_macro.h ****      * the buffer.
+ 197:./quantum/dynamic_macro.h ****      *
+ 198:./quantum/dynamic_macro.h ****      * Macro2 is written right-to-left starting from the end of the
+ 199:./quantum/dynamic_macro.h ****      * buffer.
+ 200:./quantum/dynamic_macro.h ****      *
+ 201:./quantum/dynamic_macro.h ****      * &macro_buffer   macro_end
+ 202:./quantum/dynamic_macro.h ****      *  v                   v
+ 203:./quantum/dynamic_macro.h ****      * +------------------------------------------------------------+
+ 204:./quantum/dynamic_macro.h ****      * |>>>>>> MACRO1 >>>>>>      <<<<<<<<<<<<< MACRO2 <<<<<<<<<<<<<|
+ 205:./quantum/dynamic_macro.h ****      * +------------------------------------------------------------+
+ 206:./quantum/dynamic_macro.h ****      *                           ^                                 ^
+ 207:./quantum/dynamic_macro.h ****      *                         r_macro_end                  r_macro_buffer
+ 208:./quantum/dynamic_macro.h ****      *
+ 209:./quantum/dynamic_macro.h ****      * During the recording when one macro encounters the end of the
+ 210:./quantum/dynamic_macro.h ****      * other macro, the recording is stopped. Apart from this, there
+ 211:./quantum/dynamic_macro.h ****      * are no arbitrary limits for the macros' length in relation to
+ 212:./quantum/dynamic_macro.h ****      * each other: for example one can either have two medium sized
+ 213:./quantum/dynamic_macro.h ****      * macros or one long macro and one short macro. Or even one empty
+ 214:./quantum/dynamic_macro.h ****      * and one using the whole buffer.
+ 215:./quantum/dynamic_macro.h ****      */
+ 216:./quantum/dynamic_macro.h ****     static keyrecord_t macro_buffer[DYNAMIC_MACRO_SIZE];
+ 217:./quantum/dynamic_macro.h **** 
+ 218:./quantum/dynamic_macro.h ****     /* Pointer to the first buffer element after the first macro.
+ 219:./quantum/dynamic_macro.h ****      * Initially points to the very beginning of the buffer since the
+ 220:./quantum/dynamic_macro.h ****      * macro is empty. */
+ 221:./quantum/dynamic_macro.h ****     static keyrecord_t *macro_end = macro_buffer;
+ 222:./quantum/dynamic_macro.h **** 
+ 223:./quantum/dynamic_macro.h ****     /* The other end of the macro buffer. Serves as the beginning of
+ 224:./quantum/dynamic_macro.h ****      * the second macro. */
+ 225:./quantum/dynamic_macro.h ****     static keyrecord_t *const r_macro_buffer = macro_buffer + DYNAMIC_MACRO_SIZE - 1;
+ 226:./quantum/dynamic_macro.h **** 
+ 227:./quantum/dynamic_macro.h ****     /* Like macro_end but for the second macro. */
+ 228:./quantum/dynamic_macro.h ****     static keyrecord_t *r_macro_end = r_macro_buffer;
+ 229:./quantum/dynamic_macro.h **** 
+ 230:./quantum/dynamic_macro.h ****     /* A persistent pointer to the current macro position (iterator)
+ 231:./quantum/dynamic_macro.h ****      * used during the recording. */
+ 232:./quantum/dynamic_macro.h ****     static keyrecord_t *macro_pointer = NULL;
+ 233:./quantum/dynamic_macro.h **** 
+ 234:./quantum/dynamic_macro.h ****     /* 0   - no macro is being recorded right now
+ 235:./quantum/dynamic_macro.h ****      * 1,2 - either macro 1 or 2 is being recorded */
+ 236:./quantum/dynamic_macro.h ****     static uint8_t macro_id = 0;
+ 237:./quantum/dynamic_macro.h **** 
+ 238:./quantum/dynamic_macro.h ****     if (macro_id == 0) {
+ 432               		.loc 1 238 0
+ 433 0008 2091 0000 		lds r18,macro_id.5624
+ 434 000c 2111      		cpse r18,__zero_reg__
+ 435 000e 00C0      		rjmp .L17
+ 239:./quantum/dynamic_macro.h ****         /* No macro recording in progress. */
+ 240:./quantum/dynamic_macro.h ****         if (!record->event.pressed) {
+ 436               		.loc 1 240 0
+ 437 0010 FB01      		movw r30,r22
+ 438 0012 C281      		ldd r28,Z+2
+ 439 0014 C111      		cpse r28,__zero_reg__
+ 440 0016 00C0      		rjmp .L18
+ 241:./quantum/dynamic_macro.h ****             switch (keycode) {
+ 441               		.loc 1 241 0
+ 442 0018 8130      		cpi r24,1
+ 443 001a 9105      		cpc r25,__zero_reg__
+ 444 001c 01F0      		breq .L19
+ 445 001e 00F0      		brlo .L20
+ 446 0020 8330      		cpi r24,3
+ 447 0022 9105      		cpc r25,__zero_reg__
+ 448 0024 01F0      		breq .L21
+ 449 0026 0497      		sbiw r24,4
+ 450 0028 01F0      		breq .+2
+ 451 002a 00C0      		rjmp .L38
+ 242:./quantum/dynamic_macro.h ****             case DYN_REC_START1:
+ 243:./quantum/dynamic_macro.h ****                 dynamic_macro_record_start(&macro_pointer, macro_buffer);
+ 244:./quantum/dynamic_macro.h ****                 macro_id = 1;
+ 245:./quantum/dynamic_macro.h ****                 return false;
+ 246:./quantum/dynamic_macro.h ****             case DYN_REC_START2:
+ 247:./quantum/dynamic_macro.h ****                 dynamic_macro_record_start(&macro_pointer, r_macro_buffer);
+ 248:./quantum/dynamic_macro.h ****                 macro_id = 2;
+ 249:./quantum/dynamic_macro.h ****                 return false;
+ 250:./quantum/dynamic_macro.h ****             case DYN_MACRO_PLAY1:
+ 251:./quantum/dynamic_macro.h ****                 dynamic_macro_play(macro_buffer, macro_end, +1);
+ 252:./quantum/dynamic_macro.h ****                 return false;
+ 253:./quantum/dynamic_macro.h ****             case DYN_MACRO_PLAY2:
+ 254:./quantum/dynamic_macro.h ****                 dynamic_macro_play(r_macro_buffer, r_macro_end, -1);
+ 452               		.loc 1 254 0
+ 453 002c 6091 0000 		lds r22,r_macro_end.5622
+ 454 0030 7091 0000 		lds r23,r_macro_end.5622+1
+ 455               	.LVL33:
+ 456 0034 4FEF      		ldi r20,lo8(-1)
+ 457 0036 80E0      		ldi r24,lo8(macro_buffer.5619+762)
+ 458 0038 90E0      		ldi r25,hi8(macro_buffer.5619+762)
+ 459               	.LVL34:
+ 460 003a 00C0      		rjmp .L41
+ 461               	.LVL35:
+ 462               	.L20:
+ 243:./quantum/dynamic_macro.h ****                 macro_id = 1;
+ 463               		.loc 1 243 0
+ 464 003c 60E0      		ldi r22,lo8(macro_buffer.5619)
+ 465 003e 70E0      		ldi r23,hi8(macro_buffer.5619)
+ 466 0040 80E0      		ldi r24,lo8(macro_pointer.5623)
+ 467 0042 90E0      		ldi r25,hi8(macro_pointer.5623)
+ 468               	.LVL36:
+ 469 0044 0E94 0000 		call dynamic_macro_record_start
+ 470               	.LVL37:
+ 244:./quantum/dynamic_macro.h ****                 return false;
+ 471               		.loc 1 244 0
+ 472 0048 81E0      		ldi r24,lo8(1)
+ 473 004a 00C0      		rjmp .L40
+ 474               	.LVL38:
+ 475               	.L19:
+ 247:./quantum/dynamic_macro.h ****                 macro_id = 2;
+ 476               		.loc 1 247 0
+ 477 004c 60E0      		ldi r22,lo8(macro_buffer.5619+762)
+ 478 004e 70E0      		ldi r23,hi8(macro_buffer.5619+762)
+ 479 0050 80E0      		ldi r24,lo8(macro_pointer.5623)
+ 480 0052 90E0      		ldi r25,hi8(macro_pointer.5623)
+ 481               	.LVL39:
+ 482 0054 0E94 0000 		call dynamic_macro_record_start
+ 483               	.LVL40:
+ 248:./quantum/dynamic_macro.h ****                 return false;
+ 484               		.loc 1 248 0
+ 485 0058 82E0      		ldi r24,lo8(2)
+ 486               	.L40:
+ 487 005a 8093 0000 		sts macro_id.5624,r24
+ 249:./quantum/dynamic_macro.h ****             case DYN_MACRO_PLAY1:
+ 488               		.loc 1 249 0
+ 489 005e 00C0      		rjmp .L18
+ 490               	.LVL41:
+ 491               	.L21:
+ 251:./quantum/dynamic_macro.h ****                 return false;
+ 492               		.loc 1 251 0
+ 493 0060 6091 0000 		lds r22,macro_end.5620
+ 494 0064 7091 0000 		lds r23,macro_end.5620+1
+ 495 0068 41E0      		ldi r20,lo8(1)
+ 496 006a 80E0      		ldi r24,lo8(macro_buffer.5619)
+ 497 006c 90E0      		ldi r25,hi8(macro_buffer.5619)
+ 498               	.LVL42:
+ 499               	.L41:
+ 500               		.loc 1 254 0
+ 501 006e 0E94 0000 		call dynamic_macro_play
+ 502               	.LVL43:
+ 255:./quantum/dynamic_macro.h ****                 return false;
+ 503               		.loc 1 255 0
+ 504 0072 00C0      		rjmp .L18
+ 505               	.LVL44:
+ 506               	.L17:
+ 256:./quantum/dynamic_macro.h ****             }
+ 257:./quantum/dynamic_macro.h ****         }
+ 258:./quantum/dynamic_macro.h ****     } else {
+ 259:./quantum/dynamic_macro.h ****         /* A macro is being recorded right now. */
+ 260:./quantum/dynamic_macro.h ****         switch (keycode) {
+ 507               		.loc 1 260 0
+ 508 0074 8230      		cpi r24,2
+ 509 0076 9105      		cpc r25,__zero_reg__
+ 510 0078 01F0      		breq .L24
+ 511 007a 00F0      		brlo .L23
+ 512 007c 0597      		sbiw r24,5
+ 513 007e 00F0      		brlo .L37
+ 514 0080 00C0      		rjmp .L23
+ 515               	.L24:
+ 261:./quantum/dynamic_macro.h ****         case DYN_REC_STOP:
+ 262:./quantum/dynamic_macro.h ****             /* Stop the macro recording. */
+ 263:./quantum/dynamic_macro.h ****             if (record->event.pressed) { /* Ignore the initial release
+ 516               		.loc 1 263 0
+ 517 0082 FB01      		movw r30,r22
+ 518 0084 C281      		ldd r28,Z+2
+ 519 0086 CC23      		tst r28
+ 520 0088 01F0      		breq .L18
+ 264:./quantum/dynamic_macro.h ****                                           * just after the recoding
+ 265:./quantum/dynamic_macro.h ****                                           * starts. */
+ 266:./quantum/dynamic_macro.h ****                 switch (macro_id) {
+ 521               		.loc 1 266 0
+ 522 008a 2130      		cpi r18,lo8(1)
+ 523 008c 01F0      		breq .L26
+ 524 008e 2230      		cpi r18,lo8(2)
+ 525 0090 01F4      		brne .L25
+ 267:./quantum/dynamic_macro.h ****                 case 1:
+ 268:./quantum/dynamic_macro.h ****                     dynamic_macro_record_end(macro_buffer, macro_pointer, +1, &macro_end);
+ 269:./quantum/dynamic_macro.h ****                     break;
+ 270:./quantum/dynamic_macro.h ****                 case 2:
+ 271:./quantum/dynamic_macro.h ****                     dynamic_macro_record_end(r_macro_buffer, macro_pointer, -1, &r_macro_end);
+ 526               		.loc 1 271 0
+ 527 0092 6091 0000 		lds r22,macro_pointer.5623
+ 528 0096 7091 0000 		lds r23,macro_pointer.5623+1
+ 529 009a 20E0      		ldi r18,lo8(r_macro_end.5622)
+ 530 009c 30E0      		ldi r19,hi8(r_macro_end.5622)
+ 531 009e 4FEF      		ldi r20,lo8(-1)
+ 532 00a0 80E0      		ldi r24,lo8(macro_buffer.5619+762)
+ 533 00a2 90E0      		ldi r25,hi8(macro_buffer.5619+762)
+ 534               	.LVL45:
+ 535 00a4 00C0      		rjmp .L39
+ 536               	.LVL46:
+ 537               	.L26:
+ 268:./quantum/dynamic_macro.h ****                     break;
+ 538               		.loc 1 268 0
+ 539 00a6 6091 0000 		lds r22,macro_pointer.5623
+ 540 00aa 7091 0000 		lds r23,macro_pointer.5623+1
+ 541 00ae 20E0      		ldi r18,lo8(macro_end.5620)
+ 542 00b0 30E0      		ldi r19,hi8(macro_end.5620)
+ 543 00b2 41E0      		ldi r20,lo8(1)
+ 544 00b4 80E0      		ldi r24,lo8(macro_buffer.5619)
+ 545 00b6 90E0      		ldi r25,hi8(macro_buffer.5619)
+ 546               	.LVL47:
+ 547               	.L39:
+ 548               		.loc 1 271 0
+ 549 00b8 0E94 0000 		call dynamic_macro_record_end
+ 550               	.LVL48:
+ 551               	.L25:
+ 272:./quantum/dynamic_macro.h ****                     break;
+ 273:./quantum/dynamic_macro.h ****                 }
+ 274:./quantum/dynamic_macro.h ****                 macro_id = 0;
+ 552               		.loc 1 274 0
+ 553 00bc 1092 0000 		sts macro_id.5624,__zero_reg__
+ 554 00c0 00C0      		rjmp .L37
+ 555               	.LVL49:
+ 556               	.L23:
+ 275:./quantum/dynamic_macro.h ****             }
+ 276:./quantum/dynamic_macro.h ****             return false;
+ 277:./quantum/dynamic_macro.h ****         case DYN_MACRO_PLAY1:
+ 278:./quantum/dynamic_macro.h ****         case DYN_MACRO_PLAY2:
+ 279:./quantum/dynamic_macro.h ****             dprintln("dynamic macro: ignoring macro play key while recording");
+ 280:./quantum/dynamic_macro.h ****             return false;
+ 281:./quantum/dynamic_macro.h ****         default:
+ 282:./quantum/dynamic_macro.h ****             /* Store the key in the macro buffer and process it normally. */
+ 283:./quantum/dynamic_macro.h ****             switch (macro_id) {
+ 557               		.loc 1 283 0
+ 558 00c2 2130      		cpi r18,lo8(1)
+ 559 00c4 01F0      		breq .L28
+ 560 00c6 2230      		cpi r18,lo8(2)
+ 561 00c8 01F4      		brne .L38
+ 284:./quantum/dynamic_macro.h ****             case 1:
+ 285:./quantum/dynamic_macro.h ****                 dynamic_macro_record_key(macro_buffer, &macro_pointer, r_macro_end, +1, record);
+ 286:./quantum/dynamic_macro.h ****                 break;
+ 287:./quantum/dynamic_macro.h ****             case 2:
+ 288:./quantum/dynamic_macro.h ****                 dynamic_macro_record_key(r_macro_buffer, &macro_pointer, macro_end, -1, record);
+ 562               		.loc 1 288 0
+ 563 00ca 4091 0000 		lds r20,macro_end.5620
+ 564 00ce 5091 0000 		lds r21,macro_end.5620+1
+ 565 00d2 2FEF      		ldi r18,lo8(-1)
+ 566 00d4 60E0      		ldi r22,lo8(macro_pointer.5623)
+ 567 00d6 70E0      		ldi r23,hi8(macro_pointer.5623)
+ 568 00d8 80E0      		ldi r24,lo8(macro_buffer.5619+762)
+ 569 00da 90E0      		ldi r25,hi8(macro_buffer.5619+762)
+ 570               	.LVL50:
+ 571 00dc 00C0      		rjmp .L42
+ 572               	.LVL51:
+ 573               	.L28:
+ 285:./quantum/dynamic_macro.h ****                 break;
+ 574               		.loc 1 285 0
+ 575 00de 4091 0000 		lds r20,r_macro_end.5622
+ 576 00e2 5091 0000 		lds r21,r_macro_end.5622+1
+ 577 00e6 21E0      		ldi r18,lo8(1)
+ 578 00e8 60E0      		ldi r22,lo8(macro_pointer.5623)
+ 579 00ea 70E0      		ldi r23,hi8(macro_pointer.5623)
+ 580 00ec 80E0      		ldi r24,lo8(macro_buffer.5619)
+ 581 00ee 90E0      		ldi r25,hi8(macro_buffer.5619)
+ 582               	.LVL52:
+ 583               	.L42:
+ 584               		.loc 1 288 0
+ 585 00f0 0E94 0000 		call dynamic_macro_record_key
+ 586               	.LVL53:
+ 587 00f4 00C0      		rjmp .L38
+ 588               	.L37:
+ 280:./quantum/dynamic_macro.h ****         default:
+ 589               		.loc 1 280 0
+ 590 00f6 C0E0      		ldi r28,0
+ 591 00f8 00C0      		rjmp .L18
+ 592               	.L38:
+ 289:./quantum/dynamic_macro.h ****                 break;
+ 290:./quantum/dynamic_macro.h ****             }
+ 291:./quantum/dynamic_macro.h ****             return true;
+ 593               		.loc 1 291 0
+ 594 00fa C1E0      		ldi r28,lo8(1)
+ 595               	.L18:
+ 292:./quantum/dynamic_macro.h ****             break;
+ 293:./quantum/dynamic_macro.h ****         }
+ 294:./quantum/dynamic_macro.h ****     }
+ 295:./quantum/dynamic_macro.h **** 
+ 296:./quantum/dynamic_macro.h ****     return true;
+ 297:./quantum/dynamic_macro.h **** }
+ 596               		.loc 1 297 0
+ 597 00fc 8C2F      		mov r24,r28
+ 598               	/* epilogue start */
+ 599 00fe CF91      		pop r28
+ 600 0100 1F91      		pop r17
+ 601 0102 0F91      		pop r16
+ 602               	.LVL54:
+ 603 0104 0895      		ret
+ 604               		.cfi_endproc
+ 605               	.LFE115:
+ 607               		.section	.text.action_get_macro,"ax",@progbits
+ 608               	.global	action_get_macro
+ 610               	action_get_macro:
+ 611               	.LFB116:
+ 612               		.file 3 "keyboards/dz60/keymaps/default/keymap.c"
+   1:keyboards/dz60/keymaps/default/keymap.c **** enum planck_keycodes {
+   2:keyboards/dz60/keymaps/default/keymap.c ****     DYNAMIC_MACRO_RANGE,
+   3:keyboards/dz60/keymaps/default/keymap.c **** };
+   4:keyboards/dz60/keymaps/default/keymap.c **** 
+   5:keyboards/dz60/keymaps/default/keymap.c **** #include "dz60.h"
+   6:keyboards/dz60/keymaps/default/keymap.c **** #include "secret.h"
+   7:keyboards/dz60/keymaps/default/keymap.c **** #include "dynamic_macro.h"
+   8:keyboards/dz60/keymaps/default/keymap.c **** 
+   9:keyboards/dz60/keymaps/default/keymap.c **** // layers
+  10:keyboards/dz60/keymaps/default/keymap.c **** #define _BL 0 // base layer
+  11:keyboards/dz60/keymaps/default/keymap.c **** #define _FL 1 // function layer
+  12:keyboards/dz60/keymaps/default/keymap.c **** #define _LL 2 // lighting layer
+  13:keyboards/dz60/keymaps/default/keymap.c **** #define _ML 3 // macro layer
+  14:keyboards/dz60/keymaps/default/keymap.c **** 
+  15:keyboards/dz60/keymaps/default/keymap.c **** // macros
+  16:keyboards/dz60/keymaps/default/keymap.c **** #define M_FX 0 // firefox master
+  17:keyboards/dz60/keymaps/default/keymap.c **** 
+  18:keyboards/dz60/keymaps/default/keymap.c **** // readability
+  19:keyboards/dz60/keymaps/default/keymap.c **** #define _______ KC_TRNS
+  20:keyboards/dz60/keymaps/default/keymap.c **** #define ___X___ KC_NO
+  21:keyboards/dz60/keymaps/default/keymap.c **** #define FN_CAPS LT(_FL, KC_CAPS)
+  22:keyboards/dz60/keymaps/default/keymap.c **** #define RGB_SWL RGB_M_SW
+  23:keyboards/dz60/keymaps/default/keymap.c **** #define RGB_SNK RGB_M_SN
+  24:keyboards/dz60/keymaps/default/keymap.c **** #define RGB_PLN RGB_M_P
+  25:keyboards/dz60/keymaps/default/keymap.c **** #define RGB_BTH RGB_M_B
+  26:keyboards/dz60/keymaps/default/keymap.c **** #define RGB_RNB RGB_M_R
+  27:keyboards/dz60/keymaps/default/keymap.c **** #define MAC_RC1 DYN_REC_START1
+  28:keyboards/dz60/keymaps/default/keymap.c **** #define MAC_RC2 DYN_REC_START2
+  29:keyboards/dz60/keymaps/default/keymap.c **** #define MAC_PL1 DYN_MACRO_PLAY1
+  30:keyboards/dz60/keymaps/default/keymap.c **** #define MAC_PL2 DYN_MACRO_PLAY2
+  31:keyboards/dz60/keymaps/default/keymap.c **** #define MAC_STP DYN_REC_STOP
+  32:keyboards/dz60/keymaps/default/keymap.c **** 
+  33:keyboards/dz60/keymaps/default/keymap.c **** const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+  34:keyboards/dz60/keymaps/default/keymap.c ****     [_BL] = KEYMAP(
+  35:keyboards/dz60/keymaps/default/keymap.c ****         KC_ESC  , KC_1    , KC_2    , KC_3    , KC_4    , KC_5    , KC_6    , KC_7    , KC_8    , K
+  36:keyboards/dz60/keymaps/default/keymap.c ****         KC_TAB  , KC_Q    , KC_W    , KC_E    , KC_R    , KC_T    , KC_Y    , KC_U    , KC_I    , K
+  37:keyboards/dz60/keymaps/default/keymap.c ****         FN_CAPS , KC_A    , KC_S    , KC_D    , KC_F    , KC_G    , KC_H    , KC_J    , KC_K    , K
+  38:keyboards/dz60/keymaps/default/keymap.c ****         KC_LSFT , KC_NUBS , KC_Z    , KC_X    , KC_C    , KC_V    , KC_B    , KC_N    , KC_M    , K
+  39:keyboards/dz60/keymaps/default/keymap.c ****         KC_LCTL , KC_LGUI , KC_LALT , KC_SPC  , MO(_FL) , MO(_ML) , KC_RALT , KC_RGUI , MO(_LL) , K
+  40:keyboards/dz60/keymaps/default/keymap.c ****     ),
+  41:keyboards/dz60/keymaps/default/keymap.c ****     [_FL] = KEYMAP(
+  42:keyboards/dz60/keymaps/default/keymap.c ****         KC_GRV  , KC_F1   , KC_F2   , KC_F3   , KC_F4   , KC_F5   , KC_F6   , KC_F7   , KC_F8   , K
+  43:keyboards/dz60/keymaps/default/keymap.c ****         _______ , RESET   , KC_UP   , _______ , KC_BTN1 , KC_MS_U , KC_BTN2 , _______ , KC_UP   , _
+  44:keyboards/dz60/keymaps/default/keymap.c ****         _______ , KC_LEFT , KC_DOWN , KC_RGHT , KC_MS_L , KC_MS_D , KC_MS_R , KC_LEFT , KC_DOWN , K
+  45:keyboards/dz60/keymaps/default/keymap.c ****         _______ , M(M_FX) , MAC_PL1 , _______ , _______ , _______ , KC_VOLD , KC_VOLU , KC_MUTE , K
+  46:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , _______ , KC_PGDN , _______ , KC_PGUP , _______ , _______ , _______ , _
+  47:keyboards/dz60/keymaps/default/keymap.c ****     ),
+  48:keyboards/dz60/keymaps/default/keymap.c ****     [_LL] = KEYMAP(
+  49:keyboards/dz60/keymaps/default/keymap.c ****         RGB_TOG , RGB_PLN , RGB_BTH , RGB_RNB , RGB_SWL , RGB_SNK , _______ , _______ , _______ , _
+  50:keyboards/dz60/keymaps/default/keymap.c ****         RGB_MOD , RGB_HUI , RGB_SAI , RGB_VAI , _______ , _______ , _______ , _______ , _______ , _
+  51:keyboards/dz60/keymaps/default/keymap.c ****         _______ , RGB_HUD , RGB_SAD , RGB_VAD , _______ , _______ , _______ , _______ , _______ , _
+  52:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _
+  53:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _
+  54:keyboards/dz60/keymaps/default/keymap.c ****     ),
+  55:keyboards/dz60/keymaps/default/keymap.c ****     [_ML] = KEYMAP(
+  56:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _
+  57:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _
+  58:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _
+  59:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , MAC_RC1 , _______ , _______ , _______ , _______ , _______ , _______ , _
+  60:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _
+  61:keyboards/dz60/keymaps/default/keymap.c ****     )
+  62:keyboards/dz60/keymaps/default/keymap.c **** };
+  63:keyboards/dz60/keymaps/default/keymap.c **** 
+  64:keyboards/dz60/keymaps/default/keymap.c **** const macro_t *action_get_macro(keyrecord_t *record , uint8_t id , uint8_t opt) {
+ 613               		.loc 3 64 0
+ 614               		.cfi_startproc
+ 615               	.LVL55:
+ 616               	/* prologue: function */
+ 617               	/* frame size = 0 */
+ 618               	/* stack size = 0 */
+ 619               	.L__stack_usage = 0
+  65:keyboards/dz60/keymaps/default/keymap.c ****     keyevent_t event = record->event;
+  66:keyboards/dz60/keymaps/default/keymap.c ****     if (event.pressed) {
+ 620               		.loc 3 66 0
+ 621 0000 FC01      		movw r30,r24
+ 622 0002 8281      		ldd r24,Z+2
+ 623               	.LVL56:
+ 624 0004 8823      		tst r24
+ 625 0006 01F0      		breq .L44
+  67:keyboards/dz60/keymaps/default/keymap.c ****         switch (id) {
+ 626               		.loc 3 67 0
+ 627 0008 6111      		cpse r22,__zero_reg__
+ 628 000a 00C0      		rjmp .L44
+  68:keyboards/dz60/keymaps/default/keymap.c ****             case M_FX:
+  69:keyboards/dz60/keymaps/default/keymap.c ****                 SEND_STRING(SEC_FF_MASTER);
+ 629               		.loc 3 69 0
+ 630 000c 80E0      		ldi r24,lo8(__c.5647)
+ 631 000e 90E0      		ldi r25,hi8(__c.5647)
+ 632               	.LVL57:
+ 633 0010 0E94 0000 		call send_string_P
+ 634               	.LVL58:
+ 635               	.L44:
+  70:keyboards/dz60/keymaps/default/keymap.c ****                 return false;
+  71:keyboards/dz60/keymaps/default/keymap.c ****         }
+  72:keyboards/dz60/keymaps/default/keymap.c ****     }
+  73:keyboards/dz60/keymaps/default/keymap.c ****     return MACRO_NONE;
+  74:keyboards/dz60/keymaps/default/keymap.c **** }
+ 636               		.loc 3 74 0
+ 637 0014 80E0      		ldi r24,0
+ 638 0016 90E0      		ldi r25,0
+ 639 0018 0895      		ret
+ 640               		.cfi_endproc
+ 641               	.LFE116:
+ 643               		.section	.text.matrix_init_user,"ax",@progbits
+ 644               	.global	matrix_init_user
+ 646               	matrix_init_user:
+ 647               	.LFB117:
+  75:keyboards/dz60/keymaps/default/keymap.c **** 
+  76:keyboards/dz60/keymaps/default/keymap.c **** void matrix_init_user(void) {
+ 648               		.loc 3 76 0
+ 649               		.cfi_startproc
+ 650               	/* prologue: function */
+ 651               	/* frame size = 0 */
+ 652               	/* stack size = 0 */
+ 653               	.L__stack_usage = 0
+ 654 0000 0895      		ret
+ 655               		.cfi_endproc
+ 656               	.LFE117:
+ 658               		.section	.text.matrix_scan_user,"ax",@progbits
+ 659               	.global	matrix_scan_user
+ 661               	matrix_scan_user:
+ 662               	.LFB118:
+  77:keyboards/dz60/keymaps/default/keymap.c **** }
+  78:keyboards/dz60/keymaps/default/keymap.c **** 
+  79:keyboards/dz60/keymaps/default/keymap.c **** void matrix_scan_user(void) {
+ 663               		.loc 3 79 0
+ 664               		.cfi_startproc
+ 665               	/* prologue: function */
+ 666               	/* frame size = 0 */
+ 667               	/* stack size = 0 */
+ 668               	.L__stack_usage = 0
+ 669 0000 0895      		ret
+ 670               		.cfi_endproc
+ 671               	.LFE118:
+ 673               		.section	.text.process_record_user,"ax",@progbits
+ 674               	.global	process_record_user
+ 676               	process_record_user:
+ 677               	.LFB119:
+  80:keyboards/dz60/keymaps/default/keymap.c **** }
+  81:keyboards/dz60/keymaps/default/keymap.c **** 
+  82:keyboards/dz60/keymaps/default/keymap.c **** bool process_record_user(uint16_t keycode , keyrecord_t *record) {
+ 678               		.loc 3 82 0
+ 679               		.cfi_startproc
+ 680               	.LVL59:
+ 681               	/* prologue: function */
+ 682               	/* frame size = 0 */
+ 683               	/* stack size = 0 */
+ 684               	.L__stack_usage = 0
+  83:keyboards/dz60/keymaps/default/keymap.c ****     uint16_t macro_kc = (keycode == MO(_ML) ? DYN_REC_STOP : keycode);
+ 685               		.loc 3 83 0
+ 686 0000 8330      		cpi r24,3
+ 687 0002 21E5      		ldi r18,81
+ 688 0004 9207      		cpc r25,r18
+ 689 0006 01F4      		brne .L52
+ 690 0008 82E0      		ldi r24,lo8(2)
+ 691 000a 90E0      		ldi r25,0
+ 692               	.LVL60:
+ 693               	.L52:
+  84:keyboards/dz60/keymaps/default/keymap.c ****     if (!process_record_dynamic_macro(macro_kc, record)) {
+ 694               		.loc 3 84 0 discriminator 4
+ 695 000c 0C94 0000 		jmp process_record_dynamic_macro
+ 696               	.LVL61:
+ 697               		.cfi_endproc
+ 698               	.LFE119:
+ 700               		.section	.text.led_set_user,"ax",@progbits
+ 701               	.global	led_set_user
+ 703               	led_set_user:
+ 704               	.LFB120:
+  85:keyboards/dz60/keymaps/default/keymap.c **** 		return false;
+  86:keyboards/dz60/keymaps/default/keymap.c ****     }
+  87:keyboards/dz60/keymaps/default/keymap.c ****     return true;
+  88:keyboards/dz60/keymaps/default/keymap.c **** }
+  89:keyboards/dz60/keymaps/default/keymap.c **** 
+  90:keyboards/dz60/keymaps/default/keymap.c **** void led_set_user(uint8_t usb_led) {
+ 705               		.loc 3 90 0
+ 706               		.cfi_startproc
+ 707               	.LVL62:
+ 708               	/* prologue: function */
+ 709               	/* frame size = 0 */
+ 710               	/* stack size = 0 */
+ 711               	.L__stack_usage = 0
+ 712 0000 0895      		ret
+ 713               		.cfi_endproc
+ 714               	.LFE120:
+ 716               		.section	.progmem.data.__c.5647,"a",@progbits
+ 719               	__c.5647:
+ 720 0000 6D32 3672 		.string	"m26rkRTsjFJ7vjCN"
+ 720      6B52 5473 
+ 720      6A46 4A37 
+ 720      766A 434E 
+ 720      00
+ 721               		.section	.data.r_macro_end.5622,"aw",@progbits
+ 724               	r_macro_end.5622:
+ 725 0000 0000      		.word	macro_buffer.5619+762
+ 726               		.section	.data.macro_end.5620,"aw",@progbits
+ 729               	macro_end.5620:
+ 730 0000 0000      		.word	macro_buffer.5619
+ 731               		.section	.bss.macro_buffer.5619,"aw",@nobits
+ 734               	macro_buffer.5619:
+ 735 0000 0000 0000 		.zero	768
+ 735      0000 0000 
+ 735      0000 0000 
+ 735      0000 0000 
+ 735      0000 0000 
+ 736               		.section	.bss.macro_pointer.5623,"aw",@nobits
+ 739               	macro_pointer.5623:
+ 740 0000 0000      		.zero	2
+ 741               		.section	.bss.macro_id.5624,"aw",@nobits
+ 744               	macro_id.5624:
+ 745 0000 00        		.zero	1
+ 746               	.global	keymaps
+ 747               		.section	.progmem.data.keymaps,"a",@progbits
+ 750               	keymaps:
+ 751 0000 2900      		.word	41
+ 752 0002 1E00      		.word	30
+ 753 0004 1F00      		.word	31
+ 754 0006 2000      		.word	32
+ 755 0008 2100      		.word	33
+ 756 000a 2200      		.word	34
+ 757 000c 2300      		.word	35
+ 758 000e 2400      		.word	36
+ 759 0010 2500      		.word	37
+ 760 0012 2600      		.word	38
+ 761 0014 2700      		.word	39
+ 762 0016 2D00      		.word	45
+ 763 0018 2E00      		.word	46
+ 764 001a 0000      		.word	0
+ 765 001c 2A00      		.word	42
+ 766 001e 2B00      		.word	43
+ 767 0020 0000      		.word	0
+ 768 0022 1400      		.word	20
+ 769 0024 1A00      		.word	26
+ 770 0026 0800      		.word	8
+ 771 0028 1500      		.word	21
+ 772 002a 1700      		.word	23
+ 773 002c 1C00      		.word	28
+ 774 002e 1800      		.word	24
+ 775 0030 0C00      		.word	12
+ 776 0032 1200      		.word	18
+ 777 0034 1300      		.word	19
+ 778 0036 2F00      		.word	47
+ 779 0038 3000      		.word	48
+ 780 003a 3200      		.word	50
+ 781 003c 3941      		.word	16697
+ 782 003e 0000      		.word	0
+ 783 0040 0400      		.word	4
+ 784 0042 1600      		.word	22
+ 785 0044 0700      		.word	7
+ 786 0046 0900      		.word	9
+ 787 0048 0A00      		.word	10
+ 788 004a 0B00      		.word	11
+ 789 004c 0D00      		.word	13
+ 790 004e 0E00      		.word	14
+ 791 0050 0F00      		.word	15
+ 792 0052 3300      		.word	51
+ 793 0054 3400      		.word	52
+ 794 0056 2800      		.word	40
+ 795 0058 0000      		.word	0
+ 796 005a E100      		.word	225
+ 797 005c 6400      		.word	100
+ 798 005e 1D00      		.word	29
+ 799 0060 1B00      		.word	27
+ 800 0062 0600      		.word	6
+ 801 0064 1900      		.word	25
+ 802 0066 0500      		.word	5
+ 803 0068 1100      		.word	17
+ 804 006a 1000      		.word	16
+ 805 006c 3600      		.word	54
+ 806 006e 3700      		.word	55
+ 807 0070 3800      		.word	56
+ 808 0072 0000      		.word	0
+ 809 0074 E500      		.word	229
+ 810 0076 0000      		.word	0
+ 811 0078 E000      		.word	224
+ 812 007a E300      		.word	227
+ 813 007c 0000      		.word	0
+ 814 007e E200      		.word	226
+ 815 0080 2C00      		.word	44
+ 816 0082 0000      		.word	0
+ 817 0084 0151      		.word	20737
+ 818 0086 0000      		.word	0
+ 819 0088 0351      		.word	20739
+ 820 008a 0000      		.word	0
+ 821 008c E600      		.word	230
+ 822 008e E700      		.word	231
+ 823 0090 0000      		.word	0
+ 824 0092 0251      		.word	20738
+ 825 0094 E400      		.word	228
+ 826 0096 3500      		.word	53
+ 827 0098 3A00      		.word	58
+ 828 009a 3B00      		.word	59
+ 829 009c 3C00      		.word	60
+ 830 009e 3D00      		.word	61
+ 831 00a0 3E00      		.word	62
+ 832 00a2 3F00      		.word	63
+ 833 00a4 4000      		.word	64
+ 834 00a6 4100      		.word	65
+ 835 00a8 4200      		.word	66
+ 836 00aa 4300      		.word	67
+ 837 00ac 4400      		.word	68
+ 838 00ae 4500      		.word	69
+ 839 00b0 0000      		.word	0
+ 840 00b2 4C00      		.word	76
+ 841 00b4 0100      		.word	1
+ 842 00b6 0000      		.word	0
+ 843 00b8 005C      		.word	23552
+ 844 00ba 5200      		.word	82
+ 845 00bc 0100      		.word	1
+ 846 00be F400      		.word	244
+ 847 00c0 F000      		.word	240
+ 848 00c2 F500      		.word	245
+ 849 00c4 0100      		.word	1
+ 850 00c6 5200      		.word	82
+ 851 00c8 0100      		.word	1
+ 852 00ca 4600      		.word	70
+ 853 00cc 0100      		.word	1
+ 854 00ce 0100      		.word	1
+ 855 00d0 0100      		.word	1
+ 856 00d2 0100      		.word	1
+ 857 00d4 0000      		.word	0
+ 858 00d6 5000      		.word	80
+ 859 00d8 5100      		.word	81
+ 860 00da 4F00      		.word	79
+ 861 00dc F200      		.word	242
+ 862 00de F100      		.word	241
+ 863 00e0 F300      		.word	243
+ 864 00e2 5000      		.word	80
+ 865 00e4 5100      		.word	81
+ 866 00e6 4F00      		.word	79
+ 867 00e8 0100      		.word	1
+ 868 00ea 0100      		.word	1
+ 869 00ec 0100      		.word	1
+ 870 00ee 0000      		.word	0
+ 871 00f0 0100      		.word	1
+ 872 00f2 0030      		.word	12288
+ 873 00f4 0300      		.word	3
+ 874 00f6 0100      		.word	1
+ 875 00f8 0100      		.word	1
+ 876 00fa 0100      		.word	1
+ 877 00fc AA00      		.word	170
+ 878 00fe A900      		.word	169
+ 879 0100 A800      		.word	168
+ 880 0102 AC00      		.word	172
+ 881 0104 AB00      		.word	171
+ 882 0106 AE00      		.word	174
+ 883 0108 0000      		.word	0
+ 884 010a 0100      		.word	1
+ 885 010c 0000      		.word	0
+ 886 010e 0100      		.word	1
+ 887 0110 0100      		.word	1
+ 888 0112 0000      		.word	0
+ 889 0114 0100      		.word	1
+ 890 0116 4E00      		.word	78
+ 891 0118 0000      		.word	0
+ 892 011a 0100      		.word	1
+ 893 011c 0000      		.word	0
+ 894 011e 4B00      		.word	75
+ 895 0120 0000      		.word	0
+ 896 0122 0100      		.word	1
+ 897 0124 0100      		.word	1
+ 898 0126 0000      		.word	0
+ 899 0128 0100      		.word	1
+ 900 012a 0100      		.word	1
+ 901 012c BA5C      		.word	23738
+ 902 012e C35C      		.word	23747
+ 903 0130 C45C      		.word	23748
+ 904 0132 C55C      		.word	23749
+ 905 0134 C65C      		.word	23750
+ 906 0136 C75C      		.word	23751
+ 907 0138 0100      		.word	1
+ 908 013a 0100      		.word	1
+ 909 013c 0100      		.word	1
+ 910 013e 0100      		.word	1
+ 911 0140 0100      		.word	1
+ 912 0142 0100      		.word	1
+ 913 0144 0100      		.word	1
+ 914 0146 0000      		.word	0
+ 915 0148 0100      		.word	1
+ 916 014a BB5C      		.word	23739
+ 917 014c 0000      		.word	0
+ 918 014e BD5C      		.word	23741
+ 919 0150 BF5C      		.word	23743
+ 920 0152 C15C      		.word	23745
+ 921 0154 0100      		.word	1
+ 922 0156 0100      		.word	1
+ 923 0158 0100      		.word	1
+ 924 015a 0100      		.word	1
+ 925 015c 0100      		.word	1
+ 926 015e 0100      		.word	1
+ 927 0160 0100      		.word	1
+ 928 0162 0100      		.word	1
+ 929 0164 0100      		.word	1
+ 930 0166 0100      		.word	1
+ 931 0168 0100      		.word	1
+ 932 016a 0000      		.word	0
+ 933 016c BE5C      		.word	23742
+ 934 016e C05C      		.word	23744
+ 935 0170 C25C      		.word	23746
+ 936 0172 0100      		.word	1
+ 937 0174 0100      		.word	1
+ 938 0176 0100      		.word	1
+ 939 0178 0100      		.word	1
+ 940 017a 0100      		.word	1
+ 941 017c 0100      		.word	1
+ 942 017e 0100      		.word	1
+ 943 0180 0100      		.word	1
+ 944 0182 0100      		.word	1
+ 945 0184 0000      		.word	0
+ 946 0186 0100      		.word	1
+ 947 0188 0100      		.word	1
+ 948 018a 0100      		.word	1
+ 949 018c 0100      		.word	1
+ 950 018e 0100      		.word	1
+ 951 0190 0100      		.word	1
+ 952 0192 0100      		.word	1
+ 953 0194 0100      		.word	1
+ 954 0196 0100      		.word	1
+ 955 0198 0100      		.word	1
+ 956 019a 0100      		.word	1
+ 957 019c 0100      		.word	1
+ 958 019e 0000      		.word	0
+ 959 01a0 0100      		.word	1
+ 960 01a2 0000      		.word	0
+ 961 01a4 0100      		.word	1
+ 962 01a6 0100      		.word	1
+ 963 01a8 0000      		.word	0
+ 964 01aa 0100      		.word	1
+ 965 01ac 0100      		.word	1
+ 966 01ae 0000      		.word	0
+ 967 01b0 0100      		.word	1
+ 968 01b2 0000      		.word	0
+ 969 01b4 0100      		.word	1
+ 970 01b6 0000      		.word	0
+ 971 01b8 0100      		.word	1
+ 972 01ba 0100      		.word	1
+ 973 01bc 0000      		.word	0
+ 974 01be 0100      		.word	1
+ 975 01c0 0100      		.word	1
+ 976 01c2 0100      		.word	1
+ 977 01c4 0100      		.word	1
+ 978 01c6 0100      		.word	1
+ 979 01c8 0100      		.word	1
+ 980 01ca 0100      		.word	1
+ 981 01cc 0100      		.word	1
+ 982 01ce 0100      		.word	1
+ 983 01d0 0100      		.word	1
+ 984 01d2 0100      		.word	1
+ 985 01d4 0100      		.word	1
+ 986 01d6 0100      		.word	1
+ 987 01d8 0100      		.word	1
+ 988 01da 0100      		.word	1
+ 989 01dc 0000      		.word	0
+ 990 01de 0100      		.word	1
+ 991 01e0 0100      		.word	1
+ 992 01e2 0000      		.word	0
+ 993 01e4 0100      		.word	1
+ 994 01e6 0100      		.word	1
+ 995 01e8 0100      		.word	1
+ 996 01ea 0100      		.word	1
+ 997 01ec 0100      		.word	1
+ 998 01ee 0100      		.word	1
+ 999 01f0 0100      		.word	1
+ 1000 01f2 0100      		.word	1
+ 1001 01f4 0100      		.word	1
+ 1002 01f6 0100      		.word	1
+ 1003 01f8 0100      		.word	1
+ 1004 01fa 0100      		.word	1
+ 1005 01fc 0100      		.word	1
+ 1006 01fe 0100      		.word	1
+ 1007 0200 0000      		.word	0
+ 1008 0202 0100      		.word	1
+ 1009 0204 0100      		.word	1
+ 1010 0206 0100      		.word	1
+ 1011 0208 0100      		.word	1
+ 1012 020a 0100      		.word	1
+ 1013 020c 0100      		.word	1
+ 1014 020e 0100      		.word	1
+ 1015 0210 0100      		.word	1
+ 1016 0212 0100      		.word	1
+ 1017 0214 0100      		.word	1
+ 1018 0216 0100      		.word	1
+ 1019 0218 0100      		.word	1
+ 1020 021a 0000      		.word	0
+ 1021 021c 0100      		.word	1
+ 1022 021e 0100      		.word	1
+ 1023 0220 0000      		.word	0
+ 1024 0222 0100      		.word	1
+ 1025 0224 0100      		.word	1
+ 1026 0226 0100      		.word	1
+ 1027 0228 0100      		.word	1
+ 1028 022a 0100      		.word	1
+ 1029 022c 0100      		.word	1
+ 1030 022e 0100      		.word	1
+ 1031 0230 0100      		.word	1
+ 1032 0232 0100      		.word	1
+ 1033 0234 0000      		.word	0
+ 1034 0236 0100      		.word	1
+ 1035 0238 0000      		.word	0
+ 1036 023a 0100      		.word	1
+ 1037 023c 0100      		.word	1
+ 1038 023e 0000      		.word	0
+ 1039 0240 0100      		.word	1
+ 1040 0242 0100      		.word	1
+ 1041 0244 0000      		.word	0
+ 1042 0246 0100      		.word	1
+ 1043 0248 0000      		.word	0
+ 1044 024a 0100      		.word	1
+ 1045 024c 0000      		.word	0
+ 1046 024e 0100      		.word	1
+ 1047 0250 0100      		.word	1
+ 1048 0252 0000      		.word	0
+ 1049 0254 0100      		.word	1
+ 1050 0256 0100      		.word	1
+ 1051               		.text
+ 1052               	.Letext0:
+ 1053               		.file 4 "/usr/lib/avr/include/stdint.h"
+ 1054               		.file 5 "./tmk_core/common/keyboard.h"
+ 1055               		.file 6 "./tmk_core/common/keycode.h"
+ 1056               		.file 7 "./tmk_core/common/action_macro.h"
+ 1057               		.file 8 "./tmk_core/common/action.h"
+ 1058               		.file 9 "./tmk_core/common/report.h"
+ 1059               		.file 10 "./quantum/quantum_keycodes.h"
+ 1060               		.file 11 "./lib/lufa/LUFA/Drivers/USB/Core/USBTask.h"
+ 1061               		.file 12 "./quantum/quantum.h"
+ 1062               		.file 13 "./tmk_core/common/action_util.h"
+ 1063               		.file 14 "./tmk_core/common/backlight.h"
+ 1064               		.file 15 "./tmk_core/common/action_layer.h"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 keymap.c
+     /tmp/cceXm4dN.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cceXm4dN.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cceXm4dN.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cceXm4dN.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cceXm4dN.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cceXm4dN.s:13     .text.dynamic_macro_led_blink:0000000000000000 dynamic_macro_led_blink
+     /tmp/cceXm4dN.s:49     .text.dynamic_macro_record_start:0000000000000000 dynamic_macro_record_start
+     /tmp/cceXm4dN.s:103    .text.dynamic_macro_play:0000000000000000 dynamic_macro_play
+     /tmp/cceXm4dN.s:218    .text.dynamic_macro_record_key:0000000000000000 dynamic_macro_record_key
+     /tmp/cceXm4dN.s:310    .text.dynamic_macro_record_end:0000000000000000 dynamic_macro_record_end
+     /tmp/cceXm4dN.s:410    .text.process_record_dynamic_macro:0000000000000000 process_record_dynamic_macro
+     /tmp/cceXm4dN.s:744    .bss.macro_id.5624:0000000000000000 macro_id.5624
+     /tmp/cceXm4dN.s:724    .data.r_macro_end.5622:0000000000000000 r_macro_end.5622
+     /tmp/cceXm4dN.s:734    .bss.macro_buffer.5619:0000000000000000 macro_buffer.5619
+     /tmp/cceXm4dN.s:739    .bss.macro_pointer.5623:0000000000000000 macro_pointer.5623
+     /tmp/cceXm4dN.s:729    .data.macro_end.5620:0000000000000000 macro_end.5620
+     /tmp/cceXm4dN.s:610    .text.action_get_macro:0000000000000000 action_get_macro
+     /tmp/cceXm4dN.s:719    .progmem.data.__c.5647:0000000000000000 __c.5647
+     /tmp/cceXm4dN.s:646    .text.matrix_init_user:0000000000000000 matrix_init_user
+     /tmp/cceXm4dN.s:661    .text.matrix_scan_user:0000000000000000 matrix_scan_user
+     /tmp/cceXm4dN.s:676    .text.process_record_user:0000000000000000 process_record_user
+     /tmp/cceXm4dN.s:703    .text.led_set_user:0000000000000000 led_set_user
+     /tmp/cceXm4dN.s:750    .progmem.data.keymaps:0000000000000000 keymaps
+
+UNDEFINED SYMBOLS
+backlight_toggle
+clear_keyboard
+layer_clear
+layer_state
+process_record
+send_string_P
+__do_copy_data
+__do_clear_bss

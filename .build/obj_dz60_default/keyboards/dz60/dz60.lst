@@ -1,0 +1,121 @@
+   1               		.file	"dz60.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.text
+   8               	.Ltext0:
+   9               		.cfi_sections	.debug_frame
+  10               		.section	.text.matrix_scan_kb,"ax",@progbits
+  11               	.global	matrix_scan_kb
+  13               	matrix_scan_kb:
+  14               	.LFB111:
+  15               		.file 1 "keyboards/dz60/dz60.c"
+   1:keyboards/dz60/dz60.c **** #include "dz60.h"
+   2:keyboards/dz60/dz60.c **** #include "led.h"
+   3:keyboards/dz60/dz60.c **** 
+   4:keyboards/dz60/dz60.c **** void matrix_init_kb(void) {
+   5:keyboards/dz60/dz60.c ****   matrix_init_user();
+   6:keyboards/dz60/dz60.c ****   led_init_ports();
+   7:keyboards/dz60/dz60.c **** };
+   8:keyboards/dz60/dz60.c **** 
+   9:keyboards/dz60/dz60.c **** void matrix_scan_kb(void) {
+  16               		.loc 1 9 0
+  17               		.cfi_startproc
+  18               	/* prologue: function */
+  19               	/* frame size = 0 */
+  20               	/* stack size = 0 */
+  21               	.L__stack_usage = 0
+  10:keyboards/dz60/dz60.c ****   matrix_scan_user();
+  22               		.loc 1 10 0
+  23 0000 0C94 0000 		jmp matrix_scan_user
+  24               	.LVL0:
+  25               		.cfi_endproc
+  26               	.LFE111:
+  28               		.section	.text.led_init_ports,"ax",@progbits
+  29               	.global	led_init_ports
+  31               	led_init_ports:
+  32               	.LFB112:
+  11:keyboards/dz60/dz60.c **** };
+  12:keyboards/dz60/dz60.c **** 
+  13:keyboards/dz60/dz60.c **** void led_init_ports(void) {
+  33               		.loc 1 13 0
+  34               		.cfi_startproc
+  35               	/* prologue: function */
+  36               	/* frame size = 0 */
+  37               	/* stack size = 0 */
+  38               	.L__stack_usage = 0
+  14:keyboards/dz60/dz60.c ****   DDRB |= (1 << 2);
+  39               		.loc 1 14 0
+  40 0000 229A      		sbi 0x4,2
+  15:keyboards/dz60/dz60.c ****   PORTB |= (1 << 2);
+  41               		.loc 1 15 0
+  42 0002 2A9A      		sbi 0x5,2
+  43 0004 0895      		ret
+  44               		.cfi_endproc
+  45               	.LFE112:
+  47               		.section	.text.matrix_init_kb,"ax",@progbits
+  48               	.global	matrix_init_kb
+  50               	matrix_init_kb:
+  51               	.LFB110:
+   4:keyboards/dz60/dz60.c ****   matrix_init_user();
+  52               		.loc 1 4 0
+  53               		.cfi_startproc
+  54               	/* prologue: function */
+  55               	/* frame size = 0 */
+  56               	/* stack size = 0 */
+  57               	.L__stack_usage = 0
+   5:keyboards/dz60/dz60.c ****   led_init_ports();
+  58               		.loc 1 5 0
+  59 0000 0E94 0000 		call matrix_init_user
+  60               	.LVL1:
+   6:keyboards/dz60/dz60.c **** };
+  61               		.loc 1 6 0
+  62 0004 0C94 0000 		jmp led_init_ports
+  63               	.LVL2:
+  64               		.cfi_endproc
+  65               	.LFE110:
+  67               		.section	.text.led_set_kb,"ax",@progbits
+  68               	.global	led_set_kb
+  70               	led_set_kb:
+  71               	.LFB113:
+  16:keyboards/dz60/dz60.c **** }
+  17:keyboards/dz60/dz60.c **** 
+  18:keyboards/dz60/dz60.c **** void led_set_kb(uint8_t usb_led) {
+  72               		.loc 1 18 0
+  73               		.cfi_startproc
+  74               	.LVL3:
+  75               	/* prologue: function */
+  76               	/* frame size = 0 */
+  77               	/* stack size = 0 */
+  78               	.L__stack_usage = 0
+  19:keyboards/dz60/dz60.c ****   led_set_user(usb_led);
+  79               		.loc 1 19 0
+  80 0000 0C94 0000 		jmp led_set_user
+  81               	.LVL4:
+  82               		.cfi_endproc
+  83               	.LFE113:
+  85               		.text
+  86               	.Letext0:
+  87               		.file 2 "./tmk_core/common/report.h"
+  88               		.file 3 "/usr/lib/avr/include/stdint.h"
+  89               		.file 4 "./lib/lufa/LUFA/Drivers/USB/Core/USBTask.h"
+  90               		.file 5 "./tmk_core/common/action_util.h"
+  91               		.file 6 "./quantum/quantum.h"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 dz60.c
+     /tmp/cc5Syk1p.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cc5Syk1p.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cc5Syk1p.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cc5Syk1p.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cc5Syk1p.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cc5Syk1p.s:13     .text.matrix_scan_kb:0000000000000000 matrix_scan_kb
+     /tmp/cc5Syk1p.s:31     .text.led_init_ports:0000000000000000 led_init_ports
+     /tmp/cc5Syk1p.s:50     .text.matrix_init_kb:0000000000000000 matrix_init_kb
+     /tmp/cc5Syk1p.s:70     .text.led_set_kb:0000000000000000 led_set_kb
+
+UNDEFINED SYMBOLS
+matrix_scan_user
+matrix_init_user
+led_set_user
