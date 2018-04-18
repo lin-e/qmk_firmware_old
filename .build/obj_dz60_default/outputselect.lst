@@ -186,16 +186,16 @@
  119               		.file 5 "/usr/lib/avr/include/stdint.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 outputselect.c
-     /tmp/ccFQWUSv.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccFQWUSv.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccFQWUSv.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccFQWUSv.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccFQWUSv.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccFQWUSv.s:13     .text.set_output_user:0000000000000000 set_output_user
-     /tmp/ccFQWUSv.s:30     .text.set_output:0000000000000000 set_output
-     /tmp/ccFQWUSv.s:112    .bss.desired_output:0000000000000000 desired_output
-     /tmp/ccFQWUSv.s:61     .text.auto_detect_output:0000000000000000 auto_detect_output
-     /tmp/ccFQWUSv.s:87     .text.where_to_send:0000000000000000 where_to_send
+     /tmp/ccaHFulN.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccaHFulN.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccaHFulN.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccaHFulN.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccaHFulN.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccaHFulN.s:13     .text.set_output_user:0000000000000000 set_output_user
+     /tmp/ccaHFulN.s:30     .text.set_output:0000000000000000 set_output
+     /tmp/ccaHFulN.s:112    .bss.desired_output:0000000000000000 desired_output
+     /tmp/ccaHFulN.s:61     .text.auto_detect_output:0000000000000000 auto_detect_output
+     /tmp/ccaHFulN.s:87     .text.where_to_send:0000000000000000 where_to_send
 
 UNDEFINED SYMBOLS
 USB_DeviceState

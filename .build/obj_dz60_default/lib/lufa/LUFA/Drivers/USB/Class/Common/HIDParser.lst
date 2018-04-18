@@ -2253,15 +2253,15 @@
  1735               		.file 4 "lib/lufa/LUFA/Drivers/USB/Class/Common/HIDParser.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 HIDParser.c
-     /tmp/ccBDREhB.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccBDREhB.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccBDREhB.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccBDREhB.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccBDREhB.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccBDREhB.s:13     .text.USB_ProcessHIDReport:0000000000000000 USB_ProcessHIDReport
-     /tmp/ccBDREhB.s:1308   .text.USB_GetHIDReportItemInfo:0000000000000000 USB_GetHIDReportItemInfo
-     /tmp/ccBDREhB.s:1479   .text.USB_SetHIDReportItemInfo:0000000000000000 USB_SetHIDReportItemInfo
-     /tmp/ccBDREhB.s:1657   .text.USB_GetHIDReportSize:0000000000000000 USB_GetHIDReportSize
+     /tmp/cc4DxXiQ.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cc4DxXiQ.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cc4DxXiQ.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cc4DxXiQ.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cc4DxXiQ.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cc4DxXiQ.s:13     .text.USB_ProcessHIDReport:0000000000000000 USB_ProcessHIDReport
+     /tmp/cc4DxXiQ.s:1308   .text.USB_GetHIDReportItemInfo:0000000000000000 USB_GetHIDReportItemInfo
+     /tmp/cc4DxXiQ.s:1479   .text.USB_SetHIDReportItemInfo:0000000000000000 USB_SetHIDReportItemInfo
+     /tmp/cc4DxXiQ.s:1657   .text.USB_GetHIDReportSize:0000000000000000 USB_GetHIDReportSize
 
 UNDEFINED SYMBOLS
 CALLBACK_HIDParser_FilterHIDReportItem

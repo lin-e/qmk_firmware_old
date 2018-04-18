@@ -414,13 +414,13 @@
  293               		.file 5 "quantum/keycode_config.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 keycode_config.c
-     /tmp/cc1h8ro5.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/cc1h8ro5.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/cc1h8ro5.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/cc1h8ro5.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/cc1h8ro5.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/cc1h8ro5.s:13     .text.keycode_config:0000000000000000 keycode_config
-     /tmp/cc1h8ro5.s:210    .text.mod_config:0000000000000000 mod_config
+     /tmp/ccDYSOW2.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccDYSOW2.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccDYSOW2.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccDYSOW2.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccDYSOW2.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccDYSOW2.s:13     .text.keycode_config:0000000000000000 keycode_config
+     /tmp/ccDYSOW2.s:210    .text.mod_config:0000000000000000 mod_config
 
 UNDEFINED SYMBOLS
 keymap_config

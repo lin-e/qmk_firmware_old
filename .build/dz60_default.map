@@ -2007,165 +2007,165 @@ END GROUP
                 0x0000000000800142                _edata = .
                 0x0000000000800142                PROVIDE (__data_end, .)
 
-.bss            0x0000000000800142      0x46b
+.bss            0x0000000000800142      0x76b
                 0x0000000000800142                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  .bss.macro_buffer.5620
-                0x0000000000800142      0x300 .build/obj_dz60_default/keyboards/dz60/keymaps/default/keymap.o
+                0x0000000000800142      0x600 .build/obj_dz60_default/keyboards/dz60/keymaps/default/keymap.o
  .bss.macro_pointer.5624
-                0x0000000000800442        0x2 .build/obj_dz60_default/keyboards/dz60/keymaps/default/keymap.o
+                0x0000000000800742        0x2 .build/obj_dz60_default/keyboards/dz60/keymaps/default/keymap.o
  .bss.macro_id.5625
-                0x0000000000800444        0x1 .build/obj_dz60_default/keyboards/dz60/keymaps/default/keymap.o
+                0x0000000000800744        0x1 .build/obj_dz60_default/keyboards/dz60/keymaps/default/keymap.o
  .bss.grave_esc_was_shifted
-                0x0000000000800445        0x1 .build/obj_dz60_default/quantum/quantum.o
+                0x0000000000800745        0x1 .build/obj_dz60_default/quantum/quantum.o
  .bss.scs_timer
-                0x0000000000800446        0x4 .build/obj_dz60_default/quantum/quantum.o
+                0x0000000000800746        0x4 .build/obj_dz60_default/quantum/quantum.o
  .bss.shift_interrupted
-                0x000000000080044a        0x2 .build/obj_dz60_default/quantum/quantum.o
+                0x000000000080074a        0x2 .build/obj_dz60_default/quantum/quantum.o
  .bss.leader_sequence_size
-                0x000000000080044c        0x1 .build/obj_dz60_default/quantum/process_keycode/process_leader.o
-                0x000000000080044c                leader_sequence_size
+                0x000000000080074c        0x1 .build/obj_dz60_default/quantum/process_keycode/process_leader.o
+                0x000000000080074c                leader_sequence_size
  .bss.leader_sequence
-                0x000000000080044d        0xa .build/obj_dz60_default/quantum/process_keycode/process_leader.o
-                0x000000000080044d                leader_sequence
+                0x000000000080074d        0xa .build/obj_dz60_default/quantum/process_keycode/process_leader.o
+                0x000000000080074d                leader_sequence
  .bss.leader_time
-                0x0000000000800457        0x2 .build/obj_dz60_default/quantum/process_keycode/process_leader.o
-                0x0000000000800457                leader_time
- .bss.leading   0x0000000000800459        0x1 .build/obj_dz60_default/quantum/process_keycode/process_leader.o
-                0x0000000000800459                leading
+                0x0000000000800757        0x2 .build/obj_dz60_default/quantum/process_keycode/process_leader.o
+                0x0000000000800757                leader_time
+ .bss.leading   0x0000000000800759        0x1 .build/obj_dz60_default/quantum/process_keycode/process_leader.o
+                0x0000000000800759                leading
  .bss.matrix_debouncing
-                0x000000000080045a        0xa .build/obj_dz60_default/quantum/matrix.o
- .bss.matrix    0x0000000000800464        0xa .build/obj_dz60_default/quantum/matrix.o
+                0x000000000080075a        0xa .build/obj_dz60_default/quantum/matrix.o
+ .bss.matrix    0x0000000000800764        0xa .build/obj_dz60_default/quantum/matrix.o
  .bss.debouncing
-                0x000000000080046e        0x1 .build/obj_dz60_default/quantum/matrix.o
+                0x000000000080076e        0x1 .build/obj_dz60_default/quantum/matrix.o
  .bss.debouncing_time
-                0x000000000080046f        0x2 .build/obj_dz60_default/quantum/matrix.o
+                0x000000000080076f        0x2 .build/obj_dz60_default/quantum/matrix.o
  .bss.current_offset.2330
-                0x0000000000800471        0x2 .build/obj_dz60_default/quantum/rgblight.o
+                0x0000000000800771        0x2 .build/obj_dz60_default/quantum/rgblight.o
  .bss.last_timer.2331
-                0x0000000000800473        0x2 .build/obj_dz60_default/quantum/rgblight.o
+                0x0000000000800773        0x2 .build/obj_dz60_default/quantum/rgblight.o
  .bss.low_bound.2316
-                0x0000000000800475        0x1 .build/obj_dz60_default/quantum/rgblight.o
+                0x0000000000800775        0x1 .build/obj_dz60_default/quantum/rgblight.o
  .bss.last_timer.2312
-                0x0000000000800476        0x2 .build/obj_dz60_default/quantum/rgblight.o
- .bss.pos.2294  0x0000000000800478        0x1 .build/obj_dz60_default/quantum/rgblight.o
+                0x0000000000800776        0x2 .build/obj_dz60_default/quantum/rgblight.o
+ .bss.pos.2294  0x0000000000800778        0x1 .build/obj_dz60_default/quantum/rgblight.o
  .bss.last_timer.2295
-                0x0000000000800479        0x2 .build/obj_dz60_default/quantum/rgblight.o
+                0x0000000000800779        0x2 .build/obj_dz60_default/quantum/rgblight.o
  .bss.current_hue.2281
-                0x000000000080047b        0x2 .build/obj_dz60_default/quantum/rgblight.o
+                0x000000000080077b        0x2 .build/obj_dz60_default/quantum/rgblight.o
  .bss.last_timer.2282
-                0x000000000080047d        0x2 .build/obj_dz60_default/quantum/rgblight.o
+                0x000000000080077d        0x2 .build/obj_dz60_default/quantum/rgblight.o
  .bss.current_hue.2273
-                0x000000000080047f        0x2 .build/obj_dz60_default/quantum/rgblight.o
+                0x000000000080077f        0x2 .build/obj_dz60_default/quantum/rgblight.o
  .bss.last_timer.2274
-                0x0000000000800481        0x2 .build/obj_dz60_default/quantum/rgblight.o
- .bss.pos.2264  0x0000000000800483        0x1 .build/obj_dz60_default/quantum/rgblight.o
+                0x0000000000800781        0x2 .build/obj_dz60_default/quantum/rgblight.o
+ .bss.pos.2264  0x0000000000800783        0x1 .build/obj_dz60_default/quantum/rgblight.o
  .bss.last_timer.2265
-                0x0000000000800484        0x2 .build/obj_dz60_default/quantum/rgblight.o
+                0x0000000000800784        0x2 .build/obj_dz60_default/quantum/rgblight.o
  .bss.rgblight_timer_enabled
-                0x0000000000800486        0x1 .build/obj_dz60_default/quantum/rgblight.o
-                0x0000000000800486                rgblight_timer_enabled
+                0x0000000000800786        0x1 .build/obj_dz60_default/quantum/rgblight.o
+                0x0000000000800786                rgblight_timer_enabled
  .bss.rgblight_inited
-                0x0000000000800487        0x1 .build/obj_dz60_default/quantum/rgblight.o
-                0x0000000000800487                rgblight_inited
+                0x0000000000800787        0x1 .build/obj_dz60_default/quantum/rgblight.o
+                0x0000000000800787                rgblight_inited
  .bss.last_consumer_report
-                0x0000000000800488        0x2 .build/obj_dz60_default/common/host.o
+                0x0000000000800788        0x2 .build/obj_dz60_default/common/host.o
  .bss.last_system_report
-                0x000000000080048a        0x2 .build/obj_dz60_default/common/host.o
- .bss.driver    0x000000000080048c        0x2 .build/obj_dz60_default/common/host.o
+                0x000000000080078a        0x2 .build/obj_dz60_default/common/host.o
+ .bss.driver    0x000000000080078c        0x2 .build/obj_dz60_default/common/host.o
  .bss.led_status.5307
-                0x000000000080048e        0x1 .build/obj_dz60_default/common/keyboard.o
+                0x000000000080078e        0x1 .build/obj_dz60_default/common/keyboard.o
  .bss.matrix_prev.5306
-                0x000000000080048f        0xa .build/obj_dz60_default/common/keyboard.o
+                0x000000000080078f        0xa .build/obj_dz60_default/common/keyboard.o
  .bss.disable_action_cache
-                0x0000000000800499        0x1 .build/obj_dz60_default/common/action.o
-                0x0000000000800499                disable_action_cache
+                0x0000000000800799        0x1 .build/obj_dz60_default/common/action.o
+                0x0000000000800799                disable_action_cache
  .bss.waiting_buffer_tail
-                0x000000000080049a        0x1 .build/obj_dz60_default/common/action_tapping.o
+                0x000000000080079a        0x1 .build/obj_dz60_default/common/action_tapping.o
  .bss.waiting_buffer_head
-                0x000000000080049b        0x1 .build/obj_dz60_default/common/action_tapping.o
+                0x000000000080079b        0x1 .build/obj_dz60_default/common/action_tapping.o
  .bss.waiting_buffer
-                0x000000000080049c       0x30 .build/obj_dz60_default/common/action_tapping.o
+                0x000000000080079c       0x30 .build/obj_dz60_default/common/action_tapping.o
  .bss.tapping_key
-                0x00000000008004cc        0x6 .build/obj_dz60_default/common/action_tapping.o
+                0x00000000008007cc        0x6 .build/obj_dz60_default/common/action_tapping.o
  .bss.source_layers_cache
-                0x00000000008004d2       0x32 .build/obj_dz60_default/common/action_layer.o
-                0x00000000008004d2                source_layers_cache
+                0x00000000008007d2       0x32 .build/obj_dz60_default/common/action_layer.o
+                0x00000000008007d2                source_layers_cache
  .bss.layer_state
-                0x0000000000800504        0x4 .build/obj_dz60_default/common/action_layer.o
-                0x0000000000800504                layer_state
+                0x0000000000800804        0x4 .build/obj_dz60_default/common/action_layer.o
+                0x0000000000800804                layer_state
  .bss.default_layer_state
-                0x0000000000800508        0x4 .build/obj_dz60_default/common/action_layer.o
-                0x0000000000800508                default_layer_state
+                0x0000000000800808        0x4 .build/obj_dz60_default/common/action_layer.o
+                0x0000000000800808                default_layer_state
  .bss.oneshot_layer_data
-                0x000000000080050c        0x1 .build/obj_dz60_default/common/action_util.o
+                0x000000000080080c        0x1 .build/obj_dz60_default/common/action_util.o
  .bss.oneshot_mods
-                0x000000000080050d        0x1 .build/obj_dz60_default/common/action_util.o
+                0x000000000080080d        0x1 .build/obj_dz60_default/common/action_util.o
  .bss.__compound_literal.0
-                0x000000000080050e       0x20 .build/obj_dz60_default/common/action_util.o
+                0x000000000080080e       0x20 .build/obj_dz60_default/common/action_util.o
  .bss.macro_mods
-                0x000000000080052e        0x1 .build/obj_dz60_default/common/action_util.o
+                0x000000000080082e        0x1 .build/obj_dz60_default/common/action_util.o
  .bss.weak_mods
-                0x000000000080052f        0x1 .build/obj_dz60_default/common/action_util.o
+                0x000000000080082f        0x1 .build/obj_dz60_default/common/action_util.o
  .bss.real_mods
-                0x0000000000800530        0x1 .build/obj_dz60_default/common/action_util.o
+                0x0000000000800830        0x1 .build/obj_dz60_default/common/action_util.o
  .bss.debug_config
-                0x0000000000800531        0x1 .build/obj_dz60_default/common/debug.o
-                0x0000000000800531                debug_config
+                0x0000000000800831        0x1 .build/obj_dz60_default/common/debug.o
+                0x0000000000800831                debug_config
  .bss.wdt_timeout
-                0x0000000000800532        0x1 .build/obj_dz60_default/common/avr/suspend.o
+                0x0000000000800832        0x1 .build/obj_dz60_default/common/avr/suspend.o
  .bss.last_timer
-                0x0000000000800533        0x2 .build/obj_dz60_default/common/mousekey.o
+                0x0000000000800833        0x2 .build/obj_dz60_default/common/mousekey.o
  .bss.mousekey_accel
-                0x0000000000800535        0x1 .build/obj_dz60_default/common/mousekey.o
+                0x0000000000800835        0x1 .build/obj_dz60_default/common/mousekey.o
  .bss.mousekey_repeat
-                0x0000000000800536        0x1 .build/obj_dz60_default/common/mousekey.o
+                0x0000000000800836        0x1 .build/obj_dz60_default/common/mousekey.o
  .bss.mouse_report
-                0x0000000000800537        0x5 .build/obj_dz60_default/common/mousekey.o
+                0x0000000000800837        0x5 .build/obj_dz60_default/common/mousekey.o
  .bss.keyboard_report_sent
-                0x000000000080053c       0x20 .build/obj_dz60_default/lufa.o
+                0x000000000080083c       0x20 .build/obj_dz60_default/lufa.o
  .bss.keyboard_led_stats
-                0x000000000080055c        0x1 .build/obj_dz60_default/lufa.o
+                0x000000000080085c        0x1 .build/obj_dz60_default/lufa.o
  .bss.keyboard_idle
-                0x000000000080055d        0x1 .build/obj_dz60_default/lufa.o
-                0x000000000080055d                keyboard_idle
+                0x000000000080085d        0x1 .build/obj_dz60_default/lufa.o
+                0x000000000080085d                keyboard_idle
  .bss.desired_output
-                0x000000000080055e        0x1 .build/obj_dz60_default/outputselect.o
-                0x000000000080055e                desired_output
+                0x000000000080085e        0x1 .build/obj_dz60_default/outputselect.o
+                0x000000000080085e                desired_output
  *(COMMON)
- COMMON         0x000000000080055f       0x38 .build/obj_dz60_default/quantum/rgblight.o
-                0x000000000080055f                rgblight_config
-                0x0000000000800563                inmem_config
-                0x0000000000800567                led
- COMMON         0x0000000000800597        0x2 .build/obj_dz60_default/common/action.o
-                0x0000000000800597                tp_buttons
- COMMON         0x0000000000800599        0x4 .build/obj_dz60_default/common/avr/timer.o
-                0x0000000000800599                timer_count
- COMMON         0x000000000080059d        0x2 .build/obj_dz60_default/common/magic.o
-                0x000000000080059d                keymap_config
- COMMON         0x000000000080059f        0x1 .build/obj_dz60_default/common/backlight.o
-                0x000000000080059f                backlight_config
- COMMON         0x00000000008005a0        0x3 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
-                0x00000000008005a0                USB_Device_ConfigurationNumber
-                0x00000000008005a1                USB_Device_CurrentlySelfPowered
-                0x00000000008005a2                USB_Device_RemoteWakeupEnabled
- COMMON         0x00000000008005a3        0xa .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
-                0x00000000008005a3                USB_IsInitialized
-                0x00000000008005a4                USB_DeviceState
-                0x00000000008005a5                USB_ControlRequest
-                0x00000000008005ad                PROVIDE (__bss_end, .)
+ COMMON         0x000000000080085f       0x38 .build/obj_dz60_default/quantum/rgblight.o
+                0x000000000080085f                rgblight_config
+                0x0000000000800863                inmem_config
+                0x0000000000800867                led
+ COMMON         0x0000000000800897        0x2 .build/obj_dz60_default/common/action.o
+                0x0000000000800897                tp_buttons
+ COMMON         0x0000000000800899        0x4 .build/obj_dz60_default/common/avr/timer.o
+                0x0000000000800899                timer_count
+ COMMON         0x000000000080089d        0x2 .build/obj_dz60_default/common/magic.o
+                0x000000000080089d                keymap_config
+ COMMON         0x000000000080089f        0x1 .build/obj_dz60_default/common/backlight.o
+                0x000000000080089f                backlight_config
+ COMMON         0x00000000008008a0        0x3 .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/DeviceStandardReq.o
+                0x00000000008008a0                USB_Device_ConfigurationNumber
+                0x00000000008008a1                USB_Device_CurrentlySelfPowered
+                0x00000000008008a2                USB_Device_RemoteWakeupEnabled
+ COMMON         0x00000000008008a3        0xa .build/obj_dz60_default/./lib/lufa/LUFA/Drivers/USB/Core/USBTask.o
+                0x00000000008008a3                USB_IsInitialized
+                0x00000000008008a4                USB_DeviceState
+                0x00000000008008a5                USB_ControlRequest
+                0x00000000008008ad                PROVIDE (__bss_end, .)
                 0x0000000000005d48                __data_load_start = LOADADDR (.data)
                 0x0000000000005d8a                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00000000008005ad        0x4
-                0x00000000008005ad                PROVIDE (__noinit_start, .)
+.noinit         0x00000000008008ad        0x4
+                0x00000000008008ad                PROVIDE (__noinit_start, .)
  *(.noinit*)
- .noinit        0x00000000008005ad        0x4 .build/obj_dz60_default/common/avr/bootloader.o
-                0x00000000008005ad                reset_key
-                0x00000000008005b1                PROVIDE (__noinit_end, .)
-                0x00000000008005b1                _end = .
-                0x00000000008005b1                PROVIDE (__heap_start, .)
+ .noinit        0x00000000008008ad        0x4 .build/obj_dz60_default/common/avr/bootloader.o
+                0x00000000008008ad                reset_key
+                0x00000000008008b1                PROVIDE (__noinit_end, .)
+                0x00000000008008b1                _end = .
+                0x00000000008008b1                PROVIDE (__heap_start, .)
 
 .eeprom         0x0000000000810000        0x0
  *(.eeprom*)

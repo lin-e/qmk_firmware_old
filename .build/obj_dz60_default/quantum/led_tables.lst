@@ -531,12 +531,12 @@
  535               		.file 2 "/usr/lib/avr/include/stdint.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 led_tables.c
-     /tmp/ccxM5jmt.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccxM5jmt.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccxM5jmt.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccxM5jmt.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccxM5jmt.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccxM5jmt.s:14     .progmem.data.LED_BREATHING_TABLE:0000000000000000 LED_BREATHING_TABLE
-     /tmp/ccxM5jmt.s:275    .progmem.data.CIE1931_CURVE:0000000000000000 CIE1931_CURVE
+     /tmp/ccjvtfgC.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccjvtfgC.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccjvtfgC.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccjvtfgC.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccjvtfgC.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccjvtfgC.s:14     .progmem.data.LED_BREATHING_TABLE:0000000000000000 LED_BREATHING_TABLE
+     /tmp/ccjvtfgC.s:275    .progmem.data.CIE1931_CURVE:0000000000000000 CIE1931_CURVE
 
 NO UNDEFINED SYMBOLS

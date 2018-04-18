@@ -3587,29 +3587,29 @@
  2245               		.file 17 "./tmk_core/common/led.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 action.c
-     /tmp/ccsv2V6s.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccsv2V6s.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccsv2V6s.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccsv2V6s.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccsv2V6s.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccsv2V6s.s:13     .text.action_exec:0000000000000000 action_exec
-     /tmp/ccsv2V6s.s:93     .text.process_record_quantum:0000000000000000 process_record_quantum
-     /tmp/ccsv2V6s.s:112    .text.process_record_tap_hint:0000000000000000 process_record_tap_hint
-     /tmp/ccsv2V6s.s:135    .text.register_code:0000000000000000 register_code
-     /tmp/ccsv2V6s.s:531    .text.unregister_code:0000000000000000 unregister_code
-     /tmp/ccsv2V6s.s:700    .text.register_mods:0000000000000000 register_mods
-     /tmp/ccsv2V6s.s:726    .text.unregister_mods:0000000000000000 unregister_mods
-     /tmp/ccsv2V6s.s:752    .text.process_action:0000000000000000 process_action
+     /tmp/ccczxBZE.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccczxBZE.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccczxBZE.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccczxBZE.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccczxBZE.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccczxBZE.s:13     .text.action_exec:0000000000000000 action_exec
+     /tmp/ccczxBZE.s:93     .text.process_record_quantum:0000000000000000 process_record_quantum
+     /tmp/ccczxBZE.s:112    .text.process_record_tap_hint:0000000000000000 process_record_tap_hint
+     /tmp/ccczxBZE.s:135    .text.register_code:0000000000000000 register_code
+     /tmp/ccczxBZE.s:531    .text.unregister_code:0000000000000000 unregister_code
+     /tmp/ccczxBZE.s:700    .text.register_mods:0000000000000000 register_mods
+     /tmp/ccczxBZE.s:726    .text.unregister_mods:0000000000000000 unregister_mods
+     /tmp/ccczxBZE.s:752    .text.process_action:0000000000000000 process_action
                             *COM*:0000000000000002 tp_buttons
-     /tmp/ccsv2V6s.s:1864   .text.process_record:0000000000000000 process_record
-     /tmp/ccsv2V6s.s:1949   .text.process_record_nocache:0000000000000000 process_record_nocache
-     /tmp/ccsv2V6s.s:2228   .bss.disable_action_cache:0000000000000000 disable_action_cache
-     /tmp/ccsv2V6s.s:1973   .text.clear_keyboard_but_mods:0000000000000000 clear_keyboard_but_mods
-     /tmp/ccsv2V6s.s:2021   .text.clear_keyboard:0000000000000000 clear_keyboard
-     /tmp/ccsv2V6s.s:2041   .text.is_tap_key:0000000000000000 is_tap_key
-     /tmp/ccsv2V6s.s:2128   .text.debug_event:0000000000000000 debug_event
-     /tmp/ccsv2V6s.s:2169   .text.debug_record:0000000000000000 debug_record
-     /tmp/ccsv2V6s.s:2211   .text.debug_action:0000000000000000 debug_action
+     /tmp/ccczxBZE.s:1864   .text.process_record:0000000000000000 process_record
+     /tmp/ccczxBZE.s:1949   .text.process_record_nocache:0000000000000000 process_record_nocache
+     /tmp/ccczxBZE.s:2228   .bss.disable_action_cache:0000000000000000 disable_action_cache
+     /tmp/ccczxBZE.s:1973   .text.clear_keyboard_but_mods:0000000000000000 clear_keyboard_but_mods
+     /tmp/ccczxBZE.s:2021   .text.clear_keyboard:0000000000000000 clear_keyboard
+     /tmp/ccczxBZE.s:2041   .text.is_tap_key:0000000000000000 is_tap_key
+     /tmp/ccczxBZE.s:2128   .text.debug_event:0000000000000000 debug_event
+     /tmp/ccczxBZE.s:2169   .text.debug_record:0000000000000000 debug_record
+     /tmp/ccczxBZE.s:2211   .text.debug_action:0000000000000000 debug_action
 
 UNDEFINED SYMBOLS
 action_tapping_process

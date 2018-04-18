@@ -980,13 +980,13 @@
  152               		.file 5 "./lib/lufa/LUFA/Drivers/USB/Core/USBTask.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 bootloader.c
-     /tmp/ccoFruHf.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccoFruHf.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccoFruHf.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccoFruHf.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccoFruHf.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccoFruHf.s:13     .text.bootloader_jump:0000000000000000 bootloader_jump
-     /tmp/ccoFruHf.s:147    .noinit:0000000000000000 reset_key
-     /tmp/ccoFruHf.s:80     .init3:0000000000000000 bootloader_jump_after_watchdog_reset
+     /tmp/ccJfvH5y.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccJfvH5y.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccJfvH5y.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccJfvH5y.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccJfvH5y.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccJfvH5y.s:13     .text.bootloader_jump:0000000000000000 bootloader_jump
+     /tmp/ccJfvH5y.s:147    .noinit:0000000000000000 reset_key
+     /tmp/ccJfvH5y.s:80     .init3:0000000000000000 bootloader_jump_after_watchdog_reset
 
 NO UNDEFINED SYMBOLS

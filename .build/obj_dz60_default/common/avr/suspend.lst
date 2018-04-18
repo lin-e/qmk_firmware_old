@@ -991,19 +991,19 @@
  349               		.file 11 "./lib/lufa/LUFA/Drivers/USB/Core/AVR8/../Device.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 suspend.c
-     /tmp/ccGeX7kc.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccGeX7kc.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccGeX7kc.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccGeX7kc.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccGeX7kc.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccGeX7kc.s:13     .text.suspend_idle:0000000000000000 suspend_idle
-     /tmp/ccGeX7kc.s:60     .text.suspend_power_down:0000000000000000 suspend_power_down
-     /tmp/ccGeX7kc.s:337    .bss.wdt_timeout:0000000000000000 wdt_timeout
-     /tmp/ccGeX7kc.s:154    .text.matrix_power_up:0000000000000000 matrix_power_up
-     /tmp/ccGeX7kc.s:169    .text.matrix_power_down:0000000000000000 matrix_power_down
-     /tmp/ccGeX7kc.s:184    .text.suspend_wakeup_condition:0000000000000000 suspend_wakeup_condition
-     /tmp/ccGeX7kc.s:243    .text.suspend_wakeup_init:0000000000000000 suspend_wakeup_init
-     /tmp/ccGeX7kc.s:268    .text.__vector_12:0000000000000000 __vector_12
+     /tmp/ccUruxNm.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccUruxNm.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccUruxNm.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccUruxNm.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccUruxNm.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccUruxNm.s:13     .text.suspend_idle:0000000000000000 suspend_idle
+     /tmp/ccUruxNm.s:60     .text.suspend_power_down:0000000000000000 suspend_power_down
+     /tmp/ccUruxNm.s:337    .bss.wdt_timeout:0000000000000000 wdt_timeout
+     /tmp/ccUruxNm.s:154    .text.matrix_power_up:0000000000000000 matrix_power_up
+     /tmp/ccUruxNm.s:169    .text.matrix_power_down:0000000000000000 matrix_power_down
+     /tmp/ccUruxNm.s:184    .text.suspend_wakeup_condition:0000000000000000 suspend_wakeup_condition
+     /tmp/ccUruxNm.s:243    .text.suspend_wakeup_init:0000000000000000 suspend_wakeup_init
+     /tmp/ccUruxNm.s:268    .text.__vector_12:0000000000000000 __vector_12
 
 UNDEFINED SYMBOLS
 USB_DeviceState

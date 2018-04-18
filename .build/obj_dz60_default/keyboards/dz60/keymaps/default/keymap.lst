@@ -887,16 +887,16 @@
  475 004a 6091 0000 		lds r22,r_macro_end.5623
  476 004e 7091 0000 		lds r23,r_macro_end.5623+1
  477 0052 4FEF      		ldi r20,lo8(-1)
- 478 0054 80E0      		ldi r24,lo8(macro_buffer.5620+762)
- 479 0056 90E0      		ldi r25,hi8(macro_buffer.5620+762)
+ 478 0054 80E0      		ldi r24,lo8(macro_buffer.5620+1530)
+ 479 0056 90E0      		ldi r25,hi8(macro_buffer.5620+1530)
  480               	.LVL37:
  481 0058 00C0      		rjmp .L41
  482               	.LVL38:
  483               	.L19:
  247:./quantum/dynamic_macro.h ****                 macro_id = 2;
  484               		.loc 1 247 0
- 485 005a 60E0      		ldi r22,lo8(macro_buffer.5620+762)
- 486 005c 70E0      		ldi r23,hi8(macro_buffer.5620+762)
+ 485 005a 60E0      		ldi r22,lo8(macro_buffer.5620+1530)
+ 486 005c 70E0      		ldi r23,hi8(macro_buffer.5620+1530)
  487 005e 80E0      		ldi r24,lo8(macro_pointer.5624)
  488 0060 90E0      		ldi r25,hi8(macro_pointer.5624)
  489               	.LVL39:
@@ -972,8 +972,8 @@
  539 00ac 20E0      		ldi r18,lo8(r_macro_end.5623)
  540 00ae 30E0      		ldi r19,hi8(r_macro_end.5623)
  541 00b0 4FEF      		ldi r20,lo8(-1)
- 542 00b2 80E0      		ldi r24,lo8(macro_buffer.5620+762)
- 543 00b4 90E0      		ldi r25,hi8(macro_buffer.5620+762)
+ 542 00b2 80E0      		ldi r24,lo8(macro_buffer.5620+1530)
+ 543 00b4 90E0      		ldi r25,hi8(macro_buffer.5620+1530)
  544               	.LVL45:
  545 00b6 00C0      		rjmp .L39
  546               	.LVL46:
@@ -1026,8 +1026,8 @@
  575 00e4 2FEF      		ldi r18,lo8(-1)
  576 00e6 60E0      		ldi r22,lo8(macro_pointer.5624)
  577 00e8 70E0      		ldi r23,hi8(macro_pointer.5624)
- 578 00ea 80E0      		ldi r24,lo8(macro_buffer.5620+762)
- 579 00ec 90E0      		ldi r25,hi8(macro_buffer.5620+762)
+ 578 00ea 80E0      		ldi r24,lo8(macro_buffer.5620+1530)
+ 579 00ec 90E0      		ldi r25,hi8(macro_buffer.5620+1530)
  580               	.LVL50:
  581 00ee 00C0      		rjmp .L42
  582               	.LVL51:
@@ -1277,13 +1277,13 @@
  730      00
  731               		.section	.data.r_macro_end.5623,"aw",@progbits
  734               	r_macro_end.5623:
- 735 0000 0000      		.word	macro_buffer.5620+762
+ 735 0000 0000      		.word	macro_buffer.5620+1530
  736               		.section	.data.macro_end.5621,"aw",@progbits
  739               	macro_end.5621:
  740 0000 0000      		.word	macro_buffer.5620
  741               		.section	.bss.macro_buffer.5620,"aw",@nobits
  744               	macro_buffer.5620:
- 745 0000 0000 0000 		.zero	768
+ 745 0000 0000 0000 		.zero	1536
  745      0000 0000 
  745      0000 0000 
  745      0000 0000 
@@ -1613,29 +1613,29 @@
  1074               		.file 15 "./tmk_core/common/action_layer.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 keymap.c
-     /tmp/ccHC8SMW.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccHC8SMW.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccHC8SMW.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccHC8SMW.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccHC8SMW.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccHC8SMW.s:13     .text.dynamic_macro_led_blink:0000000000000000 dynamic_macro_led_blink
-     /tmp/ccHC8SMW.s:49     .text.dynamic_macro_record_start:0000000000000000 dynamic_macro_record_start
-     /tmp/ccHC8SMW.s:103    .text.dynamic_macro_play:0000000000000000 dynamic_macro_play
-     /tmp/ccHC8SMW.s:218    .text.dynamic_macro_record_key:0000000000000000 dynamic_macro_record_key
-     /tmp/ccHC8SMW.s:310    .text.dynamic_macro_record_end:0000000000000000 dynamic_macro_record_end
-     /tmp/ccHC8SMW.s:410    .text.process_record_dynamic_macro:0000000000000000 process_record_dynamic_macro
-     /tmp/ccHC8SMW.s:754    .bss.macro_id.5625:0000000000000000 macro_id.5625
-     /tmp/ccHC8SMW.s:744    .bss.macro_buffer.5620:0000000000000000 macro_buffer.5620
-     /tmp/ccHC8SMW.s:749    .bss.macro_pointer.5624:0000000000000000 macro_pointer.5624
-     /tmp/ccHC8SMW.s:734    .data.r_macro_end.5623:0000000000000000 r_macro_end.5623
-     /tmp/ccHC8SMW.s:739    .data.macro_end.5621:0000000000000000 macro_end.5621
-     /tmp/ccHC8SMW.s:620    .text.action_get_macro:0000000000000000 action_get_macro
-     /tmp/ccHC8SMW.s:729    .progmem.data.__c.5648:0000000000000000 __c.5648
-     /tmp/ccHC8SMW.s:656    .text.matrix_init_user:0000000000000000 matrix_init_user
-     /tmp/ccHC8SMW.s:671    .text.matrix_scan_user:0000000000000000 matrix_scan_user
-     /tmp/ccHC8SMW.s:686    .text.process_record_user:0000000000000000 process_record_user
-     /tmp/ccHC8SMW.s:713    .text.led_set_user:0000000000000000 led_set_user
-     /tmp/ccHC8SMW.s:760    .progmem.data.keymaps:0000000000000000 keymaps
+     /tmp/ccwPl5TE.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccwPl5TE.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccwPl5TE.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccwPl5TE.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccwPl5TE.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccwPl5TE.s:13     .text.dynamic_macro_led_blink:0000000000000000 dynamic_macro_led_blink
+     /tmp/ccwPl5TE.s:49     .text.dynamic_macro_record_start:0000000000000000 dynamic_macro_record_start
+     /tmp/ccwPl5TE.s:103    .text.dynamic_macro_play:0000000000000000 dynamic_macro_play
+     /tmp/ccwPl5TE.s:218    .text.dynamic_macro_record_key:0000000000000000 dynamic_macro_record_key
+     /tmp/ccwPl5TE.s:310    .text.dynamic_macro_record_end:0000000000000000 dynamic_macro_record_end
+     /tmp/ccwPl5TE.s:410    .text.process_record_dynamic_macro:0000000000000000 process_record_dynamic_macro
+     /tmp/ccwPl5TE.s:754    .bss.macro_id.5625:0000000000000000 macro_id.5625
+     /tmp/ccwPl5TE.s:744    .bss.macro_buffer.5620:0000000000000000 macro_buffer.5620
+     /tmp/ccwPl5TE.s:749    .bss.macro_pointer.5624:0000000000000000 macro_pointer.5624
+     /tmp/ccwPl5TE.s:734    .data.r_macro_end.5623:0000000000000000 r_macro_end.5623
+     /tmp/ccwPl5TE.s:739    .data.macro_end.5621:0000000000000000 macro_end.5621
+     /tmp/ccwPl5TE.s:620    .text.action_get_macro:0000000000000000 action_get_macro
+     /tmp/ccwPl5TE.s:729    .progmem.data.__c.5648:0000000000000000 __c.5648
+     /tmp/ccwPl5TE.s:656    .text.matrix_init_user:0000000000000000 matrix_init_user
+     /tmp/ccwPl5TE.s:671    .text.matrix_scan_user:0000000000000000 matrix_scan_user
+     /tmp/ccwPl5TE.s:686    .text.process_record_user:0000000000000000 process_record_user
+     /tmp/ccwPl5TE.s:713    .text.led_set_user:0000000000000000 led_set_user
+     /tmp/ccwPl5TE.s:760    .progmem.data.keymaps:0000000000000000 keymaps
 
 UNDEFINED SYMBOLS
 backlight_toggle

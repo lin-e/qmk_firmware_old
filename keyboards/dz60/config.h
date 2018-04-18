@@ -45,7 +45,7 @@
 #define MOUSEKEY_MAX_SPEED 1
 #define MOUSEKEY_TIME_TO_MAX 40
 
-#define DYNAMIC_MACRO_SIZE 128 // don't change this.
+#define DYNAMIC_MACRO_SIZE 256 // don't change this.
 
 #endif
 

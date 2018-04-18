@@ -765,19 +765,19 @@
  451               		.file 14 "./tmk_core/common/host.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 keyboard.c
-     /tmp/cc18Ecjy.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/cc18Ecjy.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/cc18Ecjy.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/cc18Ecjy.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/cc18Ecjy.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/cc18Ecjy.s:13     .text.matrix_setup:0000000000000000 matrix_setup
-     /tmp/cc18Ecjy.s:29     .text.keyboard_setup:0000000000000000 keyboard_setup
-     /tmp/cc18Ecjy.s:46     .text.is_keyboard_master:0000000000000000 is_keyboard_master
-     /tmp/cc18Ecjy.s:63     .text.keyboard_init:0000000000000000 keyboard_init
-     /tmp/cc18Ecjy.s:92     .text.keyboard_task:0000000000000000 keyboard_task
-     /tmp/cc18Ecjy.s:435    .bss.matrix_prev.5306:0000000000000000 matrix_prev.5306
-     /tmp/cc18Ecjy.s:430    .bss.led_status.5307:0000000000000000 led_status.5307
-     /tmp/cc18Ecjy.s:412    .text.keyboard_set_leds:0000000000000000 keyboard_set_leds
+     /tmp/ccxQyGxK.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccxQyGxK.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccxQyGxK.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccxQyGxK.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccxQyGxK.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccxQyGxK.s:13     .text.matrix_setup:0000000000000000 matrix_setup
+     /tmp/ccxQyGxK.s:29     .text.keyboard_setup:0000000000000000 keyboard_setup
+     /tmp/ccxQyGxK.s:46     .text.is_keyboard_master:0000000000000000 is_keyboard_master
+     /tmp/ccxQyGxK.s:63     .text.keyboard_init:0000000000000000 keyboard_init
+     /tmp/ccxQyGxK.s:92     .text.keyboard_task:0000000000000000 keyboard_task
+     /tmp/ccxQyGxK.s:435    .bss.matrix_prev.5306:0000000000000000 matrix_prev.5306
+     /tmp/ccxQyGxK.s:430    .bss.led_status.5307:0000000000000000 led_status.5307
+     /tmp/ccxQyGxK.s:412    .text.keyboard_set_leds:0000000000000000 keyboard_set_leds
 
 UNDEFINED SYMBOLS
 timer_init

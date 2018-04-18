@@ -105,15 +105,15 @@
   91               		.file 6 "./quantum/quantum.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 dz60.c
-     /tmp/ccjVxKbE.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccjVxKbE.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccjVxKbE.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccjVxKbE.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccjVxKbE.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccjVxKbE.s:13     .text.matrix_scan_kb:0000000000000000 matrix_scan_kb
-     /tmp/ccjVxKbE.s:31     .text.led_init_ports:0000000000000000 led_init_ports
-     /tmp/ccjVxKbE.s:50     .text.matrix_init_kb:0000000000000000 matrix_init_kb
-     /tmp/ccjVxKbE.s:70     .text.led_set_kb:0000000000000000 led_set_kb
+     /tmp/ccsGSJSz.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccsGSJSz.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccsGSJSz.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccsGSJSz.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccsGSJSz.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccsGSJSz.s:13     .text.matrix_scan_kb:0000000000000000 matrix_scan_kb
+     /tmp/ccsGSJSz.s:31     .text.led_init_ports:0000000000000000 led_init_ports
+     /tmp/ccsGSJSz.s:50     .text.matrix_init_kb:0000000000000000 matrix_init_kb
+     /tmp/ccsGSJSz.s:70     .text.led_set_kb:0000000000000000 led_set_kb
 
 UNDEFINED SYMBOLS
 matrix_scan_user
