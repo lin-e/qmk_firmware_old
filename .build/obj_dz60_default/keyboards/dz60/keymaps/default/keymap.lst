@@ -1088,100 +1088,98 @@
    6:keyboards/dz60/keymaps/default/keymap.c ****     DYNAMIC_MACRO_RANGE,
    7:keyboards/dz60/keymaps/default/keymap.c **** };
    8:keyboards/dz60/keymaps/default/keymap.c **** 
-   9:keyboards/dz60/keymaps/default/keymap.c **** 
+   9:keyboards/dz60/keymaps/default/keymap.c **** #include "dynamic_macro.h"
   10:keyboards/dz60/keymaps/default/keymap.c **** 
-  11:keyboards/dz60/keymaps/default/keymap.c **** #include "dynamic_macro.h"
-  12:keyboards/dz60/keymaps/default/keymap.c **** 
-  13:keyboards/dz60/keymaps/default/keymap.c **** // layers
-  14:keyboards/dz60/keymaps/default/keymap.c **** #define _BL 0 // base layer
-  15:keyboards/dz60/keymaps/default/keymap.c **** #define _FL 1 // function layer
-  16:keyboards/dz60/keymaps/default/keymap.c **** #define _LL 2 // lighting layer
-  17:keyboards/dz60/keymaps/default/keymap.c **** #define _ML 3 // macro layer
-  18:keyboards/dz60/keymaps/default/keymap.c **** 
-  19:keyboards/dz60/keymaps/default/keymap.c **** // macros
-  20:keyboards/dz60/keymaps/default/keymap.c **** #define M_FX 0 // firefox master
-  21:keyboards/dz60/keymaps/default/keymap.c **** 
-  22:keyboards/dz60/keymaps/default/keymap.c **** // readability
-  23:keyboards/dz60/keymaps/default/keymap.c **** #define _______ KC_TRNS
-  24:keyboards/dz60/keymaps/default/keymap.c **** #define ___X___ KC_NO
-  25:keyboards/dz60/keymaps/default/keymap.c **** #define FN_CAPS LT(_FL, KC_CAPS)
-  26:keyboards/dz60/keymaps/default/keymap.c **** #define RGB_SWL RGB_M_SW
-  27:keyboards/dz60/keymaps/default/keymap.c **** #define RGB_SNK RGB_M_SN
-  28:keyboards/dz60/keymaps/default/keymap.c **** #define RGB_PLN RGB_M_P
-  29:keyboards/dz60/keymaps/default/keymap.c **** #define RGB_BTH RGB_M_B
-  30:keyboards/dz60/keymaps/default/keymap.c **** #define RGB_RNB RGB_M_R
-  31:keyboards/dz60/keymaps/default/keymap.c **** #define MAC_RC1 DYN_REC_START1
-  32:keyboards/dz60/keymaps/default/keymap.c **** #define MAC_RC2 DYN_REC_START2
-  33:keyboards/dz60/keymaps/default/keymap.c **** #define MAC_PL1 DYN_MACRO_PLAY1
-  34:keyboards/dz60/keymaps/default/keymap.c **** #define MAC_PL2 DYN_MACRO_PLAY2
-  35:keyboards/dz60/keymaps/default/keymap.c **** #define MAC_STP DYN_REC_STOP
-  36:keyboards/dz60/keymaps/default/keymap.c **** 
-  37:keyboards/dz60/keymaps/default/keymap.c **** const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  38:keyboards/dz60/keymaps/default/keymap.c ****     [_BL] = KEYMAP(
-  39:keyboards/dz60/keymaps/default/keymap.c ****         KC_ESC  , KC_1    , KC_2    , KC_3    , KC_4    , KC_5    , KC_6    , KC_7    , KC_8    , K
-  40:keyboards/dz60/keymaps/default/keymap.c ****         KC_TAB  , KC_Q    , KC_W    , KC_E    , KC_R    , KC_T    , KC_Y    , KC_U    , KC_I    , K
-  41:keyboards/dz60/keymaps/default/keymap.c ****         FN_CAPS , KC_A    , KC_S    , KC_D    , KC_F    , KC_G    , KC_H    , KC_J    , KC_K    , K
-  42:keyboards/dz60/keymaps/default/keymap.c ****         KC_LSFT , KC_NUBS , KC_Z    , KC_X    , KC_C    , KC_V    , KC_B    , KC_N    , KC_M    , K
-  43:keyboards/dz60/keymaps/default/keymap.c ****         KC_LCTL , KC_LGUI , KC_LALT , KC_SPC  , MO(_FL) , MO(_ML) , KC_RALT , KC_RGUI , MO(_LL) , K
-  44:keyboards/dz60/keymaps/default/keymap.c ****     ),
-  45:keyboards/dz60/keymaps/default/keymap.c ****     [_FL] = KEYMAP(
-  46:keyboards/dz60/keymaps/default/keymap.c ****         KC_GRV  , KC_F1   , KC_F2   , KC_F3   , KC_F4   , KC_F5   , KC_F6   , KC_F7   , KC_F8   , K
-  47:keyboards/dz60/keymaps/default/keymap.c ****         _______ , RESET   , KC_UP   , _______ , KC_BTN1 , KC_MS_U , KC_BTN2 , _______ , KC_UP   , _
-  48:keyboards/dz60/keymaps/default/keymap.c ****         _______ , KC_LEFT , KC_DOWN , KC_RGHT , KC_MS_L , KC_MS_D , KC_MS_R , KC_LEFT , KC_DOWN , K
-  49:keyboards/dz60/keymaps/default/keymap.c ****         _______ , M(M_FX) , MAC_PL1 , MAC_PL2 , _______ , _______ , KC_VOLD , KC_VOLU , KC_MUTE , K
-  50:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , _______ , KC_PGDN , _______ , KC_PGUP , _______ , _______ , _______ , _
-  51:keyboards/dz60/keymaps/default/keymap.c ****     ),
-  52:keyboards/dz60/keymaps/default/keymap.c ****     [_LL] = KEYMAP(
-  53:keyboards/dz60/keymaps/default/keymap.c ****         RGB_TOG , RGB_PLN , RGB_BTH , RGB_RNB , RGB_SWL , RGB_SNK , _______ , _______ , _______ , _
-  54:keyboards/dz60/keymaps/default/keymap.c ****         RGB_MOD , RGB_HUI , RGB_SAI , RGB_VAI , _______ , _______ , _______ , _______ , _______ , _
-  55:keyboards/dz60/keymaps/default/keymap.c ****         _______ , RGB_HUD , RGB_SAD , RGB_VAD , _______ , _______ , _______ , _______ , _______ , _
-  56:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _
-  57:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _
-  58:keyboards/dz60/keymaps/default/keymap.c ****     ),
-  59:keyboards/dz60/keymaps/default/keymap.c ****     [_ML] = KEYMAP(
+  11:keyboards/dz60/keymaps/default/keymap.c **** // layers
+  12:keyboards/dz60/keymaps/default/keymap.c **** #define _BL 0 // base layer
+  13:keyboards/dz60/keymaps/default/keymap.c **** #define _FL 1 // function layer
+  14:keyboards/dz60/keymaps/default/keymap.c **** #define _LL 2 // lighting layer
+  15:keyboards/dz60/keymaps/default/keymap.c **** #define _ML 3 // macro layer
+  16:keyboards/dz60/keymaps/default/keymap.c **** 
+  17:keyboards/dz60/keymaps/default/keymap.c **** // macros
+  18:keyboards/dz60/keymaps/default/keymap.c **** #define M_FX 0 // firefox master
+  19:keyboards/dz60/keymaps/default/keymap.c **** 
+  20:keyboards/dz60/keymaps/default/keymap.c **** // readability
+  21:keyboards/dz60/keymaps/default/keymap.c **** #define _______ KC_TRNS
+  22:keyboards/dz60/keymaps/default/keymap.c **** #define ___X___ KC_NO
+  23:keyboards/dz60/keymaps/default/keymap.c **** #define FN_CAPS LT(_FL, KC_CAPS)
+  24:keyboards/dz60/keymaps/default/keymap.c **** #define RGB_SWL RGB_M_SW
+  25:keyboards/dz60/keymaps/default/keymap.c **** #define RGB_SNK RGB_M_SN
+  26:keyboards/dz60/keymaps/default/keymap.c **** #define RGB_PLN RGB_M_P
+  27:keyboards/dz60/keymaps/default/keymap.c **** #define RGB_BTH RGB_M_B
+  28:keyboards/dz60/keymaps/default/keymap.c **** #define RGB_RNB RGB_M_R
+  29:keyboards/dz60/keymaps/default/keymap.c **** #define MAC_RC1 DYN_REC_START1
+  30:keyboards/dz60/keymaps/default/keymap.c **** #define MAC_RC2 DYN_REC_START2
+  31:keyboards/dz60/keymaps/default/keymap.c **** #define MAC_PL1 DYN_MACRO_PLAY1
+  32:keyboards/dz60/keymaps/default/keymap.c **** #define MAC_PL2 DYN_MACRO_PLAY2
+  33:keyboards/dz60/keymaps/default/keymap.c **** #define MAC_STP DYN_REC_STOP
+  34:keyboards/dz60/keymaps/default/keymap.c **** 
+  35:keyboards/dz60/keymaps/default/keymap.c **** const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+  36:keyboards/dz60/keymaps/default/keymap.c ****     [_BL] = KEYMAP(
+  37:keyboards/dz60/keymaps/default/keymap.c ****         KC_ESC  , KC_1    , KC_2    , KC_3    , KC_4    , KC_5    , KC_6    , KC_7    , KC_8    , K
+  38:keyboards/dz60/keymaps/default/keymap.c ****         KC_TAB  , KC_Q    , KC_W    , KC_E    , KC_R    , KC_T    , KC_Y    , KC_U    , KC_I    , K
+  39:keyboards/dz60/keymaps/default/keymap.c ****         FN_CAPS , KC_A    , KC_S    , KC_D    , KC_F    , KC_G    , KC_H    , KC_J    , KC_K    , K
+  40:keyboards/dz60/keymaps/default/keymap.c ****         KC_LSPO , KC_NUBS , KC_Z    , KC_X    , KC_C    , KC_V    , KC_B    , KC_N    , KC_M    , K
+  41:keyboards/dz60/keymaps/default/keymap.c ****         KC_LCTL , KC_LGUI , KC_LALT , KC_SPC  , MO(_FL) , MO(_ML) , KC_RALT , KC_RGUI , MO(_LL) , K
+  42:keyboards/dz60/keymaps/default/keymap.c ****     ),
+  43:keyboards/dz60/keymaps/default/keymap.c ****     [_FL] = KEYMAP(
+  44:keyboards/dz60/keymaps/default/keymap.c ****         KC_GRV  , KC_F1   , KC_F2   , KC_F3   , KC_F4   , KC_F5   , KC_F6   , KC_F7   , KC_F8   , K
+  45:keyboards/dz60/keymaps/default/keymap.c ****         _______ , RESET   , KC_UP   , _______ , KC_BTN1 , KC_MS_U , KC_BTN2 , _______ , KC_UP   , _
+  46:keyboards/dz60/keymaps/default/keymap.c ****         _______ , KC_LEFT , KC_DOWN , KC_RGHT , KC_MS_L , KC_MS_D , KC_MS_R , KC_LEFT , KC_DOWN , K
+  47:keyboards/dz60/keymaps/default/keymap.c ****         _______ , M(M_FX) , MAC_PL1 , MAC_PL2 , _______ , _______ , KC_VOLD , KC_VOLU , KC_MUTE , K
+  48:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , _______ , KC_PGDN , _______ , KC_PGUP , _______ , _______ , _______ , _
+  49:keyboards/dz60/keymaps/default/keymap.c ****     ),
+  50:keyboards/dz60/keymaps/default/keymap.c ****     [_LL] = KEYMAP(
+  51:keyboards/dz60/keymaps/default/keymap.c ****         RGB_TOG , RGB_PLN , RGB_BTH , RGB_RNB , RGB_SWL , RGB_SNK , _______ , _______ , _______ , _
+  52:keyboards/dz60/keymaps/default/keymap.c ****         RGB_MOD , RGB_HUI , RGB_SAI , RGB_VAI , _______ , _______ , _______ , _______ , _______ , _
+  53:keyboards/dz60/keymaps/default/keymap.c ****         _______ , RGB_HUD , RGB_SAD , RGB_VAD , _______ , _______ , _______ , _______ , _______ , _
+  54:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _
+  55:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _
+  56:keyboards/dz60/keymaps/default/keymap.c ****     ),
+  57:keyboards/dz60/keymaps/default/keymap.c ****     [_ML] = KEYMAP(
+  58:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _
+  59:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _
   60:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _
-  61:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _
+  61:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , MAC_RC1 , MAC_RC2 , _______ , _______ , _______ , _______ , _______ , _
   62:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _
-  63:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , MAC_RC1 , MAC_RC2 , _______ , _______ , _______ , _______ , _______ , _
-  64:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _
-  65:keyboards/dz60/keymaps/default/keymap.c ****     )
-  66:keyboards/dz60/keymaps/default/keymap.c **** };
-  67:keyboards/dz60/keymaps/default/keymap.c **** 
-  68:keyboards/dz60/keymaps/default/keymap.c **** const macro_t *action_get_macro(keyrecord_t *record , uint8_t id , uint8_t opt) {
- 623               		.loc 3 68 0
+  63:keyboards/dz60/keymaps/default/keymap.c ****     )
+  64:keyboards/dz60/keymaps/default/keymap.c **** };
+  65:keyboards/dz60/keymaps/default/keymap.c **** 
+  66:keyboards/dz60/keymaps/default/keymap.c **** const macro_t *action_get_macro(keyrecord_t *record , uint8_t id , uint8_t opt) {
+ 623               		.loc 3 66 0
  624               		.cfi_startproc
  625               	.LVL55:
  626               	/* prologue: function */
  627               	/* frame size = 0 */
  628               	/* stack size = 0 */
  629               	.L__stack_usage = 0
-  69:keyboards/dz60/keymaps/default/keymap.c ****     keyevent_t event = record->event;
-  70:keyboards/dz60/keymaps/default/keymap.c ****     if (event.pressed) {
- 630               		.loc 3 70 0
+  67:keyboards/dz60/keymaps/default/keymap.c ****     keyevent_t event = record->event;
+  68:keyboards/dz60/keymaps/default/keymap.c ****     if (event.pressed) {
+ 630               		.loc 3 68 0
  631 0000 FC01      		movw r30,r24
  632 0002 8281      		ldd r24,Z+2
  633               	.LVL56:
  634 0004 8823      		tst r24
  635 0006 01F0      		breq .L44
-  71:keyboards/dz60/keymaps/default/keymap.c ****         switch (id) {
- 636               		.loc 3 71 0
+  69:keyboards/dz60/keymaps/default/keymap.c ****         switch (id) {
+ 636               		.loc 3 69 0
  637 0008 6111      		cpse r22,__zero_reg__
  638 000a 00C0      		rjmp .L44
-  72:keyboards/dz60/keymaps/default/keymap.c ****             case M_FX:
-  73:keyboards/dz60/keymaps/default/keymap.c ****                 SEND_STRING(SEC_FF_MASTER);
- 639               		.loc 3 73 0
+  70:keyboards/dz60/keymaps/default/keymap.c ****             case M_FX:
+  71:keyboards/dz60/keymaps/default/keymap.c ****                 SEND_STRING(SEC_FF_MASTER);
+ 639               		.loc 3 71 0
  640 000c 80E0      		ldi r24,lo8(__c.5648)
  641 000e 90E0      		ldi r25,hi8(__c.5648)
  642               	.LVL57:
  643 0010 0E94 0000 		call send_string_P
  644               	.LVL58:
  645               	.L44:
-  74:keyboards/dz60/keymaps/default/keymap.c ****                 return false;
-  75:keyboards/dz60/keymaps/default/keymap.c ****         }
-  76:keyboards/dz60/keymaps/default/keymap.c ****     }
-  77:keyboards/dz60/keymaps/default/keymap.c ****     return MACRO_NONE;
-  78:keyboards/dz60/keymaps/default/keymap.c **** }
- 646               		.loc 3 78 0
+  72:keyboards/dz60/keymaps/default/keymap.c ****                 return false;
+  73:keyboards/dz60/keymaps/default/keymap.c ****         }
+  74:keyboards/dz60/keymaps/default/keymap.c ****     }
+  75:keyboards/dz60/keymaps/default/keymap.c ****     return MACRO_NONE;
+  76:keyboards/dz60/keymaps/default/keymap.c **** }
+ 646               		.loc 3 76 0
  647 0014 80E0      		ldi r24,0
  648 0016 90E0      		ldi r25,0
  649 0018 0895      		ret
@@ -1191,9 +1189,9 @@
  654               	.global	matrix_init_user
  656               	matrix_init_user:
  657               	.LFB117:
-  79:keyboards/dz60/keymaps/default/keymap.c **** 
-  80:keyboards/dz60/keymaps/default/keymap.c **** void matrix_init_user(void) {
- 658               		.loc 3 80 0
+  77:keyboards/dz60/keymaps/default/keymap.c **** 
+  78:keyboards/dz60/keymaps/default/keymap.c **** void matrix_init_user(void) {
+ 658               		.loc 3 78 0
  659               		.cfi_startproc
  660               	/* prologue: function */
  661               	/* frame size = 0 */
@@ -1206,10 +1204,10 @@
  669               	.global	matrix_scan_user
  671               	matrix_scan_user:
  672               	.LFB118:
-  81:keyboards/dz60/keymaps/default/keymap.c **** }
-  82:keyboards/dz60/keymaps/default/keymap.c **** 
-  83:keyboards/dz60/keymaps/default/keymap.c **** void matrix_scan_user(void) {
- 673               		.loc 3 83 0
+  79:keyboards/dz60/keymaps/default/keymap.c **** }
+  80:keyboards/dz60/keymaps/default/keymap.c **** 
+  81:keyboards/dz60/keymaps/default/keymap.c **** void matrix_scan_user(void) {
+ 673               		.loc 3 81 0
  674               		.cfi_startproc
  675               	/* prologue: function */
  676               	/* frame size = 0 */
@@ -1222,18 +1220,18 @@
  684               	.global	process_record_user
  686               	process_record_user:
  687               	.LFB119:
-  84:keyboards/dz60/keymaps/default/keymap.c **** }
-  85:keyboards/dz60/keymaps/default/keymap.c **** 
-  86:keyboards/dz60/keymaps/default/keymap.c **** bool process_record_user(uint16_t keycode , keyrecord_t *record) {
- 688               		.loc 3 86 0
+  82:keyboards/dz60/keymaps/default/keymap.c **** }
+  83:keyboards/dz60/keymaps/default/keymap.c **** 
+  84:keyboards/dz60/keymaps/default/keymap.c **** bool process_record_user(uint16_t keycode , keyrecord_t *record) {
+ 688               		.loc 3 84 0
  689               		.cfi_startproc
  690               	.LVL59:
  691               	/* prologue: function */
  692               	/* frame size = 0 */
  693               	/* stack size = 0 */
  694               	.L__stack_usage = 0
-  87:keyboards/dz60/keymaps/default/keymap.c ****     uint16_t macro_kc = (keycode == MO(_ML) ? DYN_REC_STOP : keycode);
- 695               		.loc 3 87 0
+  85:keyboards/dz60/keymaps/default/keymap.c ****     uint16_t macro_kc = (keycode == MO(_ML) ? DYN_REC_STOP : keycode);
+ 695               		.loc 3 85 0
  696 0000 8330      		cpi r24,3
  697 0002 21E5      		ldi r18,81
  698 0004 9207      		cpc r25,r18
@@ -1242,8 +1240,8 @@
  701 000a 9CE5      		ldi r25,lo8(92)
  702               	.LVL60:
  703               	.L52:
-  88:keyboards/dz60/keymaps/default/keymap.c ****     if (!process_record_dynamic_macro(macro_kc, record)) {
- 704               		.loc 3 88 0 discriminator 4
+  86:keyboards/dz60/keymaps/default/keymap.c ****     if (!process_record_dynamic_macro(macro_kc, record)) {
+ 704               		.loc 3 86 0 discriminator 4
  705 000c 0C94 0000 		jmp process_record_dynamic_macro
  706               	.LVL61:
  707               		.cfi_endproc
@@ -1252,13 +1250,13 @@
  711               	.global	led_set_user
  713               	led_set_user:
  714               	.LFB120:
-  89:keyboards/dz60/keymaps/default/keymap.c **** 		return false;
-  90:keyboards/dz60/keymaps/default/keymap.c ****     }
-  91:keyboards/dz60/keymaps/default/keymap.c ****     return true;
-  92:keyboards/dz60/keymaps/default/keymap.c **** }
-  93:keyboards/dz60/keymaps/default/keymap.c **** 
-  94:keyboards/dz60/keymaps/default/keymap.c **** void led_set_user(uint8_t usb_led) {
- 715               		.loc 3 94 0
+  87:keyboards/dz60/keymaps/default/keymap.c **** 		return false;
+  88:keyboards/dz60/keymaps/default/keymap.c ****     }
+  89:keyboards/dz60/keymaps/default/keymap.c ****     return true;
+  90:keyboards/dz60/keymaps/default/keymap.c **** }
+  91:keyboards/dz60/keymaps/default/keymap.c **** 
+  92:keyboards/dz60/keymaps/default/keymap.c **** void led_set_user(uint8_t usb_led) {
+ 715               		.loc 3 92 0
  716               		.cfi_startproc
  717               	.LVL62:
  718               	/* prologue: function */
@@ -1342,7 +1340,7 @@
  803 0054 3400      		.word	52
  804 0056 2800      		.word	40
  805 0058 0000      		.word	0
- 806 005a E100      		.word	225
+ 806 005a CB5C      		.word	23755
  807 005c 6400      		.word	100
  808 005e 1D00      		.word	29
  809 0060 1B00      		.word	27
@@ -1355,7 +1353,7 @@
  816 006e 3700      		.word	55
  817 0070 3800      		.word	56
  818 0072 0000      		.word	0
- 819 0074 E500      		.word	229
+ 819 0074 CC5C      		.word	23756
  820 0076 0000      		.word	0
  821 0078 E000      		.word	224
  822 007a E300      		.word	227
@@ -1613,29 +1611,29 @@
  1074               		.file 15 "./tmk_core/common/action_layer.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 keymap.c
-     /tmp/ccwPl5TE.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccwPl5TE.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccwPl5TE.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccwPl5TE.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccwPl5TE.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccwPl5TE.s:13     .text.dynamic_macro_led_blink:0000000000000000 dynamic_macro_led_blink
-     /tmp/ccwPl5TE.s:49     .text.dynamic_macro_record_start:0000000000000000 dynamic_macro_record_start
-     /tmp/ccwPl5TE.s:103    .text.dynamic_macro_play:0000000000000000 dynamic_macro_play
-     /tmp/ccwPl5TE.s:218    .text.dynamic_macro_record_key:0000000000000000 dynamic_macro_record_key
-     /tmp/ccwPl5TE.s:310    .text.dynamic_macro_record_end:0000000000000000 dynamic_macro_record_end
-     /tmp/ccwPl5TE.s:410    .text.process_record_dynamic_macro:0000000000000000 process_record_dynamic_macro
-     /tmp/ccwPl5TE.s:754    .bss.macro_id.5625:0000000000000000 macro_id.5625
-     /tmp/ccwPl5TE.s:744    .bss.macro_buffer.5620:0000000000000000 macro_buffer.5620
-     /tmp/ccwPl5TE.s:749    .bss.macro_pointer.5624:0000000000000000 macro_pointer.5624
-     /tmp/ccwPl5TE.s:734    .data.r_macro_end.5623:0000000000000000 r_macro_end.5623
-     /tmp/ccwPl5TE.s:739    .data.macro_end.5621:0000000000000000 macro_end.5621
-     /tmp/ccwPl5TE.s:620    .text.action_get_macro:0000000000000000 action_get_macro
-     /tmp/ccwPl5TE.s:729    .progmem.data.__c.5648:0000000000000000 __c.5648
-     /tmp/ccwPl5TE.s:656    .text.matrix_init_user:0000000000000000 matrix_init_user
-     /tmp/ccwPl5TE.s:671    .text.matrix_scan_user:0000000000000000 matrix_scan_user
-     /tmp/ccwPl5TE.s:686    .text.process_record_user:0000000000000000 process_record_user
-     /tmp/ccwPl5TE.s:713    .text.led_set_user:0000000000000000 led_set_user
-     /tmp/ccwPl5TE.s:760    .progmem.data.keymaps:0000000000000000 keymaps
+     /tmp/ccD9y0MV.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccD9y0MV.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccD9y0MV.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccD9y0MV.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccD9y0MV.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccD9y0MV.s:13     .text.dynamic_macro_led_blink:0000000000000000 dynamic_macro_led_blink
+     /tmp/ccD9y0MV.s:49     .text.dynamic_macro_record_start:0000000000000000 dynamic_macro_record_start
+     /tmp/ccD9y0MV.s:103    .text.dynamic_macro_play:0000000000000000 dynamic_macro_play
+     /tmp/ccD9y0MV.s:218    .text.dynamic_macro_record_key:0000000000000000 dynamic_macro_record_key
+     /tmp/ccD9y0MV.s:310    .text.dynamic_macro_record_end:0000000000000000 dynamic_macro_record_end
+     /tmp/ccD9y0MV.s:410    .text.process_record_dynamic_macro:0000000000000000 process_record_dynamic_macro
+     /tmp/ccD9y0MV.s:754    .bss.macro_id.5625:0000000000000000 macro_id.5625
+     /tmp/ccD9y0MV.s:744    .bss.macro_buffer.5620:0000000000000000 macro_buffer.5620
+     /tmp/ccD9y0MV.s:749    .bss.macro_pointer.5624:0000000000000000 macro_pointer.5624
+     /tmp/ccD9y0MV.s:734    .data.r_macro_end.5623:0000000000000000 r_macro_end.5623
+     /tmp/ccD9y0MV.s:739    .data.macro_end.5621:0000000000000000 macro_end.5621
+     /tmp/ccD9y0MV.s:620    .text.action_get_macro:0000000000000000 action_get_macro
+     /tmp/ccD9y0MV.s:729    .progmem.data.__c.5648:0000000000000000 __c.5648
+     /tmp/ccD9y0MV.s:656    .text.matrix_init_user:0000000000000000 matrix_init_user
+     /tmp/ccD9y0MV.s:671    .text.matrix_scan_user:0000000000000000 matrix_scan_user
+     /tmp/ccD9y0MV.s:686    .text.process_record_user:0000000000000000 process_record_user
+     /tmp/ccD9y0MV.s:713    .text.led_set_user:0000000000000000 led_set_user
+     /tmp/ccD9y0MV.s:760    .progmem.data.keymaps:0000000000000000 keymaps
 
 UNDEFINED SYMBOLS
 backlight_toggle
