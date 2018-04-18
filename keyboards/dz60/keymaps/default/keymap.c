@@ -1,9 +1,13 @@
+#include "dz60.h"
+#include "secret.h"
+
 enum planck_keycodes {
+    QWERTY = SAFE_RANGE,
     DYNAMIC_MACRO_RANGE,
 };
 
-#include "dz60.h"
-#include "secret.h"
+
+
 #include "dynamic_macro.h"
 
 // layers

@@ -825,7 +825,7 @@
  237:./quantum/dynamic_macro.h **** 
  238:./quantum/dynamic_macro.h ****     if (macro_id == 0) {
  432               		.loc 1 238 0
- 433 0008 2091 0000 		lds r18,macro_id.5624
+ 433 0008 2091 0000 		lds r18,macro_id.5625
  434 000c 2111      		cpse r18,__zero_reg__
  435 000e 00C0      		rjmp .L17
  239:./quantum/dynamic_macro.h ****         /* No macro recording in progress. */
@@ -837,19 +837,42 @@
  440 0016 00C0      		rjmp .L18
  241:./quantum/dynamic_macro.h ****             switch (keycode) {
  441               		.loc 1 241 0
- 442 0018 8130      		cpi r24,1
- 443 001a 9105      		cpc r25,__zero_reg__
- 444 001c 01F0      		breq .L19
- 445 001e 00F0      		brlo .L20
- 446 0020 8330      		cpi r24,3
- 447 0022 9105      		cpc r25,__zero_reg__
- 448 0024 01F0      		breq .L21
- 449 0026 0497      		sbiw r24,4
- 450 0028 01F0      		breq .+2
- 451 002a 00C0      		rjmp .L38
+ 442 0018 843D      		cpi r24,-44
+ 443 001a FCE5      		ldi r31,92
+ 444 001c 9F07      		cpc r25,r31
+ 445 001e 01F0      		breq .L19
+ 446 0020 00F4      		brsh .L20
+ 447 0022 833D      		cpi r24,-45
+ 448 0024 9C45      		sbci r25,92
+ 449 0026 01F0      		breq .+2
+ 450 0028 00C0      		rjmp .L38
  242:./quantum/dynamic_macro.h ****             case DYN_REC_START1:
  243:./quantum/dynamic_macro.h ****                 dynamic_macro_record_start(&macro_pointer, macro_buffer);
+ 451               		.loc 1 243 0
+ 452 002a 60E0      		ldi r22,lo8(macro_buffer.5620)
+ 453 002c 70E0      		ldi r23,hi8(macro_buffer.5620)
+ 454               	.LVL33:
+ 455 002e 80E0      		ldi r24,lo8(macro_pointer.5624)
+ 456 0030 90E0      		ldi r25,hi8(macro_pointer.5624)
+ 457               	.LVL34:
+ 458 0032 0E94 0000 		call dynamic_macro_record_start
+ 459               	.LVL35:
  244:./quantum/dynamic_macro.h ****                 macro_id = 1;
+ 460               		.loc 1 244 0
+ 461 0036 81E0      		ldi r24,lo8(1)
+ 462 0038 00C0      		rjmp .L40
+ 463               	.LVL36:
+ 464               	.L20:
+ 241:./quantum/dynamic_macro.h ****             switch (keycode) {
+ 465               		.loc 1 241 0
+ 466 003a 863D      		cpi r24,-42
+ 467 003c ECE5      		ldi r30,92
+ 468 003e 9E07      		cpc r25,r30
+ 469 0040 01F0      		breq .L22
+ 470 0042 873D      		cpi r24,-41
+ 471 0044 9C45      		sbci r25,92
+ 472 0046 01F0      		breq .+2
+ 473 0048 00C0      		rjmp .L38
  245:./quantum/dynamic_macro.h ****                 return false;
  246:./quantum/dynamic_macro.h ****             case DYN_REC_START2:
  247:./quantum/dynamic_macro.h ****                 dynamic_macro_record_start(&macro_pointer, r_macro_buffer);
@@ -860,138 +883,124 @@
  252:./quantum/dynamic_macro.h ****                 return false;
  253:./quantum/dynamic_macro.h ****             case DYN_MACRO_PLAY2:
  254:./quantum/dynamic_macro.h ****                 dynamic_macro_play(r_macro_buffer, r_macro_end, -1);
- 452               		.loc 1 254 0
- 453 002c 6091 0000 		lds r22,r_macro_end.5622
- 454 0030 7091 0000 		lds r23,r_macro_end.5622+1
- 455               	.LVL33:
- 456 0034 4FEF      		ldi r20,lo8(-1)
- 457 0036 80E0      		ldi r24,lo8(macro_buffer.5619+762)
- 458 0038 90E0      		ldi r25,hi8(macro_buffer.5619+762)
- 459               	.LVL34:
- 460 003a 00C0      		rjmp .L41
- 461               	.LVL35:
- 462               	.L20:
- 243:./quantum/dynamic_macro.h ****                 macro_id = 1;
- 463               		.loc 1 243 0
- 464 003c 60E0      		ldi r22,lo8(macro_buffer.5619)
- 465 003e 70E0      		ldi r23,hi8(macro_buffer.5619)
- 466 0040 80E0      		ldi r24,lo8(macro_pointer.5623)
- 467 0042 90E0      		ldi r25,hi8(macro_pointer.5623)
- 468               	.LVL36:
- 469 0044 0E94 0000 		call dynamic_macro_record_start
- 470               	.LVL37:
- 244:./quantum/dynamic_macro.h ****                 return false;
- 471               		.loc 1 244 0
- 472 0048 81E0      		ldi r24,lo8(1)
- 473 004a 00C0      		rjmp .L40
- 474               	.LVL38:
- 475               	.L19:
+ 474               		.loc 1 254 0
+ 475 004a 6091 0000 		lds r22,r_macro_end.5623
+ 476 004e 7091 0000 		lds r23,r_macro_end.5623+1
+ 477 0052 4FEF      		ldi r20,lo8(-1)
+ 478 0054 80E0      		ldi r24,lo8(macro_buffer.5620+762)
+ 479 0056 90E0      		ldi r25,hi8(macro_buffer.5620+762)
+ 480               	.LVL37:
+ 481 0058 00C0      		rjmp .L41
+ 482               	.LVL38:
+ 483               	.L19:
  247:./quantum/dynamic_macro.h ****                 macro_id = 2;
- 476               		.loc 1 247 0
- 477 004c 60E0      		ldi r22,lo8(macro_buffer.5619+762)
- 478 004e 70E0      		ldi r23,hi8(macro_buffer.5619+762)
- 479 0050 80E0      		ldi r24,lo8(macro_pointer.5623)
- 480 0052 90E0      		ldi r25,hi8(macro_pointer.5623)
- 481               	.LVL39:
- 482 0054 0E94 0000 		call dynamic_macro_record_start
- 483               	.LVL40:
+ 484               		.loc 1 247 0
+ 485 005a 60E0      		ldi r22,lo8(macro_buffer.5620+762)
+ 486 005c 70E0      		ldi r23,hi8(macro_buffer.5620+762)
+ 487 005e 80E0      		ldi r24,lo8(macro_pointer.5624)
+ 488 0060 90E0      		ldi r25,hi8(macro_pointer.5624)
+ 489               	.LVL39:
+ 490 0062 0E94 0000 		call dynamic_macro_record_start
+ 491               	.LVL40:
  248:./quantum/dynamic_macro.h ****                 return false;
- 484               		.loc 1 248 0
- 485 0058 82E0      		ldi r24,lo8(2)
- 486               	.L40:
- 487 005a 8093 0000 		sts macro_id.5624,r24
+ 492               		.loc 1 248 0
+ 493 0066 82E0      		ldi r24,lo8(2)
+ 494               	.L40:
+ 495 0068 8093 0000 		sts macro_id.5625,r24
  249:./quantum/dynamic_macro.h ****             case DYN_MACRO_PLAY1:
- 488               		.loc 1 249 0
- 489 005e 00C0      		rjmp .L18
- 490               	.LVL41:
- 491               	.L21:
+ 496               		.loc 1 249 0
+ 497 006c 00C0      		rjmp .L18
+ 498               	.LVL41:
+ 499               	.L22:
  251:./quantum/dynamic_macro.h ****                 return false;
- 492               		.loc 1 251 0
- 493 0060 6091 0000 		lds r22,macro_end.5620
- 494 0064 7091 0000 		lds r23,macro_end.5620+1
- 495 0068 41E0      		ldi r20,lo8(1)
- 496 006a 80E0      		ldi r24,lo8(macro_buffer.5619)
- 497 006c 90E0      		ldi r25,hi8(macro_buffer.5619)
- 498               	.LVL42:
- 499               	.L41:
- 500               		.loc 1 254 0
- 501 006e 0E94 0000 		call dynamic_macro_play
- 502               	.LVL43:
+ 500               		.loc 1 251 0
+ 501 006e 6091 0000 		lds r22,macro_end.5621
+ 502 0072 7091 0000 		lds r23,macro_end.5621+1
+ 503 0076 41E0      		ldi r20,lo8(1)
+ 504 0078 80E0      		ldi r24,lo8(macro_buffer.5620)
+ 505 007a 90E0      		ldi r25,hi8(macro_buffer.5620)
+ 506               	.LVL42:
+ 507               	.L41:
+ 508               		.loc 1 254 0
+ 509 007c 0E94 0000 		call dynamic_macro_play
+ 510               	.LVL43:
  255:./quantum/dynamic_macro.h ****                 return false;
- 503               		.loc 1 255 0
- 504 0072 00C0      		rjmp .L18
- 505               	.LVL44:
- 506               	.L17:
+ 511               		.loc 1 255 0
+ 512 0080 00C0      		rjmp .L18
+ 513               	.LVL44:
+ 514               	.L17:
  256:./quantum/dynamic_macro.h ****             }
  257:./quantum/dynamic_macro.h ****         }
  258:./quantum/dynamic_macro.h ****     } else {
  259:./quantum/dynamic_macro.h ****         /* A macro is being recorded right now. */
  260:./quantum/dynamic_macro.h ****         switch (keycode) {
- 507               		.loc 1 260 0
- 508 0074 8230      		cpi r24,2
- 509 0076 9105      		cpc r25,__zero_reg__
- 510 0078 01F0      		breq .L24
- 511 007a 00F0      		brlo .L23
- 512 007c 0597      		sbiw r24,5
- 513 007e 00F0      		brlo .L37
- 514 0080 00C0      		rjmp .L23
- 515               	.L24:
+ 515               		.loc 1 260 0
+ 516 0082 853D      		cpi r24,-43
+ 517 0084 3CE5      		ldi r19,92
+ 518 0086 9307      		cpc r25,r19
+ 519 0088 01F0      		breq .L25
+ 520 008a 00F0      		brlo .L24
+ 521 008c 883D      		cpi r24,-40
+ 522 008e 9C45      		sbci r25,92
+ 523 0090 00F0      		brlo .L37
+ 524 0092 00C0      		rjmp .L24
+ 525               	.L25:
  261:./quantum/dynamic_macro.h ****         case DYN_REC_STOP:
  262:./quantum/dynamic_macro.h ****             /* Stop the macro recording. */
  263:./quantum/dynamic_macro.h ****             if (record->event.pressed) { /* Ignore the initial release
- 516               		.loc 1 263 0
- 517 0082 FB01      		movw r30,r22
- 518 0084 C281      		ldd r28,Z+2
- 519 0086 CC23      		tst r28
- 520 0088 01F0      		breq .L18
+ 526               		.loc 1 263 0
+ 527 0094 FB01      		movw r30,r22
+ 528 0096 C281      		ldd r28,Z+2
+ 529 0098 CC23      		tst r28
+ 530 009a 01F0      		breq .L18
  264:./quantum/dynamic_macro.h ****                                           * just after the recoding
  265:./quantum/dynamic_macro.h ****                                           * starts. */
  266:./quantum/dynamic_macro.h ****                 switch (macro_id) {
- 521               		.loc 1 266 0
- 522 008a 2130      		cpi r18,lo8(1)
- 523 008c 01F0      		breq .L26
- 524 008e 2230      		cpi r18,lo8(2)
- 525 0090 01F4      		brne .L25
+ 531               		.loc 1 266 0
+ 532 009c 2130      		cpi r18,lo8(1)
+ 533 009e 01F0      		breq .L27
+ 534 00a0 2230      		cpi r18,lo8(2)
+ 535 00a2 01F4      		brne .L26
  267:./quantum/dynamic_macro.h ****                 case 1:
  268:./quantum/dynamic_macro.h ****                     dynamic_macro_record_end(macro_buffer, macro_pointer, +1, &macro_end);
  269:./quantum/dynamic_macro.h ****                     break;
  270:./quantum/dynamic_macro.h ****                 case 2:
  271:./quantum/dynamic_macro.h ****                     dynamic_macro_record_end(r_macro_buffer, macro_pointer, -1, &r_macro_end);
- 526               		.loc 1 271 0
- 527 0092 6091 0000 		lds r22,macro_pointer.5623
- 528 0096 7091 0000 		lds r23,macro_pointer.5623+1
- 529 009a 20E0      		ldi r18,lo8(r_macro_end.5622)
- 530 009c 30E0      		ldi r19,hi8(r_macro_end.5622)
- 531 009e 4FEF      		ldi r20,lo8(-1)
- 532 00a0 80E0      		ldi r24,lo8(macro_buffer.5619+762)
- 533 00a2 90E0      		ldi r25,hi8(macro_buffer.5619+762)
- 534               	.LVL45:
- 535 00a4 00C0      		rjmp .L39
- 536               	.LVL46:
- 537               	.L26:
+ 536               		.loc 1 271 0
+ 537 00a4 6091 0000 		lds r22,macro_pointer.5624
+ 538 00a8 7091 0000 		lds r23,macro_pointer.5624+1
+ 539 00ac 20E0      		ldi r18,lo8(r_macro_end.5623)
+ 540 00ae 30E0      		ldi r19,hi8(r_macro_end.5623)
+ 541 00b0 4FEF      		ldi r20,lo8(-1)
+ 542 00b2 80E0      		ldi r24,lo8(macro_buffer.5620+762)
+ 543 00b4 90E0      		ldi r25,hi8(macro_buffer.5620+762)
+ 544               	.LVL45:
+ 545 00b6 00C0      		rjmp .L39
+ 546               	.LVL46:
+ 547               	.L27:
  268:./quantum/dynamic_macro.h ****                     break;
- 538               		.loc 1 268 0
- 539 00a6 6091 0000 		lds r22,macro_pointer.5623
- 540 00aa 7091 0000 		lds r23,macro_pointer.5623+1
- 541 00ae 20E0      		ldi r18,lo8(macro_end.5620)
- 542 00b0 30E0      		ldi r19,hi8(macro_end.5620)
- 543 00b2 41E0      		ldi r20,lo8(1)
- 544 00b4 80E0      		ldi r24,lo8(macro_buffer.5619)
- 545 00b6 90E0      		ldi r25,hi8(macro_buffer.5619)
- 546               	.LVL47:
- 547               	.L39:
- 548               		.loc 1 271 0
- 549 00b8 0E94 0000 		call dynamic_macro_record_end
- 550               	.LVL48:
- 551               	.L25:
+ 548               		.loc 1 268 0
+ 549 00b8 6091 0000 		lds r22,macro_pointer.5624
+ 550 00bc 7091 0000 		lds r23,macro_pointer.5624+1
+ 551 00c0 20E0      		ldi r18,lo8(macro_end.5621)
+ 552 00c2 30E0      		ldi r19,hi8(macro_end.5621)
+ 553 00c4 41E0      		ldi r20,lo8(1)
+ 554 00c6 80E0      		ldi r24,lo8(macro_buffer.5620)
+ 555 00c8 90E0      		ldi r25,hi8(macro_buffer.5620)
+ 556               	.LVL47:
+ 557               	.L39:
+ 558               		.loc 1 271 0
+ 559 00ca 0E94 0000 		call dynamic_macro_record_end
+ 560               	.LVL48:
+ 561               	.L26:
  272:./quantum/dynamic_macro.h ****                     break;
  273:./quantum/dynamic_macro.h ****                 }
  274:./quantum/dynamic_macro.h ****                 macro_id = 0;
- 552               		.loc 1 274 0
- 553 00bc 1092 0000 		sts macro_id.5624,__zero_reg__
- 554 00c0 00C0      		rjmp .L37
- 555               	.LVL49:
- 556               	.L23:
+ 562               		.loc 1 274 0
+ 563 00ce 1092 0000 		sts macro_id.5625,__zero_reg__
+ 564 00d2 00C0      		rjmp .L37
+ 565               	.LVL49:
+ 566               	.L24:
  275:./quantum/dynamic_macro.h ****             }
  276:./quantum/dynamic_macro.h ****             return false;
  277:./quantum/dynamic_macro.h ****         case DYN_MACRO_PLAY1:
@@ -1001,628 +1010,632 @@
  281:./quantum/dynamic_macro.h ****         default:
  282:./quantum/dynamic_macro.h ****             /* Store the key in the macro buffer and process it normally. */
  283:./quantum/dynamic_macro.h ****             switch (macro_id) {
- 557               		.loc 1 283 0
- 558 00c2 2130      		cpi r18,lo8(1)
- 559 00c4 01F0      		breq .L28
- 560 00c6 2230      		cpi r18,lo8(2)
- 561 00c8 01F4      		brne .L38
+ 567               		.loc 1 283 0
+ 568 00d4 2130      		cpi r18,lo8(1)
+ 569 00d6 01F0      		breq .L29
+ 570 00d8 2230      		cpi r18,lo8(2)
+ 571 00da 01F4      		brne .L38
  284:./quantum/dynamic_macro.h ****             case 1:
  285:./quantum/dynamic_macro.h ****                 dynamic_macro_record_key(macro_buffer, &macro_pointer, r_macro_end, +1, record);
  286:./quantum/dynamic_macro.h ****                 break;
  287:./quantum/dynamic_macro.h ****             case 2:
  288:./quantum/dynamic_macro.h ****                 dynamic_macro_record_key(r_macro_buffer, &macro_pointer, macro_end, -1, record);
- 562               		.loc 1 288 0
- 563 00ca 4091 0000 		lds r20,macro_end.5620
- 564 00ce 5091 0000 		lds r21,macro_end.5620+1
- 565 00d2 2FEF      		ldi r18,lo8(-1)
- 566 00d4 60E0      		ldi r22,lo8(macro_pointer.5623)
- 567 00d6 70E0      		ldi r23,hi8(macro_pointer.5623)
- 568 00d8 80E0      		ldi r24,lo8(macro_buffer.5619+762)
- 569 00da 90E0      		ldi r25,hi8(macro_buffer.5619+762)
- 570               	.LVL50:
- 571 00dc 00C0      		rjmp .L42
- 572               	.LVL51:
- 573               	.L28:
+ 572               		.loc 1 288 0
+ 573 00dc 4091 0000 		lds r20,macro_end.5621
+ 574 00e0 5091 0000 		lds r21,macro_end.5621+1
+ 575 00e4 2FEF      		ldi r18,lo8(-1)
+ 576 00e6 60E0      		ldi r22,lo8(macro_pointer.5624)
+ 577 00e8 70E0      		ldi r23,hi8(macro_pointer.5624)
+ 578 00ea 80E0      		ldi r24,lo8(macro_buffer.5620+762)
+ 579 00ec 90E0      		ldi r25,hi8(macro_buffer.5620+762)
+ 580               	.LVL50:
+ 581 00ee 00C0      		rjmp .L42
+ 582               	.LVL51:
+ 583               	.L29:
  285:./quantum/dynamic_macro.h ****                 break;
- 574               		.loc 1 285 0
- 575 00de 4091 0000 		lds r20,r_macro_end.5622
- 576 00e2 5091 0000 		lds r21,r_macro_end.5622+1
- 577 00e6 21E0      		ldi r18,lo8(1)
- 578 00e8 60E0      		ldi r22,lo8(macro_pointer.5623)
- 579 00ea 70E0      		ldi r23,hi8(macro_pointer.5623)
- 580 00ec 80E0      		ldi r24,lo8(macro_buffer.5619)
- 581 00ee 90E0      		ldi r25,hi8(macro_buffer.5619)
- 582               	.LVL52:
- 583               	.L42:
- 584               		.loc 1 288 0
- 585 00f0 0E94 0000 		call dynamic_macro_record_key
- 586               	.LVL53:
- 587 00f4 00C0      		rjmp .L38
- 588               	.L37:
+ 584               		.loc 1 285 0
+ 585 00f0 4091 0000 		lds r20,r_macro_end.5623
+ 586 00f4 5091 0000 		lds r21,r_macro_end.5623+1
+ 587 00f8 21E0      		ldi r18,lo8(1)
+ 588 00fa 60E0      		ldi r22,lo8(macro_pointer.5624)
+ 589 00fc 70E0      		ldi r23,hi8(macro_pointer.5624)
+ 590 00fe 80E0      		ldi r24,lo8(macro_buffer.5620)
+ 591 0100 90E0      		ldi r25,hi8(macro_buffer.5620)
+ 592               	.LVL52:
+ 593               	.L42:
+ 594               		.loc 1 288 0
+ 595 0102 0E94 0000 		call dynamic_macro_record_key
+ 596               	.LVL53:
+ 597 0106 00C0      		rjmp .L38
+ 598               	.L37:
  280:./quantum/dynamic_macro.h ****         default:
- 589               		.loc 1 280 0
- 590 00f6 C0E0      		ldi r28,0
- 591 00f8 00C0      		rjmp .L18
- 592               	.L38:
+ 599               		.loc 1 280 0
+ 600 0108 C0E0      		ldi r28,0
+ 601 010a 00C0      		rjmp .L18
+ 602               	.L38:
  289:./quantum/dynamic_macro.h ****                 break;
  290:./quantum/dynamic_macro.h ****             }
  291:./quantum/dynamic_macro.h ****             return true;
- 593               		.loc 1 291 0
- 594 00fa C1E0      		ldi r28,lo8(1)
- 595               	.L18:
+ 603               		.loc 1 291 0
+ 604 010c C1E0      		ldi r28,lo8(1)
+ 605               	.L18:
  292:./quantum/dynamic_macro.h ****             break;
  293:./quantum/dynamic_macro.h ****         }
  294:./quantum/dynamic_macro.h ****     }
  295:./quantum/dynamic_macro.h **** 
  296:./quantum/dynamic_macro.h ****     return true;
  297:./quantum/dynamic_macro.h **** }
- 596               		.loc 1 297 0
- 597 00fc 8C2F      		mov r24,r28
- 598               	/* epilogue start */
- 599 00fe CF91      		pop r28
- 600 0100 1F91      		pop r17
- 601 0102 0F91      		pop r16
- 602               	.LVL54:
- 603 0104 0895      		ret
- 604               		.cfi_endproc
- 605               	.LFE115:
- 607               		.section	.text.action_get_macro,"ax",@progbits
- 608               	.global	action_get_macro
- 610               	action_get_macro:
- 611               	.LFB116:
- 612               		.file 3 "keyboards/dz60/keymaps/default/keymap.c"
-   1:keyboards/dz60/keymaps/default/keymap.c **** enum planck_keycodes {
-   2:keyboards/dz60/keymaps/default/keymap.c ****     DYNAMIC_MACRO_RANGE,
-   3:keyboards/dz60/keymaps/default/keymap.c **** };
-   4:keyboards/dz60/keymaps/default/keymap.c **** 
-   5:keyboards/dz60/keymaps/default/keymap.c **** #include "dz60.h"
-   6:keyboards/dz60/keymaps/default/keymap.c **** #include "secret.h"
-   7:keyboards/dz60/keymaps/default/keymap.c **** #include "dynamic_macro.h"
+ 606               		.loc 1 297 0
+ 607 010e 8C2F      		mov r24,r28
+ 608               	/* epilogue start */
+ 609 0110 CF91      		pop r28
+ 610 0112 1F91      		pop r17
+ 611 0114 0F91      		pop r16
+ 612               	.LVL54:
+ 613 0116 0895      		ret
+ 614               		.cfi_endproc
+ 615               	.LFE115:
+ 617               		.section	.text.action_get_macro,"ax",@progbits
+ 618               	.global	action_get_macro
+ 620               	action_get_macro:
+ 621               	.LFB116:
+ 622               		.file 3 "keyboards/dz60/keymaps/default/keymap.c"
+   1:keyboards/dz60/keymaps/default/keymap.c **** #include "dz60.h"
+   2:keyboards/dz60/keymaps/default/keymap.c **** #include "secret.h"
+   3:keyboards/dz60/keymaps/default/keymap.c **** 
+   4:keyboards/dz60/keymaps/default/keymap.c **** enum planck_keycodes {
+   5:keyboards/dz60/keymaps/default/keymap.c ****     QWERTY = SAFE_RANGE,
+   6:keyboards/dz60/keymaps/default/keymap.c ****     DYNAMIC_MACRO_RANGE,
+   7:keyboards/dz60/keymaps/default/keymap.c **** };
    8:keyboards/dz60/keymaps/default/keymap.c **** 
-   9:keyboards/dz60/keymaps/default/keymap.c **** // layers
-  10:keyboards/dz60/keymaps/default/keymap.c **** #define _BL 0 // base layer
-  11:keyboards/dz60/keymaps/default/keymap.c **** #define _FL 1 // function layer
-  12:keyboards/dz60/keymaps/default/keymap.c **** #define _LL 2 // lighting layer
-  13:keyboards/dz60/keymaps/default/keymap.c **** #define _ML 3 // macro layer
-  14:keyboards/dz60/keymaps/default/keymap.c **** 
-  15:keyboards/dz60/keymaps/default/keymap.c **** // macros
-  16:keyboards/dz60/keymaps/default/keymap.c **** #define M_FX 0 // firefox master
-  17:keyboards/dz60/keymaps/default/keymap.c **** 
-  18:keyboards/dz60/keymaps/default/keymap.c **** // readability
-  19:keyboards/dz60/keymaps/default/keymap.c **** #define _______ KC_TRNS
-  20:keyboards/dz60/keymaps/default/keymap.c **** #define ___X___ KC_NO
-  21:keyboards/dz60/keymaps/default/keymap.c **** #define FN_CAPS LT(_FL, KC_CAPS)
-  22:keyboards/dz60/keymaps/default/keymap.c **** #define RGB_SWL RGB_M_SW
-  23:keyboards/dz60/keymaps/default/keymap.c **** #define RGB_SNK RGB_M_SN
-  24:keyboards/dz60/keymaps/default/keymap.c **** #define RGB_PLN RGB_M_P
-  25:keyboards/dz60/keymaps/default/keymap.c **** #define RGB_BTH RGB_M_B
-  26:keyboards/dz60/keymaps/default/keymap.c **** #define RGB_RNB RGB_M_R
-  27:keyboards/dz60/keymaps/default/keymap.c **** #define MAC_RC1 DYN_REC_START1
-  28:keyboards/dz60/keymaps/default/keymap.c **** #define MAC_RC2 DYN_REC_START2
-  29:keyboards/dz60/keymaps/default/keymap.c **** #define MAC_PL1 DYN_MACRO_PLAY1
-  30:keyboards/dz60/keymaps/default/keymap.c **** #define MAC_PL2 DYN_MACRO_PLAY2
-  31:keyboards/dz60/keymaps/default/keymap.c **** #define MAC_STP DYN_REC_STOP
-  32:keyboards/dz60/keymaps/default/keymap.c **** 
-  33:keyboards/dz60/keymaps/default/keymap.c **** const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  34:keyboards/dz60/keymaps/default/keymap.c ****     [_BL] = KEYMAP(
-  35:keyboards/dz60/keymaps/default/keymap.c ****         KC_ESC  , KC_1    , KC_2    , KC_3    , KC_4    , KC_5    , KC_6    , KC_7    , KC_8    , K
-  36:keyboards/dz60/keymaps/default/keymap.c ****         KC_TAB  , KC_Q    , KC_W    , KC_E    , KC_R    , KC_T    , KC_Y    , KC_U    , KC_I    , K
-  37:keyboards/dz60/keymaps/default/keymap.c ****         FN_CAPS , KC_A    , KC_S    , KC_D    , KC_F    , KC_G    , KC_H    , KC_J    , KC_K    , K
-  38:keyboards/dz60/keymaps/default/keymap.c ****         KC_LSFT , KC_NUBS , KC_Z    , KC_X    , KC_C    , KC_V    , KC_B    , KC_N    , KC_M    , K
-  39:keyboards/dz60/keymaps/default/keymap.c ****         KC_LCTL , KC_LGUI , KC_LALT , KC_SPC  , MO(_FL) , MO(_ML) , KC_RALT , KC_RGUI , MO(_LL) , K
-  40:keyboards/dz60/keymaps/default/keymap.c ****     ),
-  41:keyboards/dz60/keymaps/default/keymap.c ****     [_FL] = KEYMAP(
-  42:keyboards/dz60/keymaps/default/keymap.c ****         KC_GRV  , KC_F1   , KC_F2   , KC_F3   , KC_F4   , KC_F5   , KC_F6   , KC_F7   , KC_F8   , K
-  43:keyboards/dz60/keymaps/default/keymap.c ****         _______ , RESET   , KC_UP   , _______ , KC_BTN1 , KC_MS_U , KC_BTN2 , _______ , KC_UP   , _
-  44:keyboards/dz60/keymaps/default/keymap.c ****         _______ , KC_LEFT , KC_DOWN , KC_RGHT , KC_MS_L , KC_MS_D , KC_MS_R , KC_LEFT , KC_DOWN , K
-  45:keyboards/dz60/keymaps/default/keymap.c ****         _______ , M(M_FX) , MAC_PL1 , MAC_PL2 , _______ , _______ , KC_VOLD , KC_VOLU , KC_MUTE , K
-  46:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , _______ , KC_PGDN , _______ , KC_PGUP , _______ , _______ , _______ , _
-  47:keyboards/dz60/keymaps/default/keymap.c ****     ),
-  48:keyboards/dz60/keymaps/default/keymap.c ****     [_LL] = KEYMAP(
-  49:keyboards/dz60/keymaps/default/keymap.c ****         RGB_TOG , RGB_PLN , RGB_BTH , RGB_RNB , RGB_SWL , RGB_SNK , _______ , _______ , _______ , _
-  50:keyboards/dz60/keymaps/default/keymap.c ****         RGB_MOD , RGB_HUI , RGB_SAI , RGB_VAI , _______ , _______ , _______ , _______ , _______ , _
-  51:keyboards/dz60/keymaps/default/keymap.c ****         _______ , RGB_HUD , RGB_SAD , RGB_VAD , _______ , _______ , _______ , _______ , _______ , _
-  52:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _
-  53:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _
-  54:keyboards/dz60/keymaps/default/keymap.c ****     ),
-  55:keyboards/dz60/keymaps/default/keymap.c ****     [_ML] = KEYMAP(
+   9:keyboards/dz60/keymaps/default/keymap.c **** 
+  10:keyboards/dz60/keymaps/default/keymap.c **** 
+  11:keyboards/dz60/keymaps/default/keymap.c **** #include "dynamic_macro.h"
+  12:keyboards/dz60/keymaps/default/keymap.c **** 
+  13:keyboards/dz60/keymaps/default/keymap.c **** // layers
+  14:keyboards/dz60/keymaps/default/keymap.c **** #define _BL 0 // base layer
+  15:keyboards/dz60/keymaps/default/keymap.c **** #define _FL 1 // function layer
+  16:keyboards/dz60/keymaps/default/keymap.c **** #define _LL 2 // lighting layer
+  17:keyboards/dz60/keymaps/default/keymap.c **** #define _ML 3 // macro layer
+  18:keyboards/dz60/keymaps/default/keymap.c **** 
+  19:keyboards/dz60/keymaps/default/keymap.c **** // macros
+  20:keyboards/dz60/keymaps/default/keymap.c **** #define M_FX 0 // firefox master
+  21:keyboards/dz60/keymaps/default/keymap.c **** 
+  22:keyboards/dz60/keymaps/default/keymap.c **** // readability
+  23:keyboards/dz60/keymaps/default/keymap.c **** #define _______ KC_TRNS
+  24:keyboards/dz60/keymaps/default/keymap.c **** #define ___X___ KC_NO
+  25:keyboards/dz60/keymaps/default/keymap.c **** #define FN_CAPS LT(_FL, KC_CAPS)
+  26:keyboards/dz60/keymaps/default/keymap.c **** #define RGB_SWL RGB_M_SW
+  27:keyboards/dz60/keymaps/default/keymap.c **** #define RGB_SNK RGB_M_SN
+  28:keyboards/dz60/keymaps/default/keymap.c **** #define RGB_PLN RGB_M_P
+  29:keyboards/dz60/keymaps/default/keymap.c **** #define RGB_BTH RGB_M_B
+  30:keyboards/dz60/keymaps/default/keymap.c **** #define RGB_RNB RGB_M_R
+  31:keyboards/dz60/keymaps/default/keymap.c **** #define MAC_RC1 DYN_REC_START1
+  32:keyboards/dz60/keymaps/default/keymap.c **** #define MAC_RC2 DYN_REC_START2
+  33:keyboards/dz60/keymaps/default/keymap.c **** #define MAC_PL1 DYN_MACRO_PLAY1
+  34:keyboards/dz60/keymaps/default/keymap.c **** #define MAC_PL2 DYN_MACRO_PLAY2
+  35:keyboards/dz60/keymaps/default/keymap.c **** #define MAC_STP DYN_REC_STOP
+  36:keyboards/dz60/keymaps/default/keymap.c **** 
+  37:keyboards/dz60/keymaps/default/keymap.c **** const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+  38:keyboards/dz60/keymaps/default/keymap.c ****     [_BL] = KEYMAP(
+  39:keyboards/dz60/keymaps/default/keymap.c ****         KC_ESC  , KC_1    , KC_2    , KC_3    , KC_4    , KC_5    , KC_6    , KC_7    , KC_8    , K
+  40:keyboards/dz60/keymaps/default/keymap.c ****         KC_TAB  , KC_Q    , KC_W    , KC_E    , KC_R    , KC_T    , KC_Y    , KC_U    , KC_I    , K
+  41:keyboards/dz60/keymaps/default/keymap.c ****         FN_CAPS , KC_A    , KC_S    , KC_D    , KC_F    , KC_G    , KC_H    , KC_J    , KC_K    , K
+  42:keyboards/dz60/keymaps/default/keymap.c ****         KC_LSFT , KC_NUBS , KC_Z    , KC_X    , KC_C    , KC_V    , KC_B    , KC_N    , KC_M    , K
+  43:keyboards/dz60/keymaps/default/keymap.c ****         KC_LCTL , KC_LGUI , KC_LALT , KC_SPC  , MO(_FL) , MO(_ML) , KC_RALT , KC_RGUI , MO(_LL) , K
+  44:keyboards/dz60/keymaps/default/keymap.c ****     ),
+  45:keyboards/dz60/keymaps/default/keymap.c ****     [_FL] = KEYMAP(
+  46:keyboards/dz60/keymaps/default/keymap.c ****         KC_GRV  , KC_F1   , KC_F2   , KC_F3   , KC_F4   , KC_F5   , KC_F6   , KC_F7   , KC_F8   , K
+  47:keyboards/dz60/keymaps/default/keymap.c ****         _______ , RESET   , KC_UP   , _______ , KC_BTN1 , KC_MS_U , KC_BTN2 , _______ , KC_UP   , _
+  48:keyboards/dz60/keymaps/default/keymap.c ****         _______ , KC_LEFT , KC_DOWN , KC_RGHT , KC_MS_L , KC_MS_D , KC_MS_R , KC_LEFT , KC_DOWN , K
+  49:keyboards/dz60/keymaps/default/keymap.c ****         _______ , M(M_FX) , MAC_PL1 , MAC_PL2 , _______ , _______ , KC_VOLD , KC_VOLU , KC_MUTE , K
+  50:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , _______ , KC_PGDN , _______ , KC_PGUP , _______ , _______ , _______ , _
+  51:keyboards/dz60/keymaps/default/keymap.c ****     ),
+  52:keyboards/dz60/keymaps/default/keymap.c ****     [_LL] = KEYMAP(
+  53:keyboards/dz60/keymaps/default/keymap.c ****         RGB_TOG , RGB_PLN , RGB_BTH , RGB_RNB , RGB_SWL , RGB_SNK , _______ , _______ , _______ , _
+  54:keyboards/dz60/keymaps/default/keymap.c ****         RGB_MOD , RGB_HUI , RGB_SAI , RGB_VAI , _______ , _______ , _______ , _______ , _______ , _
+  55:keyboards/dz60/keymaps/default/keymap.c ****         _______ , RGB_HUD , RGB_SAD , RGB_VAD , _______ , _______ , _______ , _______ , _______ , _
   56:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _
   57:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _
-  58:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _
-  59:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , MAC_RC1 , MAC_RC2 , _______ , _______ , _______ , _______ , _______ , _
+  58:keyboards/dz60/keymaps/default/keymap.c ****     ),
+  59:keyboards/dz60/keymaps/default/keymap.c ****     [_ML] = KEYMAP(
   60:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _
-  61:keyboards/dz60/keymaps/default/keymap.c ****     )
-  62:keyboards/dz60/keymaps/default/keymap.c **** };
-  63:keyboards/dz60/keymaps/default/keymap.c **** 
-  64:keyboards/dz60/keymaps/default/keymap.c **** const macro_t *action_get_macro(keyrecord_t *record , uint8_t id , uint8_t opt) {
- 613               		.loc 3 64 0
- 614               		.cfi_startproc
- 615               	.LVL55:
- 616               	/* prologue: function */
- 617               	/* frame size = 0 */
- 618               	/* stack size = 0 */
- 619               	.L__stack_usage = 0
-  65:keyboards/dz60/keymaps/default/keymap.c ****     keyevent_t event = record->event;
-  66:keyboards/dz60/keymaps/default/keymap.c ****     if (event.pressed) {
- 620               		.loc 3 66 0
- 621 0000 FC01      		movw r30,r24
- 622 0002 8281      		ldd r24,Z+2
- 623               	.LVL56:
- 624 0004 8823      		tst r24
- 625 0006 01F0      		breq .L44
-  67:keyboards/dz60/keymaps/default/keymap.c ****         switch (id) {
- 626               		.loc 3 67 0
- 627 0008 6111      		cpse r22,__zero_reg__
- 628 000a 00C0      		rjmp .L44
-  68:keyboards/dz60/keymaps/default/keymap.c ****             case M_FX:
-  69:keyboards/dz60/keymaps/default/keymap.c ****                 SEND_STRING(SEC_FF_MASTER);
- 629               		.loc 3 69 0
- 630 000c 80E0      		ldi r24,lo8(__c.5647)
- 631 000e 90E0      		ldi r25,hi8(__c.5647)
- 632               	.LVL57:
- 633 0010 0E94 0000 		call send_string_P
- 634               	.LVL58:
- 635               	.L44:
-  70:keyboards/dz60/keymaps/default/keymap.c ****                 return false;
-  71:keyboards/dz60/keymaps/default/keymap.c ****         }
-  72:keyboards/dz60/keymaps/default/keymap.c ****     }
-  73:keyboards/dz60/keymaps/default/keymap.c ****     return MACRO_NONE;
-  74:keyboards/dz60/keymaps/default/keymap.c **** }
- 636               		.loc 3 74 0
- 637 0014 80E0      		ldi r24,0
- 638 0016 90E0      		ldi r25,0
- 639 0018 0895      		ret
- 640               		.cfi_endproc
- 641               	.LFE116:
- 643               		.section	.text.matrix_init_user,"ax",@progbits
- 644               	.global	matrix_init_user
- 646               	matrix_init_user:
- 647               	.LFB117:
-  75:keyboards/dz60/keymaps/default/keymap.c **** 
-  76:keyboards/dz60/keymaps/default/keymap.c **** void matrix_init_user(void) {
- 648               		.loc 3 76 0
- 649               		.cfi_startproc
- 650               	/* prologue: function */
- 651               	/* frame size = 0 */
- 652               	/* stack size = 0 */
- 653               	.L__stack_usage = 0
- 654 0000 0895      		ret
- 655               		.cfi_endproc
- 656               	.LFE117:
- 658               		.section	.text.matrix_scan_user,"ax",@progbits
- 659               	.global	matrix_scan_user
- 661               	matrix_scan_user:
- 662               	.LFB118:
-  77:keyboards/dz60/keymaps/default/keymap.c **** }
-  78:keyboards/dz60/keymaps/default/keymap.c **** 
-  79:keyboards/dz60/keymaps/default/keymap.c **** void matrix_scan_user(void) {
- 663               		.loc 3 79 0
- 664               		.cfi_startproc
- 665               	/* prologue: function */
- 666               	/* frame size = 0 */
- 667               	/* stack size = 0 */
- 668               	.L__stack_usage = 0
- 669 0000 0895      		ret
- 670               		.cfi_endproc
- 671               	.LFE118:
- 673               		.section	.text.process_record_user,"ax",@progbits
- 674               	.global	process_record_user
- 676               	process_record_user:
- 677               	.LFB119:
-  80:keyboards/dz60/keymaps/default/keymap.c **** }
-  81:keyboards/dz60/keymaps/default/keymap.c **** 
-  82:keyboards/dz60/keymaps/default/keymap.c **** bool process_record_user(uint16_t keycode , keyrecord_t *record) {
- 678               		.loc 3 82 0
- 679               		.cfi_startproc
- 680               	.LVL59:
- 681               	/* prologue: function */
- 682               	/* frame size = 0 */
- 683               	/* stack size = 0 */
- 684               	.L__stack_usage = 0
-  83:keyboards/dz60/keymaps/default/keymap.c ****     uint16_t macro_kc = (keycode == MO(_ML) ? DYN_REC_STOP : keycode);
- 685               		.loc 3 83 0
- 686 0000 8330      		cpi r24,3
- 687 0002 21E5      		ldi r18,81
- 688 0004 9207      		cpc r25,r18
- 689 0006 01F4      		brne .L52
- 690 0008 82E0      		ldi r24,lo8(2)
- 691 000a 90E0      		ldi r25,0
- 692               	.LVL60:
- 693               	.L52:
-  84:keyboards/dz60/keymaps/default/keymap.c ****     if (!process_record_dynamic_macro(macro_kc, record)) {
- 694               		.loc 3 84 0 discriminator 4
- 695 000c 0C94 0000 		jmp process_record_dynamic_macro
- 696               	.LVL61:
- 697               		.cfi_endproc
- 698               	.LFE119:
- 700               		.section	.text.led_set_user,"ax",@progbits
- 701               	.global	led_set_user
- 703               	led_set_user:
- 704               	.LFB120:
-  85:keyboards/dz60/keymaps/default/keymap.c **** 		return false;
-  86:keyboards/dz60/keymaps/default/keymap.c ****     }
-  87:keyboards/dz60/keymaps/default/keymap.c ****     return true;
-  88:keyboards/dz60/keymaps/default/keymap.c **** }
-  89:keyboards/dz60/keymaps/default/keymap.c **** 
-  90:keyboards/dz60/keymaps/default/keymap.c **** void led_set_user(uint8_t usb_led) {
- 705               		.loc 3 90 0
- 706               		.cfi_startproc
- 707               	.LVL62:
- 708               	/* prologue: function */
- 709               	/* frame size = 0 */
- 710               	/* stack size = 0 */
- 711               	.L__stack_usage = 0
- 712 0000 0895      		ret
- 713               		.cfi_endproc
- 714               	.LFE120:
- 716               		.section	.progmem.data.__c.5647,"a",@progbits
- 719               	__c.5647:
- 720 0000 6D32 3672 		.string	"m26rkRTsjFJ7vjCN"
- 720      6B52 5473 
- 720      6A46 4A37 
- 720      766A 434E 
- 720      00
- 721               		.section	.data.r_macro_end.5622,"aw",@progbits
- 724               	r_macro_end.5622:
- 725 0000 0000      		.word	macro_buffer.5619+762
- 726               		.section	.data.macro_end.5620,"aw",@progbits
- 729               	macro_end.5620:
- 730 0000 0000      		.word	macro_buffer.5619
- 731               		.section	.bss.macro_buffer.5619,"aw",@nobits
- 734               	macro_buffer.5619:
- 735 0000 0000 0000 		.zero	768
- 735      0000 0000 
- 735      0000 0000 
- 735      0000 0000 
- 735      0000 0000 
- 736               		.section	.bss.macro_pointer.5623,"aw",@nobits
- 739               	macro_pointer.5623:
- 740 0000 0000      		.zero	2
- 741               		.section	.bss.macro_id.5624,"aw",@nobits
- 744               	macro_id.5624:
- 745 0000 00        		.zero	1
- 746               	.global	keymaps
- 747               		.section	.progmem.data.keymaps,"a",@progbits
- 750               	keymaps:
- 751 0000 2900      		.word	41
- 752 0002 1E00      		.word	30
- 753 0004 1F00      		.word	31
- 754 0006 2000      		.word	32
- 755 0008 2100      		.word	33
- 756 000a 2200      		.word	34
- 757 000c 2300      		.word	35
- 758 000e 2400      		.word	36
- 759 0010 2500      		.word	37
- 760 0012 2600      		.word	38
- 761 0014 2700      		.word	39
- 762 0016 2D00      		.word	45
- 763 0018 2E00      		.word	46
- 764 001a 0000      		.word	0
- 765 001c 2A00      		.word	42
- 766 001e 2B00      		.word	43
- 767 0020 0000      		.word	0
- 768 0022 1400      		.word	20
- 769 0024 1A00      		.word	26
- 770 0026 0800      		.word	8
- 771 0028 1500      		.word	21
- 772 002a 1700      		.word	23
- 773 002c 1C00      		.word	28
- 774 002e 1800      		.word	24
- 775 0030 0C00      		.word	12
- 776 0032 1200      		.word	18
- 777 0034 1300      		.word	19
- 778 0036 2F00      		.word	47
- 779 0038 3000      		.word	48
- 780 003a 3200      		.word	50
- 781 003c 3941      		.word	16697
- 782 003e 0000      		.word	0
- 783 0040 0400      		.word	4
- 784 0042 1600      		.word	22
- 785 0044 0700      		.word	7
- 786 0046 0900      		.word	9
- 787 0048 0A00      		.word	10
- 788 004a 0B00      		.word	11
- 789 004c 0D00      		.word	13
- 790 004e 0E00      		.word	14
- 791 0050 0F00      		.word	15
- 792 0052 3300      		.word	51
- 793 0054 3400      		.word	52
- 794 0056 2800      		.word	40
- 795 0058 0000      		.word	0
- 796 005a E100      		.word	225
- 797 005c 6400      		.word	100
- 798 005e 1D00      		.word	29
- 799 0060 1B00      		.word	27
- 800 0062 0600      		.word	6
- 801 0064 1900      		.word	25
- 802 0066 0500      		.word	5
- 803 0068 1100      		.word	17
- 804 006a 1000      		.word	16
- 805 006c 3600      		.word	54
- 806 006e 3700      		.word	55
- 807 0070 3800      		.word	56
- 808 0072 0000      		.word	0
- 809 0074 E500      		.word	229
- 810 0076 0000      		.word	0
- 811 0078 E000      		.word	224
- 812 007a E300      		.word	227
- 813 007c 0000      		.word	0
- 814 007e E200      		.word	226
- 815 0080 2C00      		.word	44
- 816 0082 0000      		.word	0
- 817 0084 0151      		.word	20737
- 818 0086 0000      		.word	0
- 819 0088 0351      		.word	20739
- 820 008a 0000      		.word	0
- 821 008c E600      		.word	230
- 822 008e E700      		.word	231
- 823 0090 0000      		.word	0
- 824 0092 0251      		.word	20738
- 825 0094 E400      		.word	228
- 826 0096 3500      		.word	53
- 827 0098 3A00      		.word	58
- 828 009a 3B00      		.word	59
- 829 009c 3C00      		.word	60
- 830 009e 3D00      		.word	61
- 831 00a0 3E00      		.word	62
- 832 00a2 3F00      		.word	63
- 833 00a4 4000      		.word	64
- 834 00a6 4100      		.word	65
- 835 00a8 4200      		.word	66
- 836 00aa 4300      		.word	67
- 837 00ac 4400      		.word	68
- 838 00ae 4500      		.word	69
- 839 00b0 0000      		.word	0
- 840 00b2 4C00      		.word	76
- 841 00b4 0100      		.word	1
- 842 00b6 0000      		.word	0
- 843 00b8 005C      		.word	23552
- 844 00ba 5200      		.word	82
- 845 00bc 0100      		.word	1
- 846 00be F400      		.word	244
- 847 00c0 F000      		.word	240
- 848 00c2 F500      		.word	245
- 849 00c4 0100      		.word	1
- 850 00c6 5200      		.word	82
- 851 00c8 0100      		.word	1
- 852 00ca 4600      		.word	70
- 853 00cc 0100      		.word	1
- 854 00ce 0100      		.word	1
- 855 00d0 0100      		.word	1
- 856 00d2 0100      		.word	1
- 857 00d4 0000      		.word	0
- 858 00d6 5000      		.word	80
- 859 00d8 5100      		.word	81
- 860 00da 4F00      		.word	79
- 861 00dc F200      		.word	242
- 862 00de F100      		.word	241
- 863 00e0 F300      		.word	243
- 864 00e2 5000      		.word	80
- 865 00e4 5100      		.word	81
- 866 00e6 4F00      		.word	79
- 867 00e8 0100      		.word	1
- 868 00ea 0100      		.word	1
- 869 00ec 0100      		.word	1
- 870 00ee 0000      		.word	0
- 871 00f0 0100      		.word	1
- 872 00f2 0030      		.word	12288
- 873 00f4 0300      		.word	3
- 874 00f6 0400      		.word	4
- 875 00f8 0100      		.word	1
- 876 00fa 0100      		.word	1
- 877 00fc AA00      		.word	170
- 878 00fe A900      		.word	169
- 879 0100 A800      		.word	168
- 880 0102 AC00      		.word	172
- 881 0104 AB00      		.word	171
- 882 0106 AE00      		.word	174
- 883 0108 0000      		.word	0
- 884 010a 0100      		.word	1
- 885 010c 0000      		.word	0
- 886 010e 0100      		.word	1
- 887 0110 0100      		.word	1
- 888 0112 0000      		.word	0
- 889 0114 0100      		.word	1
- 890 0116 4E00      		.word	78
- 891 0118 0000      		.word	0
- 892 011a 0100      		.word	1
- 893 011c 0000      		.word	0
- 894 011e 4B00      		.word	75
- 895 0120 0000      		.word	0
- 896 0122 0100      		.word	1
- 897 0124 0100      		.word	1
- 898 0126 0000      		.word	0
- 899 0128 0100      		.word	1
- 900 012a 0100      		.word	1
- 901 012c BA5C      		.word	23738
- 902 012e C35C      		.word	23747
- 903 0130 C45C      		.word	23748
- 904 0132 C55C      		.word	23749
- 905 0134 C65C      		.word	23750
- 906 0136 C75C      		.word	23751
- 907 0138 0100      		.word	1
- 908 013a 0100      		.word	1
- 909 013c 0100      		.word	1
- 910 013e 0100      		.word	1
- 911 0140 0100      		.word	1
- 912 0142 0100      		.word	1
- 913 0144 0100      		.word	1
- 914 0146 0000      		.word	0
- 915 0148 0100      		.word	1
- 916 014a BB5C      		.word	23739
- 917 014c 0000      		.word	0
- 918 014e BD5C      		.word	23741
- 919 0150 BF5C      		.word	23743
- 920 0152 C15C      		.word	23745
- 921 0154 0100      		.word	1
- 922 0156 0100      		.word	1
- 923 0158 0100      		.word	1
- 924 015a 0100      		.word	1
- 925 015c 0100      		.word	1
- 926 015e 0100      		.word	1
- 927 0160 0100      		.word	1
- 928 0162 0100      		.word	1
- 929 0164 0100      		.word	1
- 930 0166 0100      		.word	1
- 931 0168 0100      		.word	1
- 932 016a 0000      		.word	0
- 933 016c BE5C      		.word	23742
- 934 016e C05C      		.word	23744
- 935 0170 C25C      		.word	23746
- 936 0172 0100      		.word	1
- 937 0174 0100      		.word	1
- 938 0176 0100      		.word	1
- 939 0178 0100      		.word	1
- 940 017a 0100      		.word	1
- 941 017c 0100      		.word	1
- 942 017e 0100      		.word	1
- 943 0180 0100      		.word	1
- 944 0182 0100      		.word	1
- 945 0184 0000      		.word	0
- 946 0186 0100      		.word	1
- 947 0188 0100      		.word	1
- 948 018a 0100      		.word	1
- 949 018c 0100      		.word	1
- 950 018e 0100      		.word	1
- 951 0190 0100      		.word	1
- 952 0192 0100      		.word	1
- 953 0194 0100      		.word	1
- 954 0196 0100      		.word	1
- 955 0198 0100      		.word	1
- 956 019a 0100      		.word	1
- 957 019c 0100      		.word	1
- 958 019e 0000      		.word	0
- 959 01a0 0100      		.word	1
- 960 01a2 0000      		.word	0
- 961 01a4 0100      		.word	1
- 962 01a6 0100      		.word	1
- 963 01a8 0000      		.word	0
- 964 01aa 0100      		.word	1
- 965 01ac 0100      		.word	1
- 966 01ae 0000      		.word	0
- 967 01b0 0100      		.word	1
- 968 01b2 0000      		.word	0
- 969 01b4 0100      		.word	1
- 970 01b6 0000      		.word	0
- 971 01b8 0100      		.word	1
- 972 01ba 0100      		.word	1
- 973 01bc 0000      		.word	0
- 974 01be 0100      		.word	1
- 975 01c0 0100      		.word	1
- 976 01c2 0100      		.word	1
- 977 01c4 0100      		.word	1
- 978 01c6 0100      		.word	1
- 979 01c8 0100      		.word	1
- 980 01ca 0100      		.word	1
- 981 01cc 0100      		.word	1
- 982 01ce 0100      		.word	1
- 983 01d0 0100      		.word	1
- 984 01d2 0100      		.word	1
- 985 01d4 0100      		.word	1
- 986 01d6 0100      		.word	1
- 987 01d8 0100      		.word	1
- 988 01da 0100      		.word	1
- 989 01dc 0000      		.word	0
- 990 01de 0100      		.word	1
- 991 01e0 0100      		.word	1
- 992 01e2 0000      		.word	0
- 993 01e4 0100      		.word	1
- 994 01e6 0100      		.word	1
- 995 01e8 0100      		.word	1
- 996 01ea 0100      		.word	1
- 997 01ec 0100      		.word	1
- 998 01ee 0100      		.word	1
- 999 01f0 0100      		.word	1
- 1000 01f2 0100      		.word	1
- 1001 01f4 0100      		.word	1
- 1002 01f6 0100      		.word	1
- 1003 01f8 0100      		.word	1
- 1004 01fa 0100      		.word	1
- 1005 01fc 0100      		.word	1
- 1006 01fe 0100      		.word	1
- 1007 0200 0000      		.word	0
- 1008 0202 0100      		.word	1
- 1009 0204 0100      		.word	1
- 1010 0206 0100      		.word	1
- 1011 0208 0100      		.word	1
- 1012 020a 0100      		.word	1
- 1013 020c 0100      		.word	1
- 1014 020e 0100      		.word	1
- 1015 0210 0100      		.word	1
- 1016 0212 0100      		.word	1
- 1017 0214 0100      		.word	1
- 1018 0216 0100      		.word	1
- 1019 0218 0100      		.word	1
- 1020 021a 0000      		.word	0
- 1021 021c 0100      		.word	1
- 1022 021e 0100      		.word	1
- 1023 0220 0000      		.word	0
- 1024 0222 0100      		.word	1
- 1025 0224 0100      		.word	1
- 1026 0226 0100      		.word	1
- 1027 0228 0100      		.word	1
- 1028 022a 0100      		.word	1
- 1029 022c 0100      		.word	1
- 1030 022e 0100      		.word	1
- 1031 0230 0100      		.word	1
- 1032 0232 0100      		.word	1
- 1033 0234 0000      		.word	0
- 1034 0236 0100      		.word	1
- 1035 0238 0000      		.word	0
- 1036 023a 0100      		.word	1
- 1037 023c 0100      		.word	1
- 1038 023e 0000      		.word	0
- 1039 0240 0100      		.word	1
- 1040 0242 0100      		.word	1
- 1041 0244 0000      		.word	0
- 1042 0246 0100      		.word	1
- 1043 0248 0000      		.word	0
- 1044 024a 0100      		.word	1
- 1045 024c 0000      		.word	0
- 1046 024e 0100      		.word	1
- 1047 0250 0100      		.word	1
- 1048 0252 0000      		.word	0
- 1049 0254 0100      		.word	1
- 1050 0256 0100      		.word	1
- 1051               		.text
- 1052               	.Letext0:
- 1053               		.file 4 "/usr/lib/avr/include/stdint.h"
- 1054               		.file 5 "./tmk_core/common/keyboard.h"
- 1055               		.file 6 "./tmk_core/common/keycode.h"
- 1056               		.file 7 "./tmk_core/common/action_macro.h"
- 1057               		.file 8 "./tmk_core/common/action.h"
- 1058               		.file 9 "./tmk_core/common/report.h"
- 1059               		.file 10 "./quantum/quantum_keycodes.h"
- 1060               		.file 11 "./lib/lufa/LUFA/Drivers/USB/Core/USBTask.h"
- 1061               		.file 12 "./quantum/quantum.h"
- 1062               		.file 13 "./tmk_core/common/action_util.h"
- 1063               		.file 14 "./tmk_core/common/backlight.h"
- 1064               		.file 15 "./tmk_core/common/action_layer.h"
+  61:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _
+  62:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _
+  63:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , MAC_RC1 , MAC_RC2 , _______ , _______ , _______ , _______ , _______ , _
+  64:keyboards/dz60/keymaps/default/keymap.c ****         _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _______ , _
+  65:keyboards/dz60/keymaps/default/keymap.c ****     )
+  66:keyboards/dz60/keymaps/default/keymap.c **** };
+  67:keyboards/dz60/keymaps/default/keymap.c **** 
+  68:keyboards/dz60/keymaps/default/keymap.c **** const macro_t *action_get_macro(keyrecord_t *record , uint8_t id , uint8_t opt) {
+ 623               		.loc 3 68 0
+ 624               		.cfi_startproc
+ 625               	.LVL55:
+ 626               	/* prologue: function */
+ 627               	/* frame size = 0 */
+ 628               	/* stack size = 0 */
+ 629               	.L__stack_usage = 0
+  69:keyboards/dz60/keymaps/default/keymap.c ****     keyevent_t event = record->event;
+  70:keyboards/dz60/keymaps/default/keymap.c ****     if (event.pressed) {
+ 630               		.loc 3 70 0
+ 631 0000 FC01      		movw r30,r24
+ 632 0002 8281      		ldd r24,Z+2
+ 633               	.LVL56:
+ 634 0004 8823      		tst r24
+ 635 0006 01F0      		breq .L44
+  71:keyboards/dz60/keymaps/default/keymap.c ****         switch (id) {
+ 636               		.loc 3 71 0
+ 637 0008 6111      		cpse r22,__zero_reg__
+ 638 000a 00C0      		rjmp .L44
+  72:keyboards/dz60/keymaps/default/keymap.c ****             case M_FX:
+  73:keyboards/dz60/keymaps/default/keymap.c ****                 SEND_STRING(SEC_FF_MASTER);
+ 639               		.loc 3 73 0
+ 640 000c 80E0      		ldi r24,lo8(__c.5648)
+ 641 000e 90E0      		ldi r25,hi8(__c.5648)
+ 642               	.LVL57:
+ 643 0010 0E94 0000 		call send_string_P
+ 644               	.LVL58:
+ 645               	.L44:
+  74:keyboards/dz60/keymaps/default/keymap.c ****                 return false;
+  75:keyboards/dz60/keymaps/default/keymap.c ****         }
+  76:keyboards/dz60/keymaps/default/keymap.c ****     }
+  77:keyboards/dz60/keymaps/default/keymap.c ****     return MACRO_NONE;
+  78:keyboards/dz60/keymaps/default/keymap.c **** }
+ 646               		.loc 3 78 0
+ 647 0014 80E0      		ldi r24,0
+ 648 0016 90E0      		ldi r25,0
+ 649 0018 0895      		ret
+ 650               		.cfi_endproc
+ 651               	.LFE116:
+ 653               		.section	.text.matrix_init_user,"ax",@progbits
+ 654               	.global	matrix_init_user
+ 656               	matrix_init_user:
+ 657               	.LFB117:
+  79:keyboards/dz60/keymaps/default/keymap.c **** 
+  80:keyboards/dz60/keymaps/default/keymap.c **** void matrix_init_user(void) {
+ 658               		.loc 3 80 0
+ 659               		.cfi_startproc
+ 660               	/* prologue: function */
+ 661               	/* frame size = 0 */
+ 662               	/* stack size = 0 */
+ 663               	.L__stack_usage = 0
+ 664 0000 0895      		ret
+ 665               		.cfi_endproc
+ 666               	.LFE117:
+ 668               		.section	.text.matrix_scan_user,"ax",@progbits
+ 669               	.global	matrix_scan_user
+ 671               	matrix_scan_user:
+ 672               	.LFB118:
+  81:keyboards/dz60/keymaps/default/keymap.c **** }
+  82:keyboards/dz60/keymaps/default/keymap.c **** 
+  83:keyboards/dz60/keymaps/default/keymap.c **** void matrix_scan_user(void) {
+ 673               		.loc 3 83 0
+ 674               		.cfi_startproc
+ 675               	/* prologue: function */
+ 676               	/* frame size = 0 */
+ 677               	/* stack size = 0 */
+ 678               	.L__stack_usage = 0
+ 679 0000 0895      		ret
+ 680               		.cfi_endproc
+ 681               	.LFE118:
+ 683               		.section	.text.process_record_user,"ax",@progbits
+ 684               	.global	process_record_user
+ 686               	process_record_user:
+ 687               	.LFB119:
+  84:keyboards/dz60/keymaps/default/keymap.c **** }
+  85:keyboards/dz60/keymaps/default/keymap.c **** 
+  86:keyboards/dz60/keymaps/default/keymap.c **** bool process_record_user(uint16_t keycode , keyrecord_t *record) {
+ 688               		.loc 3 86 0
+ 689               		.cfi_startproc
+ 690               	.LVL59:
+ 691               	/* prologue: function */
+ 692               	/* frame size = 0 */
+ 693               	/* stack size = 0 */
+ 694               	.L__stack_usage = 0
+  87:keyboards/dz60/keymaps/default/keymap.c ****     uint16_t macro_kc = (keycode == MO(_ML) ? DYN_REC_STOP : keycode);
+ 695               		.loc 3 87 0
+ 696 0000 8330      		cpi r24,3
+ 697 0002 21E5      		ldi r18,81
+ 698 0004 9207      		cpc r25,r18
+ 699 0006 01F4      		brne .L52
+ 700 0008 85ED      		ldi r24,lo8(-43)
+ 701 000a 9CE5      		ldi r25,lo8(92)
+ 702               	.LVL60:
+ 703               	.L52:
+  88:keyboards/dz60/keymaps/default/keymap.c ****     if (!process_record_dynamic_macro(macro_kc, record)) {
+ 704               		.loc 3 88 0 discriminator 4
+ 705 000c 0C94 0000 		jmp process_record_dynamic_macro
+ 706               	.LVL61:
+ 707               		.cfi_endproc
+ 708               	.LFE119:
+ 710               		.section	.text.led_set_user,"ax",@progbits
+ 711               	.global	led_set_user
+ 713               	led_set_user:
+ 714               	.LFB120:
+  89:keyboards/dz60/keymaps/default/keymap.c **** 		return false;
+  90:keyboards/dz60/keymaps/default/keymap.c ****     }
+  91:keyboards/dz60/keymaps/default/keymap.c ****     return true;
+  92:keyboards/dz60/keymaps/default/keymap.c **** }
+  93:keyboards/dz60/keymaps/default/keymap.c **** 
+  94:keyboards/dz60/keymaps/default/keymap.c **** void led_set_user(uint8_t usb_led) {
+ 715               		.loc 3 94 0
+ 716               		.cfi_startproc
+ 717               	.LVL62:
+ 718               	/* prologue: function */
+ 719               	/* frame size = 0 */
+ 720               	/* stack size = 0 */
+ 721               	.L__stack_usage = 0
+ 722 0000 0895      		ret
+ 723               		.cfi_endproc
+ 724               	.LFE120:
+ 726               		.section	.progmem.data.__c.5648,"a",@progbits
+ 729               	__c.5648:
+ 730 0000 6D32 3672 		.string	"m26rkRTsjFJ7vjCN"
+ 730      6B52 5473 
+ 730      6A46 4A37 
+ 730      766A 434E 
+ 730      00
+ 731               		.section	.data.r_macro_end.5623,"aw",@progbits
+ 734               	r_macro_end.5623:
+ 735 0000 0000      		.word	macro_buffer.5620+762
+ 736               		.section	.data.macro_end.5621,"aw",@progbits
+ 739               	macro_end.5621:
+ 740 0000 0000      		.word	macro_buffer.5620
+ 741               		.section	.bss.macro_buffer.5620,"aw",@nobits
+ 744               	macro_buffer.5620:
+ 745 0000 0000 0000 		.zero	768
+ 745      0000 0000 
+ 745      0000 0000 
+ 745      0000 0000 
+ 745      0000 0000 
+ 746               		.section	.bss.macro_pointer.5624,"aw",@nobits
+ 749               	macro_pointer.5624:
+ 750 0000 0000      		.zero	2
+ 751               		.section	.bss.macro_id.5625,"aw",@nobits
+ 754               	macro_id.5625:
+ 755 0000 00        		.zero	1
+ 756               	.global	keymaps
+ 757               		.section	.progmem.data.keymaps,"a",@progbits
+ 760               	keymaps:
+ 761 0000 2900      		.word	41
+ 762 0002 1E00      		.word	30
+ 763 0004 1F00      		.word	31
+ 764 0006 2000      		.word	32
+ 765 0008 2100      		.word	33
+ 766 000a 2200      		.word	34
+ 767 000c 2300      		.word	35
+ 768 000e 2400      		.word	36
+ 769 0010 2500      		.word	37
+ 770 0012 2600      		.word	38
+ 771 0014 2700      		.word	39
+ 772 0016 2D00      		.word	45
+ 773 0018 2E00      		.word	46
+ 774 001a 0000      		.word	0
+ 775 001c 2A00      		.word	42
+ 776 001e 2B00      		.word	43
+ 777 0020 0000      		.word	0
+ 778 0022 1400      		.word	20
+ 779 0024 1A00      		.word	26
+ 780 0026 0800      		.word	8
+ 781 0028 1500      		.word	21
+ 782 002a 1700      		.word	23
+ 783 002c 1C00      		.word	28
+ 784 002e 1800      		.word	24
+ 785 0030 0C00      		.word	12
+ 786 0032 1200      		.word	18
+ 787 0034 1300      		.word	19
+ 788 0036 2F00      		.word	47
+ 789 0038 3000      		.word	48
+ 790 003a 3200      		.word	50
+ 791 003c 3941      		.word	16697
+ 792 003e 0000      		.word	0
+ 793 0040 0400      		.word	4
+ 794 0042 1600      		.word	22
+ 795 0044 0700      		.word	7
+ 796 0046 0900      		.word	9
+ 797 0048 0A00      		.word	10
+ 798 004a 0B00      		.word	11
+ 799 004c 0D00      		.word	13
+ 800 004e 0E00      		.word	14
+ 801 0050 0F00      		.word	15
+ 802 0052 3300      		.word	51
+ 803 0054 3400      		.word	52
+ 804 0056 2800      		.word	40
+ 805 0058 0000      		.word	0
+ 806 005a E100      		.word	225
+ 807 005c 6400      		.word	100
+ 808 005e 1D00      		.word	29
+ 809 0060 1B00      		.word	27
+ 810 0062 0600      		.word	6
+ 811 0064 1900      		.word	25
+ 812 0066 0500      		.word	5
+ 813 0068 1100      		.word	17
+ 814 006a 1000      		.word	16
+ 815 006c 3600      		.word	54
+ 816 006e 3700      		.word	55
+ 817 0070 3800      		.word	56
+ 818 0072 0000      		.word	0
+ 819 0074 E500      		.word	229
+ 820 0076 0000      		.word	0
+ 821 0078 E000      		.word	224
+ 822 007a E300      		.word	227
+ 823 007c 0000      		.word	0
+ 824 007e E200      		.word	226
+ 825 0080 2C00      		.word	44
+ 826 0082 0000      		.word	0
+ 827 0084 0151      		.word	20737
+ 828 0086 0000      		.word	0
+ 829 0088 0351      		.word	20739
+ 830 008a 0000      		.word	0
+ 831 008c E600      		.word	230
+ 832 008e E700      		.word	231
+ 833 0090 0000      		.word	0
+ 834 0092 0251      		.word	20738
+ 835 0094 E400      		.word	228
+ 836 0096 3500      		.word	53
+ 837 0098 3A00      		.word	58
+ 838 009a 3B00      		.word	59
+ 839 009c 3C00      		.word	60
+ 840 009e 3D00      		.word	61
+ 841 00a0 3E00      		.word	62
+ 842 00a2 3F00      		.word	63
+ 843 00a4 4000      		.word	64
+ 844 00a6 4100      		.word	65
+ 845 00a8 4200      		.word	66
+ 846 00aa 4300      		.word	67
+ 847 00ac 4400      		.word	68
+ 848 00ae 4500      		.word	69
+ 849 00b0 0000      		.word	0
+ 850 00b2 4C00      		.word	76
+ 851 00b4 0100      		.word	1
+ 852 00b6 0000      		.word	0
+ 853 00b8 005C      		.word	23552
+ 854 00ba 5200      		.word	82
+ 855 00bc 0100      		.word	1
+ 856 00be F400      		.word	244
+ 857 00c0 F000      		.word	240
+ 858 00c2 F500      		.word	245
+ 859 00c4 0100      		.word	1
+ 860 00c6 5200      		.word	82
+ 861 00c8 0100      		.word	1
+ 862 00ca 4600      		.word	70
+ 863 00cc 0100      		.word	1
+ 864 00ce 0100      		.word	1
+ 865 00d0 0100      		.word	1
+ 866 00d2 0100      		.word	1
+ 867 00d4 0000      		.word	0
+ 868 00d6 5000      		.word	80
+ 869 00d8 5100      		.word	81
+ 870 00da 4F00      		.word	79
+ 871 00dc F200      		.word	242
+ 872 00de F100      		.word	241
+ 873 00e0 F300      		.word	243
+ 874 00e2 5000      		.word	80
+ 875 00e4 5100      		.word	81
+ 876 00e6 4F00      		.word	79
+ 877 00e8 0100      		.word	1
+ 878 00ea 0100      		.word	1
+ 879 00ec 0100      		.word	1
+ 880 00ee 0000      		.word	0
+ 881 00f0 0100      		.word	1
+ 882 00f2 0030      		.word	12288
+ 883 00f4 D65C      		.word	23766
+ 884 00f6 D75C      		.word	23767
+ 885 00f8 0100      		.word	1
+ 886 00fa 0100      		.word	1
+ 887 00fc AA00      		.word	170
+ 888 00fe A900      		.word	169
+ 889 0100 A800      		.word	168
+ 890 0102 AC00      		.word	172
+ 891 0104 AB00      		.word	171
+ 892 0106 AE00      		.word	174
+ 893 0108 0000      		.word	0
+ 894 010a 0100      		.word	1
+ 895 010c 0000      		.word	0
+ 896 010e 0100      		.word	1
+ 897 0110 0100      		.word	1
+ 898 0112 0000      		.word	0
+ 899 0114 0100      		.word	1
+ 900 0116 4E00      		.word	78
+ 901 0118 0000      		.word	0
+ 902 011a 0100      		.word	1
+ 903 011c 0000      		.word	0
+ 904 011e 4B00      		.word	75
+ 905 0120 0000      		.word	0
+ 906 0122 0100      		.word	1
+ 907 0124 0100      		.word	1
+ 908 0126 0000      		.word	0
+ 909 0128 0100      		.word	1
+ 910 012a 0100      		.word	1
+ 911 012c BA5C      		.word	23738
+ 912 012e C35C      		.word	23747
+ 913 0130 C45C      		.word	23748
+ 914 0132 C55C      		.word	23749
+ 915 0134 C65C      		.word	23750
+ 916 0136 C75C      		.word	23751
+ 917 0138 0100      		.word	1
+ 918 013a 0100      		.word	1
+ 919 013c 0100      		.word	1
+ 920 013e 0100      		.word	1
+ 921 0140 0100      		.word	1
+ 922 0142 0100      		.word	1
+ 923 0144 0100      		.word	1
+ 924 0146 0000      		.word	0
+ 925 0148 0100      		.word	1
+ 926 014a BB5C      		.word	23739
+ 927 014c 0000      		.word	0
+ 928 014e BD5C      		.word	23741
+ 929 0150 BF5C      		.word	23743
+ 930 0152 C15C      		.word	23745
+ 931 0154 0100      		.word	1
+ 932 0156 0100      		.word	1
+ 933 0158 0100      		.word	1
+ 934 015a 0100      		.word	1
+ 935 015c 0100      		.word	1
+ 936 015e 0100      		.word	1
+ 937 0160 0100      		.word	1
+ 938 0162 0100      		.word	1
+ 939 0164 0100      		.word	1
+ 940 0166 0100      		.word	1
+ 941 0168 0100      		.word	1
+ 942 016a 0000      		.word	0
+ 943 016c BE5C      		.word	23742
+ 944 016e C05C      		.word	23744
+ 945 0170 C25C      		.word	23746
+ 946 0172 0100      		.word	1
+ 947 0174 0100      		.word	1
+ 948 0176 0100      		.word	1
+ 949 0178 0100      		.word	1
+ 950 017a 0100      		.word	1
+ 951 017c 0100      		.word	1
+ 952 017e 0100      		.word	1
+ 953 0180 0100      		.word	1
+ 954 0182 0100      		.word	1
+ 955 0184 0000      		.word	0
+ 956 0186 0100      		.word	1
+ 957 0188 0100      		.word	1
+ 958 018a 0100      		.word	1
+ 959 018c 0100      		.word	1
+ 960 018e 0100      		.word	1
+ 961 0190 0100      		.word	1
+ 962 0192 0100      		.word	1
+ 963 0194 0100      		.word	1
+ 964 0196 0100      		.word	1
+ 965 0198 0100      		.word	1
+ 966 019a 0100      		.word	1
+ 967 019c 0100      		.word	1
+ 968 019e 0000      		.word	0
+ 969 01a0 0100      		.word	1
+ 970 01a2 0000      		.word	0
+ 971 01a4 0100      		.word	1
+ 972 01a6 0100      		.word	1
+ 973 01a8 0000      		.word	0
+ 974 01aa 0100      		.word	1
+ 975 01ac 0100      		.word	1
+ 976 01ae 0000      		.word	0
+ 977 01b0 0100      		.word	1
+ 978 01b2 0000      		.word	0
+ 979 01b4 0100      		.word	1
+ 980 01b6 0000      		.word	0
+ 981 01b8 0100      		.word	1
+ 982 01ba 0100      		.word	1
+ 983 01bc 0000      		.word	0
+ 984 01be 0100      		.word	1
+ 985 01c0 0100      		.word	1
+ 986 01c2 0100      		.word	1
+ 987 01c4 0100      		.word	1
+ 988 01c6 0100      		.word	1
+ 989 01c8 0100      		.word	1
+ 990 01ca 0100      		.word	1
+ 991 01cc 0100      		.word	1
+ 992 01ce 0100      		.word	1
+ 993 01d0 0100      		.word	1
+ 994 01d2 0100      		.word	1
+ 995 01d4 0100      		.word	1
+ 996 01d6 0100      		.word	1
+ 997 01d8 0100      		.word	1
+ 998 01da 0100      		.word	1
+ 999 01dc 0000      		.word	0
+ 1000 01de 0100      		.word	1
+ 1001 01e0 0100      		.word	1
+ 1002 01e2 0000      		.word	0
+ 1003 01e4 0100      		.word	1
+ 1004 01e6 0100      		.word	1
+ 1005 01e8 0100      		.word	1
+ 1006 01ea 0100      		.word	1
+ 1007 01ec 0100      		.word	1
+ 1008 01ee 0100      		.word	1
+ 1009 01f0 0100      		.word	1
+ 1010 01f2 0100      		.word	1
+ 1011 01f4 0100      		.word	1
+ 1012 01f6 0100      		.word	1
+ 1013 01f8 0100      		.word	1
+ 1014 01fa 0100      		.word	1
+ 1015 01fc 0100      		.word	1
+ 1016 01fe 0100      		.word	1
+ 1017 0200 0000      		.word	0
+ 1018 0202 0100      		.word	1
+ 1019 0204 0100      		.word	1
+ 1020 0206 0100      		.word	1
+ 1021 0208 0100      		.word	1
+ 1022 020a 0100      		.word	1
+ 1023 020c 0100      		.word	1
+ 1024 020e 0100      		.word	1
+ 1025 0210 0100      		.word	1
+ 1026 0212 0100      		.word	1
+ 1027 0214 0100      		.word	1
+ 1028 0216 0100      		.word	1
+ 1029 0218 0100      		.word	1
+ 1030 021a 0000      		.word	0
+ 1031 021c 0100      		.word	1
+ 1032 021e 0100      		.word	1
+ 1033 0220 D35C      		.word	23763
+ 1034 0222 D45C      		.word	23764
+ 1035 0224 0100      		.word	1
+ 1036 0226 0100      		.word	1
+ 1037 0228 0100      		.word	1
+ 1038 022a 0100      		.word	1
+ 1039 022c 0100      		.word	1
+ 1040 022e 0100      		.word	1
+ 1041 0230 0100      		.word	1
+ 1042 0232 0100      		.word	1
+ 1043 0234 0000      		.word	0
+ 1044 0236 0100      		.word	1
+ 1045 0238 0000      		.word	0
+ 1046 023a 0100      		.word	1
+ 1047 023c 0100      		.word	1
+ 1048 023e 0000      		.word	0
+ 1049 0240 0100      		.word	1
+ 1050 0242 0100      		.word	1
+ 1051 0244 0000      		.word	0
+ 1052 0246 0100      		.word	1
+ 1053 0248 0000      		.word	0
+ 1054 024a 0100      		.word	1
+ 1055 024c 0000      		.word	0
+ 1056 024e 0100      		.word	1
+ 1057 0250 0100      		.word	1
+ 1058 0252 0000      		.word	0
+ 1059 0254 0100      		.word	1
+ 1060 0256 0100      		.word	1
+ 1061               		.text
+ 1062               	.Letext0:
+ 1063               		.file 4 "/usr/lib/avr/include/stdint.h"
+ 1064               		.file 5 "./tmk_core/common/keyboard.h"
+ 1065               		.file 6 "./tmk_core/common/keycode.h"
+ 1066               		.file 7 "./tmk_core/common/action_macro.h"
+ 1067               		.file 8 "./tmk_core/common/action.h"
+ 1068               		.file 9 "./tmk_core/common/report.h"
+ 1069               		.file 10 "./quantum/quantum_keycodes.h"
+ 1070               		.file 11 "./lib/lufa/LUFA/Drivers/USB/Core/USBTask.h"
+ 1071               		.file 12 "./quantum/quantum.h"
+ 1072               		.file 13 "./tmk_core/common/action_util.h"
+ 1073               		.file 14 "./tmk_core/common/backlight.h"
+ 1074               		.file 15 "./tmk_core/common/action_layer.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 keymap.c
-     /tmp/cca0nu7k.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/cca0nu7k.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/cca0nu7k.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/cca0nu7k.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/cca0nu7k.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/cca0nu7k.s:13     .text.dynamic_macro_led_blink:0000000000000000 dynamic_macro_led_blink
-     /tmp/cca0nu7k.s:49     .text.dynamic_macro_record_start:0000000000000000 dynamic_macro_record_start
-     /tmp/cca0nu7k.s:103    .text.dynamic_macro_play:0000000000000000 dynamic_macro_play
-     /tmp/cca0nu7k.s:218    .text.dynamic_macro_record_key:0000000000000000 dynamic_macro_record_key
-     /tmp/cca0nu7k.s:310    .text.dynamic_macro_record_end:0000000000000000 dynamic_macro_record_end
-     /tmp/cca0nu7k.s:410    .text.process_record_dynamic_macro:0000000000000000 process_record_dynamic_macro
-     /tmp/cca0nu7k.s:744    .bss.macro_id.5624:0000000000000000 macro_id.5624
-     /tmp/cca0nu7k.s:724    .data.r_macro_end.5622:0000000000000000 r_macro_end.5622
-     /tmp/cca0nu7k.s:734    .bss.macro_buffer.5619:0000000000000000 macro_buffer.5619
-     /tmp/cca0nu7k.s:739    .bss.macro_pointer.5623:0000000000000000 macro_pointer.5623
-     /tmp/cca0nu7k.s:729    .data.macro_end.5620:0000000000000000 macro_end.5620
-     /tmp/cca0nu7k.s:610    .text.action_get_macro:0000000000000000 action_get_macro
-     /tmp/cca0nu7k.s:719    .progmem.data.__c.5647:0000000000000000 __c.5647
-     /tmp/cca0nu7k.s:646    .text.matrix_init_user:0000000000000000 matrix_init_user
-     /tmp/cca0nu7k.s:661    .text.matrix_scan_user:0000000000000000 matrix_scan_user
-     /tmp/cca0nu7k.s:676    .text.process_record_user:0000000000000000 process_record_user
-     /tmp/cca0nu7k.s:703    .text.led_set_user:0000000000000000 led_set_user
-     /tmp/cca0nu7k.s:750    .progmem.data.keymaps:0000000000000000 keymaps
+     /tmp/ccHC8SMW.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccHC8SMW.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccHC8SMW.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccHC8SMW.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccHC8SMW.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccHC8SMW.s:13     .text.dynamic_macro_led_blink:0000000000000000 dynamic_macro_led_blink
+     /tmp/ccHC8SMW.s:49     .text.dynamic_macro_record_start:0000000000000000 dynamic_macro_record_start
+     /tmp/ccHC8SMW.s:103    .text.dynamic_macro_play:0000000000000000 dynamic_macro_play
+     /tmp/ccHC8SMW.s:218    .text.dynamic_macro_record_key:0000000000000000 dynamic_macro_record_key
+     /tmp/ccHC8SMW.s:310    .text.dynamic_macro_record_end:0000000000000000 dynamic_macro_record_end
+     /tmp/ccHC8SMW.s:410    .text.process_record_dynamic_macro:0000000000000000 process_record_dynamic_macro
+     /tmp/ccHC8SMW.s:754    .bss.macro_id.5625:0000000000000000 macro_id.5625
+     /tmp/ccHC8SMW.s:744    .bss.macro_buffer.5620:0000000000000000 macro_buffer.5620
+     /tmp/ccHC8SMW.s:749    .bss.macro_pointer.5624:0000000000000000 macro_pointer.5624
+     /tmp/ccHC8SMW.s:734    .data.r_macro_end.5623:0000000000000000 r_macro_end.5623
+     /tmp/ccHC8SMW.s:739    .data.macro_end.5621:0000000000000000 macro_end.5621
+     /tmp/ccHC8SMW.s:620    .text.action_get_macro:0000000000000000 action_get_macro
+     /tmp/ccHC8SMW.s:729    .progmem.data.__c.5648:0000000000000000 __c.5648
+     /tmp/ccHC8SMW.s:656    .text.matrix_init_user:0000000000000000 matrix_init_user
+     /tmp/ccHC8SMW.s:671    .text.matrix_scan_user:0000000000000000 matrix_scan_user
+     /tmp/ccHC8SMW.s:686    .text.process_record_user:0000000000000000 process_record_user
+     /tmp/ccHC8SMW.s:713    .text.led_set_user:0000000000000000 led_set_user
+     /tmp/ccHC8SMW.s:760    .progmem.data.keymaps:0000000000000000 keymaps
 
 UNDEFINED SYMBOLS
 backlight_toggle
